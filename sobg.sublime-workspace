@@ -1,0 +1,1228 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"Route",
+				"Route::get"
+			],
+			[
+				"fun",
+				"function〔keyword〕"
+			],
+			[
+				"su",
+				"sub_page_active"
+			],
+			[
+				"page",
+				"page_data"
+			],
+			[
+				"me",
+				"meta_data"
+			],
+			[
+				"doc",
+				"doc_f	Function"
+			],
+			[
+				"sp",
+				"split_10"
+			],
+			[
+				"clea",
+				"clearfix"
+			],
+			[
+				"list-s",
+				"list-style"
+			],
+			[
+				"border",
+				"border-color"
+			],
+			[
+				"ma",
+				"margin-top"
+			],
+			[
+				"font",
+				"font-size"
+			],
+			[
+				"bor",
+				"border-radius"
+			],
+			[
+				"re",
+				"red"
+			],
+			[
+				"spli",
+				"split_30"
+			],
+			[
+				"spi",
+				"split_30"
+			],
+			[
+				"a",
+				"a	Tag"
+			],
+			[
+				"cle",
+				"clearfix"
+			],
+			[
+				"ta",
+				"target	Attr"
+			],
+			[
+				"ba",
+				"background"
+			],
+			[
+				"am",
+				"acronym	Tag"
+			],
+			[
+				"Y",
+				"Yatras"
+			],
+			[
+				"pad",
+				"padding"
+			],
+			[
+				"text",
+				"text-align"
+			],
+			[
+				"pos",
+				"position"
+			],
+			[
+				"padding",
+				"padding"
+			],
+			[
+				"marg",
+				"margin-bottom"
+			],
+			[
+				"so",
+				"solid〔value〕"
+			],
+			[
+				"paddin",
+				"padding"
+			],
+			[
+				"fo",
+				"font-weight"
+			],
+			[
+				"scr",
+				"scripts"
+			],
+			[
+				"fotn",
+				"font-size"
+			],
+			[
+				"bo",
+				"border"
+			],
+			[
+				"padd",
+				"padding-top"
+			],
+			[
+				"te",
+				"text-align"
+			],
+			[
+				"da",
+				"dark-grey"
+			],
+			[
+				"cl",
+				"clear"
+			],
+			[
+				"margin",
+				"margin"
+			],
+			[
+				"po",
+				"position"
+			],
+			[
+				"sama",
+				"SamarkanNormal"
+			],
+			[
+				"min",
+				"min-width"
+			],
+			[
+				"wid",
+				"width"
+			],
+			[
+				"bord",
+				"border-radius"
+			],
+			[
+				"fon",
+				"font-size"
+			],
+			[
+				"tex",
+				"text-decoration"
+			],
+			[
+				"mar",
+				"margin-left"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "package.json",
+			"settings":
+			{
+				"buffer_size": 72,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/Http/routes.php",
+			"settings":
+			{
+				"buffer_size": 3840,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/Http/Controllers/AboutSobgController.php",
+			"settings":
+			{
+				"buffer_size": 185,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "resources/views/app.blade.php",
+			"settings":
+			{
+				"buffer_size": 2144,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/I/websites/sitedesian/app/routes.php",
+			"settings":
+			{
+				"buffer_size": 4709,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "config/app.php",
+			"settings":
+			{
+				"buffer_size": 7113,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": ".env",
+			"settings":
+			{
+				"buffer_size": 191,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 392.0,
+		"selected_items":
+		[
+			[
+				"Package Control: ",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: in",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 528.0
+	},
+	"console":
+	{
+		"height": 126.0,
+		"history":
+		[
+			"import urllib.request,os; pr='Preferences.sublime-settings'; ip='ignored_packages'; n='Package Control'; s=sublime.load_settings(pr); ig=s.get(ip); ig.append(n); s.set(ip,ig); sublime.save_settings('Preferences.sublime-settings'); pf=n+'.sublime-package'; urllib.request.install_opener(urllib.request.build_opener(urllib.request.ProxyHandler())); by=urllib.request.urlopen('https://packagecontrol.io/'+pf.replace(' ','%20')).read(); open(os.path.join(sublime.installed_packages_path(),pf),'wb').write(by); ig.remove(n); s.set(ip,ig); sublime.save_settings(pr); print('Package Control: 3.0.0 upgrade successful!')",
+			"import urllib.request,os,hashlib; h = '7183a2d3e96f11eeadd761d777e62404' + 'e330c659d4bb41d3bdf022e94cab3cd0'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by) "
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/I/websites/sitesobg.dev",
+		"/I/websites/sitesobg.dev/app",
+		"/I/websites/sitesobg.dev/app/Http",
+		"/I/websites/sitesobg.dev/app/Http/Controllers",
+		"/I/websites/sitesobg.dev/resources",
+		"/I/websites/sitesobg.dev/resources/views"
+	],
+	"file_history":
+	[
+		"/D/Sandeep/fr2-mysql-daloradius-and-freeradius.sql",
+		"/I/websites/sitesobg.dev/vendor/laravel/framework/src/Illuminate/Session/ExistenceAwareInterface.php",
+		"/I/websites/sitesobg.dev/vendor/phpunit/phpunit/tests/TextUI/dataprovider-log-xml-isolation.phpt",
+		"/I/websites/sitesobg.dev/vendor/nikic/php-parser/lib/PhpParser/Node/Expr/BinaryOp/LogicalXor.php",
+		"/I/websites/sitesobg.dev/vendor/symfony/http-kernel/Symfony/Component/HttpKernel/EventListener/EsiListener.php",
+		"/I/websites/sitesobg.dev/app/Events/Event.php",
+		"/I/websites/sitesobg.dev/vendor/classpreloader/classpreloader/LICENSE",
+		"/I/websites/sitesobg.dev/vendor/psr/log/Psr/Log/LoggerAwareInterface.php",
+		"/I/websites/sitesobg.dev/vendor/nikic/php-parser/lib/PhpParser/Node/Expr/AssignRef.php",
+		"/I/websites/sitesobg.dev/vendor/nikic/php-parser/lib/PhpParser/Builder/Declaration.php",
+		"/I/websites/sitesobg.dev/vendor/laravel/framework/composer.json",
+		"/I/websites/sitesobg.dev/vendor/laravel/framework/src/Illuminate/Support/ViewErrorBag.php",
+		"/I/websites/sitesobg.dev/vendor/laravel/framework/LICENSE.txt",
+		"/I/websites/sitesobg.dev/vendor/laravel/framework/src/Illuminate/Foundation/Console/stubs/event-handler.stub",
+		"/I/websites/sitesobg.dev/vendor/laravel/framework/src/Illuminate/Foundation/Console/stubs/command-queued-with-handler.stub",
+		"/I/websites/sitesobg.dev/config/app.php",
+		"/I/websites/sitesobg.dev/app/Providers/AppServiceProvider.php",
+		"/I/websites/sitesobg.dev/vendor/composer/autoload_real.php",
+		"/I/websites/sitesobg.dev/vendor/composer/autoload_files.php",
+		"/I/websites/sitesobg.dev/vendor/composer/autoload_psr4.php",
+		"/I/websites/sitesobg.dev/vendor/autoload.php",
+		"/I/websites/sitesobg.dev/bootstrap/autoload.php",
+		"/C/Users/creatix/AppData/Local/Temp/fz3temp-1/routes.php",
+		"/I/websites/sitesobg.dev/vendor/laravel/framework/src/Illuminate/Support/ServiceProvider.php",
+		"/I/websites/sitesobg.dev/vendor/laravel/framework/src/Illuminate/Support/ClassLoader.php",
+		"/I/websites/sitesobg.dev/vendor/composer/autoload_classmap.php",
+		"/I/websites/sitesobg.dev/app/Http/Requests/Request.php",
+		"/I/websites/sitesobg.dev/app/Http/Controllers/Controller.php",
+		"/I/websites/sitesobg.dev/vendor/laravel/framework/src/Illuminate/Routing/Controller.php",
+		"/I/websites/sitesobg.dev/config/auth.php",
+		"/I/websites/sitesobg.dev/app/User.php",
+		"/I/websites/sitesobg.dev/bootstrap/app.php",
+		"/I/websites/sitesobg.dev/resources/views/auth/login.blade.php",
+		"/I/websites/sitesobg.dev/public/index.php",
+		"/C/Users/creatix/Downloads/AntiTwin.csv",
+		"/C/Users/creatix/AppData/Local/Temp/fz3temp-2/side-nav-guru.blade.php",
+		"/C/Users/creatix/AppData/Local/Temp/fz3temp-2/kashikananda.blade.php",
+		"/C/Users/creatix/AppData/Local/Temp/fz3temp-2/layout.blade.php",
+		"/C/Users/creatix/AppData/Local/Temp/fz3temp-1/milestones.blade.php",
+		"/I/websites/sobg.dev/views/kashikananda.blade.php",
+		"/I/websites/sitesobg/app/salagramam.html",
+		"/I/websites/sitesobg/node_modules/gulp-autoprefixer/node_modules/through2/node_modules/readable-stream/node_modules/core-util-is/README.md",
+		"/I/websites/sitesobg/node_modules/gulp-minify-html/node_modules/minimize/node_modules/utile/test/require-directory-test.js",
+		"/I/websites/sitesobg/node_modules/gulp/node_modules/vinyl-fs/node_modules/graceful-fs/test/write-then-read.js",
+		"/I/websites/sitesobg/node_modules/gulp-autoprefixer/node_modules/through2/through2.js",
+		"/I/websites/sitesobg/node_modules/gulp-jshint/node_modules/jshint/node_modules/htmlparser2/test/test-helper.js",
+		"/I/websites/templates/[leech1s.com]_gemiz/HTML/Light version/css/tooltip.css",
+		"/I/websites/sitesobg/app/home-stay-at-salagramam.html",
+		"/C/Users/creatix/AppData/Local/Temp/fz3temp-1/main.css",
+		"/C/Users/creatix/AppData/Local/Temp/fz3temp-1/side-yatras.blade.php",
+		"/C/Users/creatix/AppData/Local/Temp/fz3temp-1/layout.blade.php",
+		"/C/Users/creatix/AppData/Local/Temp/fz3temp-1/main.js",
+		"/C/Users/creatix/AppData/Local/Temp/fz3temp-1/kailas-tips.blade.php",
+		"/I/websites/sitesobg/app/overview.html",
+		"/I/websites/sitesobg/app/milestones.html",
+		"/I/websites/sitesobg/.tmp/styles/main.css",
+		"/I/websites/sobg.dev/views/kailas-tips.blade.php",
+		"/I/websites/siteideal/public/scripts/plugins.js",
+		"/I/websites/sobg.dev/views/contact.blade.php",
+		"/C/Users/creatix/AppData/Local/Temp/fz3temp-1/contact.blade.php",
+		"/C/Users/creatix/AppData/Local/Temp/fz3temp-1/gita-family.blade.php",
+		"/C/Users/creatix/AppData/Local/Temp/fz3temp-1/kailas-registration.blade.php",
+		"/C/Users/creatix/AppData/Local/Temp/fz3temp-1/donations.blade.php",
+		"/I/websites/sobg.dev/views/gita-family.blade.php",
+		"/I/websites/templates/[leech1s.com]_gemiz/HTML/Light version/contact-us.html",
+		"/I/websites/sitesobg/bower_components/modernizr/feature-detects/css-objectfit.js",
+		"/I/websites/sobg.dev/composer.json",
+		"/I/websites/sitesobg/app/shopping-cart.html",
+		"/I/websites/sitesobg/app/shopping-account.html",
+		"/I/websites/sitesobg/node_modules/gulp-autoprefixer/node_modules/autoprefixer-core/node_modules/caniuse-db/features-json/svg-html.json",
+		"/I/websites/templates/[leech1s.com]_gemiz/HTML/Light version/sharrre.php",
+		"/I/websites/sitesobg/.gitattributes",
+		"/I/websites/sitesobg/bower_components/jquery/src/css/addGetHookIf.js",
+		"/C/Users/creatix/AppData/Local/Temp/fz3temp-1/kailas-highlights.blade.php",
+		"/C/Users/creatix/AppData/Local/Temp/fz3temp-1/yatras.blade.php",
+		"/C/Users/creatix/AppData/Local/Temp/fz3temp-1/amarnath-highlights.blade.php",
+		"/C/Users/creatix/AppData/Local/Temp/fz3temp-1/kailas-cost.blade.php",
+		"/C/Users/creatix/AppData/Local/Temp/fz3temp-1/himalaya-highlights.blade.php",
+		"/I/websites/sobg.dev/views/yatras.blade.php",
+		"/C/Users/creatix/AppData/Local/Temp/fz3temp-1/kailas-yatra.blade.php",
+		"/I/websites/corllis_final/includes/contact-us.php",
+		"/C/Users/creatix/AppData/Local/Temp/fz3temp-2/main.css",
+		"/C/Users/creatix/AppData/Local/Temp/fz3temp-2/side-donations.blade.php",
+		"/C/Users/creatix/AppData/Local/Temp/fz3temp-2/contact.blade.php",
+		"/C/Users/creatix/AppData/Local/Temp/fz3temp-2/donations.blade.php",
+		"/D/Locale/httpwww.xossip.comshowthread.phpt=1240343&page=17.txt",
+		"/I/websites/sobg.dev/views/kailas-cost.blade.php",
+		"/I/websites/sobg.dev/views/amarnath-highlights.blade.php",
+		"/I/websites/sobg.dev/views/milestones.blade.php",
+		"/I/websites/sobg.dev/views/donations.blade.php",
+		"/I/websites/sobg.dev/views/side-donations.blade.php",
+		"/I/websites/sobg.dev/views/layout.blade.php",
+		"/I/websites/sobg.dev/views/overview.blade.php",
+		"/C/Users/creatix/AppData/Local/Temp/fz3temp-1/for-children.blade.php",
+		"/C/Users/creatix/AppData/Local/Temp/fz3temp-1/side-nav-courses.blade.php",
+		"/C/Users/creatix/AppData/Local/Temp/fz3temp-1/salagramam.blade.php",
+		"/C/Users/creatix/AppData/Local/Temp/fz3temp-1/swami.blade.php",
+		"/I/websites/sobg.dev/views/side-nav-guru.blade.php",
+		"/I/websites/sitesobg/app/styles/main.scss",
+		"/I/websites/corllis/css/style.css",
+		"/I/websites/corllis/js/plugins.js",
+		"/I/websites/sobg.dev/views/shoppingcart-register.blade.php",
+		"/C/Users/creatix/AppData/Local/Temp/fz3temp-1/error_log",
+		"/C/Users/creatix/AppData/Local/Temp/fz3temp-1/index.php",
+		"/I/websites/sobg.dev/views/kailas-registration.blade.php",
+		"/I/websites/sobg.dev/views/pages.blade.php",
+		"/I/websites/sobg.dev/views/steiner.blade.php",
+		"/I/websites/sobg.dev/views/bhavishya.blade.php",
+		"/I/websites/sitesobg/app/for-children.html",
+		"/C/Users/creatix/AppData/Local/Temp/fz3temp-1/home.blade.php",
+		"/C/Users/creatix/AppData/Local/Temp/fz3temp-1/eshop.blade.php",
+		"/I/websites/sobg.dev/views/home.blade.php",
+		"/I/websites/sobg.dev/views/eshop.blade.php",
+		"/I/websites/sitesobg/app/for-seniors.html",
+		"/I/websites/sitesobg/app/guided-tour-of-ashram.html",
+		"/I/websites/sobg.dev/views/himalaya-highlights.blade.php",
+		"/C/Users/creatix/AppData/Local/Temp/fz3temp-1/event-details.blade.php",
+		"/I/websites/sitesobg/app/kailas-yatra.html",
+		"/I/websites/sobg.dev/views/styles/main.css",
+		"/I/websites/sobg.dev/views/hisvision.blade.php",
+		"/I/websites/sobg.dev/views/side-yatras.blade.php",
+		"/I/websites/sobg.dev/views/amarnath-yatra.blade.php",
+		"/I/websites/sitesobg/app/courses.html",
+		"/I/websites/sobg.dev/views/side-nav-about.blade.php",
+		"/E/torrent/Internet Download Manager IDM 6.21 Build 16 Final Incl. Crack [ATOM]/RegKey/RegKey.reg",
+		"/I/websites/sitesobg/app/event-page.html",
+		"/I/websites/sobg.dev/views/event-details.blade.php",
+		"/I/websites/sobg.dev/views/side-nav-courses.blade.php"
+	],
+	"find":
+	{
+		"height": 36.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"guruController",
+			"key",
+			"#form-ho",
+			".btn",
+			"font-fami",
+			"<h3>",
+			"sm-9",
+			"sm-3",
+			"col-sm-9",
+			"col-sm-3",
+			"sheet",
+			"side-nav",
+			".ashram-pic",
+			"blockq",
+			"block",
+			"sub",
+			"h2",
+			"blockq",
+			"content-pic",
+			"img-wr",
+			"content-pic",
+			".blade.php",
+			"quer",
+			"#f68a5e",
+			"sheet",
+			"cart-but",
+			"h4",
+			"SamarkanNormal",
+			"vce",
+			"SamarkanNormal",
+			"header-bottom",
+			"half",
+			"fill",
+			"-30px",
+			"-30"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"GuruController",
+			"<h3 class=\"sub-heading\">",
+			"sm-8",
+			"sm-4",
+			"col-sm-8",
+			"col-sm-4",
+			"",
+			"#55AABB",
+			"h3",
+			"samarkan-normal"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 1,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "package.json",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 72,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								72,
+								72
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"auto_complete": true,
+							"bh_regions":
+							[
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content"
+							],
+							"syntax": "Packages/JavaScript/JSON.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "app/Http/routes.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3840,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1963,
+								1963
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"auto_complete": false,
+							"bh_regions":
+							[
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content"
+							],
+							"syntax": "Packages/PHP/PHP.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 960.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "app/Http/Controllers/AboutSobgController.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 185,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"auto_complete": false,
+							"bh_regions":
+							[
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content"
+							],
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"translate_tabs_to_spaces": false,
+							"word_wrap": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "resources/views/app.blade.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2144,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								262,
+								262
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"auto_complete": false,
+							"bh_regions":
+							[
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content"
+							],
+							"syntax": "Packages/Laravel Blade Highlighter/laravel-blade.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "/I/websites/sitedesian/app/routes.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4709,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"bh_regions":
+							[
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content"
+							],
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "config/app.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 7113,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								877,
+								877
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"auto_complete": false,
+							"bh_regions":
+							[
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content"
+							],
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": -0.0,
+						"translation.y": 1740.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": ".env",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 191,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								170,
+								170
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"bh_regions":
+							[
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content"
+							],
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 28.0
+	},
+	"input":
+	{
+		"height": 36.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"project": "sobg.sublime-project",
+	"replace":
+	{
+		"height": 66.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+			[
+				"git",
+				"sobg.dev\\views\\gita-family.blade.php"
+			],
+			[
+				"contact",
+				"sobg.dev\\views\\contact.blade.php"
+			],
+			[
+				"sho",
+				"sitesobg\\app\\shopping-cart.html"
+			],
+			[
+				"gita",
+				"sobg.dev\\views\\gita-family.blade.php"
+			],
+			[
+				"guide",
+				"sitesobg\\app\\guided-tour-of-ashram.html"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"selected_items":
+		[
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 255.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

@@ -70,7 +70,7 @@ Route::group(['prefix' => 'publications'],function(){
 	Route::group(['prefix' => 'cds-dvds'],function(){
 		Route::get('dvds','PublicationsController@dvdList');
 		Route::get('vcds','PublicationsController@vcdList');
-		Route::get('audio-cds','PublicationsController@audiodList');
+		Route::get('audio-cds','PublicationsController@audioList');
 	});
 	Route::group(['prefix' => 'books'],function(){
 		Route::get('books-by-swami','PublicationsController@booksBySwami');
@@ -86,25 +86,25 @@ Route::group(['prefix' => 'publications'],function(){
 */
 Route::group(['prefix' => 'spiritual-journeys'],function(){
 	Route::group(['prefix' => 'kailas-yatra'],function(){
-		Route::get('/','yatras@kailasHighlights');
-		Route::get('highlights','yatras@kailasHighlights');
-		Route::get('itinerary-and-cost','yatras@kailasDetails');
-		Route::get('registration','yatras@Registration');
+		Route::get('/','YatrasController@kailasHighlights');
+		Route::get('highlights','YatrasController@kailasHighlights');
+		Route::get('itinerary-and-cost','YatrasController@kailasDetails');
+		Route::get('registration','YatrasController@Registration');
 	});
 	Route::group(['prefix' => 'himalaya-yatra'],function(){
-		Route::get('/','yatras@himalayaHighlights');
-		Route::get('highlights','yatras@himalayaHighlights');
-		Route::get('itinerary-and-cost','yatras@himalayaDetails');
-		Route::get('registration','yatras@Registration');
+		Route::get('/','YatrasController@himalayaHighlights');
+		Route::get('highlights','YatrasController@himalayaHighlights');
+		Route::get('itinerary-and-cost','YatrasController@himalayaDetails');
+		Route::get('registration','YatrasController@Registration');
 	});
 	Route::group(['prefix' => 'amarnath-yatra'],function(){
-		Route::get('/','yatras@amarnathHighlights');
-		Route::get('highlights','yatras@amarnathHighlights');
-		Route::get('itinerary-and-cost','yatras@amarnathDetails');
-		Route::get('registration','yatras@Registration');
+		Route::get('/','YatrasController@amarnathHighlights');
+		Route::get('highlights','YatrasController@amarnathHighlights');
+		Route::get('itinerary-and-cost','YatrasController@amarnathDetails');
+		Route::get('registration','YatrasController@Registration');
 	});
-	Route::get('other-yathras','yatras@other');
-	Route::get('yathris-speak','yatras@testimonials');
+	Route::get('other-yathras','YatrasController@otherYatras');
+	Route::get('yathris-speak','YatrasController@testimonials');
 
 });
 
@@ -113,7 +113,7 @@ Route::group(['prefix' => 'spiritual-journeys'],function(){
 |	Donate
 |
 */
-Route::get('donate-support','donate@index');
+Route::get('donate-support','donateController@index');
 
 /*
 |
