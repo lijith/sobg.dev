@@ -6,12 +6,12 @@
 		<div class="shadow">
 			<h2 class="col-heading">Salagramam Ashram</h2>
 			<div class="pic-wrap ashram-pic">
-				<img src="images/salagramam-front-view.jpg" alt="" />
+				<img src="{{URL::asset('images/salagramam-front-view.jpg')}}" alt="salagramam" />
 			</div><!-- /.pic-wrap -->
 			<div class="col-text">
 				<p>Envisaged and founded by <strong>Swami Sandeepananda Giri</strong>, is  devoted to the understanding and spread of pure Knowledge.</p>
 				<div class="read-more">
-					<a href="">read more &raquo;</a>
+					<a href="{{route('salagramam')}}">read more &raquo;</a>
 				</div><!-- /.read-more -->
 			</div><!-- /.col-text -->
 		</div><!-- /.shadow -->
@@ -20,12 +20,12 @@
 		<div class="shadow">
 			<h2 class="col-heading">Swami Sandeepananda Giri</h2>
 			<div class="pic-wrap">
-				<img src="images/swami-small.jpg" alt="" />
+				<img src="{{URL::asset('images/swami-small.jpg')}}" alt="" />
 			</div><!-- /.pic-wrap -->
 			<div class="col-text">
 				<p>Swami Sandeepananda Giri, the founder and Director of Salagramam Public Charitable Trust, is a visionary teacher, greatly revered .</p>
 				<div class="read-more">
-					<a href="">read more &raquo;</a>
+					<a href="{{route('swami')}}">read more &raquo;</a>
 				</div><!-- /.read-more -->
 			</div><!-- /.col-text -->
 		</div><!-- /.shadow -->
@@ -34,12 +34,12 @@
 		<div class="shadow">
 			<h2 class="col-heading">Yatras - Spiritual Journeys</h2>
 			<div class="pic-wrap">
-				<img src="images/yatra-small.jpg" alt="" />
+				<img src="{{URL::asset('images/yatra-small.jpg')}}" alt="" />
 			</div><!-- /.pic-wrap -->
 			<div class="col-text">
 				<p>Yatras to most popular of pilgrimages in India organized under the guidance of Swami Sandeepananda Giri</p>
 				<div class="read-more">
-					<a href="">read more &raquo;</a>
+					<a href="{{route('yatras')}}">read more &raquo;</a>
 				</div><!-- /.read-more -->
 			</div><!-- /.col-text -->
 		</div><!-- /.shadow -->
@@ -56,7 +56,7 @@
 					<div class="pub-col">
 						<div class="item">
 							<div class="item-image vcenter">
-								<img src="images/audio-cd.jpg" alt="" />
+								<img src="{{URL::asset('images/audio-cd.jpg')}}" alt="" />
 							</div><!-- /.item-image -->
 							<div class="item-label">
 								Audio CDs/MP3s
@@ -66,7 +66,7 @@
 					<div class="pub-col">
 						<div class="item">
 							<div class="item-image vcenter">
-								<img src="images/dvd.jpg" alt="" />
+								<img src="{{URL::asset('images/dvd.jpg')}}" alt="" />
 							</div><!-- /.item-image -->
 							<div class="item-label">
 								DVDs/VCDs
@@ -76,7 +76,7 @@
 					<div class="pub-col">
 						<div class="item">
 							<div class="item-image vcenter">
-								<img src="images/books.jpg" alt="" />
+								<img src="{{URL::asset('images/books.jpg')}}" alt="" />
 							</div><!-- /.item-image -->
 							<div class="item-label">
 								Books
@@ -86,7 +86,7 @@
 					<div class="pub-col">
 						<div class="item">
 							<div class="item-image vcenter">
-								<img src="images/piravi.jpg" alt="" />
+								<img src="{{URL::asset('images/piravi.jpg')}}" alt="" />
 							</div><!-- /.item-image -->
 							<div class="item-label">
 								Magazines
@@ -132,7 +132,7 @@
 								</div><!-- /.year -->
 							</div><!-- /.event-date -->
 							<div class="event-image">
-								<img src="images/vidya3.jpg" alt="" />
+								<img src="{{URL::asset('images/vidya3.jpg')}}" alt="" />
 							</div><!-- /.event-image -->
 
 							<div class="event-details">
@@ -158,7 +158,7 @@
 								</div><!-- /.year -->
 							</div><!-- /.event-date -->
 							<div class="event-image">
-								<img src="images/vidya1.jpg" alt="" />
+								<img src="{{URL::asset('images/vidya1.jpg')}}" alt="" />
 							</div><!-- /.event-image -->
 
 							<div class="event-details">
@@ -195,12 +195,12 @@
 		<div class="shadow">
 			<h2 class="col-heading">Coursers and Retreats</h2>
 			<div class="pic-wrap">
-				<img src="images/courses.jpg" alt="" />
+				<img src="{{URL::asset('images/courses.jpg')}}" alt="" />
 			</div><!-- /.pic-wrap -->
 			<div class="col-text">
 				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.  eum magnam </p>
 				<div class="read-more">
-					<a href="">read more &raquo;</a>
+					<a href="{{route('courses')}}">read more &raquo;</a>
 				</div><!-- /.read-more -->
 			</div><!-- /.col-text -->
 		</div><!-- /.shadow -->
@@ -209,12 +209,12 @@
 		<div class="shadow">
 			<h2 class="col-heading">Bhavishya - The Steiner School</h2>
 			<div class="pic-wrap">
-				<img src="images/steiner-school.jpg" alt="" />
+				<img src="{{URL::asset('images/steiner-school.jpg')}}" alt="" />
 			</div><!-- /.pic-wrap -->
 			<div class="col-text">
 				<p>Kerala's first <strong>Waldorf-Steiner School</strong>. We believe in age appropriate child centric hands-on experiential learning with emphasis on art and music. </p>
 				<div class="read-more">
-					<a href="http://creativequb.com/projects/sobg.dev/bhavishya">read more &raquo;</a>
+					<a href="{{route('bhavishya')}}">read more &raquo;</a>
 				</div><!-- /.read-more -->
 			</div><!-- /.col-text -->
 		</div><!-- /.shadow -->
@@ -223,12 +223,12 @@
 		<div class="shadow">
 			<h2 class="col-heading">Donate - Support Us</h2>
 			<div class="pic-wrap">
-				<img src="images/helping-hands.jpg" alt="" />
+				<img src="{{URL::asset('images/helping-hands.jpg')}}" alt="" />
 			</div><!-- /.pic-wrap -->
 			<div class="col-text">
 				<p>Ad explicabo temporibus maiores officiis voluptatum minus in aliquid quo!</p>
 				<div class="read-more">
-					<a href="">read more &raquo;</a>
+					<a href="{{route('donate')}}">read more &raquo;</a>
 				</div><!-- /.read-more -->
 			</div><!-- /.col-text -->
 		</div><!-- /.shadow -->

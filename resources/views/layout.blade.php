@@ -233,16 +233,16 @@
 		<script src="//cdnjs.cloudflare.com/ajax/libs/nicescroll/3.5.4/jquery.nicescroll.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.0.0/jquery.magnific-popup.min.js"></script>
 
-		<script src="scripts/jquery.dlmenu.js"></script>
-		<script src="scripts/page-loading.js"></script>
-		<script src="scripts/equal-height.js"></script>
-		<script src="scripts/jquery-easing-1.3.js"></script>
-		<script src="scripts/jquery-transit-modified.js"></script>
-		<script src="scripts/jquery.flexverticalcenter.js"></script>
-		<script src="scripts/layerslider.kreaturamedia.jquery.js"></script>
-		<script src="scripts/jquery.focuspoint.min.js"></script>
-		<script src="scripts/layerslider.transitions.js"></script>
+		<script src="{{URL::asset('scripts/jquery.dlmenu.js')}}"></script>
+		<script src="{{URL::asset('scripts/page-loading.js')}}"></script>
+		<script src="{{URL::asset('scripts/equal-height.js')}}')}}"></script>
+		<script src="{{URL::asset('scripts/jquery-easing-1.3.js')}}"></script>
+		<script src="{{URL::asset('scripts/jquery-transit-modified.js')}}"></script>
+		<script src="{{URL::asset('scripts/jquery.flexverticalcenter.js')}}"></script>
+		<script src="{{URL::asset('scripts/layerslider.kreaturamedia.jquery.js')}}"></script>
+		<script src="{{URL::asset('scripts/jquery.focuspoint.min.js')}}"></script>
+		<script src="{{URL::asset('scripts/layerslider.transitions.js')}}"></script>
 
-		<script src="scripts/main.js"></script>
+		<script src="{{URL::asset('scripts/main.js')}}"></script>
 	</body>
 </html>

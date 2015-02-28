@@ -69,7 +69,7 @@ Route::group(['prefix' => 'publications'],function(){
 	Route::get('/',['as' => 'publications', 'uses' => 'PublicationsController@index']);
 	Route::group(['prefix' => 'cds-dvds'],function(){
 		Route::get('dvds',['as' => 'dvd', 'uses' => 'PublicationsController@dvdList']);
-		Route::get('vcds',['as' => 'vcd', 'uses' => 'PublicationsController@vcdList']);
+		Route::get('mp3',['as' => 'mp3', 'uses' => 'PublicationsController@mp3List']);
 		Route::get('audio-cds',['as' => 'acd', 'uses' => 'PublicationsController@audioList']);
 	});
 	Route::group(['prefix' => 'books'],function(){
@@ -85,10 +85,12 @@ Route::group(['prefix' => 'publications'],function(){
 |
 */
 Route::group(['prefix' => 'spiritual-journeys'],function(){
+	Route::get('/',['as' => 'yatras', 'uses' => 'YatrasController@index']);
 	Route::group(['prefix' => 'kailas-yatra'],function(){
 		Route::get('/',['as' => 'kailasyatra', 'uses' => 'YatrasController@kailasHighlights']);
 		Route::get('highlights',['as' => 'kailasHighlights', 'uses' => 'YatrasController@kailasHighlights']);
 		Route::get('itinerary-and-cost',['as' => 'kailasDetails', 'uses' => 'YatrasController@kailasDetails']);
+		Route::get('tips-for-yatris',['as' => 'kailastips', 'uses' => 'YatrasController@kailasTips']);
 	});
 	Route::group(['prefix' => 'himalaya-yatra'],function(){
 		Route::get('/',['as' => 'himalayayatra', 'uses' => 'YatrasController@himalayaHighlights']);
@@ -136,5 +138,12 @@ Route::get('gita-family',['as' => 'gitafamily', 'uses' => 'GitaFamily@index']);
 |
 */
 Route::get('contact-us',['as' => 'contact', 'uses' => 'ContactUs@index']);
+
+/*
+|
+|	contact us
+|
+*/
+Route::get('bhavishya',['as' => 'bhavishya', 'uses' => 'Bhavishya@index']);
 
 

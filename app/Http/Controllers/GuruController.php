@@ -24,8 +24,8 @@ class GuruController extends Controller {
 		'title' => 'School of Bhagavat Gita',
 		'description' => 'SALAGRAMAM Ashram, envisaged and founded by Swami Sandeepananda Giri, is devoted to the understanding and spread of pure Knowledge.The School of Bhagavad Gita is the nucleus of the Ashram.',
 		'keywords' => 'Bhagavad Gita, School of Bhagavad Gita, Swami Sandeepananda Giri, Salagram, Chinmayananda, Indian heritage, spiritual,culture, vedas, upanishad, tradition, philosophy, ashram, non-sectarian, camps, retreats, discourses, lectures, satsang, yagnam, gita yagnam, jnana, yatra, sadhana, Kailas - Manasarovar Yatra, Himalaya Darsan',
-		'top_level_page' => 'guru'
-		'sub_page_active' => '';
+		'top_level_page' => 'guru',
+		'sub_page_active' => ''
 	);
 
 	/**
@@ -36,7 +36,7 @@ class GuruController extends Controller {
 	public function swami(){
 		$this->page_data['title'] = 'Swami Sandeepananda Giri';
 		$this->page_data['description'] = '';
-		$this->page_data['sub_page_active'] = 'swami'
+		$this->page_data['sub_page_active'] = 'swami';
 		return view('home')->with($this->page_data);
 	}
 
@@ -48,7 +48,7 @@ class GuruController extends Controller {
 	public function milestones(){
 		$this->page_data['title'] = 'Milestones in Spiritual Journey of Swami Sandeepananda Giri';
 		$this->page_data['description'] = '';
-		$this->page_data['sub_page_active'] = 'milestones'
+		$this->page_data['sub_page_active'] = 'milestones';
 		return view('home')->with($this->page_data);
 	}
 	/**
@@ -59,7 +59,7 @@ class GuruController extends Controller {
 	public function kashikananda(){
 		$this->page_data['title'] = 'Swami Kashikananda Giri Maharaj';
 		$this->page_data['description'] = '';
-		$this->page_data['sub_page_active'] = 'kashikananda'
+		$this->page_data['sub_page_active'] = 'kashikananda';
 		return view('home')->with($this->page_data);
 	}
 	/**
@@ -70,7 +70,7 @@ class GuruController extends Controller {
 	public function articlesAndInterviews(){
 		$this->page_data['title'] = '';
 		$this->page_data['description'] = '';
-		$this->page_data['sub_page_active'] = 'articles'
+		$this->page_data['sub_page_active'] = 'articles';
 		return view('home')->with($this->page_data);
 	}
 			/**
@@ -81,7 +81,7 @@ class GuruController extends Controller {
 	public function itinerary(){
 		$this->page_data['title'] = 'Itinerary Swami Sandeepananda Giri';
 		$this->page_data['description'] = '';
-		$this->page_data['sub_page_active'] = 'itinerary'
+		$this->page_data['sub_page_active'] = 'itinerary';
 		return view('home')->with($this->page_data);
 	}
 	/**
@@ -92,7 +92,7 @@ class GuruController extends Controller {
 	public function messageFromSwami(){
 		$this->page_data['title'] = 'Messages from Swami Sandeepananda Giri';
 		$this->page_data['description'] = '';
-		$this->page_data['sub_page_active'] = 'swami-message'
+		$this->page_data['sub_page_active'] = 'swami-message';
 		return view('home')->with($this->page_data);
 	}
 			/**
@@ -103,7 +103,7 @@ class GuruController extends Controller {
 	public function writeToSwami(){
 		$this->page_data['title'] = 'Write to Swami Sandeepananda Giri';
 		$this->page_data['description'] = '';
-		$this->page_data['sub_page_active'] = 'write-to-swami'
+		$this->page_data['sub_page_active'] = 'write-to-swami';
 		return view('home')->with($this->page_data);
 	}
 

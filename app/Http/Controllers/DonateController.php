@@ -23,8 +23,8 @@ class DonateController extends Controller {
 		'title' => 'School of Bhagavat Gita',
 		'description' => 'SALAGRAMAM Ashram, envisaged and founded by Swami Sandeepananda Giri, is devoted to the understanding and spread of pure Knowledge.The School of Bhagavad Gita is the nucleus of the Ashram.',
 		'keywords' => 'Bhagavad Gita, School of Bhagavad Gita, Swami Sandeepananda Giri, Salagram, Chinmayananda, Indian heritage, spiritual,culture, vedas, upanishad, tradition, philosophy, ashram, non-sectarian, camps, retreats, discourses, lectures, satsang, yagnam, gita yagnam, jnana, yatra, sadhana, Kailas - Manasarovar Yatra, Himalaya Darsan',
-		'top_level_page' => 'donate'
-		'sub_page_active' => '';
+		'top_level_page' => 'donate',
+		'sub_page_active' => ''
 	);
 
 	/**
@@ -35,7 +35,7 @@ class DonateController extends Controller {
 	public function index(){
 		$this->page_data['title'] = 'Donate And Support';
 		$this->page_data['description'] = '';
-		$this->page_data['sub_page_active'] = 'kailas'
+		$this->page_data['sub_page_active'] = 'kailas';
 		return view('home')->with($this->page_data);
 	}
 }

@@ -19,8 +19,8 @@ class AboutSobgController extends Controller {
 		'title' => 'School of Bhagavat Gita',
 		'description' => 'SALAGRAMAM Ashram, envisaged and founded by Swami Sandeepananda Giri, is devoted to the understanding and spread of pure Knowledge.The School of Bhagavad Gita is the nucleus of the Ashram.',
 		'keywords' => 'Bhagavad Gita, School of Bhagavad Gita, Swami Sandeepananda Giri, Salagram, Chinmayananda, Indian heritage, spiritual,culture, vedas, upanishad, tradition, philosophy, ashram, non-sectarian, camps, retreats, discourses, lectures, satsang, yagnam, gita yagnam, jnana, yatra, sadhana, Kailas - Manasarovar Yatra, Himalaya Darsan',
-		'top_level_page' => 'about-sobg'
-		'sub_page_active' => '';
+		'top_level_page' => 'about-sobg',
+		'sub_page_active' => ''
 	);
 
 	/**
@@ -31,7 +31,7 @@ class AboutSobgController extends Controller {
 	public function overview(){
 		$this->page_data['title'] = 'Overview of Salagramam';
 		$this->page_data['description'] = '';
-		$this->page_data['sub_page_active'] = 'overview'
+		$this->page_data['sub_page_active'] = 'overview';
 		return view('home')->with($this->page_data);
 	}
 
@@ -43,7 +43,7 @@ class AboutSobgController extends Controller {
 	public function salagramam(){
 		$this->page_data['title'] = 'Salagramam Ashram';
 		$this->page_data['description'] = '';
-		$this->page_data['sub_page_active'] = 'salagramam'
+		$this->page_data['sub_page_active'] = 'salagramam';
 		return view('home')->with($this->page_data);
 	}
 
@@ -56,7 +56,7 @@ class AboutSobgController extends Controller {
 	function guidedTour(){
 		$this->page_data['title'] = 'Guided Tour of Salagramam';
 		$this->page_data['description'] = '';
-		$this->page_data['sub_page_active'] = 'salagramam'
+		$this->page_data['sub_page_active'] = 'salagramam';
 
 		return view('home')->with($this->page_data);
 	}
@@ -66,7 +66,7 @@ class AboutSobgController extends Controller {
 	 *
 	 * @return view as response
 	 **/
-	function guidedTour(){
+	function facilities(){
 		$this->page_data['title'] = 'Facilities for Public';
 		$this->page_data['description'] = 'salagramam';
 
