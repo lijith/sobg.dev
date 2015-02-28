@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/','HomeController@index');
+Route::get('/',['as' => 'home','uses' => 'HomeController@index']);
 
 /*
 |
@@ -20,17 +20,17 @@ Route::get('/','HomeController@index');
 */
 Route::group(['prefix'=>'about-sobg'],function(){
 	
-	Route::get('/','AboutSobgController@overview');
-	Route::get('overview','AboutSobgController@overview');
+	Route::get('/',['as' => 'aboutsobg', 'uses' => 'AboutSobgController@overview']);
+	Route::get('overview',['as' => 'overview', 'uses' =>'AboutSobgController@overview']);
 	
 	Route::group(['prefix' => 'salagramam'],function(){
-		Route::get('/','AboutSobgController@salagramam');
-		Route::get('guided-tour','AboutSobgController@guidedTour');
-		Route::get('facilities-for-public','AboutSobgController@facilities');
+		Route::get('/',['as' => 'salagramam', 'uses' => 'AboutSobgController@salagramam']);
+		Route::get('guided-tour',['as' => 'guidedTour', 'uses' => 'AboutSobgController@guidedTour']);
+		Route::get('facilities-for-public',['as' => 'facilities', 'uses' => 'AboutSobgController@facilities']);
 	});
 
-	Route::get('centers','AboutSobgController@centers');
-	Route::get('his-vision','AboutSobgController@hisVision');
+	Route::get('centers',['as' => 'centers', 'uses' => 'AboutSobgController@centers']);
+	Route::get('his-vision',['as' => 'hisVision', 'uses' => 'AboutSobgController@hisVision']);
 
 });
 
@@ -40,13 +40,13 @@ Route::group(['prefix'=>'about-sobg'],function(){
 |
 */
 Route::group(['prefix' => 'guru'],function(){
-	Route::get('swami-sandeepananda-giri','GuruController@swami');
-	Route::get('milestones-in-spiritual-journey','GuruController@milestones');
-	Route::get('swami-kashikananda-giri-maharaj','GuruController@kashikananda');
-	Route::get('articles-and-interviews','GuruController@articlesAndInterviews');
-	Route::get('itinerary','GuruController@itinerary');
-	Route::get('message-from-swami','GuruController@messageFromSwami');
-	Route::get('write-to-swami','GuruController@writeToSwami');
+	Route::get('swami-sandeepananda-giri',['as' => 'swami', 'uses' => 'GuruController@swami']);
+	Route::get('milestones-in-spiritual-journey',['as' => 'milestones', 'uses' => 'GuruController@milestones']);
+	Route::get('swami-kashikananda-giri-maharaj',['as' => 'kashikananda', 'uses' => 'GuruController@kashikananda']);
+	Route::get('articles-and-interviews',['as' => 'articles', 'uses' => 'GuruController@articlesAndInterviews']);
+	Route::get('itinerary',['as' => 'itinerary', 'uses' => 'GuruController@itinerary']);
+	Route::get('message-from-swami',['as' => 'messageFromSwami', 'uses' => 'GuruController@messageFromSwami']);
+	Route::get('write-to-swami',['as' => 'writeToSwami', 'uses' => 'GuruController@writeToSwami']);
 });
 
 /*
@@ -55,9 +55,9 @@ Route::group(['prefix' => 'guru'],function(){
 |
 */
 Route::group(['prefix' => 'courses-and-retreats'],function(){
-	Route::get('/','CoursesAndRetreatsController@index');
-	Route::get('for-children','CoursesAndRetreatsController@children');
-	Route::get('for-seniors','CoursesAndRetreatsController@seniors');
+	Route::get('/',['as' => 'courses', 'uses' => 'CoursesAndRetreatsController@index']);
+	Route::get('for-children',['as' => 'children', 'uses' => 'CoursesAndRetreatsController@children']);
+	Route::get('for-seniors',['as' => 'seniors', 'uses' => 'CoursesAndRetreatsController@seniors']);
 });
 
 /*
@@ -66,17 +66,17 @@ Route::group(['prefix' => 'courses-and-retreats'],function(){
 |
 */
 Route::group(['prefix' => 'publications'],function(){
-	Route::get('/','PublicationsController@index');
+	Route::get('/',['as' => 'publications', 'uses' => 'PublicationsController@index']);
 	Route::group(['prefix' => 'cds-dvds'],function(){
-		Route::get('dvds','PublicationsController@dvdList');
-		Route::get('vcds','PublicationsController@vcdList');
-		Route::get('audio-cds','PublicationsController@audioList');
+		Route::get('dvds',['as' => 'dvd', 'uses' => 'PublicationsController@dvdList']);
+		Route::get('vcds',['as' => 'vcd', 'uses' => 'PublicationsController@vcdList']);
+		Route::get('audio-cds',['as' => 'acd', 'uses' => 'PublicationsController@audioList']);
 	});
 	Route::group(['prefix' => 'books'],function(){
-		Route::get('books-by-swami','PublicationsController@booksBySwami');
-		Route::get('other-titles','PublicationsController@otherTitles');
+		Route::get('books-by-swami',['as' => 'swamibooks', 'uses' => 'PublicationsController@booksBySwami']);
+		Route::get('other-titles',['as' => 'otherbooks', 'uses' => 'PublicationsController@otherTitles']);
 	});
-	Route::get('piravi-magazine','PublicationsController@piravi');
+	Route::get('piravi-magazine',['as' => 'piravi', 'uses' => 'PublicationsController@piravi']);
 });
 
 /*
@@ -86,25 +86,23 @@ Route::group(['prefix' => 'publications'],function(){
 */
 Route::group(['prefix' => 'spiritual-journeys'],function(){
 	Route::group(['prefix' => 'kailas-yatra'],function(){
-		Route::get('/','YatrasController@kailasHighlights');
-		Route::get('highlights','YatrasController@kailasHighlights');
-		Route::get('itinerary-and-cost','YatrasController@kailasDetails');
-		Route::get('registration','YatrasController@Registration');
+		Route::get('/',['as' => 'kailasyatra', 'uses' => 'YatrasController@kailasHighlights']);
+		Route::get('highlights',['as' => 'kailasHighlights', 'uses' => 'YatrasController@kailasHighlights']);
+		Route::get('itinerary-and-cost',['as' => 'kailasDetails', 'uses' => 'YatrasController@kailasDetails']);
 	});
 	Route::group(['prefix' => 'himalaya-yatra'],function(){
-		Route::get('/','YatrasController@himalayaHighlights');
-		Route::get('highlights','YatrasController@himalayaHighlights');
-		Route::get('itinerary-and-cost','YatrasController@himalayaDetails');
-		Route::get('registration','YatrasController@Registration');
+		Route::get('/',['as' => 'himalayayatra', 'uses' => 'YatrasController@himalayaHighlights']);
+		Route::get('highlights',['as' => 'himalayaHighlights', 'uses' => 'YatrasController@himalayaHighlights']);
+		Route::get('itinerary-and-cost',['as' => 'himalayaDetails', 'uses' => 'YatrasController@himalayaDetails']);
 	});
 	Route::group(['prefix' => 'amarnath-yatra'],function(){
-		Route::get('/','YatrasController@amarnathHighlights');
-		Route::get('highlights','YatrasController@amarnathHighlights');
-		Route::get('itinerary-and-cost','YatrasController@amarnathDetails');
-		Route::get('registration','YatrasController@Registration');
+		Route::get('/',['as' => 'amarnathyatra', 'uses' => 'YatrasController@amarnathHighlights']);
+		Route::get('highlights',['as' => 'amarnathHighlights', 'uses' => 'YatrasController@amarnathHighlights']);
+		Route::get('itinerary-and-cost',['as' => 'amarnathDetails', 'uses' => 'YatrasController@amarnathDetails']);
 	});
-	Route::get('other-yathras','YatrasController@otherYatras');
-	Route::get('yathris-speak','YatrasController@testimonials');
+	Route::get('registration',['as' => 'Registration', 'uses' => 'YatrasController@Registration']);
+	Route::get('other-yathras',['as' => 'otherYatras', 'uses' => 'YatrasController@otherYatras']);
+	Route::get('yathris-speak',['as' => 'testimonials', 'uses' => 'YatrasController@testimonials']);
 
 });
 
@@ -113,7 +111,7 @@ Route::group(['prefix' => 'spiritual-journeys'],function(){
 |	Donate
 |
 */
-Route::get('donate-support','donateController@index');
+Route::get('donate-support',['as' => 'donate', 'uses' => 'donateController@index']);
 
 /*
 |
@@ -121,8 +119,8 @@ Route::get('donate-support','donateController@index');
 |
 */
 Route::group(['prefix' => 'e-shop'],function(){
-	Route::get('/','PublicationsController@index');
-	Route::get('cart','ShoppingCart@index');
+	Route::get('/',['as' => 'eshop', 'uses' => 'PublicationsController@index']);
+	Route::get('cart',['as' => 'cart', 'uses' => 'ShoppingCart@index']);
 });
 
 /*
@@ -130,13 +128,13 @@ Route::group(['prefix' => 'e-shop'],function(){
 |	gita family
 |
 */
-Route::get('gita-family','GitaFamily@index');
+Route::get('gita-family',['as' => 'gitafamily', 'uses' => 'GitaFamily@index']);
 
 /*
 |
 |	contact us
 |
 */
-Route::get('contact-us','ContactUs@index');
+Route::get('contact-us',['as' => 'contact', 'uses' => 'ContactUs@index']);
 
 
