@@ -102,13 +102,13 @@
 						<div id="layerslider-container-fw">
 							<div id="layerslider" style="width: 100%; height: 318px; margin: 0 auto; ">
 								<div class="ls-layer" style="slidedirection: right; transition2d: 73,21,33,55,75,77,79,101,94,88,80,82,84;">
-									<img src="images/slider/banner-1.jpg" class="ls-bg" alt="Slide background">
+									<img src="{{URL::asset('images/slider/banner-1.jpg')}}" class="ls-bg" alt="Slide background">
 								</div><!-- /.ls-layer -->
 								<div class="ls-layer" style="slidedirection: bottom;  transition2d: 73,21,33,55,75,77,79,101,94,88,80,82,84;">
-									<img src="images/slider/banner-2.jpg" class="ls-bg" alt="Slide background">
+									<img src="{{URL::asset('images/slider/banner-2.jpg')}}" class="ls-bg" alt="Slide background">
 								</div><!-- /.ls-layer -->
 								<div class="ls-layer" style="slidedirection: bottom;  transition2d: 73,21,33,55,75,77,79,101,94,88,80,82,84;">
-									<img src="images/slider/banner-3.jpg" class="ls-bg" alt="Slide background">
+									<img src="{{URL::asset('images/slider/banner-3.jpg')}}" class="ls-bg" alt="Slide background">
 								</div><!-- /.ls-layer -->
 
 							</div><!-- /#layerslider -->

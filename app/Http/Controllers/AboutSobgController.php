@@ -32,7 +32,7 @@ class AboutSobgController extends Controller {
 		$this->page_data['title'] = 'Overview of Salagramam';
 		$this->page_data['description'] = '';
 		$this->page_data['sub_page_active'] = 'overview';
-		return view('home')->with($this->page_data);
+		return view('about-sobg.overview')->with($this->page_data);
 	}
 
 		/**
@@ -44,7 +44,7 @@ class AboutSobgController extends Controller {
 		$this->page_data['title'] = 'Salagramam Ashram';
 		$this->page_data['description'] = '';
 		$this->page_data['sub_page_active'] = 'salagramam';
-		return view('home')->with($this->page_data);
+		return view('about-sobg.overview')->with($this->page_data);
 	}
 
 
@@ -58,7 +58,7 @@ class AboutSobgController extends Controller {
 		$this->page_data['description'] = '';
 		$this->page_data['sub_page_active'] = 'salagramam';
 
-		return view('home')->with($this->page_data);
+		return view('about-sobg.overview')->with($this->page_data);
 	}
 
 	/**
@@ -70,7 +70,7 @@ class AboutSobgController extends Controller {
 		$this->page_data['title'] = 'Facilities for Public';
 		$this->page_data['description'] = 'salagramam';
 
-		return view('home')->with($this->page_data);
+		return view('about-sobg.overview')->with($this->page_data);
 	}
 
 	/**
@@ -80,7 +80,7 @@ class AboutSobgController extends Controller {
 	 **/
 	function centers(){
 		$this->page_data['title'] = 'Centers of School of Bhagavat Gita';
-		$this->page_data['description'] = 'centers';
+		return view('about-sobg.overview')->with($this->page_data);
 	}
 
 
@@ -91,6 +91,6 @@ class AboutSobgController extends Controller {
 	 **/
 	function hisVision(){
 		$this->page_data['title'] = 'His Vision';
-		$this->page_data['description'] = 'his-vision';
+		return view('about-sobg.overview')->with($this->page_data);
 	}
 }
