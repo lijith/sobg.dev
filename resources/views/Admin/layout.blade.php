@@ -54,7 +54,7 @@
 <!--logo start-->
 <div class="brand">
 
-    <a href="" class="logo">
+    <a href="{{ route('admin') }}" class="logo">
         <h1>Admin</h1>
     </a>    
 
@@ -93,7 +93,7 @@
         <div class="leftside-navigation">
             <ul class="sidebar-menu" id="nav-accordion">
                 <li>
-                    <a class="active" href="">
+                    <a class="active" href="{{ route('admin') }}">
                         <i class="fa fa-dashboard"></i>
                         <span>Dashboard</span>
                     </a>

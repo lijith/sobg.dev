@@ -61,7 +61,7 @@ class ProfileController extends BaseController
         // Get all available groups
         $groups = $this->groupRepository->all();
 
-        return $this->viewFinder('Sentinel::users.edit', [
+        return $this->viewFinder('Admin.users.edit', [
             'user' => $user,
             'groups' => $groups
         ]);

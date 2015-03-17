@@ -63,7 +63,7 @@ class AdministratorController extends BaseController
         // Get all available groups
         $groups = $this->groupRepository->all();
 
-        return $this->viewFinder('Sentinel::users.edit', [
+        return $this->viewFinder('admin.users.edit', [
             'user' => $user,
             'groups' => $groups
         ]);
