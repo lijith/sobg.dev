@@ -51,7 +51,7 @@ class UserController extends BaseController
         $pagedData   = array_slice($users, $currentPage * $perPage, $perPage);
         $users       = new Paginator($pagedData, $perPage, $currentPage);
 
-        return $this->viewFinder('Sentinel::users.index', ['users' => $users]);
+        return $this->viewFinder('Admin.users.all-users', ['users' => $users]);
     }
 
 
