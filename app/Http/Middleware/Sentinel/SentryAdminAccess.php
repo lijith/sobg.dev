@@ -1,4 +1,4 @@
-<?php namespace App\Http\Middleware;
+<?php namespace App\Http\Middleware\Sentinel;
 
 use Closure, Session, Sentry;
 use Illuminate\Contracts\Routing\Middleware;
