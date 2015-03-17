@@ -62,7 +62,7 @@ class UserController extends BaseController
      */
     public function create()
     {
-        return $this->viewFinder('Sentinel::users.create');
+        return $this->viewFinder('Admin.users.create');
     }
 
     /**
