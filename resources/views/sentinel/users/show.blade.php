@@ -22,7 +22,7 @@ Home
 	
   	<div class="well clearfix">
 	    <div class="col-md-8">
-		    @if ($user->first_name)
+	    @if ($user->first_name)
 		    	<p><strong>First Name:</strong> {{ $user->first_name }} </p>
 			@endif
 			@if ($user->last_name)

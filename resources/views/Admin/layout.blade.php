@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Administrator">
+    <link rel="shortcut icon" href="images/favicon.png">
+    <title> 
+        @section('title') 
+        @show 
+    </title>
+    <!--Core CSS -->
+    <link href="{{asset('packages/admin/bs3/css/bootstrap.min.css')}}" rel="stylesheet" />
+    <link href="{{asset('packages/admin/js/jquery-ui/jquery-ui-1.10.1.custom.min.css')}}" rel="stylesheet" />
+    <link href="{{asset('packages/admin/css/bootstrap-reset.css')}}" rel="stylesheet" />
+    <link href="{{asset('packages/admin/font-awesome/css/font-awesome.css')}}" rel="stylesheet" />
+    <link href="{{asset('packages/admin/js/jvector-map/jquery-jvectormap-1.2.2.css')}}" rel="stylesheet" />
+    <link href="{{asset('packages/admin/css/clndr.css')}}" rel="stylesheet" />
+
+    <!--clock css-->
+    <link href="{{asset('packages/admin/js/css3clock/css/style.css')}}" rel="stylesheet" />
+    <!--lightbox css-->
+    <link href="{{asset('packages/admin/css/ekko-lightbox.min.css')}}" rel="stylesheet" />
+    <!--Morris Chart CSS -->
+    <link href="{{asset('packages/admin/js/morris-chart/morris.css')}}" rel="stylesheet" />
+    <!--dynamic table-->
+    <link href="{{asset('packages/admin/js/advanced-datatable/css/demo_page.css')}}" rel="stylesheet" />
+    <link href="{{asset('packages/admin/js/advanced-datatable/css/demo_table.css')}}" rel="stylesheet" />
+    <link href="{{asset('packages/admin/js/data-tables/DT_bootstrap.css')}}" rel="stylesheet" />
+
+    <link href="{{asset('packages/admin/js/bootstrap-datepicker/css/datepicker.css')}}" rel="stylesheet" type="text/css" />
+       
+    <link href="{{asset('js/bootstrap-daterangepicker/daterangepicker-bs3.css')}}" rel="stylesheet" type="text/css" />
+    
+
+    <!-- Custom styles for this template -->
+    <link href="{{asset('packages/admin/css/style.css')}}" rel="stylesheet" />
+    <link href="{{asset('packages/admin/css/style-responsive.css')}}" rel="stylesheet"/>
+    <link href="{{asset('packages/admin/css/orange-theme.css')}}" rel="stylesheet"/>
+    <!-- Just for debugging purposes. Don't actually copy this line! -->
+    <!--[if lt IE 9]>
+    <script src="js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<section id="container">
+<!--header start-->
+<header class="header fixed-top clearfix">
+<!--logo start-->
+<div class="brand">
+
+    <a href="" class="logo">
+        <h1>Admin</h1>
+    </a>    
+
+    <div class="sidebar-toggle-box">
+        <div class="fa fa-bars"></div>
+    </div>
+</div>
+<!--logo end-->
+
+
+<div class="top-nav clearfix">
+    <!--search & user info start-->
+    <ul class="nav pull-right top-menu">
+        
+        <!-- user login dropdown start-->
+        <li class="dropdown">
+            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                <img alt="" src="images/avatar1_small.jpg">
+                <span class="username">Administrator</span>
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu extended logout">
+                <li><a href=""><i class="fa fa-key"></i> Log Out</a></li>
+            </ul>
+        </li>
+        
+    </ul>
+    <!--search & user info end-->
+</div>
+</header>
+<!--header end-->
+<!--sidebar start-->
+<aside>
+    <div id="sidebar" class="nav-collapse">
+        <!-- sidebar menu start-->
+        <div class="leftside-navigation">
+            <ul class="sidebar-menu" id="nav-accordion">
+                <li>
+                    <a class="active" href="">
+                        <i class="fa fa-dashboard"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li class="sub-menu">
+                    <a href="#">
+                        <i class="fa fa-laptop"></i>
+                        <span>Account</span>
+                    </a>
+                    <ul class="sub">
+                        <li><a href="{{ route('sentinel.profile.show') }}">Admin Profile</a></li>
+                        <li><a href="{{ action('\App\Http\Controllers\Admin\UserController@index') }}">All Users</a></li>
+                        <li><a href="{{ route('sentinel.register.form') }}">Register User</a></li>
+                        <li><a href="{{ action('\App\Http\Controllers\Admin\GroupController@index') }}">User Groups</a></li>
+                    </ul>
+                </li>
+                <li class="sub-menu">
+                    <a href="{{ route('sentinel.logout') }}">
+                        <i class="fa fa-laptop"></i>
+                        <span>Logout</span>
+                    </a>
+                </li>
+            </ul> 
+       </div>
+        <!-- sidebar menu end-->
+    </div>
+</aside>
+<!--sidebar end-->
+<!--main content start-->
+<section id="main-content">
+    <section class="wrapper">
+
+    <!-- Notifications -->
+    @include('Sentinel::layouts/notifications')
+    <!-- ./ notifications -->
+
+
+    <!-- Notifications -->
+    @yield('content')
+    <!-- Notifications -->
+    
+
+
+    </section>
+</section>
+<!--main content end-->
+<!--right sidebar start-->
+
+<!--right sidebar end-->
+</section>
+<!-- Placed js at the end of the document so the pages load faster -->
+<!--Core js-->
+<script src="{{asset('packages/admin/js/jquery.js')}}"></script>
+<script src="{{asset('packages/admin/js/jquery-ui/jquery-ui-1.10.1.custom.min.js')}}"></script>
+<script src="{{asset('packages/admin/bs3/js/bootstrap.min.js')}}"></script>
+<script src="{{asset('packages/admin/js/jquery.dcjqaccordion.2.7.js')}}"></script>
+<script src="{{asset('packages/admin/js/jquery.scrollTo.min.js')}}"></script>
+<script src="{{asset('packages/admin/js/jQuery-slimScroll-1.3.0/jquery.slimscroll.js')}}"></script>
+<script src="{{asset('packages/admin/js/jquery.nicescroll.js')}}"></script>
+<!--[if lte IE 8]><script language="javascript" type="text/javascript" src="js/flot-chart/excanvas.min.js"></script><![endif]-->
+<script src="{{asset('packages/admin/js/skycons/skycons.js')}}"></script>
+<script src="{{asset('packages/admin/js/jquery.scrollTo/jquery.scrollTo.js')}}"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js')}}"></script>
+<script src="{{asset('packages/admin/js/calendar/clndr.js')}}"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.2/underscore-min.js')}}"></script>
+<script src="{{asset('packages/admin/js/calendar/moment-2.2.1.js')}}"></script>
+<script src="{{asset('packages/admin/js/evnt.calendar.init.js')}}"></script>
+<script src="{{asset('packages/admin/js/jvector-map/jquery-jvectormap-1.2.2.min.js')}}"></script>
+<script src="{{asset('packages/admin/js/jvector-map/jquery-jvectormap-us-lcc-en.js')}}"></script>
+{{-- <script src="js/gauge/gauge.js"></script> --}}
+<!--clock init-->
+<script src="{{asset('packages/admin/js/css3clock/js/css3clock.js')}}"></script>
+<!--Easy Pie Chart-->
+<script src="{{asset('packages/admin/js/easypiechart/jquery.easypiechart.js')}}"></script>
+<!--Sparkline Chart-->
+<script src="{{asset('packages/admin/js/sparkline/jquery.sparkline.js')}}"></script>
+<!--Morris Chart-->
+<script src="{{asset('packages/admin/js/morris-chart/morris.js')}}"></script>
+<script src="{{asset('packages/admin/js/morris-chart/raphael-min.js')}}"></script>
+<!--jQuery Flot Chart-->
+<script src="{{asset('packages/admin/js/flot-chart/jquery.flot.js')}}"></script>
+<script src="{{asset('packages/admin/js/flot-chart/jquery.flot.tooltip.min.js')}}"></script>
+<script src="{{asset('packages/admin/js/flot-chart/jquery.flot.resize.js')}}"></script>
+<script src="{{asset('packages/admin/js/flot-chart/jquery.flot.pie.resize.js')}}"></script>
+<script src="{{asset('packages/admin/js/flot-chart/jquery.flot.animator.min.js')}}"></script>
+<script src="{{asset('packages/admin/js/flot-chart/jquery.flot.growraf.js')}}"></script>
+<script src="{{asset('packages/admin/js/dashboard.js')}}"></script>
+<script src="{{asset('packages/admin/js/ekko-lightbox.min.js')}}"></script>
+<script src="{{asset('packages/admin/js/jQuery.print.js')}}"></script>
+<script src="{{asset('packages/admin/js/jquery.customSelect.min.js')}}" ></script>
+
+<!--script for this page-->
+<!--dynamic table-->
+<script src="{{asset('packages/admin/js/advanced-datatable/js/jquery.dataTables.js')}}" type="text/javascript" language="javascript"></script>
+
+<script src="{{asset('packages/admin/js/data-tables/DT_bootstrap.js')}}" type="text/javascript"></script>
+
+<script src="{{asset('packages/admin/js/bootstrap-datepicker/js/bootstrap-datepicker.js')}}" type="text/javascript"></script>
+
+<!--common script init for all pages-->
+<script src="{{asset('packages/admin/js/scripts.js')}}"></script>
+
+<!--dynamic table initialization -->
+<script src="{{asset('packages/admin/js/dynamic_table_init.js')}}"></script>
+</body>
+</html>

@@ -44,7 +44,9 @@ class AdministratorController extends BaseController
         // Get the user
         $user = $this->userRepository->retrieveById(Session::get('userId'));
 
-        return $this->viewFinder('Sentinel::users.show', ['user' => $user]);
+        // return $this->viewFinder('Sentinel::users.show', ['user' => $user]);
+        return $this->viewFinder('admin.users.show', ['user' => $user]);
+        
     }
 
 

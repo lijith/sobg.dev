@@ -1,0 +1,37 @@
+/*print styles*/
+@page {
+	size: A5;
+	margin: 5%;
+}
+@media print{
+	.print-coupon{
+		overflow: hidden;
+		background: #FFF;
+		padding: 3%;
+		border: 1px solid #000;
+		border-radius: 8px;
+	}
+	.print-coupon h1{
+		font-size: 20px
+	}
+
+	.invoice-header {
+	    border: 1px solid #ddd;
+	    display: inline-block;
+	    margin-bottom: 10px;
+	    width: 100%;
+	}
+	.table-invoice{
+		margin-top: 10px;
+	}
+	.table-invoice td{
+		font-size: 16px
+	}
+	.table-invoice td.text-right{
+		text-align: right;
+	}
+	.table-invoice td.text-left{
+		text-align: left;
+	}
+
+}
