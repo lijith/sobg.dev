@@ -146,6 +146,7 @@ return [
 		'App\Providers\EventServiceProvider',
 		'App\Providers\RouteServiceProvider',
 		'Sentinel\SentinelServiceProvider',
+		'Cviebrock\EloquentSluggable\SluggableServiceProvider'
 
 	],
 
