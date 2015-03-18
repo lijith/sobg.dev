@@ -153,7 +153,7 @@ Route::get('bhavishya',['as' => 'bhavishya', 'uses' => 'Bhavishya@index']);
 |	Administrator Routes
 | ----------------------
 */
-Route::get('administrator',['middleware' => 'sentry.admin','as' => 'admin', 'uses' => 'Admin\AdministratorController@show']);
+Route::get('administrator',['middleware' => 'sentry.admin','as' => 'admin.dash', 'uses' => 'Admin\AdministratorController@show']);
 
 Route::group(['prefix'=>'administrator', 'namespace' => 'Admin'], function(){
 	Route::get('login', ['as' => 'sentinel.login', 'uses' => 'SessionController@create']);

@@ -119,7 +119,7 @@ return [
     */
 
     'routing' => [
-        'session_store'                => ['route' => 'home'],
+        'session_store'                => ['route' => 'admin.dash'],
         'session_destroy'              => ['route' => 'sentinel.login'],
         'registration_complete'        => ['route' => 'home'],
         'registration_activated'       => ['route' => 'home'],

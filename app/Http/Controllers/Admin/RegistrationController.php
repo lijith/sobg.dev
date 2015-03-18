@@ -55,7 +55,7 @@ class RegistrationController extends BaseController
         }
 
         // All clear - show the registration form.
-        return $this->viewFinder('Sentinel::users.register');
+        return $this->viewFinder('Admin.users.register');
     }
 
     /**
@@ -102,7 +102,7 @@ class RegistrationController extends BaseController
      */
     function resendActivationForm()
     {
-        return $this->viewFinder('Sentinel::users.resend');
+        return $this->viewFinder('Admin.resend');
     }
 
     /**
@@ -125,7 +125,7 @@ class RegistrationController extends BaseController
      */
     public function forgotPasswordForm()
     {
-        return $this->viewFinder('Sentinel::users.forgot');
+        return $this->viewFinder('Admin.forgot');
     }
 
 
@@ -164,7 +164,7 @@ class RegistrationController extends BaseController
             return $this->redirectViaResponse('registration_reset_invalid', $result);
         }
 
-        return $this->viewFinder('Sentinel::users.reset', [
+        return $this->viewFinder('Admin.users.reset', [
             'hash' => $hash,
             'code' => $code
         ]);

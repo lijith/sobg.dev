@@ -8,7 +8,7 @@
     <meta name="author" content="ThemeBucket">
     <link rel="shortcut icon" href="images/favicon.png">
 
-    <title>Login</title>
+    <title>Forgot Password</title>
 
     <!--Core CSS -->
     <link href="{{asset('packages/admin/bs3/css/bootstrap.min.css')}}" rel="stylesheet">
@@ -34,25 +34,18 @@
 
     <div class="container">
 
-      <form class="form-signin" method="POST" action="{{ route('sentinel.session.store') }}" accept-charset="UTF-8">
-        <h2 class="form-signin-heading">sign in now</h2>
+      <form class="form-signin" method="POST" action="{{ route('sentinel.reset.request') }}" accept-charset="UTF-8">
+        <h2 class="form-signin-heading">Submit your email address </h2>
         <div class="login-wrap">
             <div class="user-login-info">
                 <div class="form-group {{ ($errors->has('email')) ? 'has-error' : '' }}">
-                    <input class="form-control" placeholder="Email" autofocus="autofocus" name="email" type="text" value="{{ Input::old('email') }}">
+                    <input class="form-control" placeholder="E-mail" autofocus="autofocus" name="email" type="text" value="{{ Input::old('name') }}">
                     {{ ($errors->has('email') ? $errors->first('email') : '') }}
                 </div>
-                <div class="form-group {{ ($errors->has('password')) ? 'has-error' : '' }}">
-                <input class="form-control" placeholder="Password" name="password" value="" type="password">
-                {{ ($errors->has('password') ?  $errors->first('password') : '') }}
             </div>
-            </div>
-            <label class="checkbox">
-                <input name="rememberMe" value="rememberMe" type="checkbox"> Remember Me
-            </label>
+            
             <input name="_token" value="{{ csrf_token() }}" type="hidden">
-            <button class="btn btn-lg btn-login btn-block" type="submit" value="Sign In">Sign in</button>
-            <a class="btn btn-link" href="{{ route('sentinel.forgot.form') }}">Forgot Password</a>
+            <input class="btn btn-primary" value="Send Instructions" type="submit">
 
         </div>
 
@@ -71,3 +64,4 @@
 
   </body>
 </html>
+

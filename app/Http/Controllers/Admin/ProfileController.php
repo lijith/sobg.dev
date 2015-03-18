@@ -44,7 +44,7 @@ class ProfileController extends BaseController
         // Get the user
         $user = $this->userRepository->retrieveById(Session::get('userId'));
 
-        return $this->viewFinder('Sentinel::users.show', ['user' => $user]);
+        return $this->viewFinder('Admin.users.show', ['user' => $user]);
     }
 
 

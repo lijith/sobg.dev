@@ -98,7 +98,7 @@ class UserController extends BaseController
         // Get the user
         $user = $this->userRepository->retrieveById($id);
 
-        return $this->viewFinder('Sentinel::users.show', ['user' => $user]);
+        return $this->viewFinder('Admin.users.show', ['user' => $user]);
     }
 
     /**
@@ -119,7 +119,7 @@ class UserController extends BaseController
         // Get all available groups
         $groups = $this->groupRepository->all();
 
-        return $this->viewFinder('Sentinel::users.edit', [
+        return $this->viewFinder('Admin.users.edit', [
             'user' => $user,
             'groups' => $groups
         ]);

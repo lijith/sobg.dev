@@ -54,7 +54,7 @@
 <!--logo start-->
 <div class="brand">
 
-    <a href="{{ route('admin') }}" class="logo">
+    <a href="{{ route('admin.dash') }}" class="logo">
         <h1>Admin</h1>
     </a>    
 
@@ -93,7 +93,7 @@
         <div class="leftside-navigation">
             <ul class="sidebar-menu" id="nav-accordion">
                 <li>
-                    <a class="active" href="{{ route('admin') }}">
+                    <a class="active" href="{{ route('admin.dash') }}">
                         <i class="fa fa-dashboard"></i>
                         <span>Dashboard</span>
                     </a>
@@ -106,7 +106,7 @@
                     <ul class="sub">
                         <li><a href="{{ route('sentinel.profile.show') }}">Admin Profile</a></li>
                         <li><a href="{{ action('\App\Http\Controllers\Admin\UserController@index') }}">All Users</a></li>
-                        <li><a href="{{ route('sentinel.register.form') }}">Register User</a></li>
+                        {{-- <li><a href="{{ route('sentinel.register.form') }}">Register User</a></li> --}}
                         <li><a href="{{ action('\App\Http\Controllers\Admin\GroupController@index') }}">User Groups</a></li>
                     </ul>
                 </li>

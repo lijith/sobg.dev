@@ -46,7 +46,7 @@ class GroupController extends BaseController
         $pagedData   = array_slice($groups, $currentPage * $perPage, $perPage);
         $groups      = new Paginator($pagedData, $perPage, $currentPage);
 
-        return $this->viewFinder('Sentinel::groups.index', ['groups' => $groups]);
+        return $this->viewFinder('Admin.groups.index', ['groups' => $groups]);
     }
 
     /**
@@ -56,7 +56,7 @@ class GroupController extends BaseController
      */
     public function create()
     {
-        return $this->viewFinder('Sentinel::groups.create');
+        return $this->viewFinder('Admin.groups.create');
     }
 
     /**
@@ -88,7 +88,7 @@ class GroupController extends BaseController
         // Pull the group from storage
         $group = $this->groupRepository->retrieveById($id);
 
-        return $this->viewFinder('Sentinel::groups.show', ['group' => $group]);
+        return $this->viewFinder('Admin.groups.show', ['group' => $group]);
     }
 
     /**
@@ -104,7 +104,7 @@ class GroupController extends BaseController
         // Pull the group from storage
         $group = $this->groupRepository->retrieveById($id);
 
-        return $this->viewFinder('Sentinel::groups.edit', [
+        return $this->viewFinder('Admin.groups.edit', [
             'group' => $group,
             'permissions' => $group->getPermissions()
         ]);
