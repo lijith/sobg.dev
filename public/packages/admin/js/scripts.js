@@ -169,22 +169,22 @@
 
     });
 
-    $(document).delegate('*[data-toggle="lightbox"]', 'click', function(event) {
-        event.preventDefault();
-        $(this).ekkoLightbox();
-    });
+    // $(document).delegate('*[data-toggle="lightbox"]', 'click', function(event) {
+    //     event.preventDefault();
+    //     $(this).ekkoLightbox();
+    // });
 
-    if ($('.print-coupon').length > 0) {
-        $('button.print').on('click', function() {
-            $(".print-coupon").print();
-        })
-    }
+    // if ($('.print-coupon').length > 0) {
+    //     $('button.print').on('click', function() {
+    //         $(".print-coupon").print();
+    //     })
+    // }
 
     // disabling dates
     var nowTemp = new Date();
     var now = new Date(nowTemp.getFullYear(), nowTemp.getMonth(), nowTemp.getDate(), 0, 0, 0, 0);
 
-    var checkin = $('.dpd1').datepicker({
+    var checkin = $('#event-start-date').datepicker({
         onRender: function(date) {
             return date.valueOf() < now.valueOf() ? 'disabled' : '';
         }
@@ -195,9 +195,9 @@
             checkout.setValue(newDate);
         }
         checkin.hide();
-        $('.dpd2')[0].focus();
+        $('#event-end-date')[0].focus();
     }).data('datepicker');
-    var checkout = $('.dpd2').datepicker({
+    var checkout = $('#event-end-date').datepicker({
         onRender: function(date) {
             return date.valueOf() <= checkin.date.valueOf() ? 'disabled' : '';
         }
