@@ -111,6 +111,17 @@
                     </ul>
                 </li>
                 <li class="sub-menu">
+                    <a href="#">
+                        <i class="fa fa-laptop"></i>
+                        <span>Events</span>
+                    </a>
+                    <ul class="sub">
+                        <li><a href="{{ route('events.list') }}">All Events</a></li>
+                        <li><a href="{{ action('\App\Http\Controllers\Admin\EventController@create') }}">Create Event</a></li>
+                        
+                    </ul>
+                </li>
+                <li class="sub-menu">
                     <a href="{{ route('sentinel.logout') }}">
                         <i class="fa fa-laptop"></i>
                         <span>Logout</span>
@@ -184,6 +195,8 @@
 <script src="{{asset('packages/admin/js/ekko-lightbox.min.js')}}"></script>
 <script src="{{asset('packages/admin/js/jQuery.print.js')}}"></script>
 <script src="{{asset('packages/admin/js/jquery.customSelect.min.js')}}" ></script>
+<script src="{{asset('packages/admin/js/ckeditor/ckeditor.js')}}" type="text/javascript"></script>
+<script src="{{asset('packages/admin/js/bootbox.min.js')}}" type="text/javascript"></script>
 
 <!--script for this page-->
 <!--dynamic table-->

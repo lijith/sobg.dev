@@ -5712,7 +5712,9 @@ right: -1px;
 }
 
 /*additional styles */
-.add-patient-wrap{
-    border-left: 1px solid #ddd;
-    padding-left: 10px;
+.panel .in-panel{
+    border : 1px solid #eff2f7;
+    border-radius: 3px;
+    margin-bottom: 15px;
+    padding: 10px;
 }

@@ -4,6 +4,18 @@
 		"selected_items":
 		[
 			[
+				"atta",
+				"$attachment_name〔variable〕"
+			],
+			[
+				"re",
+				"ret	return"
+			],
+			[
+				"Pa",
+				"Password"
+			],
+			[
 				"section",
 				"section"
 			],
@@ -62,10 +74,6 @@
 			[
 				"bor",
 				"border-radius"
-			],
-			[
-				"re",
-				"red"
 			],
 			[
 				"spli",
@@ -203,23 +211,71 @@
 			"file": "app/Http/routes.php",
 			"settings":
 			{
-				"buffer_size": 10355,
+				"buffer_size": 10562,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "app/Http/Controllers/Admin/ProfileController.php",
+			"file": "/I/websites/siteideal/app/controllers/ProjectimagesController.php",
 			"settings":
 			{
-				"buffer_size": 3094,
+				"buffer_size": 3370,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/Http/Controllers/Admin/EventsController.php",
+			"settings":
+			{
+				"buffer_size": 2398,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "database/migrations/2015_03_19_140938_sobg_events.php",
+			"settings":
+			{
+				"buffer_size": 829,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/SobgEvent.php",
+			"settings":
+			{
+				"buffer_size": 692,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "resources/views/Admin/events/create.blade.php",
+			"settings":
+			{
+				"buffer_size": 4689,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "app/Http/Controllers/Admin/AdministratorController.php",
+			"file": "app/Http/Requests/Admin/EventsFromRequest.php",
 			"settings":
 			{
-				"buffer_size": 3185,
+				"buffer_size": 802,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "config/app.php",
+			"settings":
+			{
+				"buffer_size": 7304,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "public/packages/admin/js/scripts.js",
+			"settings":
+			{
+				"buffer_size": 6605,
 				"line_ending": "Windows"
 			}
 		},
@@ -227,47 +283,7 @@
 			"file": "app/Http/Controllers/Admin/UserController.php",
 			"settings":
 			{
-				"buffer_size": 7371,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "resources/views/Admin/users/show.blade.php",
-			"settings":
-			{
-				"buffer_size": 2016,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "vendor/rydurham/sentinel/src/Sentinel/Repositories/User/SentryUserRepository.php",
-			"settings":
-			{
-				"buffer_size": 21284,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "vendor/rydurham/sentinel/src/Sentinel/Repositories/User/SentinelUserRepositoryInterface.php",
-			"settings":
-			{
-				"buffer_size": 3429,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "resources/views/Admin/users/all-users.blade.php",
-			"settings":
-			{
-				"buffer_size": 2531,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "resources/views/sentinel/users/index.blade.php",
-			"settings":
-			{
-				"buffer_size": 2617,
+				"buffer_size": 7363,
 				"line_ending": "Windows"
 			}
 		}
@@ -315,66 +331,116 @@
 	[
 		"/I/websites/sitesobg.dev",
 		"/I/websites/sitesobg.dev/app",
-		"/I/websites/sitesobg.dev/app/Http",
-		"/I/websites/sitesobg.dev/app/Http/Controllers",
-		"/I/websites/sitesobg.dev/app/Http/Controllers/Admin",
-		"/I/websites/sitesobg.dev/app/Http/Middleware",
-		"/I/websites/sitesobg.dev/app/Http/Middleware/Sentinel",
 		"/I/websites/sitesobg.dev/config",
+		"/I/websites/sitesobg.dev/database",
+		"/I/websites/sitesobg.dev/database/migrations",
+		"/I/websites/sitesobg.dev/public",
+		"/I/websites/sitesobg.dev/public/packages",
+		"/I/websites/sitesobg.dev/public/packages/admin",
 		"/I/websites/sitesobg.dev/resources",
 		"/I/websites/sitesobg.dev/resources/assets",
 		"/I/websites/sitesobg.dev/resources/views",
 		"/I/websites/sitesobg.dev/resources/views/Admin",
+		"/I/websites/sitesobg.dev/resources/views/Admin/events",
+		"/I/websites/sitesobg.dev/resources/views/Admin/groups",
 		"/I/websites/sitesobg.dev/resources/views/Admin/users",
 		"/I/websites/sitesobg.dev/resources/views/sentinel",
+		"/I/websites/sitesobg.dev/resources/views/sentinel/emails",
+		"/I/websites/sitesobg.dev/resources/views/sentinel/groups",
 		"/I/websites/sitesobg.dev/resources/views/sentinel/layouts",
+		"/I/websites/sitesobg.dev/resources/views/sentinel/sessions",
 		"/I/websites/sitesobg.dev/resources/views/sentinel/users",
-		"/I/websites/sitesobg.dev/vendor",
-		"/I/websites/sitesobg.dev/vendor/cartalyst",
-		"/I/websites/sitesobg.dev/vendor/cartalyst/sentry",
-		"/I/websites/sitesobg.dev/vendor/cartalyst/sentry/src",
-		"/I/websites/sitesobg.dev/vendor/cartalyst/sentry/src/Cartalyst"
+		"/I/websites/sitesobg.dev/vendor"
 	],
 	"file_history":
 	[
-		"/I/websites/sitesobg.dev/vendor/laravel/framework/src/Illuminate/Contracts/Auth/UserProvider.php",
+		"/I/websites/siteideal/app/controllers/ProjectsController.php",
+		"/I/websites/sitesobg.dev/database/migrations/2015_03_18_151050_create_events_table.php",
+		"/I/websites/sitesobg.dev/vendor/rydurham/sentinel/src/Sentinel/Repositories/User/SentryUserRepository.php",
+		"/I/websites/sitesobg.dev/resources/views/Admin/events/create.blade.php",
+		"/I/websites/sitesobg.dev/app/Http/Requests/Admin/EventsFromRequest.php",
+		"/I/websites/sitesobg.dev/vendor/symfony/http-foundation/Symfony/Component/HttpFoundation/File/UploadedFile.php",
+		"/I/websites/sitesobg.dev/vendor/symfony/http-foundation/Symfony/Component/HttpFoundation/File/Exception/UploadException.php",
+		"/I/websites/sitesobg.dev/public/packages/admin/js/mini-upload-form/upload.php",
+		"/I/websites/sitesobg.dev/vendor/monolog/monolog/src/Monolog/Processor/UidProcessor.php",
 		"/I/websites/sitesobg.dev/app/User.php",
+		"/I/websites/sitesobg.dev/vendor/phpunit/phpunit/tests/_files/configuration.xml",
+		"/I/websites/sitesobg.dev/vendor/phpunit/phpunit/src/Util/Configuration.php",
+		"/I/websites/sitesobg.dev/vendor/psy/psysh/test/fixtures/config.php",
+		"/I/websites/sitesobg.dev/vendor/intervention/image/src/config/config.php",
+		"/I/websites/sitesobg.dev/vendor/cartalyst/sentry/src/config/config.php",
+		"/I/websites/sitesobg.dev/public/packages/admin/js/ckeditor/config.js",
+		"/I/websites/sitesobg.dev/vendor/league/flysystem/src/Config.php",
+		"/I/websites/sitesobg.dev/vendor/classpreloader/classpreloader/src/Config.php",
+		"/I/websites/sitesobg.dev/app/Providers/ConfigServiceProvider.php",
+		"/I/websites/sitesobg.dev/app/Http/Controllers/Controller.php",
+		"/I/websites/sitesobg.dev/composer.json",
+		"/I/websites/sitesobg.dev/vendor/laravel/framework/src/Illuminate/Contracts/Auth/UserProvider.php",
 		"/I/websites/sitesobg.dev/vendor/symfony/http-kernel/Symfony/Component/HttpKernel/UriSigner.php",
+		"/I/websites/sitesobg.dev/resources/views/sentinel/users/forgot.blade.php",
+		"/I/websites/sitesobg.dev/resources/views/Admin/login.blade.php",
+		"/I/websites/sitesobg.dev/app/Http/Controllers/Admin/SessionController.php",
+		"/I/websites/sitesobg.dev/resources/views/Admin/layout.blade.php",
+		"/I/websites/sitesobg.dev/resources/views/Admin/users/reset.blade.php",
+		"/I/websites/sitesobg.dev/resources/views/Admin/users/forgot.blade.php",
+		"/I/websites/sitesobg.dev/app/Http/Controllers/Admin/RegistrationController.php",
+		"/I/websites/sitesobg.dev/resources/views/sentinel/users/resend.blade.php",
+		"/I/websites/sitesobg.dev/resources/views/Admin/resend.blade.php",
+		"/I/websites/sitesobg.dev/resources/views/Admin/users/resend.blade.php",
+		"/I/websites/sitesobg.dev/app/Event.php",
+		"/I/websites/sitesobg.dev/app/Providers/AppServiceProvider.php",
+		"/I/websites/sitesobg.dev/config/app.php",
+		"/I/websites/sitesobg.dev/composer.lock",
 		"/I/websites/sitesobg.dev/vendor/rydurham/sentinel/tests/unit/SentryUserRepositoryTest.php",
-		"/I/websites/sitesobg.dev/database/migrations/2015_01_14_053439_migration_sentinel_add_username.php",
-		"/I/websites/sitesobg.dev/vendor/rydurham/sentinel/src/Sentinel/Repositories/User/SentinelUserRepositoryInterface.php",
+		"/I/websites/sitesobg.dev/vendor/cartalyst/sentry/tests/EloquentGroupTest.php",
+		"/I/websites/sitesobg.dev/public/packages/admin/css/ekko-lightbox.min.css",
+		"/I/websites/sitesobg.dev/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php",
+		"/I/websites/sitesobg.dev/public/packages/admin/js/jquery-steps/src/model.js",
+		"/I/websites/sitesobg.dev/resources/assets/less/bootstrap/modals.less",
+		"/I/websites/sitesobg.dev/vendor/phpunit/phpunit-mock-objects/tests/MockObjectTest.php",
+		"/I/websites/sitesobg.dev/config/mail.php",
+		"/I/websites/sitesobg.dev/vendor/predis/predis/src/Configuration/ClusterOption.php",
+		"/I/websites/sitesobg.dev/bootstrap/app.php",
+		"/I/websites/sitesobg.dev/vendor/composer/autoload_psr4.php",
+		"/I/websites/sitesobg.dev/artisan",
+		"/I/websites/sitesobg.dev/app/Http/Controllers/Admin/GroupController.php",
+		"/I/websites/sitesobg.dev/resources/views/Admin/groups/show.blade.php",
+		"/I/websites/sitesobg.dev/resources/views/sentinel/sessions/login.blade.php",
+		"/I/websites/sitesobg.dev/resources/views/sentinel/groups/show.blade.php",
+		"/I/websites/sitesobg.dev/resources/views/sentinel/groups/create.blade.php",
+		"/I/websites/sitesobg.dev/resources/views/sentinel/groups/edit.blade.php",
+		"/I/websites/sitesobg.dev/app/Http/Controllers/Admin/UserController.php",
 		"/I/websites/sitesobg.dev/config/sentinel.php",
+		"/I/websites/sitesobg.dev/resources/views/sentinel/groups/index.blade.php",
+		"/I/websites/sitesobg.dev/resources/views/Admin/users/all-users.blade.php",
+		"/I/websites/sitesobg.dev/resources/views/sentinel/users/index.blade.php",
+		"/I/websites/sitesobg.dev/app/Http/Controllers/Admin/ProfileController.php",
+		"/I/websites/sitesobg.dev/resources/views/Admin/users/show.blade.php",
+		"/I/websites/sitesobg.dev/resources/views/sentinel/users/register.blade.php",
+		"/I/websites/sitesobg.dev/resources/views/sentinel/users/reset.blade.php",
+		"/I/websites/sitesobg.dev/resources/views/Admin/users/edit.blade.php",
+		"/I/websites/sitesobg.dev/app/Http/Controllers/Admin/AdministratorController.php",
+		"/I/websites/sitesobg.dev/vendor/rydurham/sentinel/src/Sentinel/Repositories/User/SentinelUserRepositoryInterface.php",
+		"/I/websites/sitesobg.dev/database/migrations/2015_01_14_053439_migration_sentinel_add_username.php",
 		"/I/websites/sitesobg.dev/vendor/rydurham/sentinel/src/Sentinel/Middleware/SentryAdminAccess.php",
 		"/I/websites/sitesobg.dev/vendor/nesbot/carbon/tests/StartEndOfTest.php",
 		"/I/websites/sitesobg.dev/server.php",
 		"/I/websites/sitesobg.dev/resources/views/sentinel/users/edit.blade.php",
-		"/I/websites/sitesobg.dev/resources/views/Admin/layout.blade.php",
 		"/I/websites/sitesobg.dev/resources/views/layout.blade.php",
 		"/I/websites/sitesobg.dev/public/views/layout.blade.php",
 		"/I/websites/sitesobg.dev/public/styles/layerslider.css",
 		"/I/websites/sitesobg.dev/vendor/psr/log/Psr/Log/LoggerAwareInterface.php",
-		"/I/websites/sitesobg.dev/resources/views/Admin/users/edit.blade.php",
 		"/I/websites/sitesobg.dev/resources/views/sentinel/layouts/default.blade.php",
 		"/I/websites/sitesobg.dev/resources/views/sentinel/users/show.blade.php",
 		"/I/websites/sitesobg.dev/app/Http/routes.php",
-		"/I/websites/sitesobg.dev/resources/views/sentinel/users/index.blade.php",
 		"/I/websites/sitesobg.dev/resources/views/sentinel/layouts/notifications.blade.php",
-		"/I/websites/sitesobg.dev/config/app.php",
 		"/I/websites/sitesobg.dev/vendor/rydurham/sentinel/src/routes.php",
-		"/I/websites/sitesobg.dev/composer.json",
-		"/I/websites/sitesobg.dev/app/Http/Controllers/Admin/ProfileController.php",
 		"/I/websites/sitesobg.dev/app/Http/Middleware/Sentinel/SentryAdminAccess.php",
-		"/I/websites/sitesobg.dev/app/Http/Controllers/Admin/UserController.php",
-		"/I/websites/sitesobg.dev/app/Http/Controllers/Admin/AdministratorController.php",
 		"/I/websites/sitesobg.dev/app/Http/Kernel.php",
 		"/I/websites/sitesobg.dev/app/Http/Middleware/Sentinel/SentryAuth.php",
-		"/I/websites/sitesobg.dev/app/Http/Controllers/Admin/SessionController.php",
-		"/I/websites/sitesobg.dev/app/Http/Controllers/Admin/RegistrationController.php",
-		"/I/websites/sitesobg.dev/app/Http/Controllers/Admin/GroupController.php",
 		"/I/websites/sitesobg.dev/vendor/laravel/framework/src/Illuminate/Contracts/Routing/Middleware.php",
 		"/I/websites/sitesobg.dev/vendor/swiftmailer/swiftmailer/lib/dependency_maps/mime_deps.php",
 		"/I/websites/sitesobg.dev/vendor/graham-campbell/manager/src/ManagerInterface.php",
-		"/I/websites/sitesobg.dev/config/mail.php",
 		"/I/websites/sitesobg.dev/app/Http/Controllers/Admin/Administrator.php",
 		"/I/websites/sitesobg.dev/app/Providers/RouteServiceProvider.php",
 		"/I/websites/sitesobg.dev/app/Http/Middleware/AuthenticateAdmin.php",
@@ -384,7 +450,6 @@
 		"/I/websites/sitesobg.dev/config/auth.php",
 		"/I/websites/sitesobg.dev/bootstrap/autoload.php",
 		"/I/websites/sitesobg.dev/vendor/symfony/routing/Symfony/Component/Routing/Matcher/ApacheUrlMatcher.php",
-		"/I/websites/sitesobg.dev/artisan",
 		"/I/websites/sitesobg.dev/public/robots.txt",
 		"/I/websites/sitesobg.dev/readme.md",
 		"/I/websites/sitesobg.dev/resources/views/home.blade.php",
@@ -416,55 +481,7 @@
 		"/I/websites/sitesobg.dev/package.json",
 		"/I/websites/sitedesian/app/routes.php",
 		"/D/Sandeep/fr2-mysql-daloradius-and-freeradius.sql",
-		"/I/websites/sitesobg.dev/vendor/laravel/framework/src/Illuminate/Session/ExistenceAwareInterface.php",
-		"/I/websites/sitesobg.dev/vendor/phpunit/phpunit/tests/TextUI/dataprovider-log-xml-isolation.phpt",
-		"/I/websites/sitesobg.dev/vendor/nikic/php-parser/lib/PhpParser/Node/Expr/BinaryOp/LogicalXor.php",
-		"/I/websites/sitesobg.dev/vendor/symfony/http-kernel/Symfony/Component/HttpKernel/EventListener/EsiListener.php",
-		"/I/websites/sitesobg.dev/app/Events/Event.php",
-		"/I/websites/sitesobg.dev/vendor/classpreloader/classpreloader/LICENSE",
-		"/I/websites/sitesobg.dev/vendor/nikic/php-parser/lib/PhpParser/Node/Expr/AssignRef.php",
-		"/I/websites/sitesobg.dev/vendor/nikic/php-parser/lib/PhpParser/Builder/Declaration.php",
-		"/I/websites/sitesobg.dev/vendor/laravel/framework/composer.json",
-		"/I/websites/sitesobg.dev/vendor/laravel/framework/src/Illuminate/Support/ViewErrorBag.php",
-		"/I/websites/sitesobg.dev/vendor/laravel/framework/LICENSE.txt",
-		"/I/websites/sitesobg.dev/vendor/laravel/framework/src/Illuminate/Foundation/Console/stubs/event-handler.stub",
-		"/I/websites/sitesobg.dev/vendor/laravel/framework/src/Illuminate/Foundation/Console/stubs/command-queued-with-handler.stub",
-		"/I/websites/sitesobg.dev/app/Providers/AppServiceProvider.php",
-		"/I/websites/sitesobg.dev/vendor/composer/autoload_real.php",
-		"/I/websites/sitesobg.dev/vendor/composer/autoload_files.php",
-		"/I/websites/sitesobg.dev/vendor/composer/autoload_psr4.php",
-		"/I/websites/sitesobg.dev/vendor/autoload.php",
-		"/C/Users/creatix/AppData/Local/Temp/fz3temp-1/routes.php",
-		"/I/websites/sitesobg.dev/vendor/laravel/framework/src/Illuminate/Support/ServiceProvider.php",
-		"/I/websites/sitesobg.dev/vendor/laravel/framework/src/Illuminate/Support/ClassLoader.php",
-		"/I/websites/sitesobg.dev/vendor/composer/autoload_classmap.php",
-		"/I/websites/sitesobg.dev/app/Http/Requests/Request.php",
-		"/I/websites/sitesobg.dev/app/Http/Controllers/Controller.php",
-		"/I/websites/sitesobg.dev/vendor/laravel/framework/src/Illuminate/Routing/Controller.php",
-		"/I/websites/sitesobg.dev/bootstrap/app.php",
-		"/I/websites/sitesobg.dev/resources/views/auth/login.blade.php",
-		"/I/websites/sitesobg.dev/public/index.php",
-		"/C/Users/creatix/Downloads/AntiTwin.csv",
-		"/C/Users/creatix/AppData/Local/Temp/fz3temp-2/side-nav-guru.blade.php",
-		"/C/Users/creatix/AppData/Local/Temp/fz3temp-2/kashikananda.blade.php",
-		"/C/Users/creatix/AppData/Local/Temp/fz3temp-2/layout.blade.php",
-		"/C/Users/creatix/AppData/Local/Temp/fz3temp-1/milestones.blade.php",
-		"/I/websites/sobg.dev/views/kashikananda.blade.php",
-		"/I/websites/sitesobg/app/salagramam.html",
-		"/I/websites/sitesobg/node_modules/gulp-autoprefixer/node_modules/through2/node_modules/readable-stream/node_modules/core-util-is/README.md",
-		"/I/websites/sitesobg/node_modules/gulp-minify-html/node_modules/minimize/node_modules/utile/test/require-directory-test.js",
-		"/I/websites/sitesobg/node_modules/gulp/node_modules/vinyl-fs/node_modules/graceful-fs/test/write-then-read.js",
-		"/I/websites/sitesobg/node_modules/gulp-autoprefixer/node_modules/through2/through2.js",
-		"/I/websites/sitesobg/node_modules/gulp-jshint/node_modules/jshint/node_modules/htmlparser2/test/test-helper.js",
-		"/I/websites/templates/[leech1s.com]_gemiz/HTML/Light version/css/tooltip.css",
-		"/I/websites/sitesobg/app/home-stay-at-salagramam.html",
-		"/C/Users/creatix/AppData/Local/Temp/fz3temp-1/main.css",
-		"/C/Users/creatix/AppData/Local/Temp/fz3temp-1/side-yatras.blade.php",
-		"/C/Users/creatix/AppData/Local/Temp/fz3temp-1/layout.blade.php",
-		"/C/Users/creatix/AppData/Local/Temp/fz3temp-1/main.js",
-		"/C/Users/creatix/AppData/Local/Temp/fz3temp-1/kailas-tips.blade.php",
-		"/I/websites/sitesobg/app/overview.html",
-		"/I/websites/sitesobg/app/milestones.html"
+		"/I/websites/sitesobg.dev/vendor/laravel/framework/src/Illuminate/Session/ExistenceAwareInterface.php"
 	],
 	"find":
 	{
@@ -482,6 +499,8 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"suppo",
+			"admin",
 			"asset('admin/",
 			"site",
 			"guruController",
@@ -547,7 +566,7 @@
 	"groups":
 	[
 		{
-			"selected": 4,
+			"selected": 2,
 			"sheets":
 			[
 				{
@@ -556,15 +575,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 10355,
+						"buffer_size": 10562,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								5856,
-								5942
+								10435,
+								10435
 							]
 						],
 						"settings":
@@ -583,21 +602,6 @@
 								"bh_square_open",
 								"bh_square_close",
 								"bh_square_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
 								"bh_tag",
 								"bh_tag_center",
 								"bh_tag_open",
@@ -608,352 +612,6 @@
 								"bh_angle_open",
 								"bh_angle_close",
 								"bh_angle_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content"
-							],
-							"syntax": "Packages/PHP/PHP.tmLanguage"
-						},
-						"translation.x": 141.0,
-						"translation.y": 3120.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "app/Http/Controllers/Admin/ProfileController.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 3094,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1726,
-								1726
-							]
-						],
-						"settings":
-						{
-							"BracketHighlighterBusy": false,
-							"auto_complete": false,
-							"bh_regions":
-							[
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content"
-							],
-							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 1620.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 8,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "app/Http/Controllers/Admin/AdministratorController.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 3185,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1860,
-								1860
-							]
-						],
-						"settings":
-						{
-							"BracketHighlighterBusy": false,
-							"auto_complete": false,
-							"bh_regions":
-							[
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content"
-							],
-							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 5.0,
-						"translation.y": 1260.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 7,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "app/Http/Controllers/Admin/UserController.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 7371,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2859,
-								2869
-							]
-						],
-						"settings":
-						{
-							"BracketHighlighterBusy": false,
-							"auto_complete": false,
-							"bh_regions":
-							[
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content"
-							],
-							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 1380.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "resources/views/Admin/users/show.blade.php",
-					"semi_transient": true,
-					"settings":
-					{
-						"buffer_size": 2016,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"BracketHighlighterBusy": false,
-							"bh_regions":
-							[
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
 								"bh_double_quote",
 								"bh_double_quote_center",
 								"bh_double_quote_open",
@@ -964,6 +622,21 @@
 								"bh_unmatched_open",
 								"bh_unmatched_close",
 								"bh_unmatched_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
 								"bh_round",
 								"bh_round_center",
 								"bh_round_open",
@@ -973,218 +646,208 @@
 								"bh_default_center",
 								"bh_default_open",
 								"bh_default_close",
-								"bh_default_content",
+								"bh_default_content"
+							],
+							"syntax": "Packages/PHP/PHP.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 3630.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "/I/websites/siteideal/app/controllers/ProjectimagesController.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3370,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2671,
+								2683
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"bh_regions":
+							[
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
 								"bh_square",
 								"bh_square_center",
 								"bh_square_open",
 								"bh_square_close",
 								"bh_square_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
 								"bh_regex",
 								"bh_regex_center",
 								"bh_regex_open",
 								"bh_regex_close",
-								"bh_regex_content"
+								"bh_regex_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content"
 							],
-							"syntax": "Packages/Laravel Blade Highlighter/laravel-blade.tmLanguage"
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 480.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "app/Http/Controllers/Admin/EventsController.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2398,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								154,
+								168
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"auto_complete": false,
+							"bh_regions":
+							[
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content"
+							],
+							"syntax": "Packages/PHP/PHP.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 960.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
 					"type": "text"
 				},
 				{
-					"buffer": 5,
-					"file": "vendor/rydurham/sentinel/src/Sentinel/Repositories/User/SentryUserRepository.php",
+					"buffer": 3,
+					"file": "database/migrations/2015_03_19_140938_sobg_events.php",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 21284,
+						"buffer_size": 829,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"BracketHighlighterBusy": false,
-							"bh_regions":
-							[
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content"
-							],
-							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 12240.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "vendor/rydurham/sentinel/src/Sentinel/Repositories/User/SentinelUserRepositoryInterface.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 3429,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"BracketHighlighterBusy": false,
-							"bh_regions":
-							[
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content"
-							],
-							"syntax": "Packages/PHP/PHP.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 268.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 4,
-					"type": "text"
-				},
-				{
-					"buffer": 7,
-					"file": "resources/views/Admin/users/all-users.blade.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2531,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								298,
-								298
+								243,
+								243
 							]
 						],
 						"settings":
@@ -1203,21 +866,6 @@
 								"bh_square_open",
 								"bh_square_close",
 								"bh_square_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
 								"bh_tag",
 								"bh_tag_center",
 								"bh_tag_open",
@@ -1228,6 +876,31 @@
 								"bh_angle_open",
 								"bh_angle_close",
 								"bh_angle_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
 								"bh_round",
 								"bh_round_center",
 								"bh_round_open",
@@ -1237,42 +910,480 @@
 								"bh_default_center",
 								"bh_default_open",
 								"bh_default_close",
-								"bh_default_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content"
+								"bh_default_content"
 							],
-							"syntax": "Packages/Laravel Blade Highlighter/laravel-blade.tmLanguage"
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 360.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
+					"stack_index": 3,
 					"type": "text"
 				},
 				{
-					"buffer": 8,
-					"file": "resources/views/sentinel/users/index.blade.php",
+					"buffer": 4,
+					"file": "app/SobgEvent.php",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2617,
+						"buffer_size": 692,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								477,
-								2603
+								170,
+								179
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"auto_complete": false,
+							"bh_regions":
+							[
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content"
+							],
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "resources/views/Admin/events/create.blade.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4689,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2244,
+								2251
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"auto_complete": false,
+							"bh_regions":
+							[
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content"
+							],
+							"syntax": "Packages/Laravel Blade Highlighter/laravel-blade.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1830.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "app/Http/Requests/Admin/EventsFromRequest.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 802,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								662,
+								662
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"auto_complete": false,
+							"bh_regions":
+							[
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content"
+							],
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "config/app.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 7304,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								7257,
+								7257
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"auto_complete": false,
+							"bh_regions":
+							[
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content"
+							],
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 2470.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 8,
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "public/packages/admin/js/scripts.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 6605,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								5873,
+								5873
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"auto_complete": false,
+							"bh_regions":
+							[
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content"
+							],
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 3360.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 9,
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "app/Http/Controllers/Admin/UserController.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 7363,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2514,
+								2514
 							]
 						],
 						"settings":
@@ -1290,21 +1401,6 @@
 								"bh_square_open",
 								"bh_square_close",
 								"bh_square_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
 								"bh_tag",
 								"bh_tag_center",
 								"bh_tag_open",
@@ -1315,6 +1411,31 @@
 								"bh_angle_open",
 								"bh_angle_close",
 								"bh_angle_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
 								"bh_round",
 								"bh_round_center",
 								"bh_round_open",
@@ -1324,27 +1445,17 @@
 								"bh_default_center",
 								"bh_default_open",
 								"bh_default_close",
-								"bh_default_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content"
+								"bh_default_content"
 							],
-							"syntax": "Packages/Laravel Blade Highlighter/laravel-blade.tmLanguage",
+							"syntax": "Packages/PHP/PHP.tmLanguage",
 							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1020.0,
+						"translation.y": 180.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 6,
+					"stack_index": 4,
 					"type": "text"
 				}
 			]
@@ -1397,12 +1508,32 @@
 		"selected_items":
 		[
 			[
-				"userprovider",
-				"vendor\\laravel\\framework\\src\\Illuminate\\Contracts\\Auth\\UserProvider.php"
-			],
-			[
 				"userrep",
 				"vendor\\rydurham\\sentinel\\src\\Sentinel\\Repositories\\User\\SentryUserRepository.php"
+			],
+			[
+				"userrepo",
+				"vendor\\rydurham\\sentinel\\src\\Sentinel\\Repositories\\User\\SentryUserRepository.php"
+			],
+			[
+				"model",
+				"vendor\\laravel\\framework\\src\\Illuminate\\Database\\Eloquent\\Model.php"
+			],
+			[
+				"appser",
+				"app\\Providers\\AppServiceProvider.php"
+			],
+			[
+				"compo",
+				"composer.json"
+			],
+			[
+				"app",
+				"config\\app.php"
+			],
+			[
+				"userprovider",
+				"vendor\\laravel\\framework\\src\\Illuminate\\Contracts\\Auth\\UserProvider.php"
 			],
 			[
 				"sentineluser",

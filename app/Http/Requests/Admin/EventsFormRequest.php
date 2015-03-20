@@ -2,7 +2,7 @@
 
 use App\Http\Requests\Request;
 
-class EventsFromRequest extends Request {
+class EventsFormRequest extends Request {
 
 	/**
 	 * Determine if the user is authorized to make this request.
@@ -27,9 +27,9 @@ class EventsFromRequest extends Request {
 	    'keywords' 					=> 'required',
 	    'details' 					=> 'required|min:15',
 	    'event-start-date'	=> 'required|date_format:m/d/Y',
-	    'event-end-date' 		=> 'required|date_format:m/d/Y'
-	    // 'event-cover-photo' => 'required|mimes:jpeg,jpg,png',
-	    // 'event-attachment' 	=> 'required|mimes:jpeg,jpg,png,pdf',
+	    'event-end-date' 		=> 'required|date_format:m/d/Y',
+	    'event-cover-photo' => 'required|mimes:jpeg,jpg,png',
+	    'event-attachment' 	=> 'required|mimes:jpeg,jpg,png,pdf'
 		];
 	}
 

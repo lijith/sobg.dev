@@ -29,6 +29,7 @@ class SobgEvent extends Model implements SluggableInterface{
 		'keywords',
 		'details',
     'cover_photo',
+    'cover_photo_thumbnail',
     'attachment',
     'start_date',
     'end_date'

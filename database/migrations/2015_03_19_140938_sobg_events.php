@@ -20,6 +20,7 @@ class SobgEvents extends Migration {
             $table->text('keywords');
             $table->text('details');
             $table->string('cover_photo');
+            $table->string('cover_photo_thumbnail');
             $table->string('attachment');
             $table->timestamp('start_date');
             $table->timestamp('end_date');

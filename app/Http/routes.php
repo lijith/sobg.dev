@@ -207,8 +207,13 @@ Route::group(['prefix'=>'administrator', 'namespace' => 'Admin'], function(){
   Route::delete('groups/{hash}', ['as' => 'sentinel.groups.destroy', 'uses' => 'GroupController@destroy']);
 
   //Events Routes
-  Route::get('events/create', ['as' => 'events.create', 'uses' => 'EventsController@create']);
-  Route::post('events', ['as' => 'events.store', 'uses' => 'EventsController@store']);
+  Route::get('events/create', ['as' => 'events.create', 'uses' => 'EventController@create']);
+  Route::post('events', ['as' => 'events.store', 'uses' => 'EventController@store']);
+  Route::get('events', ['as' => 'events.list', 'uses' => 'EventController@index']);
+  Route::get('events/{hash}', ['as' => 'events.show', 'uses' => 'EventController@show']);
+  Route::get('events/{hash}/edit', ['as' => 'events.edit', 'uses' => 'EventController@edit']);
+  Route::put('events/{hash}', ['as' => 'events.update', 'uses' => 'EventController@update']);
+
 
 });
 

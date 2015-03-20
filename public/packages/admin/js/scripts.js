@@ -205,5 +205,18 @@
         checkout.hide();
     }).data('datepicker');
 
+    $('.confirm-edit').click(function(e){
+        var link = $(this).attr('href');
+        e.preventDefault();
+        
+        bootbox.confirm("Are you sure?", function(result) {
+            if(result){
+
+                window.location.href = link;
+            }
+        }); 
+    })
+
+    
 
 })(jQuery);
