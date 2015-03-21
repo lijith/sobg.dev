@@ -16,6 +16,9 @@
           Events List
       </header>
       <div class="panel-body">
+        <div class="crearfix">
+          <a href="{{ route('events.create') }}" class="btn btn-primary pull-right"><i class="fa fa-plus"></i> Create New Event</a>
+        </div><!-- /.crearfix -->
       	<div class="table-responsive">
 	        <table class="table table-striped table-hover">
 	          <thead>

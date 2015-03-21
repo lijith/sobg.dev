@@ -217,6 +217,17 @@
         }); 
     })
 
+    $('.confirm-delete').click(function(e){
+        e.preventDefault();
+        
+        bootbox.confirm("Are you sure?", function(result) {
+            if(result){
+
+                $(".delete-request-form").submit()
+            }
+        }); 
+    })
+
     
 
 })(jQuery);

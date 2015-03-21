@@ -91,7 +91,7 @@
 
             <input name="_method" value="PUT" type="hidden">
             <input name="_token" value="{{ csrf_token() }}" type="hidden">
-            <input class="btn btn-primary" value="Create" type="submit">
+            <input class="btn btn-primary" value="Update" type="submit">
 
         </form>
       </div>

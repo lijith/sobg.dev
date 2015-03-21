@@ -55,14 +55,15 @@
             </section>
 
             <div class="panel-body">
-                <a href="{{ route('events.edit', array($event->id)) }}" class="btn btn-success confirm-edit">
-                    Edit
-                </a>
-                <form action="{{ action('\App\Http\Controllers\Admin\EventController@destroy', array($event->id)) }}" method="POST">
+                
+                <form action="{{ action('\App\Http\Controllers\Admin\EventController@destroy', array($event->id)) }}" method="POST" class="delete-request-form">
                 <input name="_token" value="{{ csrf_token() }}" type="hidden">
                 <input name="_method" value="DELETE" type="hidden">
+                <a href="{{ route('events.edit', array($event->id)) }}" class="btn btn-success confirm-edit">
+                  <i class="fa fa-pencil-square-o"></i> Edit
+                </a>
                 <button type="submit" class="btn btn-danger confirm-delete">
-                    Remove
+                  <i class="fa fa-trash-o"></i> Remove
                 </button>
                 </form>
 

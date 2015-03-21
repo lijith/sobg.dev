@@ -77,7 +77,7 @@
                 <b class="caret"></b>
             </a>
             <ul class="dropdown-menu extended logout">
-                <li><a href=""><i class="fa fa-key"></i> Log Out</a></li>
+                <li><a href="{{ route('sentinel.logout') }}"><i class="fa fa-key"></i> Log Out</a></li>
             </ul>
         </li>
         
