@@ -58,11 +58,15 @@
                 <a href="{{ route('events.edit', array($event->id)) }}" class="btn btn-success confirm-edit">
                     Edit
                 </a>
-                <a href="" class="btn btn-danger confirm-delete">
+                <form action="{{ action('\App\Http\Controllers\Admin\EventController@destroy', array($event->id)) }}" method="POST">
+                <input name="_token" value="{{ csrf_token() }}" type="hidden">
+                <input name="_method" value="DELETE" type="hidden">
+                <button type="submit" class="btn btn-danger confirm-delete">
                     Remove
-                </a>
-                
-                
+                </button>
+                </form>
+
+
 
             </div>
 

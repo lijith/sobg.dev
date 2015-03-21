@@ -213,6 +213,8 @@ Route::group(['prefix'=>'administrator', 'namespace' => 'Admin'], function(){
   Route::get('events/{hash}', ['as' => 'events.show', 'uses' => 'EventController@show']);
   Route::get('events/{hash}/edit', ['as' => 'events.edit', 'uses' => 'EventController@edit']);
   Route::put('events/{hash}', ['as' => 'events.update', 'uses' => 'EventController@update']);
+  Route::delete('events/{hash}', ['as' => 'events.destroy', 'uses' => 'EventController@destroy']);
+
 
 
 });

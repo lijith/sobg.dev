@@ -25,6 +25,24 @@
 
             <h2>Edit Event</h2>
 
+            <img src="{{asset('images/events/'.$event->cover_photo)}}" class="img-responsive" alt="" />
+            <p></p>
+            <p></p>
+            <hr />
+
+
+            <div class="form-group {{ ($errors->has('event-cover-photo')) ? 'has-error' : '' }}">
+                <label>Change Cover Photo</label>
+                <input type="file" id="event-cover-photo" name="event-cover-photo">
+                <p class="help-block">Cover photo of event(jpg, png files only)</p>
+                {{ ($errors->has('event-cover-photo') ? $errors->first('event-cover-photo') : '') }}
+            </div>
+
+            <p></p>
+            <p></p>
+            <hr />
+
+
             <div class="form-group {{ ($errors->has('event-title')) ? 'has-error' : '' }}">
                 <label>Event Title</label>
                 <input class="form-control" placeholder="Event Title" name="event-title" type="text"  value="{{ Input::old('event-title') ? Input::old('event-title') : $event->title }}">
