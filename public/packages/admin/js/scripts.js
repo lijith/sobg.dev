@@ -205,6 +205,8 @@
         checkout.hide();
     }).data('datepicker');
 
+    var publish_date = $('#publish-date').datepicker();
+
     $('.confirm-edit').click(function(e){
         var link = $(this).attr('href');
         e.preventDefault();

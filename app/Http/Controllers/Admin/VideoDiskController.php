@@ -7,11 +7,11 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
 use Vinkla\Hashids\HashidsManager;
-use App\Http\Requests\Admin\EventsFormUpdateRequest;
+use App\Http\Requests\Admin\VideoDisksFormRequest;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Carbon\Carbon;
 use Image;
-use App\SobgEvent;
+use App\VideoDisk;
 use View, Input, File;
 
 class VideoDiskController extends Controller {
@@ -31,7 +31,7 @@ class VideoDiskController extends Controller {
   }
 
   /**
-   * List all the events in desc order of creation.
+   * List all the disks in desc order of creation.
    *
    * @param  void
    *
@@ -39,86 +39,82 @@ class VideoDiskController extends Controller {
    */
   public function index() {
 
-    $events = SobgEvent::orderBy('created_at', 'DESC')->get();
+    $disks = VideoDisk::orderBy('created_at', 'DESC')->get();
 
-    foreach ($events as $event) {
-      $event->id = $this->hashids->encode($event->id);
-      $sdate = Carbon::createFromFormat('Y-m-d H:i:s',$event->start_date);
-      $edate = Carbon::createFromFormat('Y-m-d H:i:s',$event->end_date);
+    foreach ($disks as $disk) {
+      $disk->id = $this->hashids->encode($disk->id);
+      $pdate = Carbon::createFromFormat('Y-m-d H:i:s',$disk->published_at);
 
-      $event->start_date = $sdate->toFormattedDateString();
-      $event->end_date = $edate->toFormattedDateString();
+      $disk->published_at = $pdate->toFormattedDateString();
     }
 
-    return View::make('Admin.events.index',array('events'=>$events));
+    return View::make('Admin.videodisks.index',array('disks'=>$disks));
   }
 
 
   /**
-   * Create an event.
+   * Create an disk.
    *
    * @param  void
    *
    * @return View
    */
   public function create() {
-  	return View::make('Admin.events.create');
+  	return View::make('Admin.videodisks.create');
   }
 
 
   /**
-   * save event to database.
+   * save disk to database.
    *
    * @param  none
    *
    * @return Redirect
    */
-  public function store(EventsFormRequest $request){
+  public function store(VideoDisksFormRequest $request){
 
-  	$upload_to_dir = public_path().'/images/events/';
-
-  	$filename = '';
-  	$attachment_name = '';
-
-  	$files_save_name = Str::slug(Input::get('event-title')).'-'.time();
-
-    //var_dump(Input::file('event-cover-photo'));
-
-
-  	if (Input::hasFile('event-cover-photo')){
+  	if (Input::hasFile('disk-cover-photo')){
       $files = $this->handleImages();
 		}
 
-		if (Input::hasFile('event-attachment')){
+		if (Input::hasFile('disk-attachment')){
 
-			$attachment = Input::file('event-attachment');
+			$attachment = Input::file('disk-attachment');
 
 	    $attachment_name = $attachment->getClientOriginalName();
 
 	    $attachment->move($upload_to_dir,$attachment_name);
 		}
+
+		if (!Input::has('disk-type')){
+    	$disk_type = 1;
+		}else{
+			$disk_type = Input::get('disk-type');
+		}
     
   	
 
-  	$sobg_event = new SobgEvent(array(
-  		'title' => Input::get('event-title'),
+  	$disk = new VideoDisk(array(
+  		'title' => Input::get('disk-title'),
+  		'price' => Input::get('disk-price'),
+  		'author' => Input::get('author'),
   		'excerpt' => Input::get('excerpt'),
   		'keywords' => Input::get('keywords'),
   		'details' => Input::get('details'),
-  		'start_date' => Carbon::createFromFormat('m/d/Y', Input::get('event-start-date')),
-  		'end_date' => Carbon::createFromFormat('m/d/Y', Input::get('event-end-date')),
+  		'youtube_link' => Input::get('youtube-link'),
+  		'disk_type' => $disk_type,
+  		'published_at' => Carbon::createFromFormat('m/d/Y', Input::get('publish-date')),
   		'cover_photo' => $files['filename'],
       'cover_photo_thumbnail' => $files['thumb'],
-  		'attachment' => $attachment_name
   	));
 
-  	$sobg_event->save();
+  	$disk->save();
 
-    return redirect()->route('events.list')->with('success', 'Event '.ucwords(Input::get('event-title')).' created');
+    return redirect()->route('videodisks.list')->with('success', 'disk '.ucwords(Input::get('disk-title')).' created');
   }
 
   /**
-   * Show the event.
+   * Show the disk.
    *
    * @param  string $hash
    *
@@ -127,21 +123,19 @@ class VideoDiskController extends Controller {
   public function show($hash) {
     $id = $this->hashids->decode($hash)[0];
 
-    $event = SobgEvent::find($id);
+    $disk = VideoDisk::find($id);
 
-    $event->id = $this->hashids->encode($event->id);
-    $sdate = Carbon::createFromFormat('Y-m-d H:i:s',$event->start_date);
-    $edate = Carbon::createFromFormat('Y-m-d H:i:s',$event->end_date);
+    $disk->id = $this->hashids->encode($disk->id);
 
-    $event->start_date = $sdate->toFormattedDateString();
-    $event->end_date = $edate->toFormattedDateString();
+    $pdate = Carbon::createFromFormat('Y-m-d H:i:s',$disk->published_at);
+    $disk->published_at = $pdate->toFormattedDateString();
 
-    return View::make('Admin.events.show',['event' => $event]);
+    return View::make('Admin.disks.show',['disk' => $disk]);
 
   }
 
   /**
-   * Edit a event.
+   * Edit a disk.
    *
    * @param  string $hash
    *
@@ -150,36 +144,36 @@ class VideoDiskController extends Controller {
   public function edit($hash) { 
     $id = $this->hashids->decode($hash)[0];
 
-    $event = SobgEvent::find($id);
+    $disk = Sobgdisk::find($id);
 
-    $event->id = $this->hashids->encode($event->id);
-    $sdate = Carbon::createFromFormat('Y-m-d H:i:s',$event->start_date);
-    $edate = Carbon::createFromFormat('Y-m-d H:i:s',$event->end_date);
+    $disk->id = $this->hashids->encode($disk->id);
+    $sdate = Carbon::createFromFormat('Y-m-d H:i:s',$disk->start_date);
+    $edate = Carbon::createFromFormat('Y-m-d H:i:s',$disk->end_date);
 
-    $event->start_date = $sdate->format('m/d/Y');
-    $event->end_date = $edate->format('m/d/Y');
+    $disk->start_date = $sdate->format('m/d/Y');
+    $disk->end_date = $edate->format('m/d/Y');
 
-    return View::make('Admin.events.edit',['event' => $event]);
+    return View::make('Admin.disks.edit',['disk' => $disk]);
   }
 
 
 
   /**
-   * Update the event.
+   * Update the disk.
    *
    * @param  string $hash
    *
    * @return Redirect
    */
-  public function update(EventsFormUpdateRequest $request,$hash) { 
+  public function update(disksFormUpdateRequest $request,$hash) { 
 
     $id = $this->hashids->decode($hash)[0];
-    $event = SobgEvent::find($id);
+    $disk = Sobgdisk::find($id);
 
-    $cover_photo = $event->cover_photo;
-    $thumb = $event->cover_photo_thumbnail;
+    $cover_photo = $disk->cover_photo;
+    $thumb = $disk->cover_photo_thumbnail;
 
-    if (Input::hasFile('event-cover-photo')){
+    if (Input::hasFile('disk-cover-photo')){
 
       if (File::exists($cover_photo)) {
         File::delete($cover_photo);
@@ -193,25 +187,25 @@ class VideoDiskController extends Controller {
     }
 
 
-    $event->title = Input::get('event-title');
-    $event->excerpt = Input::get('excerpt');
-    $event->keywords = Input::get('keywords');
-    $event->details = Input::get('details');
-    $event->start_date = Carbon::createFromFormat('m/d/Y', Input::get('event-start-date'));
-    $event->end_date = Carbon::createFromFormat('m/d/Y', Input::get('event-end-date'));
-    $event->cover_photo = isset($files['filename']) ? $files['filename'] : $event->cover_photo;
-    $event->cover_photo_thumbnail = isset($files['thumb']) ? $files['thumb'] : $event->cover_photo_thumbnail;
-    // $event->attachment = $attachment_name;
+    $disk->title = Input::get('disk-title');
+    $disk->excerpt = Input::get('excerpt');
+    $disk->keywords = Input::get('keywords');
+    $disk->details = Input::get('details');
+    $disk->start_date = Carbon::createFromFormat('m/d/Y', Input::get('disk-start-date'));
+    $disk->end_date = Carbon::createFromFormat('m/d/Y', Input::get('disk-end-date'));
+    $disk->cover_photo = isset($files['filename']) ? $files['filename'] : $disk->cover_photo;
+    $disk->cover_photo_thumbnail = isset($files['thumb']) ? $files['thumb'] : $disk->cover_photo_thumbnail;
+    // $disk->attachment = $attachment_name;
 
-    $event->save();
-    return redirect()->route('events.show',array($hash))->with('success', 'Event '.ucwords(Input::get('event-title')).' updated');
+    $disk->save();
+    return redirect()->route('disks.show',array($hash))->with('success', 'disk '.ucwords(Input::get('disk-title')).' updated');
 
 
 
   }
 
   /**
-   * Remove the event.
+   * Remove the disk.
    *
    * @param  string $hash
    *
@@ -220,13 +214,13 @@ class VideoDiskController extends Controller {
   public function destroy($hash){
       // Decode the hashid
       $id = $this->hashids->decode($hash)[0];
-      $event = SobgEvent::find($id);
+      $disk = Sobgdisk::find($id);
 
-      $cover_photo = $event->cover_photo;
-      $thumb = $event->cover_photo_thumbnail;
+      $cover_photo = $disk->cover_photo;
+      $thumb = $disk->cover_photo_thumbnail;
 
       //remove cover pictures
-      if (Input::hasFile('event-cover-photo')){
+      if (Input::hasFile('disk-cover-photo')){
 
         if (File::exists($cover_photo)) {
           File::delete($cover_photo);
@@ -238,8 +232,8 @@ class VideoDiskController extends Controller {
 
       }
 
-      $event->delete();
-      return redirect()->route('events.list',array($hash))->with('success', 'Event removed');
+      $disk->delete();
+      return redirect()->route('disks.list',array($hash))->with('success', 'disk removed');
 
       
   }
@@ -253,10 +247,10 @@ class VideoDiskController extends Controller {
    **/
   private function handleImages(){
 
-    $upload_to_dir = public_path().'/images/events/';
-    $files_save_name = Str::slug(Input::get('event-title')).'-'.time();
+    $upload_to_dir = public_path().'/images/video-disks/';
+    $files_save_name = Str::slug(Input::get('disk-title')).'-'.time();
 
-    $cover_photo = Input::file('event-cover-photo');
+    $cover_photo = Input::file('disk-cover-photo');
     $file_ext = $cover_photo->getClientOriginalExtension();
 
     $save_file_name = $files_save_name.'.'.$file_ext;

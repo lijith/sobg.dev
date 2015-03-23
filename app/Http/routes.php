@@ -216,13 +216,13 @@ Route::group(['prefix'=>'administrator', 'namespace' => 'Admin'], function(){
   Route::delete('events/{hash}', ['as' => 'events.destroy', 'uses' => 'EventController@destroy']);
 
   //Dvds and Vcds Routes
-  Route::get('videodisks/create', ['as' => 'videodisks.create', 'uses' => 'VideoDisks@create']);
-  Route::post('videodisks', ['as' => 'videodisks.store', 'uses' => 'VideoDisks@store']);
-  Route::get('videodisks', ['as' => 'videodisks.list', 'uses' => 'VideoDisks@index']);
-  Route::get('videodisks/{hash}', ['as' => 'videodisks.show', 'uses' => 'VideoDisks@show']);
-  Route::get('videodisks/{hash}/edit', ['as' => 'videodisks.edit', 'uses' => 'VideoDisks@edit']);
-  Route::put('videodisks/{hash}', ['as' => 'videodisks.update', 'uses' => 'VideoDisks@update']);
-  Route::delete('videodisks/{hash}', ['as' => 'videodisks.destroy', 'uses' => 'VideoDisks@destroy']);
+  Route::get('videodisks/create', ['as' => 'videodisks.create', 'uses' => 'VideoDiskController@create']);
+  Route::post('videodisks', ['as' => 'videodisks.store', 'uses' => 'VideoDiskController@store']);
+  Route::get('videodisks', ['as' => 'videodisks.list', 'uses' => 'VideoDiskController@index']);
+  Route::get('videodisks/{hash}', ['as' => 'videodisks.show', 'uses' => 'VideoDiskController@show']);
+  Route::get('videodisks/{hash}/edit', ['as' => 'videodisks.edit', 'uses' => 'VideoDiskController@edit']);
+  Route::put('videodisks/{hash}', ['as' => 'videodisks.update', 'uses' => 'VideoDiskController@update']);
+  Route::delete('videodisks/{hash}', ['as' => 'videodisks.destroy', 'uses' => 'VideoDiskController@destroy']);
 
 });
 
