@@ -112,12 +112,23 @@
                 </li>
                 <li class="sub-menu">
                     <a href="#">
-                        <i class="fa fa-laptop"></i>
+                        <i class="fa fa-calendar"></i>
                         <span>Events</span>
                     </a>
                     <ul class="sub">
                         <li><a href="{{ route('events.list') }}">All Events</a></li>
                         <li><a href="{{ action('\App\Http\Controllers\Admin\EventController@create') }}">Create Event</a></li>
+                        
+                    </ul>
+                </li>
+                <li class="sub-menu">
+                    <a href="#">
+                        <i class="fa fa-bullseye"></i>
+                        <span>Video Disks</span>
+                    </a>
+                    <ul class="sub">
+                        <li><a href="{{ route('videodisks.list') }}">All Disks</a></li>
+                        <li><a href="{{ action('\App\Http\Controllers\Admin\VideoDiskController@create') }}">Video Disks</a></li>
                         
                     </ul>
                 </li>

@@ -8,6 +8,7 @@ use Illuminate\Support\Str;
 
 use Vinkla\Hashids\HashidsManager;
 use App\Http\Requests\Admin\VideoDisksFormRequest;
+use App\Http\Requests\Admin\VideoDiskFormUpdateRequest;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Carbon\Carbon;
 use Image;
@@ -37,9 +38,19 @@ class VideoDiskController extends Controller {
    *
    * @return View
    */
-  public function index() {
+  public function index($type=null) {
 
-    $disks = VideoDisk::orderBy('created_at', 'DESC')->get();
+  	if($type == 'dvd'){
+  		$disks = VideoDisk::orderBy('created_at', 'DESC')
+  		->where('disk_type', '=', 1)
+  		->get();
+  	}elseif ($type == 'vcd') {
+  		$disks = VideoDisk::orderBy('created_at', 'DESC')
+  		->where('disk_type', '=', 2)
+  		->get();
+  	}else{
+    	$disks = VideoDisk::orderBy('created_at', 'DESC')->get();
+  	}
 
     foreach ($disks as $disk) {
       $disk->id = $this->hashids->encode($disk->id);
@@ -77,15 +88,6 @@ class VideoDiskController extends Controller {
       $files = $this->handleImages();
 		}
 
-		if (Input::hasFile('disk-attachment')){
-
-			$attachment = Input::file('disk-attachment');
-
-	    $attachment_name = $attachment->getClientOriginalName();
-
-	    $attachment->move($upload_to_dir,$attachment_name);
-		}
-
 		if (!Input::has('disk-type')){
     	$disk_type = 1;
 		}else{
@@ -108,9 +110,10 @@ class VideoDiskController extends Controller {
       'cover_photo_thumbnail' => $files['thumb'],
   	));
 
+
   	$disk->save();
 
-    return redirect()->route('videodisks.list')->with('success', 'disk '.ucwords(Input::get('disk-title')).' created');
+    redirect()->route('videodisks.list')->with('success', 'disk '.ucwords(Input::get('disk-title')).' created');
   }
 
   /**
@@ -130,7 +133,7 @@ class VideoDiskController extends Controller {
     $pdate = Carbon::createFromFormat('Y-m-d H:i:s',$disk->published_at);
     $disk->published_at = $pdate->toFormattedDateString();
 
-    return View::make('Admin.disks.show',['disk' => $disk]);
+    return View::make('Admin.videodisks.show',['disk' => $disk]);
 
   }
 
@@ -144,16 +147,14 @@ class VideoDiskController extends Controller {
   public function edit($hash) { 
     $id = $this->hashids->decode($hash)[0];
 
-    $disk = Sobgdisk::find($id);
+    $disk = VideoDisk::find($id);
 
     $disk->id = $this->hashids->encode($disk->id);
-    $sdate = Carbon::createFromFormat('Y-m-d H:i:s',$disk->start_date);
-    $edate = Carbon::createFromFormat('Y-m-d H:i:s',$disk->end_date);
+    $pdate = Carbon::createFromFormat('Y-m-d H:i:s',$disk->published_at);
 
-    $disk->start_date = $sdate->format('m/d/Y');
-    $disk->end_date = $edate->format('m/d/Y');
+    $disk->published_at = $pdate->format('m/d/Y');
 
-    return View::make('Admin.disks.edit',['disk' => $disk]);
+    return View::make('Admin.videodisks.edit',['disk' => $disk]);
   }
 
 
@@ -165,10 +166,10 @@ class VideoDiskController extends Controller {
    *
    * @return Redirect
    */
-  public function update(disksFormUpdateRequest $request,$hash) { 
+  public function update(VideoDiskFormUpdateRequest $request,$hash) { 
 
     $id = $this->hashids->decode($hash)[0];
-    $disk = Sobgdisk::find($id);
+    $disk = VideoDisk::find($id);
 
     $cover_photo = $disk->cover_photo;
     $thumb = $disk->cover_photo_thumbnail;
@@ -179,26 +180,25 @@ class VideoDiskController extends Controller {
         File::delete($cover_photo);
       }  
 
-      if (File::exists($cover_photo)) {
-        File::delete($thumb);
-      } 
-
       $files = $this->handleImages();
+
     }
 
-
     $disk->title = Input::get('disk-title');
+    $disk->price = Input::get('disk-price');
+    $disk->author = Input::get('author');
     $disk->excerpt = Input::get('excerpt');
     $disk->keywords = Input::get('keywords');
     $disk->details = Input::get('details');
-    $disk->start_date = Carbon::createFromFormat('m/d/Y', Input::get('disk-start-date'));
-    $disk->end_date = Carbon::createFromFormat('m/d/Y', Input::get('disk-end-date'));
+    $disk->disk_type = Input::get('disk-type');
+    $disk->youtube_link = Input::get('youtube-link');
+    $disk->published_at = Carbon::createFromFormat('m/d/Y', Input::get('publish-date'));
     $disk->cover_photo = isset($files['filename']) ? $files['filename'] : $disk->cover_photo;
     $disk->cover_photo_thumbnail = isset($files['thumb']) ? $files['thumb'] : $disk->cover_photo_thumbnail;
     // $disk->attachment = $attachment_name;
 
     $disk->save();
-    return redirect()->route('disks.show',array($hash))->with('success', 'disk '.ucwords(Input::get('disk-title')).' updated');
+    return redirect()->route('videodisks.show',array($hash))->with('success', 'disk '.ucwords(Input::get('disk-title')).' updated');
 
 
 
@@ -214,10 +214,9 @@ class VideoDiskController extends Controller {
   public function destroy($hash){
       // Decode the hashid
       $id = $this->hashids->decode($hash)[0];
-      $disk = Sobgdisk::find($id);
+      $disk = VideoDisk::find($id);
 
       $cover_photo = $disk->cover_photo;
-      $thumb = $disk->cover_photo_thumbnail;
 
       //remove cover pictures
       if (Input::hasFile('disk-cover-photo')){
@@ -226,14 +225,10 @@ class VideoDiskController extends Controller {
           File::delete($cover_photo);
         }  
 
-        if (File::exists($cover_photo)) {
-          File::delete($thumb);
-        } 
-
       }
 
       $disk->delete();
-      return redirect()->route('disks.list',array($hash))->with('success', 'disk removed');
+      return redirect()->route('videodisks.list',array($hash))->with('success', 'disk removed');
 
       
   }

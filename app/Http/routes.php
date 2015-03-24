@@ -218,7 +218,8 @@ Route::group(['prefix'=>'administrator', 'namespace' => 'Admin'], function(){
   //Dvds and Vcds Routes
   Route::get('videodisks/create', ['as' => 'videodisks.create', 'uses' => 'VideoDiskController@create']);
   Route::post('videodisks', ['as' => 'videodisks.store', 'uses' => 'VideoDiskController@store']);
-  Route::get('videodisks', ['as' => 'videodisks.list', 'uses' => 'VideoDiskController@index']);
+  Route::get('videodisks/', ['as' => 'videodisks.list', 'uses' => 'VideoDiskController@index']);
+  Route::get('videodisks/type/{type}', ['as' => 'videodisks.list.type', 'uses' => 'VideoDiskController@index']);
   Route::get('videodisks/{hash}', ['as' => 'videodisks.show', 'uses' => 'VideoDiskController@show']);
   Route::get('videodisks/{hash}/edit', ['as' => 'videodisks.edit', 'uses' => 'VideoDiskController@edit']);
   Route::put('videodisks/{hash}', ['as' => 'videodisks.update', 'uses' => 'VideoDiskController@update']);

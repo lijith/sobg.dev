@@ -3,7 +3,7 @@
 {{-- Page Title --}}
 @section('title')
 @parent
-	disk {{ucwords($disk->title)}}
+	{{ucwords($disk->title)}}
 @stop
 
 
@@ -28,7 +28,7 @@
             </div><!-- /.col-md-8 -->
             <div class="col-md-6">
                 <div class="in-panel">
-                  <span class="label label-primary">Disk Type
+                  <span class="label label-primary">
                     <strong>
                       {{($disk->disk_type == 1)?'DVD':'VCD'}}
                     </strong>
@@ -37,7 +37,7 @@
 
                 <div class="in-panel">
                   <span class="label label-primary">Author</span> <br /><br />
-                  From <strong>{{$disk->author}}</strong>
+                  <strong>{{$disk->author}}</strong>
                 </div>
 
                 <div class="in-panel">
@@ -55,7 +55,7 @@
 
 
             <section class="in-panel">
-                <span class="label label-primary">Date</span> <br /><br />
+                <span class="label label-primary">Disk Detail</span> <br /><br />
                 {!!$disk->details!!}
             </section>
 

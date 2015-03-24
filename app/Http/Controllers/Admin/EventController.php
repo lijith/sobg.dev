@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
 use Vinkla\Hashids\HashidsManager;
+use App\Http\Requests\Admin\EventsFormRequest;
 use App\Http\Requests\Admin\EventsFormUpdateRequest;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Carbon\Carbon;
@@ -232,7 +233,7 @@ class EventController extends Controller {
           File::delete($cover_photo);
         }  
 
-        if (File::exists($cover_photo)) {
+        if (File::exists($thumb)) {
           File::delete($thumb);
         } 
 

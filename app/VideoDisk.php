@@ -27,6 +27,7 @@ class VideoDisk extends Model implements SluggableInterface{
 		'excerpt',
 		'keywords',
 		'details',
+		'disk_type',
     'cover_photo',
     'cover_photo_thumbnail',
     'youtube_link',
