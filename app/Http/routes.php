@@ -225,5 +225,15 @@ Route::group(['prefix'=>'administrator', 'namespace' => 'Admin'], function(){
   Route::put('videodisks/{hash}', ['as' => 'videodisks.update', 'uses' => 'VideoDiskController@update']);
   Route::delete('videodisks/{hash}', ['as' => 'videodisks.destroy', 'uses' => 'VideoDiskController@destroy']);
 
+  //Audio cds and MP3 Routes
+  Route::get('audiodisks/create', ['as' => 'audiodisks.create', 'uses' => 'AudioDiskController@create']);
+  Route::post('audiodisks', ['as' => 'audiodisks.store', 'uses' => 'AudioDiskController@store']);
+  Route::get('audiodisks/', ['as' => 'audiodisks.list', 'uses' => 'AudioDiskController@index']);
+  Route::get('audiodisks/type/{type}', ['as' => 'audiodisks.list.type', 'uses' => 'AudioDiskController@index']);
+  Route::get('audiodisks/{hash}', ['as' => 'audiodisks.show', 'uses' => 'AudioDiskController@show']);
+  Route::get('audiodisks/{hash}/edit', ['as' => 'audiodisks.edit', 'uses' => 'AudioDiskController@edit']);
+  Route::put('audiodisks/{hash}', ['as' => 'audiodisks.update', 'uses' => 'AudioDiskController@update']);
+  Route::delete('audiodisks/{hash}', ['as' => 'audiodisks.destroy', 'uses' => 'AudioDiskController@destroy']);
+
 });
 

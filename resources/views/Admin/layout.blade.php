@@ -128,7 +128,22 @@
                     </a>
                     <ul class="sub">
                         <li><a href="{{ route('videodisks.list') }}">All Disks</a></li>
-                        <li><a href="{{ action('\App\Http\Controllers\Admin\VideoDiskController@create') }}">Video Disks</a></li>
+                        <li><a href="{{ route('videodisks.list.type',array('dvd')) }}">DVDs</a></li>
+                        <li><a href="{{ route('videodisks.list.type',array('vcd')) }}">VCDs</a></li>
+                        <li><a href="{{ action('\App\Http\Controllers\Admin\VideoDiskController@create') }}"><i class="fa fa-plus"></i> Add Video Disk</a></li>
+                        
+                    </ul>
+                </li>
+                <li class="sub-menu">
+                    <a href="#">
+                        <i class="fa fa-bullseye"></i>
+                        <span>Audio Disks</span>
+                    </a>
+                    <ul class="sub">
+                        <li><a href="{{ route('audiodisks.list.type') }}">All Disks</a></li>
+                        <li><a href="{{ route('audiodisks.list.type',array('acd')) }}">Audio CDs</a></li>
+                        <li><a href="{{ route('audiodisks.list.type',array('mp3')) }}">MP3s</a></li>
+                        <li><a href="{{ action('\App\Http\Controllers\Admin\AudioDiskController@create') }}"><i class="fa fa-plus"></i> Add Audio Disk</a></li>
                         
                     </ul>
                 </li>
