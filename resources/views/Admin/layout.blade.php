@@ -140,7 +140,7 @@
                         <span>Audio Disks</span>
                     </a>
                     <ul class="sub">
-                        <li><a href="{{ route('audiodisks.list.type') }}">All Disks</a></li>
+                        <li><a href="{{ route('audiodisks.list') }}">All Disks</a></li>
                         <li><a href="{{ route('audiodisks.list.type',array('acd')) }}">Audio CDs</a></li>
                         <li><a href="{{ route('audiodisks.list.type',array('mp3')) }}">MP3s</a></li>
                         <li><a href="{{ action('\App\Http\Controllers\Admin\AudioDiskController@create') }}"><i class="fa fa-plus"></i> Add Audio Disk</a></li>

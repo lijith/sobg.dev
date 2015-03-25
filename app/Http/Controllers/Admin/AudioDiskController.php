@@ -7,12 +7,12 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
 use Vinkla\Hashids\HashidsManager;
-use App\Http\Requests\Admin\VideoDisksFormRequest;
-use App\Http\Requests\Admin\VideoDiskFormUpdateRequest;
+use App\Http\Requests\Admin\AudioDisksFormRequest;
+use App\Http\Requests\Admin\AudioDiskFormUpdateRequest;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Carbon\Carbon;
 use Image;
-use App\VideoDisk;
+use App\AudioDisk;
 use View, Input, File;
 
 class AudioDiskController extends Controller {
@@ -41,11 +41,11 @@ class AudioDiskController extends Controller {
   public function index($type=null) {
 
   	if($type == 'acd'){
-  		$disks = VideoDisk::orderBy('created_at', 'DESC')
+  		$disks = AudioDisk::orderBy('created_at', 'DESC')
   		->where('disk_type', '=', 1)
   		->get();
   	}elseif ($type == 'mp3') {
-  		$disks = VideoDisk::orderBy('created_at', 'DESC')
+  		$disks = AudioDisk::orderBy('created_at', 'DESC')
   		->where('disk_type', '=', 2)
   		->get();
   	}else{
@@ -82,7 +82,11 @@ class AudioDiskController extends Controller {
    *
    * @return Redirect
    */
-  public function store(VideoDisksFormRequest $request){
+  public function store(AudioDisksFormRequest $request){
+
+  	$samle_save_name = '';
+
+  	$upload_dir = public_path().'/images/audio-samples/';
 
   	if (Input::hasFile('disk-cover-photo')){
       $files = $this->handleImages();
@@ -93,17 +97,30 @@ class AudioDiskController extends Controller {
 		}else{
 			$disk_type = Input::get('disk-type');
 		}
+
+		if (Input::hasFile('sample-audio')){
+
+			$sample = Input::file('sample-audio');
+
+	  	$filename = Str::slug(Input::get('disk-title')).'-'.time();
+	  	$file_ext = $sample->getClientOriginalExtension();
+	    $sample_name = $sample->getClientOriginalName();
+
+	    $samle_save_name = $filename.'.'.$file_ext;
+
+	    $sample->move($upload_dir,$samle_save_name);
+		}
     
   	
 
-  	$disk = new VideoDisk(array(
+  	$disk = new AudioDisk(array(
   		'title' => Input::get('disk-title'),
   		'price' => Input::get('disk-price'),
   		'author' => Input::get('author'),
   		'excerpt' => Input::get('excerpt'),
   		'keywords' => Input::get('keywords'),
   		'details' => Input::get('details'),
-  		'youtube_link' => Input::get('youtube-link'),
+  		'sample-audio' => $samle_save_name,
   		'disk_type' => $disk_type,
   		'published_at' => Carbon::createFromFormat('m/d/Y', Input::get('publish-date')),
   		'cover_photo' => $files['filename'],
@@ -126,7 +143,7 @@ class AudioDiskController extends Controller {
   public function show($hash) {
     $id = $this->hashids->decode($hash)[0];
 
-    $disk = VideoDisk::find($id);
+    $disk = AudioDisk::find($id);
 
     $disk->id = $this->hashids->encode($disk->id);
 
@@ -147,7 +164,7 @@ class AudioDiskController extends Controller {
   public function edit($hash) { 
     $id = $this->hashids->decode($hash)[0];
 
-    $disk = VideoDisk::find($id);
+    $disk = AudioDisk::find($id);
 
     $disk->id = $this->hashids->encode($disk->id);
     $pdate = Carbon::createFromFormat('Y-m-d H:i:s',$disk->published_at);
@@ -166,13 +183,16 @@ class AudioDiskController extends Controller {
    *
    * @return Redirect
    */
-  public function update(VideoDiskFormUpdateRequest $request,$hash) { 
+  public function update(AudioDiskFormUpdateRequest $request,$hash) { 
 
     $id = $this->hashids->decode($hash)[0];
-    $disk = VideoDisk::find($id);
+    $disk = AudioDisk::find($id);
 
     $cover_photo = $disk->cover_photo;
     $thumb = $disk->cover_photo_thumbnail;
+
+  	$upload_dir = public_path().'/images/audio-samples/';
+    $samle_save_name = '';
 
     if (Input::hasFile('disk-cover-photo')){
 
@@ -184,6 +204,19 @@ class AudioDiskController extends Controller {
 
     }
 
+		if (Input::hasFile('sample-audio')){
+
+			$sample = Input::file('sample-audio');
+
+	  	$filename = Str::slug(Input::get('disk-title')).'-'.time();
+	  	$file_ext = $sample->getClientOriginalExtension();
+	    $sample_name = $sample->getClientOriginalName();
+
+	    $samle_save_name = $filename.'.'.$file_ext;
+
+	    $sample->move($upload_dir,$samle_save_name);
+		}
+
     $disk->title = Input::get('disk-title');
     $disk->price = Input::get('disk-price');
     $disk->author = Input::get('author');
@@ -191,11 +224,10 @@ class AudioDiskController extends Controller {
     $disk->keywords = Input::get('keywords');
     $disk->details = Input::get('details');
     $disk->disk_type = Input::get('disk-type');
-    $disk->youtube_link = Input::get('youtube-link');
+    $disk->audio_sample = ($samle_save_name == '') ? $disk->audio_sample : $samle_save_name;
     $disk->published_at = Carbon::createFromFormat('m/d/Y', Input::get('publish-date'));
     $disk->cover_photo = isset($files['filename']) ? $files['filename'] : $disk->cover_photo;
     $disk->cover_photo_thumbnail = isset($files['thumb']) ? $files['thumb'] : $disk->cover_photo_thumbnail;
-    // $disk->attachment = $attachment_name;
 
     $disk->save();
     return redirect()->route('audiodisks.show',array($hash))->with('success', 'disk '.ucwords(Input::get('disk-title')).' updated');

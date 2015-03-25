@@ -21,7 +21,7 @@
                 <li>{{$error}}</li>
               @endforeach
             </ul>
-	        <form method="POST" action="{{ route('videodisks.store') }}" accept-charset="UTF-8" enctype="multipart/form-data">
+	        <form method="POST" action="{{ route('audiodisks.store') }}" accept-charset="UTF-8" enctype="multipart/form-data">
 
             <div class="form-group {{ ($errors->has('disk-cover-photo')) ? 'has-error' : '' }}">
                 <label>Disk Cover Photo</label>

@@ -3,7 +3,7 @@
 {{-- Page Title --}}
 @section('title')
 @parent
-	Add New Disk
+	{{ucwords($disk->title)}}
 @stop
 
 
@@ -13,7 +13,7 @@
 	<div class="col-md-8 col-md-offset-2">
     <section class="panel">
       <header class="panel-heading">
-          Add New Disk
+         {{ucwords($disk->title)}}
       </header>
       <div class="panel-body">
             <ul>
@@ -22,9 +22,9 @@
               @endforeach
             </ul>
             <div class="cover-pic">
-                <img src="{{asset('images/video-disks/'.$disk->cover_photo)}}" class="img-responsive" alt=""> 
+                <img src="{{asset('images/audio-disks/'.$disk->cover_photo)}}" class="img-responsive" alt=""> 
             </div><!-- /.cover-pic -->
-	        <form method="POST" action="{{ route('videodisks.update',array($disk->id)) }}" accept-charset="UTF-8" enctype="multipart/form-data">
+	        <form method="POST" action="{{ route('audiodisks.update',array($disk->id)) }}" accept-charset="UTF-8" enctype="multipart/form-data">
 
             <div class="form-group {{ ($errors->has('disk-cover-photo')) ? 'has-error' : '' }}">
                 <label>Change Cover Photo</label>
@@ -58,12 +58,12 @@
                             <label class="radio-inline">
                               <input type="radio" name="disk-type" id="dvd" value="1"
                               @if($disk->disk_type == 1 || Input::old('disk-type')== 1) checked 
-                              @endif> DVD
+                              @endif> Audio CD
                             </label>
                             <label class="radio-inline">
                               <input type="radio" name="disk-type" id="vcd" value="2"
                               @if($disk->disk_type == 2 || Input::old('disk-type')== 2) checked 
-                              @endif> VCD
+                              @endif> MP3
                             </label>
                             {{ ($errors->has('disk-type') ? $errors->first('disk-type') : '') }}
                         </div>
@@ -71,15 +71,6 @@
                     </div>
                 </div><!-- /.col-md-6 -->
             </div><!-- /.row -->
-
-            <div class="form-group {{ ($errors->has('youtube-link')) ? 'has-error' : '' }}">
-                <label>Youtube link</label>
-                <input class="form-control" placeholder="http://www.youtube.com/embed/W-Q7RMpINVo" name="youtube-link" type="text"  value="{{ Input::old('youtube-link') ? Input::old('youtube-link') : $disk->youtube_link }}">
-                <p class="help-block">youtube embedd link</p>
-                {{ ($errors->has('youtube-link') ? $errors->first('youtube-link') : '') }}
-            </div>
-
-            
 
             <div class="row">
                 <div class="col-md-6">

@@ -3,7 +3,7 @@
 {{-- Page Title --}}
 @section('title')
 @parent
-	Video Disks
+	Audio Disks
 @stop
 
 
@@ -13,22 +13,24 @@
 	<div class="col-md-10 col-md-offset-1">
     <section class="panel">
       <header class="panel-heading">
-          Video Disk List
+          Audio Disk List
       </header>
       <div class="panel-body">
+
         <div class="crearfix">
-          <a href="{{ route('videodisks.create') }}" class="btn btn-primary pull-right"><i class="fa fa-plus"></i> Add New Video Disk</a>
+          <a href="{{ route('audiodisks.create') }}" class="btn btn-primary pull-right"><i class="fa fa-plus"></i> Add New Audio Disk</a>
         </div><!-- /.crearfix -->
         <div class="disk-type-links">
-          <a href="{{route('videodisks.list')}}">All</a> | 
-          <a href="{{route('videodisks.list.type',array('dvd'))}}">DVD</a> |  
-          <a href="{{route('videodisks.list.type',array('vcd'))}}">VCD</a>
+          <a href="{{route('audiodisks.list')}}">All Disks</a> | 
+          <a href="{{route('audiodisks.list.type',array('acd'))}}">Audio CD</a> |  
+          <a href="{{route('audiodisks.list.type',array('mp3'))}}">MP3</a>
         </div><!-- /.disk-type-links -->
+        <hr />
       	<div class="table-responsive">
 	        <table class="table table-striped table-hover">
 	          <thead>
 	              <th class="col-md-4">Title</th>
-                <th class="col-md-2">DVD/VCD</th>
+                <th class="col-md-2">Audio CD/MP3</th>
 	              <th class="col-md-3">Price</th>
 	              <th class="col-md-3">Publish Date</th>
 	          </thead>
@@ -37,15 +39,15 @@
                 <tr>
                   <td>
                     
-                    <a href="{{ action('\App\Http\Controllers\Admin\VideoDiskController@show', array($disk->id)) }}">
-                      <img src="{{asset('images/video-disks/'.$disk->cover_photo_thumbnail)}}" alt="cover photo" class="img-responsive" />
+                    <a href="{{ action('\App\Http\Controllers\Admin\AudioDiskController@show', array($disk->id)) }}">
+                      <img src="{{asset('images/audio-disks/'.$disk->cover_photo_thumbnail)}}" alt="cover photo" class="img-responsive" />
                       <br />
                       <strong>{{ucwords($disk->title)}}</strong>
                     </a>
                   </td>
                   <td>
-                    @if($disk->disk_type == 1) <span class="label label-primary">DVD</span>
-                    @elseif($disk->disk_type == 2) <span class="label label-primary">VCD</span>
+                    @if($disk->disk_type == 1) <span class="label label-primary">Audio CD</span>
+                    @elseif($disk->disk_type == 2) <span class="label label-primary">MP3</span>
 
                     @endif
                   </td>

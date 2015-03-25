@@ -22,7 +22,7 @@
 
                 <section class="in-panel">
                     <span class="label label-primary">Cover</span> <br /><br />
-                    <img src="{{asset('images/video-disks/'.$disk->cover_photo)}}" class="img-responsive" alt=""> 
+                    <img src="{{asset('images/audio-disks/'.$disk->cover_photo)}}" class="img-responsive" alt=""> 
                   </section>
                 
             </div><!-- /.col-md-8 -->
@@ -30,9 +30,13 @@
                 <div class="in-panel">
                   <span class="label label-primary">
                     <strong>
-                      {{($disk->disk_type == 1)?'DVD':'VCD'}}
+                      {{($disk->disk_type == 1)?'Audio CD':'MP3'}}
                     </strong>
                   </span>
+                </div>
+                <div class="in-panel">
+                  <span class="label label-primary">Price</span> <br /><br />
+                  <strong>{{$disk->price}} /-</strong>
                 </div>
 
                 <div class="in-panel">
@@ -66,10 +70,10 @@
 
             <div class="panel-body">
                 
-                <form action="{{ action('\App\Http\Controllers\Admin\VideoDiskController@destroy', array($disk->id)) }}" method="POST" class="delete-request-form">
+                <form action="{{ action('\App\Http\Controllers\Admin\AudioDiskController@destroy', array($disk->id)) }}" method="POST" class="delete-request-form">
                 <input name="_token" value="{{ csrf_token() }}" type="hidden">
                 <input name="_method" value="DELETE" type="hidden">
-                <a href="{{ route('videodisks.edit', array($disk->id)) }}" class="btn btn-success confirm-edit">
+                <a href="{{ route('audiodisks.edit', array($disk->id)) }}" class="btn btn-success confirm-edit">
                   <i class="fa fa-pencil-square-o"></i> Edit
                 </a>
                 <button type="submit" class="btn btn-danger confirm-delete">
