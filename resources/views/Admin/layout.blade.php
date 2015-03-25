@@ -100,7 +100,7 @@
                 </li>
                 <li class="sub-menu">
                     <a href="#">
-                        <i class="fa fa-laptop"></i>
+                        <i class="fa fa-users"></i>
                         <span>Account</span>
                     </a>
                     <ul class="sub">
@@ -144,6 +144,30 @@
                         <li><a href="{{ route('audiodisks.list.type',array('acd')) }}">Audio CDs</a></li>
                         <li><a href="{{ route('audiodisks.list.type',array('mp3')) }}">MP3s</a></li>
                         <li><a href="{{ action('\App\Http\Controllers\Admin\AudioDiskController@create') }}"><i class="fa fa-plus"></i> Add Audio Disk</a></li>
+                        
+                    </ul>
+                </li>
+                <li class="sub-menu">
+                    <a href="#">
+                        <i class="fa fa-book"></i>
+                        <span>Books</span>
+                    </a>
+                    <ul class="sub">
+                        <li><a href="{{ route('books.list') }}">All Books</a></li>
+                        <li><a href="{{ route('books.list.type',array('sobg')) }}">By School</a></li>
+                        <li><a href="{{ route('books.list.type',array('other')) }}">By Others</a></li>
+                        <li><a href="{{ action('\App\Http\Controllers\Admin\BookController@create') }}"><i class="fa fa-plus"></i> Add Book</a></li>
+                        
+                    </ul>
+                </li>
+                <li class="sub-menu">
+                    <a href="#">
+                        <i class="fa fa-file"></i>
+                        <span>Magazine</span>
+                    </a>
+                    <ul class="sub">
+                        <li><a href="{{ route('magazine.list') }}">Magazine</a></li>
+                        <li><a href="{{ action('\App\Http\Controllers\Admin\MagazineController@create') }}"><i class="fa fa-plus"></i> Add New Magazine</a></li>
                         
                     </ul>
                 </li>

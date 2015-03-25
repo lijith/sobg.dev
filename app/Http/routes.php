@@ -234,6 +234,25 @@ Route::group(['prefix'=>'administrator', 'namespace' => 'Admin'], function(){
   Route::get('audiodisks/{hash}/edit', ['as' => 'audiodisks.edit', 'uses' => 'AudioDiskController@edit']);
   Route::put('audiodisks/{hash}', ['as' => 'audiodisks.update', 'uses' => 'AudioDiskController@update']);
   Route::delete('audiodisks/{hash}', ['as' => 'audiodisks.destroy', 'uses' => 'AudioDiskController@destroy']);
+  
+  //Books
+  Route::get('books/create', ['as' => 'books.create', 'uses' => 'BookController@create']);
+  Route::post('books', ['as' => 'books.store', 'uses' => 'BookController@store']);
+  Route::get('books/', ['as' => 'books.list', 'uses' => 'BookController@index']);
+  Route::get('books/type/{type}', ['as' => 'books.list.type', 'uses' => 'BookController@index']);
+  Route::get('books/{hash}', ['as' => 'books.show', 'uses' => 'BookController@show']);
+  Route::get('books/{hash}/edit', ['as' => 'books.edit', 'uses' => 'BookController@edit']);
+  Route::put('books/{hash}', ['as' => 'books.update', 'uses' => 'BookController@update']);
+  Route::delete('books/{hash}', ['as' => 'books.destroy', 'uses' => 'BookController@destroy']);
 
+  //magazine
+  Route::get('magazine/create', ['as' => 'magazine.create', 'uses' => 'MagazineController@create']);
+  Route::post('magazine', ['as' => 'magazine.store', 'uses' => 'MagazineController@store']);
+  Route::get('magazine/', ['as' => 'magazine.list', 'uses' => 'MagazineController@index']);
+  Route::get('magazine/type/{type}', ['as' => 'magazine.list.type', 'uses' => 'MagazineController@index']);
+  Route::get('magazine/{hash}', ['as' => 'magazine.show', 'uses' => 'MagazineController@show']);
+  Route::get('magazine/{hash}/edit', ['as' => 'magazine.edit', 'uses' => 'MagazineController@edit']);
+  Route::put('magazine/{hash}', ['as' => 'magazine.update', 'uses' => 'MagazineController@update']);
+  Route::delete('magazine/{hash}', ['as' => 'magazine.destroy', 'uses' => 'MagazineController@destroy']);
 });
 
