@@ -166,7 +166,7 @@
                         <span>Magazine</span>
                     </a>
                     <ul class="sub">
-                        <li><a href="{{ route('magazine.list') }}">Magazine</a></li>
+                        <li><a href="{{ route('magazines.list') }}">Magazine</a></li>
                         <li><a href="{{ action('\App\Http\Controllers\Admin\MagazineController@create') }}"><i class="fa fa-plus"></i> Add New Magazine</a></li>
                         
                     </ul>

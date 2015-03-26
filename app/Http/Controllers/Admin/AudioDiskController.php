@@ -244,20 +244,19 @@ class AudioDiskController extends Controller {
    * @return Redirect
    */
   public function destroy($hash){
+
+      $file_path = public_path().'/images/audio-disks/';
       // Decode the hashid
       $id = $this->hashids->decode($hash)[0];
       $disk = VideoDisk::find($id);
 
       $cover_photo = $disk->cover_photo;
 
-      //remove cover pictures
-      if (Input::hasFile('disk-cover-photo')){
 
-        if (File::exists($cover_photo)) {
-          File::delete($cover_photo);
-        }  
+      if (File::exists($file_path.$cover_photo)) {
+        File::delete($cover_photo);
+      }  
 
-      }
 
       $disk->delete();
       return redirect()->route('audiodisks.list',array($hash))->with('success', 'disk removed');

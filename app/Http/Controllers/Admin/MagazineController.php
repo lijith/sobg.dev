@@ -7,15 +7,15 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
 use Vinkla\Hashids\HashidsManager;
-use App\Http\Requests\Admin\BookFormRequest;
-use App\Http\Requests\Admin\BookFormUpdateRequest;
+use App\Http\Requests\Admin\MagazineFormRequest;
+use App\Http\Requests\Admin\MagazineFormUpdateRequest;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Carbon\Carbon;
 use Image;
-use App\Book;
+use App\Magazine;
 use View, Input, File;
 
-class BookController extends Controller {
+class MagazineController extends Controller {
 
 	  /**
    * constructor.
@@ -41,15 +41,15 @@ class BookController extends Controller {
   public function index($type=null) {
 
   	if($type == 'sobg'){
-  		$books = Book::orderBy('created_at', 'DESC')
+  		$books = Magazine::orderBy('created_at', 'DESC')
   		->where('published_by', '=', 1)
   		->get();
   	}elseif ($type == 'other') {
-  		$books = Book::orderBy('created_at', 'DESC')
+  		$books = Magazine::orderBy('created_at', 'DESC')
   		->where('published_by', '=', 2)
   		->get();
   	}else{
-    	$books = Book::orderBy('created_at', 'DESC')
+    	$books = Magazine::orderBy('created_at', 'DESC')
     	->get();
   	}
 
@@ -60,7 +60,7 @@ class BookController extends Controller {
       $book->published_at = $pdate->toFormattedDateString();
     }
 
-    return View::make('Admin.books.index',array('books'=>$books));
+    return View::make('Admin.magazines.index',array('books'=>$books));
   }
 
 
@@ -72,7 +72,7 @@ class BookController extends Controller {
    * @return View
    */
   public function create() {
-  	return View::make('Admin.books.create');
+  	return View::make('Admin.magazines.create');
   }
 
 
@@ -83,7 +83,7 @@ class BookController extends Controller {
    *
    * @return Redirect
    */
-  public function store(BookFormRequest $request){
+  public function store(MagazineFormRequest $request){
 
 
   	if (Input::hasFile('book-cover-photo')){
@@ -97,7 +97,7 @@ class BookController extends Controller {
 		}
 
 
-  	$book = new Book(array(
+  	$book = new Magazine(array(
   		'title' => Input::get('book-title'),
   		'price' => Input::get('book-price'),
   		'author' => Input::get('author'),
@@ -114,7 +114,7 @@ class BookController extends Controller {
 
   	$book->save();
 
-    redirect()->route('books.list')->with('success', 'book '.ucwords(Input::get('book-title')).' created');
+    redirect()->route('magazines.list')->with('success', 'book '.ucwords(Input::get('book-title')).' created');
   }
 
   /**
@@ -127,14 +127,14 @@ class BookController extends Controller {
   public function show($hash) {
     $id = $this->hashids->decode($hash)[0];
 
-    $book = Book::find($id);
+    $book = Magazine::find($id);
 
     $book->id = $this->hashids->encode($book->id);
 
     $pdate = Carbon::createFromFormat('Y-m-d H:i:s',$book->published_at);
     $book->published_at = $pdate->toFormattedDateString();
 
-    return View::make('Admin.books.show',['book' => $book]);
+    return View::make('Admin.magazines.show',['book' => $book]);
 
   }
 
@@ -148,14 +148,14 @@ class BookController extends Controller {
   public function edit($hash) { 
     $id = $this->hashids->decode($hash)[0];
 
-    $book = Book::find($id);
+    $book = Magazine::find($id);
 
     $book->id = $this->hashids->encode($book->id);
     $pdate = Carbon::createFromFormat('Y-m-d H:i:s',$book->published_at);
 
     $book->published_at = $pdate->format('m/d/Y');
 
-    return View::make('Admin.books.edit',['book' => $book]);
+    return View::make('Admin.magazines.edit',['book' => $book]);
   }
 
 
@@ -167,10 +167,10 @@ class BookController extends Controller {
    *
    * @return Redirect
    */
-  public function update(BookFormUpdateRequest $request,$hash) { 
+  public function update(MagazineFormUpdateRequest $request,$hash) { 
 
     $id = $this->hashids->decode($hash)[0];
-    $book = Book::find($id);
+    $book = Magazine::find($id);
 
     $cover_photo = $book->cover_photo;
     $thumb = $book->cover_photo_thumbnail;
@@ -197,7 +197,7 @@ class BookController extends Controller {
     $book->cover_photo_thumbnail = isset($files['thumb']) ? $files['thumb'] : $book->cover_photo_thumbnail;
 
     $book->save();
-    return redirect()->route('books.show',array($hash))->with('success', 'book '.ucwords(Input::get('book-title')).' updated');
+    return redirect()->route('magazines.show',array($hash))->with('success', 'book '.ucwords(Input::get('book-title')).' updated');
 
 
 
@@ -213,7 +213,7 @@ class BookController extends Controller {
   public function destroy($hash){
       // Decode the hashid
       $id = $this->hashids->decode($hash)[0];
-      $book = Book::find($id);
+      $book = Magazine::find($id);
 
       $file_path = public_path().'/images/books/';
 
@@ -226,7 +226,7 @@ class BookController extends Controller {
 
 
       $book->delete();
-      return redirect()->route('books.list',array($hash))->with('success', 'book removed');
+      return redirect()->route('magazines.list',array($hash))->with('success', 'book removed');
 
       
   }

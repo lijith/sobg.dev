@@ -246,13 +246,12 @@ Route::group(['prefix'=>'administrator', 'namespace' => 'Admin'], function(){
   Route::delete('books/{hash}', ['as' => 'books.destroy', 'uses' => 'BookController@destroy']);
 
   //magazine
-  Route::get('magazine/create', ['as' => 'magazine.create', 'uses' => 'MagazineController@create']);
-  Route::post('magazine', ['as' => 'magazine.store', 'uses' => 'MagazineController@store']);
-  Route::get('magazine/', ['as' => 'magazine.list', 'uses' => 'MagazineController@index']);
-  Route::get('magazine/type/{type}', ['as' => 'magazine.list.type', 'uses' => 'MagazineController@index']);
-  Route::get('magazine/{hash}', ['as' => 'magazine.show', 'uses' => 'MagazineController@show']);
-  Route::get('magazine/{hash}/edit', ['as' => 'magazine.edit', 'uses' => 'MagazineController@edit']);
-  Route::put('magazine/{hash}', ['as' => 'magazine.update', 'uses' => 'MagazineController@update']);
-  Route::delete('magazine/{hash}', ['as' => 'magazine.destroy', 'uses' => 'MagazineController@destroy']);
+  Route::get('magazine/create', ['as' => 'magazines.create', 'uses' => 'MagazineController@create']);
+  Route::post('magazine', ['as' => 'magazines.store', 'uses' => 'MagazineController@store']);
+  Route::get('magazine/', ['as' => 'magazines.list', 'uses' => 'MagazineController@index']);
+  Route::get('magazine/{hash}', ['as' => 'magazines.show', 'uses' => 'MagazineController@show']);
+  Route::get('magazine/{hash}/edit', ['as' => 'magazines.edit', 'uses' => 'MagazineController@edit']);
+  Route::put('magazine/{hash}', ['as' => 'magazines.update', 'uses' => 'MagazineController@update']);
+  Route::delete('magazine/{hash}', ['as' => 'magazines.destroy', 'uses' => 'MagazineController@destroy']);
 });
 

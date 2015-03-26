@@ -38,6 +38,13 @@
                 {{ ($errors->has('book-title') ? $errors->first('book-title') : '') }}
 
             </div>
+            <div class="form-group {{ ($errors->has('language')) ? 'has-error' : '' }}">
+                <label>Language</label>
+                <input class="form-control" placeholder="Book Language" name="language" type="text"  value="{{ Input::old('language') }}">
+                <span class="help-block">Language in which book is published</span>
+                {{ ($errors->has('language') ? $errors->first('language') : '') }}
+
+            </div>
 
             <div class="row">
                 <div class="col-md-6">
@@ -49,18 +56,18 @@
                     </div>
                 </div><!-- /.col-md-6 -->
                 <div class="col-md-6">
-                    <div class="form-group {{ ($errors->has('book-type')) ? 'has-error' : '' }}">
+                    <div class="form-group {{ ($errors->has('published-by')) ? 'has-error' : '' }}">
                         <label>Published By</label>
                         <div>
                             <label class="radio-inline">
-                              <input type="radio" name="book-type" id="dvd" value="1"
-                              {{Input::old('book-type') == '1'? 'checked' : ''}}> School
+                              <input type="radio" name="published-by" id="dvd" value="1"
+                              {{Input::old('published-by') == '1'? 'checked' : ''}}> School
                             </label>
                             <label class="radio-inline">
-                              <input type="radio" name="book-type" id="vcd" value="2"
-                              {{Input::old('book-type') == '2'? 'checked' : ''}}> Others
+                              <input type="radio" name="published-by" id="vcd" value="2"
+                              {{Input::old('published-by') == '2'? 'checked' : ''}}> Others
                             </label>
-                            {{ ($errors->has('book-type') ? $errors->first('book-type') : '') }}
+                            {{ ($errors->has('published-by') ? $errors->first('published-by') : '') }}
                         </div>
 
                     </div>
@@ -106,15 +113,6 @@
                 <span class="help-block">Some keywords</span>
                 {{ ($errors->has('keywords') ? $errors->first('keywords') : '') }}
             </div>
-
-            <div class="form-group {{ ($errors->has('sample-audio')) ? 'has-error' : '' }}">
-                <label>Upload sample audio</label>
-                <input type="file" id="sample-audio" name="sample-audio">
-                <p class="help-block">sample audio (mp3)</p>
-                {{ ($errors->has('sample-audio') ? $errors->first('sample-audio') : '') }}
-            </div>
-
-            
 
            
             <input name="_token" value="{{ csrf_token() }}" type="hidden">

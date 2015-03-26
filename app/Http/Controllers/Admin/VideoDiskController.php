@@ -216,16 +216,15 @@ class VideoDiskController extends Controller {
       $id = $this->hashids->decode($hash)[0];
       $disk = VideoDisk::find($id);
 
+      $file_path = public_path().'/images/video-disks/';
       $cover_photo = $disk->cover_photo;
 
       //remove cover pictures
-      if (Input::hasFile('disk-cover-photo')){
 
-        if (File::exists($cover_photo)) {
-          File::delete($cover_photo);
-        }  
+      if (File::exists($file_path.$cover_photo)) {
+        File::delete($cover_photo);
+      }  
 
-      }
 
       $disk->delete();
       return redirect()->route('videodisks.list',array($hash))->with('success', 'disk removed');

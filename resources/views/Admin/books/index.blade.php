@@ -30,29 +30,22 @@
 	        <table class="table table-striped table-hover">
 	          <thead>
 	              <th class="col-md-4">Title</th>
-                <th class="col-md-2">Audio CD/MP3</th>
 	              <th class="col-md-3">Price</th>
 	              <th class="col-md-3">Publish Date</th>
 	          </thead>
             <tbody>
-              @foreach($disks as $disk)
+              @foreach($books as $book)
                 <tr>
                   <td>
                     
-                    <a href="{{ action('\App\Http\Controllers\Admin\AudioDiskController@show', array($disk->id)) }}">
-                      <img src="{{asset('images/audio-disks/'.$disk->cover_photo_thumbnail)}}" alt="cover photo" class="img-responsive" />
+                    <a href="{{ action('\App\Http\Controllers\Admin\BookController@show', array($book->id)) }}">
+                      <img src="{{asset('images/books/'.$book->cover_photo_thumbnail)}}" alt="cover photo" class="img-responsive" />
                       <br />
-                      <strong>{{ucwords($disk->title)}}</strong>
+                      <strong>{{ucwords($book->title)}}</strong>
                     </a>
                   </td>
-                  <td>
-                    @if($disk->disk_type == 1) <span class="label label-primary">Audio CD</span>
-                    @elseif($disk->disk_type == 2) <span class="label label-primary">MP3</span>
-
-                    @endif
-                  </td>
-                  <td>{{$disk->price}}</td>
-                  <td>{{$disk->published_at}}</td>
+                  <td>{{$book->price}}</td>
+                  <td>{{$book->published_at}}</td>
                 </tr>
               @endforeach
             </tbody>

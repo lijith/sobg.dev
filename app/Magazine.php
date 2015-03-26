@@ -4,7 +4,7 @@ use Cviebrock\EloquentSluggable\SluggableTrait;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Book extends Model implements SluggableInterface{
+class Magazine extends Model implements SluggableInterface{
 
 	//
 	use SluggableTrait;
@@ -14,7 +14,7 @@ class Book extends Model implements SluggableInterface{
 	 *
 	 * @var string
 	 */
-	protected $table = 'books';
+	protected $table = 'magazines';
 
 	/**
 	 * The attributes that are mass assignable.
@@ -27,11 +27,9 @@ class Book extends Model implements SluggableInterface{
 		'excerpt',
 		'keywords',
 		'details',
-		'language',
     'cover_photo',
     'cover_photo_thumbnail',
     'published_at',
-    'published_by',
     'price',
     'author'
 	];
