@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Illuminate\Pagination\Paginator;
 
 use Vinkla\Hashids\HashidsManager;
 use App\Http\Requests\Admin\MagazineFormRequest;
@@ -17,261 +18,261 @@ use View, Input, File;
 
 class MagazineController extends Controller {
 
-	  /**
-   * constructor.
-   *
-   * @param  void
-   *
-   * @return void
-   */
-  public function __construct(HashidsManager $hashids) {
 
-    $this->hashids = $hashids;
-  	// You must have admin access to proceed
-    $this->middleware('sentry.admin');
-  }
+	//cover files directory
 
-  /**
-   * List all the books in desc order of creation.
-   *
-   * @param  void
-   *
-   * @return View
-   */
-  public function index($type=null) {
+	private  $_cover_file_path; 
+	private  $_magazine_file_path; 
 
-  	if($type == 'sobg'){
-  		$books = Magazine::orderBy('created_at', 'DESC')
-  		->where('published_by', '=', 1)
-  		->get();
-  	}elseif ($type == 'other') {
-  		$books = Magazine::orderBy('created_at', 'DESC')
-  		->where('published_by', '=', 2)
-  		->get();
-  	}else{
-    	$books = Magazine::orderBy('created_at', 'DESC')
-    	->get();
-  	}
+		/**
+	 * constructor.
+	 *
+	 * @param  void
+	 *
+	 * @return void
+	 */
+	public function __construct(HashidsManager $hashids) {
 
-    foreach ($books as $book) {
-      $book->id = $this->hashids->encode($book->id);
-      $pdate = Carbon::createFromFormat('Y-m-d H:i:s',$book->published_at);
+		$this->hashids = $hashids;
+		// You must have admin access to proceed
+		$this->middleware('sentry.admin');
 
-      $book->published_at = $pdate->toFormattedDateString();
-    }
+		$this->_cover_file_path = public_path().'/images/magazines/';
+		$this->_magazine_file_path = public_path().'/magazines-pdf/';
+	}
 
-    return View::make('Admin.magazines.index',array('books'=>$books));
-  }
+	/**
+	 * List all the magazines in desc order of creation.
+	 *
+	 * @param  void
+	 *
+	 * @return View
+	 */
+	public function index() {
 
 
-  /**
-   * Create an book.
-   *
-   * @param  void
-   *
-   * @return View
-   */
-  public function create() {
-  	return View::make('Admin.magazines.create');
-  }
+		$magazines = Magazine::orderBy('created_at', 'DESC')
+		->paginate(3);
 
+		foreach ($magazines as $magazine) {
+			$magazine->id = $this->hashids->encode($magazine->id);
+			$pdate = Carbon::createFromFormat('Y-m-d H:i:s',$magazine->published_at);
 
-  /**
-   * save book to database.
-   *
-   * @param  none
-   *
-   * @return Redirect
-   */
-  public function store(MagazineFormRequest $request){
-
-
-  	if (Input::hasFile('book-cover-photo')){
-      $files = $this->handleImages();
+			$magazine->published_at = $pdate->toFormattedDateString();
 		}
 
-		if (!Input::has('published-by')){
-    	$published_by = 1;
-		}else{
-			$published_by = Input::get('published-by');
+		return View::make('Admin.magazines.index',array('magazines'=>$magazines));
+	}
+
+
+	/**
+	 * Create an magazine.
+	 *
+	 * @param  void
+	 *
+	 * @return View
+	 */
+	public function create() {
+		return View::make('Admin.magazines.create');
+	}
+
+
+	/**
+	 * save magazine to database.
+	 *
+	 * @param  none
+	 *
+	 * @return Redirect
+	 */
+	public function store(MagazineFormRequest $request){
+
+
+		if (Input::hasFile('magazine-cover-photo')){
+			$files = $this->handleImages();
 		}
 
+		if (Input::hasFile('magazine-file')){
 
-  	$book = new Magazine(array(
-  		'title' => Input::get('book-title'),
-  		'price' => Input::get('book-price'),
-  		'author' => Input::get('author'),
-  		'excerpt' => Input::get('excerpt'),
-  		'keywords' => Input::get('keywords'),
-  		'details' => Input::get('details'),
-      'language' => Input::get('language'),
-  		'published_by' => $published_by,
-  		'published_at' => Carbon::createFromFormat('m/d/Y', Input::get('publish-date')),
-  		'cover_photo' => $files['filename'],
-      'cover_photo_thumbnail' => $files['thumb'],
-  	));
+			$upload_file = Input::file('magazine-file');
 
+			$files_save_name = Str::slug(Input::get('magazine-title')).'-'.time().'.'.$upload_file->getClientOriginalExtension();
 
-  	$book->save();
+			$upload_file->move($this->_magazine_file_path,$this->_magazine_file_path.$files_save_name);
 
-    redirect()->route('magazines.list')->with('success', 'book '.ucwords(Input::get('book-title')).' created');
-  }
+		}
 
-  /**
-   * Show the book.
-   *
-   * @param  string $hash
-   *
-   * @return View
-   */
-  public function show($hash) {
-    $id = $this->hashids->decode($hash)[0];
-
-    $book = Magazine::find($id);
-
-    $book->id = $this->hashids->encode($book->id);
-
-    $pdate = Carbon::createFromFormat('Y-m-d H:i:s',$book->published_at);
-    $book->published_at = $pdate->toFormattedDateString();
-
-    return View::make('Admin.magazines.show',['book' => $book]);
-
-  }
-
-  /**
-   * Edit a book.
-   *
-   * @param  string $hash
-   *
-   * @return View
-   */
-  public function edit($hash) { 
-    $id = $this->hashids->decode($hash)[0];
-
-    $book = Magazine::find($id);
-
-    $book->id = $this->hashids->encode($book->id);
-    $pdate = Carbon::createFromFormat('Y-m-d H:i:s',$book->published_at);
-
-    $book->published_at = $pdate->format('m/d/Y');
-
-    return View::make('Admin.magazines.edit',['book' => $book]);
-  }
+		$magazine = new Magazine(array(
+			'title' => Input::get('magazine-title'),
+			'price' => Input::get('magazine-price'),
+			'excerpt' => Input::get('excerpt'),
+			'keywords' => Input::get('keywords'),
+			'details' => Input::get('details'),
+			'magazine_file' => $files_save_name,
+			'published_at' => Carbon::createFromFormat('m/d/Y', Input::get('publish-date')),
+			'cover_photo' => $files['filename'],
+			'cover_photo_thumbnail' => $files['thumb']
+		));
 
 
+		$magazine->save();
 
-  /**
-   * Update the book.
-   *
-   * @param  string $hash
-   *
-   * @return Redirect
-   */
-  public function update(MagazineFormUpdateRequest $request,$hash) { 
+		return redirect()->route('magazines.list')->with('success', 'Magazine '.ucwords(Input::get('magazine-title')).' created');
+	}
 
-    $id = $this->hashids->decode($hash)[0];
-    $book = Magazine::find($id);
+	/**
+	 * Show the magazine.
+	 *
+	 * @param  string $hash
+	 *
+	 * @return View
+	 */
+	public function show($hash) {
+		$id = $this->hashids->decode($hash)[0];
 
-    $cover_photo = $book->cover_photo;
-    $thumb = $book->cover_photo_thumbnail;
+		$magazine = Magazine::find($id);
 
-    if (Input::hasFile('book-cover-photo')){
+		$magazine->id = $this->hashids->encode($magazine->id);
 
-      if (File::exists($cover_photo)) {
-        File::delete($cover_photo);
-      }  
+		$pdate = Carbon::createFromFormat('Y-m-d H:i:s',$magazine->published_at);
+		$magazine->published_at = $pdate->toFormattedDateString();
 
-      $files = $this->handleImages();
+		return View::make('Admin.magazines.show',['magazine' => $magazine]);
 
-    }
+	}
 
-    $book->title = Input::get('book-title');
-    $book->price = Input::get('book-price');
-    $book->author = Input::get('author');
-    $book->excerpt = Input::get('excerpt');
-    $book->keywords = Input::get('keywords');
-    $book->details = Input::get('details');
-    $book->published_by = Input::get('published-by');
-    $book->published_at = Carbon::createFromFormat('m/d/Y', Input::get('publish-date'));
-    $book->cover_photo = isset($files['filename']) ? $files['filename'] : $book->cover_photo;
-    $book->cover_photo_thumbnail = isset($files['thumb']) ? $files['thumb'] : $book->cover_photo_thumbnail;
+	/**
+	 * Edit a magazine.
+	 *
+	 * @param  string $hash
+	 *
+	 * @return View
+	 */
+	public function edit($hash) { 
+		$id = $this->hashids->decode($hash)[0];
 
-    $book->save();
-    return redirect()->route('magazines.show',array($hash))->with('success', 'book '.ucwords(Input::get('book-title')).' updated');
+		$magazine = Magazine::find($id);
+
+		$magazine->id = $this->hashids->encode($magazine->id);
+		$pdate = Carbon::createFromFormat('Y-m-d H:i:s',$magazine->published_at);
+
+		$magazine->published_at = $pdate->format('m/d/Y');
+
+		return View::make('Admin.magazines.edit',['magazine' => $magazine]);
+	}
 
 
 
-  }
+	/**
+	 * Update the magazine.
+	 *
+	 * @param  string $hash
+	 *
+	 * @return Redirect
+	 */
+	public function update(MagazineFormUpdateRequest $request,$hash) { 
 
-  /**
-   * Remove the book.
-   *
-   * @param  string $hash
-   *
-   * @return Redirect
-   */
-  public function destroy($hash){
-      // Decode the hashid
-      $id = $this->hashids->decode($hash)[0];
-      $book = Magazine::find($id);
+		$id = $this->hashids->decode($hash)[0];
+		$magazine = Magazine::find($id);
 
-      $file_path = public_path().'/images/books/';
+		$cover_photo = $magazine->cover_photo;
+		$thumb = $magazine->cover_photo_thumbnail;
 
-      $cover_photo = $file_path.$book->cover_photo;
+		if (Input::hasFile('magazine-cover-photo')){
+
+			if (File::exists($cover_photo)) {
+				File::delete($cover_photo);
+			}  
+
+			$files = $this->handleImages();
+
+		}
+
+		$magazine->title = Input::get('magazine-title');
+		$magazine->price = Input::get('magazine-price');
+		$magazine->author = Input::get('author');
+		$magazine->excerpt = Input::get('excerpt');
+		$magazine->keywords = Input::get('keywords');
+		$magazine->details = Input::get('details');
+		$magazine->published_by = Input::get('published-by');
+		$magazine->published_at = Carbon::createFromFormat('m/d/Y', Input::get('publish-date'));
+		$magazine->cover_photo = isset($files['filename']) ? $files['filename'] : $magazine->cover_photo;
+		$magazine->cover_photo_thumbnail = isset($files['thumb']) ? $files['thumb'] : $magazine->cover_photo_thumbnail;
+
+		$magazine->save();
+		return redirect()->route('magazines.show',array($hash))->with('success', 'magazine '.ucwords(Input::get('magazine-title')).' updated');
 
 
-        if (File::exists($cover_photo)) {
-          File::delete($cover_photo);
-        }  
+
+	}
+
+	/**
+	 * Remove the magazine.
+	 *
+	 * @param  string $hash
+	 *
+	 * @return Redirect
+	 */
+	public function destroy($hash){
+			// Decode the hashid
+			$id = $this->hashids->decode($hash)[0];
+			$magazine = Magazine::find($id);
+
+			$file_path = public_path().'/images/magazines/';
+
+			$cover_photo = $file_path.$magazine->cover_photo;
 
 
-      $book->delete();
-      return redirect()->route('magazines.list',array($hash))->with('success', 'book removed');
+				if (File::exists($cover_photo)) {
+					File::delete($cover_photo);
+				}  
 
-      
-  }
 
-  /**
-   * resize and generate thumb of uploaded image
-   *
-   * @param  void
-   * 
-   * @return array
-   **/
-  private function handleImages(){
+			$magazine->delete();
+			return redirect()->route('magazines.list',array($hash))->with('success', 'magazine removed');
 
-    $upload_to_dir = public_path().'/images/books/';
-    $files_save_name = Str::slug(Input::get('book-title')).'-'.time();
+			
+	}
 
-    $cover_photo = Input::file('book-cover-photo');
-    $file_ext = $cover_photo->getClientOriginalExtension();
+	/**
+	 * resize and generate thumb of uploaded image
+	 *
+	 * @param  void
+	 * 
+	 * @return array
+	 **/
+	private function handleImages(){
 
-    $save_file_name = $files_save_name.'.'.$file_ext;
+		$files_save_name = Str::slug(Input::get('magazine-title')).'-'.time();
 
-    $save_file_name_thumb = $files_save_name.'_thumb.'.$file_ext;
+		$cover_photo = Input::file('magazine-cover-photo');
+		$file_ext = $cover_photo->getClientOriginalExtension();
 
-    $cover_photo->move($upload_to_dir,$save_file_name);
+		$save_file_name = $files_save_name.'.'.$file_ext;
 
-    $rez_image = Image::make($upload_to_dir.$save_file_name); 
-    $rez_image->resize(1280, null, function ($constraint) {
-        $constraint->aspectRatio();
-        $constraint->upsize();
-    });
-    $rez_image->save(); 
+		$save_file_name_thumb = $files_save_name.'_thumb.'.$file_ext;
 
-    $thumb_img = Image::make($upload_to_dir.$save_file_name);
+		$cover_photo->move($this->_cover_file_path,$save_file_name);
 
-    $thumb_img->resize(450, 290, function ($constraint) {
-      $constraint->aspectRatio();
-      $constraint->upsize();
-    });
-    $thumb_img->save($upload_to_dir.$save_file_name_thumb);
+		$rez_image = Image::make($this->_cover_file_path.$save_file_name); 
+		$rez_image->resize(500, null, function ($constraint) {
+				$constraint->aspectRatio();
+				$constraint->upsize();
+		});
+		$rez_image->save(); 
 
-    return array(
-      'filename' => $save_file_name,
-      'thumb' => $save_file_name_thumb
-    );
+		$thumb_img = Image::make($this->_cover_file_path.$save_file_name);
 
-  }
+		$thumb_img->resize(250, 250, function ($constraint) {
+			$constraint->aspectRatio();
+			$constraint->upsize();
+		});
+		$thumb_img->save($this->_cover_file_path.$save_file_name_thumb);
+
+		return array(
+			'filename' => $save_file_name,
+			'thumb' => $save_file_name_thumb
+		);
+
+	}
 
 }

@@ -130,7 +130,7 @@ class AudioDiskController extends Controller {
 
   	$disk->save();
 
-    redirect()->route('audiodisks.list')->with('success', 'disk '.ucwords(Input::get('disk-title')).' created');
+    return redirect()->route('audiodisks.list')->with('success', 'disk '.ucwords(Input::get('disk-title')).' created');
   }
 
   /**

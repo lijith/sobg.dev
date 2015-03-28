@@ -16,6 +16,7 @@ class CreateMagazineTable extends Migration {
 		{
       $table->increments('id');
       $table->string('title');
+      $table->string('magazine_file');
       $table->integer('price');
       $table->string('slug')->unique();
       $table->text('excerpt');

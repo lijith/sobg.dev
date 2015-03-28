@@ -108,13 +108,13 @@ class BookController extends Controller {
   		'published_by' => $published_by,
   		'published_at' => Carbon::createFromFormat('m/d/Y', Input::get('publish-date')),
   		'cover_photo' => $files['filename'],
-      'cover_photo_thumbnail' => $files['thumb'],
+      'cover_photo_thumbnail' => $files['thumb']
   	));
 
 
   	$book->save();
 
-    redirect()->route('books.list')->with('success', 'book '.ucwords(Input::get('book-title')).' created');
+    return redirect()->route('books.list')->with('success', 'book '.ucwords(Input::get('book-title')).' created');
   }
 
   /**

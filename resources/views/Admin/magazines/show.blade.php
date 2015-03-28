@@ -3,7 +3,7 @@
 {{-- Page Title --}}
 @section('title')
 @parent
-	{{ucwords($disk->title)}}
+	{{ucwords($magazine->title)}}
 @stop
 
 
@@ -13,7 +13,7 @@
 	<div class="col-md-8 col-md-offset-2">
     <section class="panel">
       <header class="panel-heading">
-          {{ucwords($disk->title)}}
+          {{ucwords($magazine->title)}}
       </header>
       <div class="panel-body">
 
@@ -22,31 +22,23 @@
 
                 <section class="in-panel">
                     <span class="label label-primary">Cover</span> <br /><br />
-                    <img src="{{asset('images/audio-disks/'.$disk->cover_photo)}}" class="img-responsive" alt=""> 
+                    <img src="{{asset('images/magazines/'.$magazine->cover_photo)}}" class="img-responsive" alt=""> 
                   </section>
                 
             </div><!-- /.col-md-8 -->
             <div class="col-md-6">
-                <div class="in-panel">
-                  <span class="label label-primary">
-                    <strong>
-                      {{($disk->disk_type == 1)?'Audio CD':'MP3'}}
-                    </strong>
-                  </span>
-                </div>
+                
                 <div class="in-panel">
                   <span class="label label-primary">Price</span> <br /><br />
-                  <strong>{{$disk->price}} /-</strong>
+                  <strong>{{$magazine->price}} /-</strong>
                 </div>
 
                 <div class="in-panel">
-                  <span class="label label-primary">Author</span> <br /><br />
-                  <strong>{{$disk->author}}</strong>
+                  <span class="label label-primary"><strong>{{$magazine->published_at}}</strong> Edition</span>
                 </div>
 
                 <div class="in-panel">
-                  <span class="label label-primary">Publish Date</span> <br /><br />
-                  From <strong>{{$disk->published_at}}</strong>
+                  <a href="{{asset('magazines-pdf/'.$magazine->magazine_file)}}" target="_blank">{{$magazine->magazine_file}}</a>
                 </div>
                  
 
@@ -59,21 +51,21 @@
 
 
             <section class="in-panel">
-                <span class="label label-primary">Disk Detail</span> <br /><br />
-                {!!$disk->details!!}
+                <span class="label label-primary">Detail</span> <br /><br />
+                {!!$magazine->details!!}
             </section>
 
             <section class="in-panel">
                 <span class="label label-primary">Excerpt</span> <br /><br />
-                 <i>{{$disk->excerpt}}</i>
+                 <i>{{$magazine->excerpt}}</i>
             </section>
 
             <div class="panel-body">
                 
-                <form action="{{ action('\App\Http\Controllers\Admin\AudioDiskController@destroy', array($disk->id)) }}" method="POST" class="delete-request-form">
+                <form action="{{ action('\App\Http\Controllers\Admin\MagazineController@destroy', array($magazine->id)) }}" method="POST" class="delete-request-form">
                 <input name="_token" value="{{ csrf_token() }}" type="hidden">
                 <input name="_method" value="DELETE" type="hidden">
-                <a href="{{ route('audiodisks.edit', array($disk->id)) }}" class="btn btn-success confirm-edit">
+                <a href="{{ route('magazines.edit', array($magazine->id)) }}" class="btn btn-success confirm-edit">
                   <i class="fa fa-pencil-square-o"></i> Edit
                 </a>
                 <button type="submit" class="btn btn-danger confirm-delete">

@@ -29,6 +29,7 @@ class Magazine extends Model implements SluggableInterface{
 		'details',
     'cover_photo',
     'cover_photo_thumbnail',
+    'magazine_file',
     'published_at',
     'price',
     'author'

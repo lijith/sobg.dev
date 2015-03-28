@@ -24,15 +24,21 @@
 	        <form method="POST" action="{{ route('magazines.store') }}" accept-charset="UTF-8" enctype="multipart/form-data">
 
             <div class="form-group {{ ($errors->has('magazine-cover-photo')) ? 'has-error' : '' }}">
-                <label>Disk Cover Photo</label>
+                <label>Magazine Cover Photo</label>
                 <input type="file" id="magazine-cover-photo" name="magazine-cover-photo">
-                <p class="help-block">Cover photo of disk(jpg, png files only)</p>
+                <p class="help-block">Cover photo of magazine(jpg, png files only)</p>
                 {{ ($errors->has('magazine-cover-photo') ? $errors->first('magazine-cover-photo') : '') }}
             </div>
             <hr />
+            <div class="form-group {{ ($errors->has('magazine-file')) ? 'has-error' : '' }}">
+                <label>Magazine File</label>
+                <input type="file" id="magazine-file" name="magazine-file">
+                <p class="help-block">Magazine file(pdf only)</p>
+                {{ ($errors->has('magazine-file') ? $errors->first('magazine-file') : '') }}
+            </div>
 
             <div class="form-group {{ ($errors->has('magazine-title')) ? 'has-error' : '' }}">
-                <label>Disk Title</label>
+                <label>Magazine Title</label>
                 <input class="form-control" placeholder="Event Title" name="magazine-title" type="text"  value="{{ Input::old('magazine-title') }}">
                 <span class="help-block">Avoid special characters in title(eg piravi aug 2015)</span>
                 {{ ($errors->has('magazine-title') ? $errors->first('magazine-title') : '') }}
@@ -40,6 +46,13 @@
             </div>
 
             <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group {{ ($errors->has('publish-date')) ? 'has-error' : '' }}">
+                         <label>Published on</label>
+                        <input class="form-control" placeholder="" name="publish-date" type="text"  value="{{ Input::old('publish-date') }}" id="publish-date">
+                        {{ ($errors->has('publish-date') ? $errors->first('publish-date') : '') }}
+                    </div>
+                </div><!-- /.col-md-6 -->
                 <div class="col-md-6">
                     <div class="form-group {{ ($errors->has('magazine-price')) ? 'has-error' : '' }}">
                         <label>Price</label>
@@ -51,18 +64,6 @@
                 
             </div><!-- /.row -->
 
-           
-
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="form-group {{ ($errors->has('publish-date')) ? 'has-error' : '' }}">
-                         <label>Published on</label>
-                        <input class="form-control" placeholder="" name="publish-date" type="text"  value="{{ Input::old('publish-date') }}" id="publish-date">
-                        {{ ($errors->has('publish-date') ? $errors->first('publish-date') : '') }}
-                    </div>
-                </div><!-- /.col-md-6 -->
-                
-            </div><!-- /.row -->
 
             <div class="form-group {{ ($errors->has('details')) ? 'has-error' : '' }}">
                 <label>Edition Detail</label>

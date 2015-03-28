@@ -113,7 +113,7 @@ class VideoDiskController extends Controller {
 
   	$disk->save();
 
-    redirect()->route('videodisks.list')->with('success', 'disk '.ucwords(Input::get('disk-title')).' created');
+    return redirect()->route('videodisks.list')->with('success', 'disk '.ucwords(Input::get('disk-title')).' created');
   }
 
   /**

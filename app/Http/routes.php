@@ -144,7 +144,7 @@ Route::get('donate-support',['as' => 'donate', 'uses' => 'donateController@index
 |	contact us
 |
 */
-Route::get('bhavishya',['as' => 'bhavishya', 'uses' => 'Bhavishya@index']);
+//Route::get('bhavishya',['as' => 'bhavishya', 'uses' => 'Bhavishya@index']);
 
 
 
