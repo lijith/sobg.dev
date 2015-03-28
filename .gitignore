@@ -1,3 +1,9 @@
 /vendor
 /node_modules
+/public/magazines-pdf/*
+/public/audio-disks/*
+/public/books/*
+/public/events/*
+/public/magazines/*
+/public/video-disks/*
 .env
