@@ -65,19 +65,9 @@ Route::group(['prefix' => 'courses-and-retreats'],function(){
 |	publications listing
 |
 */
-Route::group(['prefix' => 'publications'],function(){
-	Route::get('/',['as' => 'publications', 'uses' => 'PublicationsController@index']);
-	Route::group(['prefix' => 'cds-dvds'],function(){
-		Route::get('dvds',['as' => 'dvd', 'uses' => 'PublicationsController@dvdList']);
-		Route::get('mp3',['as' => 'mp3', 'uses' => 'PublicationsController@mp3List']);
-		Route::get('audio-cds',['as' => 'acd', 'uses' => 'PublicationsController@audioList']);
-	});
-	Route::group(['prefix' => 'books'],function(){
-		Route::get('books-by-swami',['as' => 'swamibooks', 'uses' => 'PublicationsController@booksBySwami']);
-		Route::get('other-titles',['as' => 'otherbooks', 'uses' => 'PublicationsController@otherTitles']);
-	});
-	Route::get('piravi-magazine',['as' => 'piravi', 'uses' => 'PublicationsController@piravi']);
-});
+// Route::group(['prefix' => 'publications'],function(){
+// 	Route::get('/',['as' => 'publications', 'uses' => 'PublicationsController@index']);
+// });
 
 /*
 |
@@ -120,10 +110,36 @@ Route::get('donate-support',['as' => 'donate', 'uses' => 'donateController@index
 |	e-shop
 |
 */
-// Route::group(['prefix' => 'e-shop'],function(){
-// 	Route::get('/',['as' => 'eshop', 'uses' => 'PublicationsController@index']);
-// 	Route::get('cart',['as' => 'cart', 'uses' => 'ShoppingCart@index']);
-// });
+Route::group(['prefix' => 'e-shop'],function(){
+	Route::get('/',['as' => 'eshop', 'uses' => 'EshopController@index']);
+	Route::get('vcds',['as' => 'vcd', 'uses' => 'EshopController@vcdList']);
+	Route::get('vcds/{title}',['as' => 'vcd.show', 'uses' => 'EshopController@dvdList']);
+	Route::get('dvds',['as' => 'dvd', 'uses' => 'EshopController@dvdList']);
+	Route::get('dvds/{title}',['as' => 'dvd.show', 'uses' => 'EshopController@dvdShow']);
+	Route::get('mp3',['as' => 'mp3', 'uses' => 'EshopController@mp3List']);
+	Route::get('mp3/{title}',['as' => 'mp3.show', 'uses' => 'EshopController@mp3List']);
+	Route::get('audio-cds',['as' => 'acd', 'uses' => 'EshopController@audioList']);
+	Route::get('audio-cds/{title}',['as' => 'acd.show', 'uses' => 'EshopController@audioList']);
+	Route::group(['prefix' => 'books'],function(){
+		Route::get('/',['as' => 'books', 'uses' => 'EshopController@index']);
+		Route::get('/{title}',['as' => 'book.show', 'uses' => 'EshopController@index']);
+		Route::get('books-by-swami',['as' => 'swamibooks', 'uses' => 'EshopController@booksBySwami']);
+		Route::get('other-titles',['as' => 'otherbooks', 'uses' => 'EshopController@otherTitles']);
+	});
+	Route::get('piravi-magazine',['as' => 'piravi', 'uses' => 'EshopController@piravi']);
+	Route::get('piravi-magazine/{title}',['as' => 'magazine.show', 'uses' => 'EshopController@piravi']);
+});
+
+/*
+|
+|	Cart
+|
+*/
+
+Route::group(['prefix' => 'cart'],function(){
+	Route::get('/',['as' => 'cart', 'uses' => 'ShoppingCartController@index']);
+	Route::post('/',['as' => 'cart.add', 'uses' => 'ShoppingCartController@add']);
+});
 
 /*
 |
@@ -144,7 +160,7 @@ Route::get('donate-support',['as' => 'donate', 'uses' => 'donateController@index
 |	contact us
 |
 */
-//Route::get('bhavishya',['as' => 'bhavishya', 'uses' => 'Bhavishya@index']);
+Route::get('bhavishya',['as' => 'bhavishya', 'uses' => 'Bhavishya@index']);
 
 
 

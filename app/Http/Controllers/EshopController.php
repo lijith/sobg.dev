@@ -3,14 +3,19 @@
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+use Vinkla\Hashids\Facades\Hashids;
+
 use Illuminate\Http\Request;
-use AudioDisk;
-use VideoDisk;
-use Magazine;
-use Book;
+
+use App\AudioDisk;
+use App\VideoDisk;
+use App\Magazine;
+use App\Book;
+
+use Cart;
 
 
-class PublicationsController extends Controller {
+class EshopController extends Controller {
 
 	/*
 	|--------------------------------------------------------------------------
@@ -43,16 +48,16 @@ class PublicationsController extends Controller {
 		$this->page_data['description'] = '';
 		$this->page_data['sub_page_active'] = 'publications';
 
-		$video_disks = VideoDisk::take(4)
+		$this->page_data['video_disks'] = VideoDisk::take(4)
 		->get();
 
-		$audio_disks = AudioDisk::take(4)
+		$this->page_data['audio_disks'] = AudioDisk::take(4)
 		->get();
 
-		$books = Book::take(4)
+		$this->page_data['books'] = Book::take(4)
 		->get();
 
-		$magazines = Magazine::take(4)
+		$this->page_data['magazines'] = Magazine::take(4)
 		->get();
 
 		return view('eshop')->with($this->page_data);
@@ -68,6 +73,30 @@ class PublicationsController extends Controller {
 		$this->page_data['description'] = '';
 		$this->page_data['sub_page_active'] = 'dvd';
 		return view('home')->with($this->page_data);
+	}
+
+	/**
+	 * Show dvd info.
+	 *
+	 * @return Response
+	 */
+	public function dvdShow($slug){
+		$disk = VideoDisk::where('slug','=',$slug)->first();
+
+		$disk->id = Hashids::connection('video')->encode($disk->id);
+
+		$this->page_data['title'] = ucwords($disk->title);
+		$this->page_data['description'] = $disk->excerpt;
+		$this->page_data['sub_page_active'] = 'dvd';
+		$this->page_data['keywords'] = $disk->keywords;
+		$this->page_data['disk'] = $disk;
+		$this->page_data['side_cart'] = Cart::content()->toArray();
+
+
+		//var_dump(Cart::content()->toArray());
+
+
+		return view('eshop-item-video-disk')->with($this->page_data);
 	}
 
 	/**

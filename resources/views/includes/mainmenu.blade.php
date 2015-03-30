@@ -45,7 +45,7 @@
 		</li>
 		<span class="separator">|</span>
 		<li class="vcenter @if($top_level_page == 'publications') select @endif">
-			<a class="vcenter" href="{{route('publications')}}"><span>Publications</span></a>
+			<a class="vcenter" href="#"><span>Publications</span></a>
 			<ul>
 				<li>
 					<a href="#">CDs/DVDs</a>

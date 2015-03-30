@@ -34,11 +34,25 @@ return [
             'alphabet' => 'abcdefghijklmnopqrstuvwxyz1234567890'
         ],
 
-        'alternative' => [
-            'salt' => 'your-salt-string',
-            'length' => 'your-length-integer',
-            'alphabet' => 'your-alphabet-string'
+        'video' => [
+            'salt' => 'REyUxDUiTEjlSqUBCRMXidLbuCLITJMoaehUoHmKrrZfeiXvaicKHBuUJjngTYzq',
+            'length' => 6,
+            'alphabet' => 'abcdefghijklmnopqrstuvwxyz1234567890'
         ],
+
+
+        'audio' => [
+            'salt' => 'nhdjUWXWPhPpJEhsBkdYhMmcCTuWMbHrzeAIolqOlbhURCgNVJJNeLUvPrBTULsk',
+            'length' => 6,
+            'alphabet' => 'abcdefghijklmnopqrstuvwxyz1234567890'
+        ],
+
+
+        'book' => [
+            'salt' => 'ahuSgpwPAwAIVRHuuomaydUzuLHFVdoumAgXpdFaekrwYSLeSOBMiNqJdZTjipCm',
+            'length' => 6,
+            'alphabet' => 'abcdefghijklmnopqrstuvwxyz1234567890'
+        ]
 
     ]
 

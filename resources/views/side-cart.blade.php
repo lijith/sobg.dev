@@ -3,13 +3,17 @@
 	<div class="shadow">
 		<div class="cart-wrap">
 			<h3 class="sec-title"><i class="fa fa-shopping-cart"></i> Cart</h3><!-- /.sec-title -->
+
+			<?php $count = 0; ?>
+
+			@foreach($side_cart as $item)
 			<div class="items-wrap clearfix">
 
 				<div class="sl-no">
-					1
+					{{$count}}
 				</div><!-- /.sl-no -->
 				<div class="item-name">
-					<a href="#">Daiva Dashakam</a>
+					<a href="#">{{$item['']}}</a>
 				</div><!-- /.item-name -->
 				<div class="price">
 					Rs 250/-
@@ -18,6 +22,8 @@
 					<button><i class="fa fa-trash-can"></i></button>
 				</div><!-- /.cart-action -->
 			</div><!-- /.items-wrap -->
+			<?php $count++; ?>
+			@endforeach
 
 			<div class="items-wrap clearfix">
 

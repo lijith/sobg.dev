@@ -47,18 +47,18 @@
 								<div class="header-top-links">
 									<ul class="clean_list vcenter">
 										<li class="">
-											<a href="http://creativequb.com/projects/sobg.dev/eshop">
+											<a href="{{route('eshop')}}">
 											<i class="fa fa-shopping-cart"></i> e-shop
 											</a>
 										</li><!-- /. -->
 										<span class="separator">|</span>
 										<li class="">
-											<a href="http://creativequb.com/projects/sobg.dev/gita-family">
+											<a href="#gita-family">
 											<i class="fa fa-users"></i> Gita Family</a>
 										</li><!-- /.vcenter -->
 										<span class="separator">|</span>
 										<li class="">
-											<a href="http://creativequb.com/projects/sobg.dev/contact">
+											<a href="#contact">
 											<i class="fa fa-envelope"></i> Contact Us</a>
 										</li><!-- /. -->
 									</ul><!-- /.clean_list  -->

@@ -6,7 +6,7 @@
 <div class="row">
 
 	<div class="col-md-8 col-md-push-4">
-		<h1 class="col-heading">Audio CDs/MP3s</h1>
+		<h1 class="col-heading">E-Shop</h1>
 		<div class="split_30"></div><!-- /.split_30 -->
 		<div class="search-titles clearfix">
 			<form action="">
@@ -20,87 +20,83 @@
 		</div><!-- /.search-titles -->
 		<div class="split_30"></div><!-- /.split_30 -->
 
-		<div class="pub-items-row">
-			<div class="pub-item">
-				<div class="wrap">
-					<div class="pub-image">
-						<img src="images/publications/bhramanjanavalimala.jpg" alt="" />
-					</div><!-- /.pub-image -->
-					<div class="pub-title"><a href="">Bhraman Janavalimala</a></div><!-- /.pub-title -->
-				</div><!-- /.wrap -->
-			</div><!-- /.pub-item -->
+		<div class="items-category">
+			<h2 class="col-heading">Latest DVDs/VCDs</h2>
+			<div class="pub-items-row">
 
-			<div class="pub-item">
-				<div class="wrap">
-					<div class="pub-image">
-						<img src="images/publications/mandookkyam_dvd-200.jpg" alt="" />
-					</div><!-- /.pub-image -->
-					<div class="pub-title"><a href="">Mandookkyam</a></div><!-- /.pub-title -->
-					</div><!-- /.wrap -->
-			</div><!-- /.pub-item -->
-			
+				@foreach($video_disks as $vdisk)
+					<div class="pub-item">
+						<div class="wrap">
+							<div class="pub-image">
+								<img src="{{asset('images/video-disks/'.$vdisk->cover_photo_thumbnail)}}" alt="" />
+							</div><!-- /.pub-image -->
+							<div class="pub-title"><a href="{{route('dvd.show',array($vdisk->slug))}}">{{$vdisk->title}}</a></div><!-- /.pub-title -->
+						</div><!-- /.wrap -->
+					</div><!-- /.pub-item -->
+				@endforeach
 
-			<div class="pub-item">
-				<div class="wrap">
-					<div class="pub-image">
-						<img src="images/publications/bhramanjanavalimala.jpg" alt="" />
-					</div><!-- /.pub-image -->
-					<div class="pub-title"><a href="">Bhraman Janavalimala</a></div><!-- /.pub-title -->
-				</div><!-- /.wrap -->
-			</div><!-- /.pub-item -->
+			</div><!-- /.pub-items-row -->
+			<div class="more-ebook-items">more</div><!-- /.more-ebook-items -->
+		</div><!-- /.items-category -->
 
-			<div class="pub-item">
-				<div class="wrap">
-					<div class="pub-image">
-						<img src="images/publications/mandookkyam_dvd-200.jpg" alt="" />
-					</div><!-- /.pub-image -->
-					<div class="pub-title"><a href="">Mandookkyam</a></div><!-- /.pub-title -->
-					</div><!-- /.wrap -->
-			</div><!-- /.pub-item -->
-		
-		
-		</div><!-- /.pub-items-row -->
 
-		<div class="pub-items-row">
-			<div class="pub-item">
-				<div class="wrap">
-					<div class="pub-image">
-						<img src="images/publications/bhramanjanavalimala.jpg" alt="" />
-					</div><!-- /.pub-image -->
-					<div class="pub-title"><a href="">Bhraman Janavalimala</a></div><!-- /.pub-title -->
-				</div><!-- /.wrap -->
-			</div><!-- /.pub-item -->
+		<div class="items-category">
+			<h2 class="col-heading">Latest Audio CDs/MP3s</h2>
+			<div class="pub-items-row">
 
-			<div class="pub-item">
-				<div class="wrap">
-					<div class="pub-image">
-						<img src="images/publications/mandookkyam_dvd-200.jpg" alt="" />
-					</div><!-- /.pub-image -->
-					<div class="pub-title"><a href="">Mandookkyam</a></div><!-- /.pub-title -->
-					</div><!-- /.wrap -->
-			</div><!-- /.pub-item -->
-			
+				@foreach($audio_disks as $adisk)
+					<div class="pub-item">
+						<div class="wrap">
+							<div class="pub-image">
+								<img src="{{asset('images/audio-disks/'.$adisk->cover_photo_thumbnail)}}" alt="" />
+							</div><!-- /.pub-image -->
+							<div class="pub-title"><a href="">{{$adisk->title}}</a></div><!-- /.pub-title -->
+						</div><!-- /.wrap -->
+					</div><!-- /.pub-item -->
+				@endforeach
 
-			<div class="pub-item">
-				<div class="wrap">
-					<div class="pub-image">
-						<img src="images/publications/bhramanjanavalimala.jpg" alt="" />
-					</div><!-- /.pub-image -->
-					<div class="pub-title"><a href="">Bhraman Janavalimala</a></div><!-- /.pub-title -->
-				</div><!-- /.wrap -->
-			</div><!-- /.pub-item -->
+			</div><!-- /.pub-items-row -->
+			<div class="more-ebook-items">more</div><!-- /.more-ebook-items -->
+		</div><!-- /.items-category -->
 
-			<div class="pub-item">
-				<div class="wrap">
-					<div class="pub-image">
-						<img src="images/publications/mandookkyam_dvd-200.jpg" alt="" />
-					</div><!-- /.pub-image -->
-					<div class="pub-title"><a href="">Mandookkyam</a></div><!-- /.pub-title -->
-					</div><!-- /.wrap -->
-			</div><!-- /.pub-item -->
-		
-		
-		</div><!-- /.pub-items-row -->
+		<div class="items-category">
+			<h2 class="col-heading">Books</h2>
+			<div class="pub-items-row">
+
+				@foreach($books as $book)
+					<div class="pub-item">
+						<div class="wrap">
+							<div class="pub-image">
+								<img src="{{asset('images/books/'.$book->cover_photo_thumbnail)}}" alt="" />
+							</div><!-- /.pub-image -->
+							<div class="pub-title"><a href="">{{$book->title}}</a></div><!-- /.pub-title -->
+						</div><!-- /.wrap -->
+					</div><!-- /.pub-item -->
+				@endforeach
+
+			</div><!-- /.pub-items-row -->
+			<div class="more-ebook-items">more</div><!-- /.more-ebook-items -->
+		</div><!-- /.items-category -->
+
+
+		<div class="items-category">
+			<h2 class="col-heading">Magazines</h2>
+			<div class="pub-items-row">
+
+				@foreach($magazines as $magazine)
+					<div class="pub-item">
+						<div class="wrap">
+							<div class="pub-image">
+								<img src="{{asset('images/magazines/'.$magazine->cover_photo_thumbnail)}}" alt="" />
+							</div><!-- /.pub-image -->
+							<div class="pub-title"><a href="">{{$magazine->title}}</a></div><!-- /.pub-title -->
+						</div><!-- /.wrap -->
+					</div><!-- /.pub-item -->
+				@endforeach
+
+			</div><!-- /.pub-items-row -->
+			<div class="more-ebook-items">more</div><!-- /.more-ebook-items -->
+		</div><!-- /.items-category -->
 
 		<div class="split_30"></div><!-- /.split_30 -->
 		<div class="pub-paginate">
