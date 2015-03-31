@@ -34,46 +34,60 @@
           </tr>
          </thead>
          <tbody>
-          <tr>
-            <td><img class="img-cart" src="images/bhramanjanavalimala.jpg"><br /></td>
-            <td>Bhraman Janavalimala</td>
-            <td>
-              <form class="form-inline">
-                <input type="text" value="1" class="form-control">
-                <button class="btn btn-default" title="" rel="tooltip" data-original-title="Update"><i class="fa fa-pencil"></i></button>
-                <a title="" rel="tooltip" class="btn btn-primary" href="#" data-original-title="Delete"><i class="fa fa-trash-o"></i></a>
-              </form>
-            </td>
-            <td>54.00</td>
-            <td>54.00</td>
-          </tr>
-          <tr>
-            <td><img class="img-cart" src="images/mandookkyam_dvd-200.jpg"></td>
-            <td>Mandookkyam</td>
-            <td>
-              <form class="form-inline">
-                <input type="text" value="2" class="form-control">
-                <button class="btn btn-default" title="" rel="tooltip" data-original-title="Update"><i class="fa fa-pencil"></i></button>
-                <a title="" rel="tooltip" class="btn btn-primary" href="#" data-original-title="Delete"><i class="fa fa-trash-o"></i></a>
-              </form>
-            </td>
-            <td>16.00</td>
-            <td>32.00</td>
-          </tr>
+         @foreach($side_cart as $item)
+            <tr>
+              <td>
+              <img class="img-cart" 
+                @if($item->options->item_type == 'video')
+                  src="{{asset('images/video-disks/'.$item->options->item_images)}}"><br />
+                @elseif($item->options->item_type == 'audio')
+                  src="{{asset('images/audio-disks/'.$item->options->item_images)}}"><br />
+                @elseif($item->options->item_type == 'book')
+                  src="{{asset('images/books/'.$item->options->item_images)}}"><br />
+                @endif
+                
+              </td>
+              <td>{{ucwords($item->name)}}</td>
+              <td>
+                <div class="row">
+                  <div class="col-xs-10">
+                    <form class="form-inline" action="{{ route('cart.update',$item->rowid) }}" method="POST">
+                      <input type="text" value="{{$item->qty}}" class="form-control" name="update-quantity">
+                      <input name="_method" value="PUT" type="hidden">
+                      <input name="_token" value="{{ csrf_token() }}" type="hidden">
+                      <button class="btn btn-default" title="" rel="tooltip" data-original-title="Update" type="submit"><i class="fa fa-pencil"></i></button>
+                      
+                    </form>
+                  </div><!-- /.col-xs-8 -->
+                  <div class="col-xs-2">
+                    <form class="form-inline" action="{{ route('cart.update',$item->rowid) }}" method="POST">
+                      <a title="" rel="tooltip" class="btn btn-primary" href="#" data-original-title="Delete"><i class="fa fa-trash-o"></i></a>
+                    </form>
+                  </div><!-- /.col-xs-4 -->
+                </div><!-- /.row -->
+                
+                
+              </td>
+              <td>{{$item->price}}</td>
+              <td>{{$item->qty*$item->price}}</td>
+            </tr>
+         @endforeach
+          
+          
           <tr>
             <td colspan="6">&nbsp;</td>
           </tr>
           <tr>
             <td class="text-right" colspan="4">Total Product(s)</td>
-            <td>86.00</td>
+            <td>{{$side_cart_total}}</td>
           </tr>
           <tr>
             <td class="text-right" colspan="4">Total Shipping</td>
-            <td>2.00</td>
+            <td>180</td>
           </tr>
           <tr class="all-total">
             <td class="text-right" colspan="4"><strong>Total</strong></td>
-            <td><strong>88.00</strong></td>
+            <td><strong>{{$side_cart_total+(180*$cart_count)}}</strong></td>
           </tr>
          </tbody>
         </table>

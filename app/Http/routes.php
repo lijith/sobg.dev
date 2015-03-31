@@ -113,9 +113,9 @@ Route::get('donate-support',['as' => 'donate', 'uses' => 'donateController@index
 Route::group(['prefix' => 'e-shop'],function(){
 	Route::get('/',['as' => 'eshop', 'uses' => 'EshopController@index']);
 	Route::get('vcds',['as' => 'vcd', 'uses' => 'EshopController@vcdList']);
-	Route::get('vcds/{title}',['as' => 'vcd.show', 'uses' => 'EshopController@dvdList']);
+	Route::get('vcds/{title}',['as' => 'vcd.show', 'uses' => 'EshopController@VideoShow']);
 	Route::get('dvds',['as' => 'dvd', 'uses' => 'EshopController@dvdList']);
-	Route::get('dvds/{title}',['as' => 'dvd.show', 'uses' => 'EshopController@dvdShow']);
+	Route::get('dvds/{title}',['as' => 'dvd.show', 'uses' => 'EshopController@VideoShow']);
 	Route::get('mp3',['as' => 'mp3', 'uses' => 'EshopController@mp3List']);
 	Route::get('mp3/{title}',['as' => 'mp3.show', 'uses' => 'EshopController@mp3List']);
 	Route::get('audio-cds',['as' => 'acd', 'uses' => 'EshopController@audioList']);
@@ -128,18 +128,17 @@ Route::group(['prefix' => 'e-shop'],function(){
 	});
 	Route::get('piravi-magazine',['as' => 'piravi', 'uses' => 'EshopController@piravi']);
 	Route::get('piravi-magazine/{title}',['as' => 'magazine.show', 'uses' => 'EshopController@piravi']);
+  
+  Route::group(['prefix' => 'cart'],function(){
+    Route::get('/',['as' => 'cart', 'uses' => 'ShoppingCartController@showCart']);
+    Route::post('/',['as' => 'cart.add', 'uses' => 'ShoppingCartController@add']);
+    Route::put('/{hash}',['as' => 'cart.update', 'uses' => 'ShoppingCartController@update']);
+    Route::delete('/{hash}',['as' => 'cart.remove', 'uses' => 'ShoppingCartController@removeItem']);
+  });
+
+
 });
 
-/*
-|
-|	Cart
-|
-*/
-
-Route::group(['prefix' => 'cart'],function(){
-	Route::get('/',['as' => 'cart', 'uses' => 'ShoppingCartController@index']);
-	Route::post('/',['as' => 'cart.add', 'uses' => 'ShoppingCartController@add']);
-});
 
 /*
 |

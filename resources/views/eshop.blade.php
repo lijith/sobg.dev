@@ -28,9 +28,17 @@
 					<div class="pub-item">
 						<div class="wrap">
 							<div class="pub-image">
-								<img src="{{asset('images/video-disks/'.$vdisk->cover_photo_thumbnail)}}" alt="" />
+								<img src="{{asset('images/video-disks/'.$vdisk->cover_photo_thumbnail)}}" alt="{{ucwords($vdisk->title)}}" />
 							</div><!-- /.pub-image -->
-							<div class="pub-title"><a href="{{route('dvd.show',array($vdisk->slug))}}">{{$vdisk->title}}</a></div><!-- /.pub-title -->
+							<div class="pub-title">
+								@if($vdisk->disk_type == 1)
+									<a href="{{route('dvd.show',array($vdisk->slug))}}">{{ucwords($vdisk->title)}}</a>
+									DVD
+								@elseif($vdisk->disk_type == 2)
+									<a href="{{route('vcd.show',array($vdisk->slug))}}">{{ucwords($vdisk->title)}}</a>
+									VCD
+								@endif
+							</div><!-- /.pub-title -->
 						</div><!-- /.wrap -->
 					</div><!-- /.pub-item -->
 				@endforeach

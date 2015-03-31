@@ -2,7 +2,7 @@
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
+use App\Http\Controllers\SiteController;
 use Vinkla\Hashids\Facades\Hashids;
 
 use Illuminate\Http\Request;
@@ -15,27 +15,14 @@ use App\Book;
 use Cart;
 
 
-class EshopController extends Controller {
+class EshopController extends SiteController {
 
 	/*
 	|--------------------------------------------------------------------------
-	| publications
+	| E-Shop
 	|--------------------------------------------------------------------------
 	|
 	*/
-
-	/**
-	 * page meta data
-	 *
-	 */
-	private $page_data = array(
-		'title' => 'School of Bhagavat Gita',
-		'description' => 'SALAGRAMAM Ashram, envisaged and founded by Swami Sandeepananda Giri, is devoted to the understanding and spread of pure Knowledge.The School of Bhagavad Gita is the nucleus of the Ashram.',
-		'keywords' => 'Bhagavad Gita, School of Bhagavad Gita, Swami Sandeepananda Giri, Salagram, Chinmayananda, Indian heritage, spiritual,culture, vedas, upanishad, tradition, philosophy, ashram, non-sectarian, camps, retreats, discourses, lectures, satsang, yagnam, gita yagnam, jnana, yatra, sadhana, Kailas - Manasarovar Yatra, Himalaya Darsan',
-		'top_level_page' => 'publications',
-		'sub_page_active' => ''
-	);
-
 
 
 	/**
@@ -80,7 +67,7 @@ class EshopController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function dvdShow($slug){
+	public function VideoShow($slug){
 		$disk = VideoDisk::where('slug','=',$slug)->first();
 
 		$disk->id = Hashids::connection('video')->encode($disk->id);
@@ -90,7 +77,7 @@ class EshopController extends Controller {
 		$this->page_data['sub_page_active'] = 'dvd';
 		$this->page_data['keywords'] = $disk->keywords;
 		$this->page_data['disk'] = $disk;
-		$this->page_data['side_cart'] = Cart::content()->toArray();
+		
 
 
 		//var_dump(Cart::content()->toArray());

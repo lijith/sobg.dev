@@ -52,6 +52,13 @@
 											</a>
 										</li><!-- /. -->
 										<span class="separator">|</span>
+										@if($cart_count>0)
+										<li class="">
+											<a href="{{route('cart')}}">
+											Cart({{$cart_count}})</a>
+										</li><!-- /.vcenter -->
+										<span class="separator">|</span>
+										@endif
 										<li class="">
 											<a href="#gita-family">
 											<i class="fa fa-users"></i> Gita Family</a>

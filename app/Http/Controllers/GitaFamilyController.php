@@ -5,7 +5,7 @@ use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 
-class GitaFamilyController extends Controller {
+class GitaFamilyController extends SiteController {
 
 	//
 

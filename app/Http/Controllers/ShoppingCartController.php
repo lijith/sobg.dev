@@ -13,18 +13,18 @@ use App\AudioDisk;
 use App\VideoDisk;
 use App\Book;
 
-class ShoppingCartController extends Controller {
+class ShoppingCartController extends SiteController {
 
 	/**
    * cart.
    *
    * @param  void
    *
-   * @return redirect
+   * @return response
    */
-  public function index() {
+  public function showCart() {
 
-  	
+  	return View::make('shoppingcart')->with($this->page_data);;
   }	
 
 	/**
@@ -36,7 +36,7 @@ class ShoppingCartController extends Controller {
    */
   public function add() {
 
-  	//if(Input::get('item-type') == 'audio')
+    //Cart::destroy();
 
 
   	switch(Input::get('item-type')){
@@ -60,20 +60,56 @@ class ShoppingCartController extends Controller {
   		'id' => Input::get('item-id'),
   		'name' => ucwords($item->title),
   		'qty' => 1,
-  		'price' => $item->price
+  		'price' => $item->price,
+      'options' => array(
+        'item_type' => Input::get('item-type'),
+        'item_slug' => $item->slug,
+        'item_sub_type' => Input::get('item-sub-type'),
+        'item_images' => $item->cover_photo_thumbnail
+       )
   	);
   	Cart::add($cart_item);
 
   	return redirect()->back();
 
-
-
-  	//Cart::add(Input::get('item-id'), 'Product 1', 1, 9.99, array('size' => 'large'));
-
-  	//var_dump(Cart::content()->toArray());
-
-  	//Cart::destroy();
-
   }	
+
+
+  /**
+   * update cart.
+   *
+   * @param  hash
+   *
+   * @return redirect
+   */
+  public function update($hash) {
+
+    $nos = Input::get('update-quantity');
+
+    if($nos !=''){
+      if($nos < 1){
+        Cart::remove($hash);
+      }else{
+        Cart::update($hash, $nos);
+      }
+    }
+
+    return redirect()->back();
+  }
+
+
+
+  /**
+   * remove row of item from cart.
+   *
+   * @param  hash
+   *
+   * @return redirect
+   */
+  public function removeItem($hash) {
+    Cart::remove($hash);
+    return redirect()->back();
+  }
+
 
 }

@@ -41,6 +41,11 @@
 						<div class="split_30"></div><!-- /.split_30 -->
 						<div class="add-to-cart">
 							<form method="POST" action="{{route('cart.add')}}">
+								@if($disk->disk_type == 1)
+									<input type="hidden" name="item-sub-type" value="dvd" />
+								@elseif($disk->disk_type == 2)
+									<input type="hidden" name="item-sub-type" value="vcd" />
+								@endif
 								<input type="hidden" name="item-type" value="video" />
 								<input type="hidden" name="item-id" value="{{$disk->id}}" />
 								<input name="_token" value="{{ csrf_token() }}" type="hidden">
