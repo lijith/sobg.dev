@@ -134,11 +134,45 @@ Route::group(['prefix' => 'e-shop'],function(){
     Route::post('/',['as' => 'cart.add', 'uses' => 'ShoppingCartController@add']);
     Route::put('/{hash}',['as' => 'cart.update', 'uses' => 'ShoppingCartController@update']);
     Route::delete('/{hash}',['as' => 'cart.remove', 'uses' => 'ShoppingCartController@removeItem']);
+    Route::get('login',['as' => 'cart.login', 'uses' => 'Member\SessionController@cartLogin']);
   });
 
 
-});
 
+
+});
+/*
+|
+| Site Memebers
+|
+*/
+Route::group(['prefix'=>'member', 'namespace' => 'Member'], function(){
+
+  Route::get('login', ['as' => 'member.login', 'uses' => 'SessionController@create']);
+  Route::get('logout', ['as' => 'member.logout', 'uses' => 'SessionController@destroy']);
+  Route::get('sessions/create', ['as' => 'member.session.create', 'uses' => 'SessionController@create']);
+  Route::post('sessions/store', ['as' => 'member.session.store', 'uses' => 'SessionController@store']);
+  Route::delete('sessions/destroy', ['as' => 'member.session.destroy', 'uses' => 'SessionController@destroy']);
+
+
+
+  // Sentinel Registration
+  Route::get('register', ['as' => 'member.register.form', 'uses' => 'RegistrationController@registration']);
+  Route::post('register', ['as' => 'member.register.user', 'uses' => 'RegistrationController@register']);
+  Route::get('users/activate/{hash}/{code}', ['as' => 'member.activate', 'uses' => 'RegistrationController@activate']);
+  Route::get('reactivate', ['as' => 'member.reactivate.form', 'uses' => 'RegistrationController@resendActivationForm']);
+  Route::post('reactivate', ['as' => 'member.reactivate.send', 'uses' => 'RegistrationController@resendActivation']);
+  Route::get('forgot', ['as' => 'member.forgot.form', 'uses' => 'RegistrationController@forgotPasswordForm']);
+  Route::post('forgot', ['as' => 'member.reset.request', 'uses' => 'RegistrationController@sendResetPasswordEmail']);
+  Route::get('reset/{hash}/{code}', ['as' => 'member.reset.form', 'uses' => 'RegistrationController@passwordResetForm']);
+  Route::post('reset/{hash}/{code}', ['as' => 'member.reset.password', 'uses' => 'RegistrationController@resetPassword']);
+
+  // Sentinel Profile
+  Route::get('profile', ['as' => 'member.profile.show', 'uses' => 'ProfileController@show']);
+  Route::get('profile/edit', ['as' => 'member.profile.edit', 'uses' => 'ProfileController@edit']);
+  Route::put('profile', ['as' => 'member.profile.update', 'uses' => 'ProfileController@update']);
+  Route::post('profile/password', ['as' => 'member.profile.password', 'uses' => 'ProfileController@changePassword']);
+});
 
 /*
 |

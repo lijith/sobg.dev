@@ -38,7 +38,7 @@ class SiteController extends Controller {
 	 *
 	 * @return Response
 	 */
-	private function cartCount(){
+	public function cartCount(){
 		return Cart::count();
 	}
 

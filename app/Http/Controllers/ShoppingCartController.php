@@ -24,7 +24,7 @@ class ShoppingCartController extends SiteController {
    */
   public function showCart() {
 
-  	return View::make('shoppingcart')->with($this->page_data);;
+  	return View::make('shoppingcart')->with($this->page_data);
   }	
 
 	/**

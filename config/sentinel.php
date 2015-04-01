@@ -37,7 +37,7 @@ return [
     |
     */
 
-    'allow_usernames' => true,
+    'allow_usernames' => false,
 
     /*
     |--------------------------------------------------------------------------
@@ -122,6 +122,7 @@ return [
         'session_store'                => ['route' => 'admin.dash'],
         'session_destroy'              => ['route' => 'sentinel.login'],
         'registration_complete'        => ['route' => 'home'],
+        'member_registration_complete' => ['route' => 'member.profile.show'],
         'registration_activated'       => ['route' => 'home'],
         'registration_resend'          => ['route' => 'home'],
         'registration_reset_triggered' => ['route' => 'home'],
