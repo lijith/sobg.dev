@@ -79,7 +79,7 @@
         </table>
         <hr />
         <div class="clearfix">
-        	<a class="btn btn-primary pull-right" href="login.html">Next</a>
+        	<a class="btn btn-primary pull-right" href="{{route('cart.login')}}">Next</a>
         </div><!-- /.clearfix -->
       </div>
     </div>

@@ -2,16 +2,26 @@
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\SiteController;
+
 
 use Vinkla\Hashids\Facades\Hashids;
 
 use Illuminate\Http\Request;
 
-use View, Input, File, Cart;
+use Sentinel\Repositories\Session\SentinelSessionRepositoryInterface;
+use Sentinel\Traits\SentinelRedirectionTrait;
+use Sentinel\Traits\SentinelViewfinderTrait;
+use Sentry, View, Input, Event, Redirect, Session, Config;
 
 use App\AudioDisk;
 use App\VideoDisk;
+use App\Magazine;
 use App\Book;
+use App\User;
+use App\Profile;
+
+use Cart;
 
 class ShoppingCartController extends SiteController {
 
@@ -109,6 +119,43 @@ class ShoppingCartController extends SiteController {
   public function removeItem($hash) {
     Cart::remove($hash);
     return redirect()->back();
+  }
+
+
+  /**
+   * show the shipping address form cart.
+   *
+   * @param  void
+   *
+   * @return view
+   */
+  public function showShipping() {
+    // Is this user already signed in?
+    if (!Sentry::check()) {
+      // No - they are not signed in.  redirect to account login/create form.
+      return $this->redirectTo('cart_account');
+    }
+
+
+    return View::make('shoppingcart-shipping')->with($this->page_data);
+  }
+
+  /**
+   * Store shipping address.
+   *
+   * @param  void
+   *
+   * @return redirect
+   */
+  public function storeShipping() {
+    // Is this user already signed in?
+    if (!Sentry::check()) {
+      // No - they are not signed in.  redirect to account login/create form.
+      return $this->redirectTo('cart_account');
+    }
+
+
+    return View::make('shoppingcart-shipping')->with($this->page_data);
   }
 
 

@@ -27,18 +27,25 @@
 	       		<div class="col-md-6 col-sm-6">
 	       			<h3>Create Account</h3>
 	       			<hr>
-	       			<form>
-	       				<div class="form-group">
+	       			<form method="POST" action="{{ route('member.cart.register') }}" accept-charset="UTF-8" id="register-form">
+	       			 <input name="_token" value="{{ csrf_token() }}" type="hidden">
+	       				<div class="form-group {{ ($errors->has('email')) ? 'has-error' : '' }}">
 			            <label class="control-label">Email</label>
-			            <input type="email" placeholder="Email" class="form-control" value="">
+			            <input type="email" placeholder="Email" class="form-control" value="{{ Input::old('email') }}" name="email">
+			            {{ ($errors->has('email') ? $errors->first('email') : '') }}
 			           
 			          </div>
-			          <div class="form-group">
+			          <div class="form-group {{ ($errors->has('password')) ? 'has-error' : '' }}">
 			            <label class="control-label">Password</label>
-			            <input type="password" class="form-control">
+			            <input type="password" class="form-control" name="password">
+			            {{ ($errors->has('password') ?  $errors->first('password') : '') }}
 			          </div>
+			          <div class="form-group {{ ($errors->has('password_confirmation')) ? 'has-error' : '' }}">
+				            <input class="form-control" placeholder="Confirm Password" name="password_confirmation" value="" type="password">
+				            {{ ($errors->has('password_confirmation') ?  $errors->first('password_confirmation') : '') }}
+				        </div>
 			          <div class="form-group">
-			              <button class="btn btn-default">Register</button>
+			              <button class="btn btn-default" type="submit">Register</button>
 			          </div>
 			          
 	       			</form>
@@ -46,16 +53,17 @@
 	       		<div class="col-md-6 col-sm-6">
 	       			<h3>Already Registered ?</h3>
 	       			<hr>
-	       			<form  method="POST" action="{{ route('member.session.store') }}"  accept-charset="UTF-8">
-	       				<div class="form-group {{ ($errors->has('email')) ? 'has-error' : '' }}">
+	       			<form  method="POST" action="{{ route('member.cart.login') }}"  accept-charset="UTF-8">
+	       				<input name="_token" value="{{ csrf_token() }}" type="hidden">
+	       				<div class="form-group {{ ($errors->has('cart_email')) ? 'has-error' : '' }}">
 			            <label class="control-label">Email</label>
-			            <input type="email" placeholder="Email" class="form-control" value="{{ Input::old('email') }}" name="email">
-			            {{ ($errors->has('email') ? $errors->first('email') : '') }}
+			            <input type="email" placeholder="Email" class="form-control" value="{{ Input::old('cart_email') }}" name="cart_email">
+			            {{ ($errors->has('cart_email') ? $errors->first('cart_email') : '') }}
 			          </div>
-			          <div class="form-group {{ ($errors->has('password')) ? 'has-error' : '' }}">
+			          <div class="form-group {{ ($errors->has('cart_password')) ? 'has-error' : '' }}">
 			            <label class="control-label">Password</label>
-			            <input type="password" class="form-control" name="password">
-			            {{ ($errors->has('password') ?  $errors->first('password') : '') }}
+			            <input type="password" class="form-control" name="cart_password">
+			            {{ ($errors->has('cart_password') ?  $errors->first('cart_password') : '') }}
 			          </div>
 			          <a href="#">Forgot your password ?</a>
 			          <div class="split_20"></div><!-- /.split_20 -->

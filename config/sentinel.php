@@ -24,7 +24,7 @@ return [
     |
     */
 
-    'require_activation' => true,
+    'require_activation' => false,
 
     /*
     |--------------------------------------------------------------------------
@@ -120,6 +120,8 @@ return [
 
     'routing' => [
         'session_store'                => ['route' => 'admin.dash'],
+        'cart_account'                 => ['route' => 'cart.account'],
+        'cart_session_store'           => ['route' => 'cart.shipping'],
         'session_destroy'              => ['route' => 'sentinel.login'],
         'registration_complete'        => ['route' => 'home'],
         'member_registration_complete' => ['route' => 'member.profile.show'],

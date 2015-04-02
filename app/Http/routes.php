@@ -134,7 +134,12 @@ Route::group(['prefix' => 'e-shop'],function(){
     Route::post('/',['as' => 'cart.add', 'uses' => 'ShoppingCartController@add']);
     Route::put('/{hash}',['as' => 'cart.update', 'uses' => 'ShoppingCartController@update']);
     Route::delete('/{hash}',['as' => 'cart.remove', 'uses' => 'ShoppingCartController@removeItem']);
-    Route::get('login',['as' => 'cart.login', 'uses' => 'Member\SessionController@cartLogin']);
+
+    Route::get('account',['as' => 'cart.account', 'uses' => 'Member\SessionController@cartAccount']);
+    Route::post('account/login', ['as' => 'member.cart.login', 'uses' => 'Member\SessionController@cartStore']);
+    Route::post('account/register', ['as' => 'member.cart.register', 'uses' => 'Member\RegistrationController@register']);
+    Route::get('shipping',['as' => 'cart.shipping', 'uses' => 'ShoppingCartController@showShipping']);
+    Route::post('shipping',['as' => 'cart.shipping.store', 'uses' => 'ShoppingCartController@storeShipping']);
   });
 
 

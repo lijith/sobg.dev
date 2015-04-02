@@ -61,6 +61,7 @@
                   </div><!-- /.col-xs-8 -->
                   <div class="col-xs-2">
                     <form class="form-inline" action="{{ route('cart.update',$item->rowid) }}" method="POST">
+                    <input name="_token" value="{{ csrf_token() }}" type="hidden">
                       <a title="" rel="tooltip" class="btn btn-primary" href="#" data-original-title="Delete"><i class="fa fa-trash-o"></i></a>
                     </form>
                   </div><!-- /.col-xs-4 -->
@@ -93,7 +94,7 @@
         </table>
         <hr />
         <div class="clearfix">
-        	<a class="btn btn-primary pull-right" href="login.html">Next</a>
+        	<a class="btn btn-primary pull-right" href="{{route('cart.account')}}">Next</a>
         </div><!-- /.clearfix -->
       </div>
     </div>
