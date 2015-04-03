@@ -22,6 +22,20 @@
         </ul>
 
        		<div class="split_30"></div><!-- /.split_30 -->
+
+          <div class="row">
+            <div class="col-md-offset-6 col-md-6">
+              <div class="form-group">
+                <label class="radio-inline">
+                  <input type="radio" name="radio"> Hello
+                </label>
+                <label class="radio-inline">
+                  <input type="radio" name="radio"> Other
+                </label>
+                <button type="submit" class="btn">Update</button> 
+              </div>
+            </div><!-- /.col-md-offset-6 col-md-6 -->
+          </div><!-- /.row -->
           
         <table class="table table-bordered table-striped">
          <thead>

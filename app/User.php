@@ -35,4 +35,8 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     return $this->hasOne('App\Profile');
   }
 
+	public function shipping(){
+    return $this->hasMany('App\Shipping');
+  }
+
 }

@@ -41,14 +41,16 @@
 			      </div>
 			      <div class="col-md-6 col-sm-6">
 			          <div class="panel panel-default">
-			              <div class="panel-heading">Delivery Address</div>
+			              <div class="panel-heading">Shipping Address</div>
 			              <div class="panel-body">
 			                  <address>
-			                      <strong>Lorem Ipsum</strong><br>
-			                      Lorem ipsum dolor sit amet, 
-			                      Velit modi molestias
-			                      Adipisci.<br>
-			                      <abbr title="Phone">Mobile :</abbr> +628995001222
+			                      <strong>{{ucwords($shipping->name)}}</strong><br /><br />
+			                      <p>{{$shipping->address_1}}
+			                      <br />{{$shipping->address_2}}</p>
+			                      <p>{{ucwords($shipping->city)}},
+			                      {{ucwords($shipping->state)}}, 
+			                      {{ucwords($shipping->country)}}</p>
+			                      <abbr title="Phone">Phone :</abbr> {{$shipping->contact_number_1}}, {{$shipping->contact_number_2}}
 			                  </address>
 			              </div>
 			          </div>

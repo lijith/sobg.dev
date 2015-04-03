@@ -140,6 +140,9 @@ Route::group(['prefix' => 'e-shop'],function(){
     Route::post('account/register', ['as' => 'member.cart.register', 'uses' => 'Member\RegistrationController@register']);
     Route::get('shipping',['as' => 'cart.shipping', 'uses' => 'ShoppingCartController@showShipping']);
     Route::post('shipping',['as' => 'cart.shipping.store', 'uses' => 'ShoppingCartController@storeShipping']);
+    Route::get('payment',['as' => 'cart.pay', 'uses' => 'ShoppingCartController@showPayment']);
+
+
   });
 
 

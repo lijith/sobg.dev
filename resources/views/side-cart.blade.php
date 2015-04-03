@@ -11,7 +11,9 @@
 				<div class="items-wrap clearfix">
 
 					<div class="sl-no">
+
 						{{$count}}
+
 					</div><!-- /.sl-no -->
 					<div class="item-name">
 
@@ -76,7 +78,8 @@
 			</div><!-- /.cart-total -->
 			<div class="split_40"></div><!-- /.split_40 -->	
 			<div class="clearfix">
-				<a href="" class="btn btn-primary pull-right">Check Out</a>
+				<a href="{{route('cart')}}" class="btn btn-primary pull-left">Show Cart</a>
+				<a href="{{route('cart.account')}}" class="btn btn-primary pull-right">Check Out</a>
 			</div><!-- /.clearfix -->
 		</div><!-- /.wrap -->
 	</div><!-- /.shadow -->

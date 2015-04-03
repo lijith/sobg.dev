@@ -119,6 +119,8 @@ return [
     */
 
     'routing' => [
+        'eshop'                        => ['route' => 'eshop'],
+        'payment'                      => ['route' => 'cart.pay'],
         'session_store'                => ['route' => 'admin.dash'],
         'cart_account'                 => ['route' => 'cart.account'],
         'cart_session_store'           => ['route' => 'cart.shipping'],
