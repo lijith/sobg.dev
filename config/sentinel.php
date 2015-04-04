@@ -120,6 +120,7 @@ return [
 
     'routing' => [
         'eshop'                        => ['route' => 'eshop'],
+        'shipping_edit'                => ['route' => 'cart.shipping.edit'],
         'payment'                      => ['route' => 'cart.pay'],
         'session_store'                => ['route' => 'admin.dash'],
         'cart_account'                 => ['route' => 'cart.account'],

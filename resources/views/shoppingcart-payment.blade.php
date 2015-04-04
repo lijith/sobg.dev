@@ -29,11 +29,13 @@
 			              <div class="panel-heading">Billing Address</div>
 			              <div class="panel-body">
 			                  <address>
-			                      <strong>Lorem Ipsum</strong><br>
-			                      Lorem ipsum dolor sit amet, 
-			                      Velit modi molestias
-			                      Adipisci.<br>
-			                      <abbr title="Phone">Mobile :</abbr> +628995001222
+			                      <strong>{{ucwords($shipping->billing_name)}}</strong><br /><br />
+			                      <p>{{$shipping->billing_address_1}}
+			                      <br />{{$shipping->billing_address_2}}</p>
+			                      <p>{{ucwords($shipping->billing_city)}},
+			                      {{ucwords($shipping->billing_state)}}, 
+			                      {{ucwords($shipping->billing_country)}}</p>
+			                      <abbr title="Phone">Phone :</abbr> {{$shipping->billing_contact_number_1}}, {{$shipping->billing_contact_number_2}}
 			                  </address>
 			              </div>
 			          </div>
@@ -43,13 +45,13 @@
 			              <div class="panel-heading">Shipping Address</div>
 			              <div class="panel-body">
 			                  <address>
-			                      <strong>{{ucwords($shipping->name)}}</strong><br /><br />
-			                      <p>{{$shipping->address_1}}
-			                      <br />{{$shipping->address_2}}</p>
-			                      <p>{{ucwords($shipping->city)}},
-			                      {{ucwords($shipping->state)}}, 
-			                      {{ucwords($shipping->country)}}</p>
-			                      <abbr title="Phone">Phone :</abbr> {{$shipping->contact_number_1}}, {{$shipping->contact_number_2}}
+			                      <strong>{{ucwords($shipping->shipping_name)}}</strong><br /><br />
+			                      <p>{{$shipping->shipping_address_1}}
+			                      <br />{{$shipping->shipping_address_2}}</p>
+			                      <p>{{ucwords($shipping->shipping_city)}},
+			                      {{ucwords($shipping->shipping_state)}}, 
+			                      {{ucwords($shipping->shipping_country)}}</p>
+			                      <abbr title="Phone">Phone :</abbr> {{$shipping->shipping_contact_number_1}}, {{$shipping->shipping_contact_number_2}}
 			                  </address>
 			              </div>
 			          </div>

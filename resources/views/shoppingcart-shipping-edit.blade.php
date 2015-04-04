@@ -22,19 +22,20 @@
 
      	<div class="split_30"></div><!-- /.split_30 -->
 
-      <form class="form-horizontal" method="POST" action="{{route('cart.shipping.store')}}">
+      <form class="form-horizontal" method="POST" action="{{route('cart.shipping.update')}}">
         <input name="_token" value="{{ csrf_token() }}" type="hidden">
+        <input name="_method" value="PUT" type="hidden">
 
       <div class="row">
         <div class="col-md-9">
           <h3>Billing Address</h3>
           <hr />
 
-          <div class="form-group {{ ($errors->has('name')) ? 'has-error' : '' }}">
+          <div class="form-group {{ ($errors->has('billing-name')) ? 'has-error' : '' }}">
 
             <label class="col-sm-3 control-label">Name</label>
             <div class="col-sm-9">
-              <input type="text" placeholder="full name" class="form-control" name="billing-name" value="{{ Input::old('billing-name') }}">
+              <input type="text" placeholder="full name" class="form-control" name="billing-name" value="{{ Input::old('billing-name') ? Input::old('billing-name') : $shipping->billing_name }}">
               <span class="help-block">Full name of person to which we ship item(s)</span>
               {{ ($errors->has('billing-name') ? $errors->first('billing-name') : '') }}
             </div>
@@ -45,7 +46,7 @@
 
             <label class="col-sm-3 control-label">Address</label>
             <div class="col-sm-9">
-              <input type="text" placeholder="Address" class="form-control" name="billing-address_1" value="{{ Input::old('billing-address_1') }}">
+              <input type="text" placeholder="Address" class="form-control" name="billing-address_1" value="{{ Input::old('billing-address_1') ? Input::old('billing-address_1') : $shipping->billing_address_1 }}">
               {{ ($errors->has('billing-address_1') ? $errors->first('billing-address_1') : '') }}
               <span class="help-block">Street address</span>
             </div>
@@ -53,7 +54,7 @@
           <div class="form-group {{ ($errors->has('billing-address_2')) ? 'has-error' : '' }}">
             <label class="col-sm-3 control-label">Address<br />(Line 2)</label>
             <div class="col-sm-9">
-              <input type="text" placeholder="Address (Line 2)" class="form-control" name="billing-address_2" value="{{ Input::old('billing-address_2') }}">
+              <input type="text" placeholder="Address (Line 2)" class="form-control" name="billing-address_2" value="{{ Input::old('billing-address_2') ? Input::old('billing-address_2') : $shipping->billing_address_2 }}">
               {{ ($errors->has('billing-address_2') ? $errors->first('billing-address_2') : '') }}
               <span class="help-block">Apartment, suite, unit, building, floor, etc.</span>
             </div>
@@ -61,30 +62,30 @@
           <div class="form-group {{ ($errors->has('billing-city')) ? 'has-error' : '' }}">
             <label class="col-sm-3 control-label">City</label>
             <div class="col-sm-9">
-              <input type="text" placeholder="City" class="form-control" name="billing-city" value="{{ Input::old('billing-city') }}">
+              <input type="text" placeholder="City" class="form-control" name="billing-city" value="{{ Input::old('billing-city') ? Input::old('billing-city') : $shipping->billing_city }}">
               {{ ($errors->has('billing-city') ? $errors->first('billing-city') : '') }}
             </div>
           </div>
           <div class="form-group {{ ($errors->has('billing-state')) ? 'has-error' : '' }}">
             <label class="col-sm-3 control-label">State</label>
-            <div class="col-sm-9" value="{{ Input::old('billing-state') }}">
+            <div class="col-sm-9" value="{{ Input::old('billing-state') ? Input::old('billing-state') : $shipping->billing_state }}">
               <input type="text" placeholder="State" class="form-control" name="billing-state">
               {{ ($errors->has('billing-state') ? $errors->first('billing-state') : '') }}
             </div>
           </div>
           <div class="form-group {{ ($errors->has('billing-country')) ? 'has-error' : '' }}">
             <label class="col-sm-3 control-label">Country</label>
-            <div class="col-sm-9" value="{{ Input::old('billing-country') }}">
+            <div class="col-sm-9" value="{{ Input::old('billing-country') ? Input::old('billing-country') : $shipping->billing_country }}">
               <input type="text" placeholder="Country" class="form-control" name="billing-country">
               {{ ($errors->has('billing-country') ? $errors->first('billing-country') : '') }}
             </div>
           </div>
           <div class="form-group {{ ($errors->has('billing-contact_number_1')) ? 'has-error' : '' }}">
             <label class="col-sm-3 control-label">Contact Number(s)</label>
-            <div class="col-sm-9" value="{{ Input::old('billing-contact_number_1') }}">
+            <div class="col-sm-9" value="{{ Input::old('billing-contact_number_1') ? Input::old('billing-contact_number_1') : $shipping->billing_contact_number_1 }}">
               <input type="text" placeholder="Mobile" class="form-control" name="billing-contact_number_1">
               <div class="split_10"></div>
-              <input type="text" placeholder="landline or secondary mobile" class="form-control" name="billing-contact_number_2" value="{{ Input::old('billing-contact_number_2') }}">
+              <input type="text" placeholder="landline or secondary mobile" class="form-control" name="billing-contact_number_2" value="{{ Input::old('billing-contact_number_2') ? Input::old('billing-contact_number_2') : $shipping->billing_contact_number_2 }}">
               {{ ($errors->has('billing-contact_number_1') ? $errors->first('billing-contact_number_1') : '') }}
             </div>
           </div>
@@ -108,18 +109,17 @@
 
             <label class="col-sm-3 control-label">Name</label>
             <div class="col-sm-9">
-              <input type="text" placeholder="full name" class="form-control" name="shipping-name" value="{{ Input::old('shipping-name') }}">
+              <input type="text" placeholder="full name" class="form-control" name="shipping-name" value="{{ Input::old('shipping-address_1') ? Input::old('shipping-address_1') : $shipping->shipping_address_1 }}">
               <span class="help-block">Full name of person to which we ship item(s)</span>
               {{ ($errors->has('shipping-name') ? $errors->first('shipping-name') : '') }}
             </div>
           </div>
           
-
           <div class="form-group {{ ($errors->has('shipping-address_1')) ? 'has-error' : '' }}">
 
             <label class="col-sm-3 control-label">Address</label>
             <div class="col-sm-9">
-              <input type="text" placeholder="Address" class="form-control" name="shipping-address_1" value="{{ Input::old('shipping-address_1') }}">
+              <input type="text" placeholder="Address" class="form-control" name="shipping-address_1" value="{{ Input::old('shipping-address_1') ? Input::old('shipping-address_1') : $shipping->shipping_address_1 }}">
               {{ ($errors->has('shipping-address_1') ? $errors->first('shipping-address_1') : '') }}
               <span class="help-block">Street address</span>
             </div>
@@ -127,7 +127,7 @@
           <div class="form-group {{ ($errors->has('shipping-address_2')) ? 'has-error' : '' }}">
             <label class="col-sm-3 control-label">Address<br />(Line 2)</label>
             <div class="col-sm-9">
-              <input type="text" placeholder="Address (Line 2)" class="form-control" name="shipping-address_2" value="{{ Input::old('shipping-address_2') }}">
+              <input type="text" placeholder="Address (Line 2)" class="form-control" name="shipping-address_2" value="{{ Input::old('shipping-address_2') ? Input::old('shipping-address_2') : $shipping->shipping_address_2 }}">
               {{ ($errors->has('shipping-address_2') ? $errors->first('shipping-address_2') : '') }}
               <span class="help-block">Apartment, suite, unit, building, floor, etc.</span>
             </div>
@@ -135,33 +135,36 @@
           <div class="form-group {{ ($errors->has('shipping-city')) ? 'has-error' : '' }}">
             <label class="col-sm-3 control-label">City</label>
             <div class="col-sm-9">
-              <input type="text" placeholder="City" class="form-control" name="shipping-city" value="{{ Input::old('shipping-city') }}">
+              <input type="text" placeholder="City" class="form-control" name="shipping-city" value="{{ Input::old('shipping-city') ? Input::old('shipping-city') : $shipping->shipping_city }}">
               {{ ($errors->has('shipping-city') ? $errors->first('shipping-city') : '') }}
             </div>
           </div>
           <div class="form-group {{ ($errors->has('shipping-state')) ? 'has-error' : '' }}">
             <label class="col-sm-3 control-label">State</label>
-            <div class="col-sm-9" value="{{ Input::old('shipping-state') }}">
+            <div class="col-sm-9" value="{{ Input::old('shipping-state') ? Input::old('shipping-state') : $shipping->shipping_state }}">
               <input type="text" placeholder="State" class="form-control" name="shipping-state">
               {{ ($errors->has('shipping-state') ? $errors->first('shipping-state') : '') }}
             </div>
           </div>
           <div class="form-group {{ ($errors->has('shipping-country')) ? 'has-error' : '' }}">
             <label class="col-sm-3 control-label">Country</label>
-            <div class="col-sm-9" value="{{ Input::old('shipping-country') }}">
+            <div class="col-sm-9" value="{{ Input::old('shipping-country') ? Input::old('shipping-country') : $shipping->shipping_country }}">
               <input type="text" placeholder="Country" class="form-control" name="shipping-country">
               {{ ($errors->has('shipping-country') ? $errors->first('shipping-country') : '') }}
             </div>
           </div>
           <div class="form-group {{ ($errors->has('shipping-contact_number_1')) ? 'has-error' : '' }}">
             <label class="col-sm-3 control-label">Contact Number(s)</label>
-            <div class="col-sm-9" value="{{ Input::old('shipping-contact_number_1') }}">
+            <div class="col-sm-9" value="{{ Input::old('shipping-contact_number_1') ? Input::old('shipping-contact_number_1') : $shipping->shipping_contact_number_1 }}">
               <input type="text" placeholder="Mobile" class="form-control" name="shipping-contact_number_1">
               <div class="split_10"></div>
-              <input type="text" placeholder="landline or secondary mobile" class="form-control" name="shipping-contact_number_2" value="{{ Input::old('shipping-contact_number_2') }}">
+              <input type="text" placeholder="landline or secondary mobile" class="form-control" name="shipping-contact_number_2" value="{{ Input::old('shipping-contact_number_2') ? Input::old('shipping-contact_number_2') : $shipping->shipping_contact_number_2 }}">
               {{ ($errors->has('shipping-contact_number_1') ? $errors->first('shipping-contact_number_1') : '') }}
             </div>
           </div>
+
+
+
           <div class="form-group">
           <div class="col-sm-offset-3 col-sm-9">
             <button type="submit" class="btn">Save and continue</button>

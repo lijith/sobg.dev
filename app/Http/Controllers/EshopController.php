@@ -107,7 +107,7 @@ class EshopController extends SiteController {
 	}
 
 	/**
-	 * books.
+	 * List books.
 	 *
 	 * @return view
 	 */
@@ -175,6 +175,26 @@ class EshopController extends SiteController {
 
 		return view('eshop-item-audio-disk')->with($this->page_data);
 	}
+
+	/**
+	 * Show a book detail.
+	 *
+	 * @return view
+	 */
+	public function BookShow($slug){
+		$book = Book::where('slug','=',$slug)->first();
+
+		$book->id = Hashids::connection('book')->encode($book->id);
+
+		$this->page_data['title'] = ucwords($book->title);
+		$this->page_data['description'] = $book->excerpt;
+		$this->page_data['sub_page_active'] = 'book';
+		$this->page_data['keywords'] = $book->keywords;
+		$this->page_data['book'] = $book;
+
+		return view('eshop-item-book')->with($this->page_data);
+	}
+
 
 
 

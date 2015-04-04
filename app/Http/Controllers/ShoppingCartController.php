@@ -152,9 +152,14 @@ class ShoppingCartController extends SiteController {
     //   return $this->redirectTo('eshop');
     // }
 
+    if(Session::has('shipping_id')){
+      return $this->redirectTo('shipping_edit');
+    }
+
 
     return View::make('shoppingcart-shipping')->with($this->page_data);
   }
+
 
   /**
    * Store shipping address.
@@ -187,14 +192,14 @@ class ShoppingCartController extends SiteController {
         'billing_state' => Input::get('billing-state'),
         'billing_contact_number_1' => Input::get('billing-contact_number_1'),
         'billing_contact_number_2' => Input::get('billing-contact_number_2'),
-        'billing_name' => Input::get('billing-name'),
-        'billing_address_1' => Input::get('billing-address_1'),
-        'billing_address_2' => Input::get('billing-address_2'),
-        'billing_country' => Input::get('billing-country'),
-        'billing_city' => Input::get('billing-city'),
-        'billing_state' => Input::get('billing-state'),
-        'billing_contact_number_1' => Input::get('billing-contact_number_1'),
-        'billing_contact_number_2' => Input::get('billing-contact_number_2'),
+        'shipping_name' => Input::get('shipping-name'),
+        'shipping_address_1' => Input::get('shipping-address_1'),
+        'shipping_address_2' => Input::get('shipping-address_2'),
+        'shipping_country' => Input::get('shipping-country'),
+        'shipping_city' => Input::get('shipping-city'),
+        'shipping_state' => Input::get('shipping-state'),
+        'shipping_contact_number_1' => Input::get('shipping-contact_number_1'),
+        'shipping_contact_number_2' => Input::get('shipping-contact_number_2'),
         'quantity' => Cart::count(),
         'amount' => Cart::total()
       ));
@@ -237,6 +242,91 @@ class ShoppingCartController extends SiteController {
       Session::put('shipping_id',$shipping->id);
 
       //Cart::destroy();
+
+      //redirect to payment page
+      return $this->redirectTo('payment');
+
+    }else{
+      return $this->redirectTo('eshop');
+    }
+
+
+    //
+  }  
+
+  /**
+   * Edit shipping and billing address.
+   *
+   * @param  void
+   *
+   * @return view
+   */
+  public function editShipping() {
+    // Is this user already signed in?
+    // if (!Sentry::check()) {
+    //   // No - they are not signed in.  redirect to account login/create form.
+    //   return $this->redirectTo('cart_account');
+    // }
+
+    // if(Cart::count() < 1){
+    //   //if cart is empty redirect to eshop
+    //   return $this->redirectTo('eshop');
+    // }
+
+    $shipping_id = Session::get('shipping_id');
+
+    $this->page_data['shipping'] = Shipping::find($shipping_id);
+
+
+    return View::make('shoppingcart-shipping-edit')->with($this->page_data);
+  }
+
+
+
+  /**
+   * Update shipping address.
+   *
+   * @param  void
+   *
+   * @return redirect
+   */
+  public function updateShipping(ShippingFormRequest $request) {
+    // Is this user already signed in?
+    if (!Sentry::check()) {
+      // No - they are not signed in.  redirect to account login/create form.
+      return $this->redirectTo('cart_account');
+    }
+
+    $shipping_id = Session::get('shipping_id');
+
+    $shipping = Shipping::find($shipping_id);
+
+
+    if(Cart::count() > 0){
+
+      //save the shipping
+      //some issue with accessing id value from collection, so using as array
+
+      $shipping->billing_name = Input::get('billing-name');
+      $shipping->billing_address_1 = Input::get('billing-address_1');
+      $shipping->billing_address_2 = Input::get('billing-address_2');
+      $shipping->billing_country = Input::get('billing-country');
+      $shipping->billing_city = Input::get('billing-city');
+      $shipping->billing_state = Input::get('billing-state');
+      $shipping->billing_contact_number_1 = Input::get('billing-contact_number_1');
+      $shipping->billing_contact_number_2 = Input::get('billing-contact_number_2');
+      $shipping->shipping_name = Input::get('shipping-name');
+      $shipping->shipping_address_1 = Input::get('shipping-address_1');
+      $shipping->shipping_address_2 = Input::get('shipping-address_2');
+      $shipping->shipping_country = Input::get('shipping-country');
+      $shipping->shipping_city = Input::get('shipping-city');
+      $shipping->shipping_state = Input::get('shipping-state');
+      $shipping->shipping_contact_number_1 = Input::get('shipping-contact_number_1');
+      $shipping->shipping_contact_number_2 = Input::get('shipping-contact_number_2');
+      $shipping->quantity = Cart::count();
+      $shipping->amount = Cart::total();
+
+      $shipping->save();
 
       //redirect to payment page
       return $this->redirectTo('payment');

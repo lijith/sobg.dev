@@ -122,7 +122,7 @@ Route::group(['prefix' => 'e-shop'],function(){
 	Route::get('audio-cds/{title}',['as' => 'acd.show', 'uses' => 'EshopController@audioShow']);
 	Route::group(['prefix' => 'books'],function(){
 		Route::get('/',['as' => 'books', 'uses' => 'EshopController@bookList']);
-		Route::get('/{title}',['as' => 'book.show', 'uses' => 'EshopController@index']);
+		Route::get('/{title}',['as' => 'book.show', 'uses' => 'EshopController@BookShow']);
 		Route::get('books-by-swami',['as' => 'swamibooks', 'uses' => 'EshopController@booksBySwami']);
 		Route::get('other-titles',['as' => 'otherbooks', 'uses' => 'EshopController@otherTitles']);
 	});
@@ -140,6 +140,8 @@ Route::group(['prefix' => 'e-shop'],function(){
     Route::post('account/register', ['as' => 'member.cart.register', 'uses' => 'Member\RegistrationController@register']);
     Route::get('shipping',['as' => 'cart.shipping', 'uses' => 'ShoppingCartController@showShipping']);
     Route::post('shipping',['as' => 'cart.shipping.store', 'uses' => 'ShoppingCartController@storeShipping']);
+    Route::get('shipping/edit',['as' => 'cart.shipping.edit', 'uses' => 'ShoppingCartController@editShipping']);
+    Route::put('shipping/edit',['as' => 'cart.shipping.update', 'uses' => 'ShoppingCartController@updateShipping']);
     Route::get('payment',['as' => 'cart.pay', 'uses' => 'ShoppingCartController@showPayment']);
 
 

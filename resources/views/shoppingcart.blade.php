@@ -59,7 +59,9 @@
                 @elseif($item->options->item_type == 'book')
                   src="{{asset('images/books/'.$item->options->item_images)}}"><br />
                 @endif
-                
+
+                <br />
+                {{strtoupper($item->options->item_sub_type)}}
               </td>
               <td>{{ucwords($item->name)}}</td>
               <td>
