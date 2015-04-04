@@ -15,7 +15,6 @@
       <div class="col-md-12">
         <ul class="nav nav-tabs">
             <li class="active"><a href="cart.html">Cart</a></li>
-            <li><a href="#">Login</a></li>
             <li><a href="#">Account</a></li>
             <li><a href="#">Shipping</a></li>
             <li><a href="#">Payment</a></li>
@@ -24,13 +23,14 @@
        		<div class="split_30"></div><!-- /.split_30 -->
 
           <div class="row">
-            <div class="col-md-offset-6 col-md-6">
+            <div class="col-md-offset-4 col-md-8">
               <div class="form-group">
+              Shipping : 
                 <label class="radio-inline">
-                  <input type="radio" name="radio"> Hello
+                  <input type="radio" name="radio"> inside India
                 </label>
                 <label class="radio-inline">
-                  <input type="radio" name="radio"> Other
+                  <input type="radio" name="radio"> out side India
                 </label>
                 <button type="submit" class="btn">Update</button> 
               </div>
@@ -113,18 +113,6 @@
       </div>
     </div>
 
-		<div class="split_30"></div><!-- /.split_30 -->
-		<div class="shadow">
-			<div class="continue-shopping">
-				<h3 class="sec-title">Continue Shopping</h3>
-				<div class="categories-buttons clearfix">
-					<a href="">DVDs/VCDs</a>
-					<a href="">Audio Cds/MP3s</a>
-					<a href="">Books</a>
-					<a href="">Magazine</a>
-				</div><!-- /.categories-buttons -->
-			</div><!-- /.continue-shopping -->
-		</div><!-- /.shadow -->
 		<div class="split_40"></div><!-- /.split_40 -->
 			
 	</div><!-- /.col-md-9 col-sm-8 main-cart -->

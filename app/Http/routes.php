@@ -117,11 +117,11 @@ Route::group(['prefix' => 'e-shop'],function(){
 	Route::get('dvds',['as' => 'dvd', 'uses' => 'EshopController@dvdList']);
 	Route::get('dvds/{title}',['as' => 'dvd.show', 'uses' => 'EshopController@VideoShow']);
 	Route::get('mp3',['as' => 'mp3', 'uses' => 'EshopController@mp3List']);
-	Route::get('mp3/{title}',['as' => 'mp3.show', 'uses' => 'EshopController@mp3List']);
-	Route::get('audio-cds',['as' => 'acd', 'uses' => 'EshopController@audioList']);
-	Route::get('audio-cds/{title}',['as' => 'acd.show', 'uses' => 'EshopController@audioList']);
+	Route::get('mp3/{title}',['as' => 'mp3.show', 'uses' => 'EshopController@audioShow']);
+	Route::get('audio-cds',['as' => 'acd', 'uses' => 'EshopController@acdList']);
+	Route::get('audio-cds/{title}',['as' => 'acd.show', 'uses' => 'EshopController@audioShow']);
 	Route::group(['prefix' => 'books'],function(){
-		Route::get('/',['as' => 'books', 'uses' => 'EshopController@index']);
+		Route::get('/',['as' => 'books', 'uses' => 'EshopController@bookList']);
 		Route::get('/{title}',['as' => 'book.show', 'uses' => 'EshopController@index']);
 		Route::get('books-by-swami',['as' => 'swamibooks', 'uses' => 'EshopController@booksBySwami']);
 		Route::get('other-titles',['as' => 'otherbooks', 'uses' => 'EshopController@otherTitles']);

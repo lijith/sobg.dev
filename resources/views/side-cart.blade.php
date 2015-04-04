@@ -4,6 +4,8 @@
 		<div class="cart-wrap">
 			<h3 class="sec-title"><i class="fa fa-shopping-cart"></i> Cart</h3><!-- /.sec-title -->
 
+			@if($side_cart->count() > 0)
+
 			<?php $count = 1; ?>
 
 			@foreach($side_cart as $item)
@@ -78,9 +80,24 @@
 			</div><!-- /.cart-total -->
 			<div class="split_40"></div><!-- /.split_40 -->	
 			<div class="clearfix">
-				<a href="{{route('cart')}}" class="btn btn-primary pull-left">Show Cart</a>
-				<a href="{{route('cart.account')}}" class="btn btn-primary pull-right">Check Out</a>
+				<a href="{{route('cart')}}" class="btn btn-primary pull-right">Show Cart</a>
 			</div><!-- /.clearfix -->
-		</div><!-- /.wrap -->
+			<div class="split_20"></div><!-- /.split-30 -->
+
+			@else
+			<p>Books, Audio ,Video CDs and DVDs of Discourses by Swami Sandeepananda Giri on the Bhagavad Gita, Upanishads and other text are made available for purchase. </p>
+			@endif
+
+			<div class="eshop-items">
+				<ul>
+					<li><a href="{{route('dvd')}}">Dvds</a></li>
+					<li><a href="{{route('vcd')}}">VCDs</a></li>
+					<li><a href="{{route('acd')}}">Audio CDs</a></li>
+					<li><a href="{{route('mp3')}}">MP3s</a></li>
+					<li><a href="{{route('books')}}">Books</a></li>
+				</ul>
+			</div><!-- /.eshop-items -->
+
+		</div><!-- /.cart-wrap -->
 	</div><!-- /.shadow -->
 </div><!-- /.col-md-3 col-sm-4 side-cart -->

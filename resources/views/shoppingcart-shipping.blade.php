@@ -15,7 +15,6 @@
     <div class="col-md-12">
       <ul class="nav nav-tabs">
           <li><a href="">Cart</a></li>
-          <li><a href="#">Login</a></li>
           <li><a href="#">Account</a></li>
           <li class="active"><a href="#">Shipping</a></li>
           <li><a href="#">Payment</a></li>
