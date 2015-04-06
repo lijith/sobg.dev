@@ -1,6 +1,6 @@
 <?php namespace App\Http\Controllers;
 
-use Cart;
+use Cart, Session;
 
 class SiteController extends Controller {
 
@@ -27,8 +27,13 @@ class SiteController extends Controller {
 	);
 
 	public function __construct(){
+
+		if(!Session::has('shipping_charge')){
+	  	Session::put('shipping_charge', 80);
+	  }
+
   	$this->page_data['side_cart'] = Cart::content();
-  	$this->page_data['side_cart_total'] = Cart::total();
+  	$this->page_data['side_cart_total'] = Cart::total() + Session::get('shipping_charge');
   	$this->page_data['cart_count'] = $this->cartCount();
   }
 

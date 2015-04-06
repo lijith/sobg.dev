@@ -216,7 +216,7 @@ class ShoppingCartController extends SiteController {
           }
           break;
           case 'audio':{
-            $item['id'] = Hashids::connection('video')->decode($item['id'])[0];
+            $item['id'] = Hashids::connection('audio')->decode($item['id'])[0];
           }
           break;
           case 'book':{
@@ -355,10 +355,59 @@ class ShoppingCartController extends SiteController {
 
     $shipping_id = Session::get('shipping_id');
 
+    $orders = array();
+
+    $items = Order::where('shipping_id', '=',$shipping_id)->get();
+
+    //dd($items);
+
+    foreach ($items as $item) {
+      switch($item->item_type){
+        case 'video':{
+          $product = VideoDisk::find($item->item_id)->first();
+        }
+        break;
+        case 'audio':{
+          $product = AudioDisk::find($item->item_id)->first();
+
+        }
+        break;
+        case 'book':{
+          $product = Book::find($item->item_id)->first();
+        }
+      }
+
+      array_push($orders, array(
+        'title' => $product->title,
+        'quantity' => $item->quantity,
+      ));
+
+    }
+
     $this->page_data['shipping'] = Shipping::find($shipping_id)->first();
+    $this->page_data['orders'] = $orders;
+
 
     return View::make('shoppingcart-payment')->with($this->page_data);
 
+  }
+
+  /**
+   * Update shipping charges.
+   *
+   * @param  void
+   *
+   * @return redirect
+   */
+  public function updateShippingCharges() {
+    if(Input::get('ship-to') == 'IN'){
+      Session::put('shipping_charge', 80);
+    }elseif(Input::get('ship-to') == 'OUT'){
+      Session::put('shipping_charge', 400);
+    }
+
+
+    return $this->redirectTo('cart');
   }
 
 }

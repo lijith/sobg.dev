@@ -119,6 +119,7 @@ return [
     */
 
     'routing' => [
+        'cart'                         => ['route' => 'cart'], 
         'eshop'                        => ['route' => 'eshop'],
         'shipping_edit'                => ['route' => 'cart.shipping.edit'],
         'payment'                      => ['route' => 'cart.pay'],

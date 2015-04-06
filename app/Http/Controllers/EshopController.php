@@ -51,6 +51,34 @@ class EshopController extends SiteController {
 	}
 
 	/**
+	 * videos.
+	 *
+	 * @return View
+	 */
+	public function videoList(){
+		$this->page_data['title'] = 'VCDs and DVDs from School of Bhagavat Gita';
+		$this->page_data['description'] = 'VCD and DVD';
+		$this->page_data['sub_page_active'] = '';
+		$this->page_data['video_disks'] = VideoDisk::get();
+
+		return view('eshop-video-disks-list')->with($this->page_data);
+	}
+
+	/**
+	 * audios.
+	 *
+	 * @return View
+	 */
+	public function audioList(){
+		$this->page_data['title'] = 'Audio Cds and Mp3s from School of Bhagavat Gita';
+		$this->page_data['description'] = 'Audio CD and MP3';
+		$this->page_data['sub_page_active'] = '';
+		$this->page_data['audio_disks'] = AudioDisk::get();
+
+		return view('eshop-audio-disks-list')->with($this->page_data);
+	}
+
+	/**
 	 * DVD.
 	 *
 	 * @return View

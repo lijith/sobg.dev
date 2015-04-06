@@ -56,40 +56,48 @@
 					<div class="pub-col">
 						<div class="item">
 							<div class="item-image vcenter">
-								<img src="{{URL::asset('images/audio-cd.jpg')}}" alt="" />
+								<a href="{{route('eshop.audios')}}">
+									<img src="{{URL::asset('images/audio-cd.jpg')}}" alt="" />
+								</a>	
 							</div><!-- /.item-image -->
 							<div class="item-label">
-								Audio CDs/MP3s
+								<a href="{{route('eshop.audios')}}">Audio CDs/MP3s</a>
 							</div><!-- /.item-label -->
 						</div><!-- /.item -->
 					</div><!-- /.col-md-3 -->
 					<div class="pub-col">
 						<div class="item">
 							<div class="item-image vcenter">
-								<img src="{{URL::asset('images/dvd.jpg')}}" alt="" />
+								<a href="{{route('eshop.videos')}}">
+									<img src="{{URL::asset('images/dvd.jpg')}}" alt="" />
+								</a>
 							</div><!-- /.item-image -->
 							<div class="item-label">
-								DVDs/VCDs
+								<a href="{{route('eshop.videos')}}">DVDs/VCDs</a>
 							</div><!-- /.item-label -->
 						</div><!-- /.item -->
 					</div><!-- /.col-md-3 -->
 					<div class="pub-col">
 						<div class="item">
 							<div class="item-image vcenter">
-								<img src="{{URL::asset('images/books.jpg')}}" alt="" />
+								<a href="{{route('books')}}">
+									<img src="{{URL::asset('images/books.jpg')}}" alt="" />
+								</a>	
 							</div><!-- /.item-image -->
 							<div class="item-label">
-								Books
+								<a href="{{route('books')}}">Books</a>
 							</div><!-- /.item-label -->
 						</div><!-- /.item -->
 					</div><!-- /.col-md-3 -->
 					<div class="pub-col">
 						<div class="item">
 							<div class="item-image vcenter">
-								<img src="{{URL::asset('images/piravi.jpg')}}" alt="" />
+								<a href="{{route('piravi')}}">
+									<img src="{{URL::asset('images/piravi.jpg')}}" alt="" />
+								</a>	
 							</div><!-- /.item-image -->
 							<div class="item-label">
-								Magazines
+								<a href="{{route('piravi')}}">Magazines</a>
 							</div><!-- /.item-label -->
 						</div><!-- /.item -->
 					</div><!-- /.col-md-3 -->
@@ -101,7 +109,7 @@
 							Books, Audio ,Video CDs and DVDs of Discourses by Swami Sandeepananda Giri on the Bhagavad Gita, Upanishads and other text are made available for purchase.
 						</div><!-- /.text -->
 						<div class="cart-button">
-							<a href="#" class="btn btn-block"><span class="glyphicon glyphicon-shopping-cart"></span> Buy from e-shop</a>
+							<a href="{{route('eshop')}}" class="btn btn-block"><span class="glyphicon glyphicon-shopping-cart"></span> Buy from e-shop</a>
 
 						</div><!-- /.cart-button -->
 					</div><!-- /.row -->

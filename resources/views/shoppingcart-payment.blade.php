@@ -56,7 +56,49 @@
 			              </div>
 			          </div>
 			      </div>
-			    </div>					              
+			    </div>
+			    <div class="row">
+			    	<div class="col-md-6">
+			    		<div class="panel panel-default">
+		              <div class="panel-heading">Chosen Items</div>
+		              <div class="panel-body">
+		              	<table class="table table-bordered">
+		              		<tr>
+		              			<th>Title</th>
+		              			<th>Quantity</th>
+		              		</tr>
+		              		@foreach($orders as $order)
+		              		<tr>
+		              			<td>{{$order['title']}}</td>
+		              			<td>{{$order['quantity']}}</td>
+		              		</tr>
+		              		@endforeach
+		              	</table>
+		              </div>
+		          </div>
+			    	</div><!-- /.col-md-6 -->
+			    	<div class="col-md-6">
+			    		<div class="panel panel-default">
+		              <div class="panel-heading">Amount</div>
+		              <div class="panel-body">
+		              	<table class="table table-bordered">
+		              		<tr>
+		              			<td>Shipping</td>
+		              			<td>{{Session::get('shipping_charge')}}</td>
+		              		</tr>
+		              		<tr>
+		              			<td>Amount</td>
+		              			<td>{{$shipping->amount}}</td>
+		              		</tr>
+		              		<tr>
+		              			<td>Total Amount</td>
+		              			<td>{{$shipping->amount + Session::get('shipping_charge')}}</td>
+		              		</tr>
+		              	</table>
+		              </div>
+		          </div>
+			    	</div><!-- /.col-md-6 -->
+			    </div><!-- /.row -->					              
 		      <hr />
 		      <div class="clearfix">
 		      	<a class="btn btn-primary pull-right" href="login.html">Proceed To Checkout</a>

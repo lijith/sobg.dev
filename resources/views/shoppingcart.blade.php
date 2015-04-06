@@ -22,21 +22,7 @@
 
        		<div class="split_30"></div><!-- /.split_30 -->
 
-          <div class="row">
-            <div class="col-md-offset-4 col-md-8">
-              <div class="form-group">
-              Shipping : 
-                <label class="radio-inline">
-                  <input type="radio" name="radio"> inside India
-                </label>
-                <label class="radio-inline">
-                  <input type="radio" name="radio"> out side India
-                </label>
-                <button type="submit" class="btn">Update</button> 
-              </div>
-            </div><!-- /.col-md-offset-6 col-md-6 -->
-          </div><!-- /.row -->
-          
+                    
         <table class="table table-bordered table-striped">
          <thead>
           <tr>
@@ -65,42 +51,55 @@
               </td>
               <td>{{ucwords($item->name)}}</td>
               <td>
-                <div class="row">
-                  <div class="col-xs-10">
-                    <form class="form-inline" action="{{ route('cart.update',$item->rowid) }}" method="POST">
-                      <input type="text" value="{{$item->qty}}" class="form-control" name="update-quantity">
-                      <input name="_method" value="PUT" type="hidden">
-                      <input name="_token" value="{{ csrf_token() }}" type="hidden">
-                      <button class="btn btn-default" title="" rel="tooltip" data-original-title="Update" type="submit"><i class="fa fa-pencil"></i></button>
-                      
-                    </form>
-                  </div><!-- /.col-xs-8 -->
-                  <div class="col-xs-2">
-                    <form class="form-inline" action="{{ route('cart.update',$item->rowid) }}" method="POST">
+                <div class="clearfix">
+                  
+                  <form class="form-inline pull-left" action="{{ route('cart.update',$item->rowid) }}" method="POST">
+                    <input type="text" value="{{$item->qty}}" class="form-control" name="update-quantity">
+                    <input name="_method" value="PUT" type="hidden">
                     <input name="_token" value="{{ csrf_token() }}" type="hidden">
-                      <a title="" rel="tooltip" class="btn btn-primary" href="#" data-original-title="Delete"><i class="fa fa-trash-o"></i></a>
-                    </form>
-                  </div><!-- /.col-xs-4 -->
-                </div><!-- /.row -->
-                
-                
+                    <button class="btn btn-default" title="" rel="tooltip" data-original-title="Update" type="submit"><i class="fa fa-pencil"></i></button>
+                  </form>
+
+                  <form class="form-inline pull-right" action="{{ route('cart.update',$item->rowid) }}" method="POST">
+                  <input name="_token" value="{{ csrf_token() }}" type="hidden">
+                    <a title="" rel="tooltip" class="btn btn-primary" href="#" data-original-title="Delete"><i class="fa fa-trash-o"></i></a>
+                  </form>
+                  
+                </div><!-- /.clearfix -->
               </td>
               <td>{{$item->price}}</td>
               <td>{{$item->qty*$item->price}}</td>
             </tr>
          @endforeach
-          
-          
+
           <tr>
-            <td colspan="6">&nbsp;</td>
+            <td colspan="6">
+            <div class="form-group clearfix">
+              
+              <form method="POST" action="{{action('ShoppingCartController@updateShippingCharges')}}" class="pull-right">
+              Shipping : 
+                <label class="radio-inline">
+                  <input type="radio" name="ship-to" @if(Session::get('shipping_charge') == 80) checked @endif value="IN"> inside India
+                </label>
+                <label class="radio-inline">
+                  <input type="radio" name="ship-to" @if(Session::get('shipping_charge') > 80) checked @endif value="OUT"> out side India
+                </label>
+                
+                   <input name="_token" value="{{ csrf_token() }}" type="hidden">
+                   <button type="submit" class="btn">Update</button> 
+              </form>
+               
+              </div></td>
           </tr>
+          
+          
           <tr>
-            <td class="text-right" colspan="4">Total Product(s)</td>
+            <td class="text-right" colspan="4">Product(s) Total</td>
             <td>{{$side_cart_total}}</td>
           </tr>
           <tr>
-            <td class="text-right" colspan="4">Total Shipping</td>
-            <td>180</td>
+            <td class="text-right" colspan="4">Shipping</td>
+            <td>{{Session::get('shipping_charge')}}</td>
           </tr>
           <tr class="all-total">
             <td class="text-right" colspan="4"><strong>Total</strong></td>

@@ -112,6 +112,8 @@ Route::get('donate-support',['as' => 'donate', 'uses' => 'donateController@index
 */
 Route::group(['prefix' => 'e-shop'],function(){
 	Route::get('/',['as' => 'eshop', 'uses' => 'EshopController@index']);
+  Route::get('/audio-disks',['as' => 'eshop.audios', 'uses' => 'EshopController@audioList']);
+  Route::get('/video-disks',['as' => 'eshop.videos', 'uses' => 'EshopController@videoList']);
 	Route::get('vcds',['as' => 'vcd', 'uses' => 'EshopController@vcdList']);
 	Route::get('vcds/{title}',['as' => 'vcd.show', 'uses' => 'EshopController@VideoShow']);
 	Route::get('dvds',['as' => 'dvd', 'uses' => 'EshopController@dvdList']);
@@ -132,6 +134,7 @@ Route::group(['prefix' => 'e-shop'],function(){
   Route::group(['prefix' => 'cart'],function(){
     Route::get('/',['as' => 'cart', 'uses' => 'ShoppingCartController@showCart']);
     Route::post('/',['as' => 'cart.add', 'uses' => 'ShoppingCartController@add']);
+    Route::post('shipping-charge',['as' => 'cart.shipping-charge', 'uses' => 'ShoppingCartController@updateShippingCharges']);
     Route::put('/{hash}',['as' => 'cart.update', 'uses' => 'ShoppingCartController@update']);
     Route::delete('/{hash}',['as' => 'cart.remove', 'uses' => 'ShoppingCartController@removeItem']);
 
@@ -151,6 +154,19 @@ Route::group(['prefix' => 'e-shop'],function(){
 
 
 });
+
+/*
+|
+| Photo gallery
+|
+*/
+
+Route::group(['prefix'=>'photo-gallery', 'namespace' => 'Member'], function(){
+  Route::get('/',['as' => 'albums', 'uses' => 'PhotoGalleryController@listAlbums']);
+  Route::get('/{title}',['as' => 'albums.pictures', 'uses' => 'PhotoGalleryController@showAlbum']);
+});
+
+
 /*
 |
 | Site Memebers
@@ -312,5 +328,14 @@ Route::group(['prefix'=>'administrator', 'namespace' => 'Admin'], function(){
   Route::get('magazine/{hash}/edit', ['as' => 'magazines.edit', 'uses' => 'MagazineController@edit']);
   Route::put('magazine/{hash}', ['as' => 'magazines.update', 'uses' => 'MagazineController@update']);
   Route::delete('magazine/{hash}', ['as' => 'magazines.destroy', 'uses' => 'MagazineController@destroy']);
+
+  //photo albums
+  Route::get('album/create', ['as' => 'album.create', 'uses' => 'AlbumController@create']);
+  Route::post('album', ['as' => 'album.store', 'uses' => 'AlbumController@store']);
+  Route::get('album/', ['as' => 'album.list', 'uses' => 'AlbumController@index']);
+  Route::get('album/{hash}', ['as' => 'album.show', 'uses' => 'AlbumController@show']);
+  Route::get('album/{hash}/edit', ['as' => 'album.edit', 'uses' => 'AlbumController@edit']);
+  Route::put('album/{hash}', ['as' => 'album.update', 'uses' => 'AlbumController@update']);
+  Route::delete('album/{hash}', ['as' => 'album.destroy', 'uses' => 'AlbumController@destroy']);
 });
 
