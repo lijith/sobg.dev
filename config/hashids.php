@@ -52,7 +52,14 @@ return [
             'salt' => 'ahuSgpwPAwAIVRHuuomaydUzuLHFVdoumAgXpdFaekrwYSLeSOBMiNqJdZTjipCm',
             'length' => 6,
             'alphabet' => 'abcdefghijklmnopqrstuvwxyz1234567890'
+        ],
+
+        'album' => [
+            'salt' => 'LnSIRCwZ8aRw7iK13KU6LxIhc8D5Xy0PSKSMEqbOZQNhQww8GprEwKwZ7SXC4NKx',
+            'length' => 6,
+            'alphabet' => 'abcdefghijklmnopqrstuvwxyz1234567890'
         ]
+
 
     ]
 

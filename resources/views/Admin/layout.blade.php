@@ -172,6 +172,17 @@
                     </ul>
                 </li>
                 <li class="sub-menu">
+                    <a href="#">
+                        <i class="fa fa-picture-o"></i>
+                        <span>Photo Albums</span>
+                    </a>
+                    <ul class="sub">
+                        <li><a href="{{ route('album.list') }}">Albums</a></li>
+                        <li><a href="{{ route('album.create') }}"><i class="fa fa-plus"></i> Add Album</a></li>
+                        
+                    </ul>
+                </li>
+                <li class="sub-menu">
                     <a href="{{ route('sentinel.logout') }}">
                         <i class="fa fa-laptop"></i>
                         <span>Logout</span>
