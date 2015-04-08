@@ -42,5 +42,13 @@ class Album extends Model implements SluggableInterface {
 		return $this->hasMany('App\Photo');
 	}
 
+	public function delete(){
+      // delete all associated photos 
+      $this->photos()->delete();
+      
+      // delete the user
+      return parent::delete();
+  }
+
 
 }

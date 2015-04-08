@@ -10,7 +10,7 @@ use Illuminate\Pagination\Paginator;
 
 use Vinkla\Hashids\HashidsManager;
 use App\Http\Requests\Admin\AlbumFormRequest;
-use App\Http\Requests\Admin\AudioDiskFormUpdateRequest;
+use App\Http\Requests\Admin\AlbumFormUpdateRequest;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Carbon\Carbon;
 use Image;
@@ -99,7 +99,9 @@ class AlbumController extends Controller {
 
   	$album->save();
 
-    return redirect()->route('album.list')->with('success', 'album '.ucwords(Input::get('disk-title')).' created');
+    $album_id = $this->hashids->connection('album')->encode($album->id);
+
+    return redirect()->route('album.show',array($album_id))->with('success', 'album '.ucwords(Input::get('disk-title')).' created');
   }
 
   /**
@@ -114,7 +116,7 @@ class AlbumController extends Controller {
     $id = $this->hashids->connection('album')->decode($hash)[0];
 
     $album = Album::find($id);
-    $photos = Album::find($id)->photos;
+    $photos = Album::find($id)->photos()->Paginate(10);
 
     //var_dump($photos);
 
@@ -132,16 +134,12 @@ class AlbumController extends Controller {
    * @return View
    */
   public function edit($hash) { 
-    $id = $this->hashids->decode($hash)[0];
+    $id = $this->hashids->connection('album')->decode($hash)[0];
 
-    $disk = Album::find($id);
+    $album = Album::find($id);
 
-    $disk->id = $this->hashids->encode($disk->id);
-    $pdate = Carbon::createFromFormat('Y-m-d H:i:s',$disk->published_at);
-
-    $disk->published_at = $pdate->format('m/d/Y');
-
-    return View::make('Admin.audiodisks.edit',['disk' => $disk]);
+    $album->id = $this->hashids->connection('album')->encode($album->id);
+    return View::make('Admin.albums.edit',['album' => $album]);
   }
 
 
@@ -155,19 +153,23 @@ class AlbumController extends Controller {
    */
   public function update(AlbumFormUpdateRequest $request,$hash) { 
 
-    $id = $this->hashids->decode($hash)[0];
-    $disk = Album::find($id);
+    $id = $this->hashids->connection('album')->decode($hash)[0];
+    $album = Album::find($id);
 
-    $cover_photo = $disk->cover_photo;
-    $thumb = $disk->cover_photo_thumbnail;
+    $cover_photo = $album->cover_photo;
+    $thumb = $album->cover_photo_thumbnail;
 
   	$upload_dir = $this->_album_upload_dir;
 
-    if (Input::hasFile('disk-cover-photo')){
+    if (Input::hasFile('album-cover-photo')){
 
-      if (File::exists($cover_photo)) {
-        File::delete($cover_photo);
+      if (File::exists($upload_dir.$cover_photo)) {
+        File::delete($upload_dir.$cover_photo);
       }  
+
+      if (File::exists($upload_dir.$thumb)) {
+        File::delete($upload_dir.$thumb);
+      } 
 
       $files = $this->handleImages();
 
@@ -180,14 +182,14 @@ class AlbumController extends Controller {
     $album->cover_photo_thumbnail = isset($files['thumb']) ? $files['thumb'] : $album->cover_photo_thumbnail;
 
     $album->save();
-    return redirect()->route('albums.show',array($hash))->with('success', 'disk '.ucwords(Input::get('disk-title')).' updated');
+    return redirect()->route('album.show',array($hash))->with('success', 'Album '.ucwords(Input::get('album-title')).' updated');
 
 
 
   }
 
   /**
-   * Remove the disk.
+   * Remove the album and associated photos.
    *
    * @param  string $hash
    *
@@ -195,21 +197,37 @@ class AlbumController extends Controller {
    */
   public function destroy( $hash){
 
-      $file_path = $this->_album_upload_dir;
-      // Decode the hashid
-      $id = $this->hashids->decode($hash)[0];
-      $disk = Album::find($id);
+      $id = $this->hashids->connection('album')->decode($hash)[0];
+      $album = Album::find($id);
+      $photos = Album::find($id)->photos;
 
-      $cover_photo = $disk->cover_photo;
+      if($photos->count() > 0){
+
+        foreach ($photos as $photo) {
+          if (File::exists($this->_album_upload_dir.$photo->image_name)) {
+            File::delete($this->_album_upload_dir.$photo->image_name);
+          }  
+
+          if (File::exists($this->_album_upload_dir.$photo->image_thumbnail)) {
+            File::delete($this->_album_upload_dir.$photo->image_thumbnail);
+          }
+        }
+
+      }
 
 
-      if (File::exists($file_path.$cover_photo)) {
-        File::delete($cover_photo);
+
+      if (File::exists($this->_album_upload_dir.$album->cover_photo)) {
+        File::delete($this->_album_upload_dir.$album->cover_photo);
+      }  
+
+      if (File::exists($this->_album_upload_dir.$album->cover_photo_thumbnail)) {
+        File::delete($this->_album_upload_dir.$album->cover_photo_thumbnail);
       }  
 
 
-      $disk->delete();
-      return redirect()->route('audiodisks.list',array($hash))->with('success', 'disk removed');
+      $album->delete();
+      return redirect()->route('album.list',array($hash))->with('success', 'album removed');
 
       
   }
@@ -223,6 +241,9 @@ class AlbumController extends Controller {
    */
   public function addPhotos($hash){
 
+    $photo_files = array();
+    $album_id = $this->hashids->connection('album')->decode($hash)[0];
+
     if (Input::hasFile('album-photo')){
       foreach (Input::file('album-photo') as $photo) {
         # code...
@@ -231,9 +252,10 @@ class AlbumController extends Controller {
             array('file' => 'required|mimes:jpeg,png|image|max:1000')
         );
 
-        $photo_files = array();
+        
 
         if ($validator->passes()) {
+
 
           $filename = Str::slug(pathinfo($photo->getClientOriginalName(),PATHINFO_FILENAME)).'-'.time();
           $file_ext = $photo->getClientOriginalExtension();
@@ -258,8 +280,15 @@ class AlbumController extends Controller {
           });
           $thumb_img->save($this->_album_upload_dir.$save_file_name_thumb);
 
+          //fit thumbnail
+          $thumb_img = Image::make($this->_album_upload_dir.$save_file_name_thumb);
+
+          $thumb_img->fit(450, 290, function ($constraint) {
+          });
+          $thumb_img->save($this->_album_upload_dir.$save_file_name_thumb);
+
           array_push($photo_files, array(
-            'album_id' => $this->hashids->connection('album')->decode($hash)[0],
+            'album_id' => $album_id,
             'image_name' => $save_file_name,
             'image_thumbnail' => $save_file_name_thumb
           ));
@@ -268,11 +297,48 @@ class AlbumController extends Controller {
 
       }
 
+
       Photo::insert($photo_files);
+      $album = Album::find($album_id);
+      $album->photos_number = $album->photos_number + count($photo_files);
+      $album->save();
     }
 
-    return redirect()->route('album.show',array($hash))->with('success', 'disk removed');
+    return redirect()->route('album.show',array($hash))->with('success', 'Photos Added');
    
+
+  }
+
+  /**
+   * Remove photo from album.
+   *
+   * @param  string $hash
+   *
+   * @return Redirect
+   */
+  public function removePhoto($id){
+
+    $album_id = $this->hashids->connection('album')->decode(Input::get('album-id'))[0];
+
+    $album = Album::find($album_id);
+    $photo = Photo::find($id);
+
+    if (File::exists($this->_album_upload_dir.$photo->image_name)) {
+      File::delete($this->_album_upload_dir.$photo->image_name);
+    }  
+
+    if (File::exists($this->_album_upload_dir.$photo->image_thumbnail)) {
+      File::delete($this->_album_upload_dir.$photo->image_thumbnail);
+    }  
+
+
+    $photo->delete();
+
+    $album->photos_number -= 1;
+
+    $album->save();
+
+    return redirect()->route('album.show',array(Input::get('album-id')))->with('success', 'Photos removed');
 
   }
 

@@ -338,5 +338,6 @@ Route::group(['prefix'=>'administrator', 'namespace' => 'Admin'], function(){
   Route::put('album/{hash}', ['as' => 'album.update', 'uses' => 'AlbumController@update']);
   Route::delete('album/{hash}', ['as' => 'album.destroy', 'uses' => 'AlbumController@destroy']);
   Route::post('album/{hash}/upload', ['as' => 'album.photo.upload', 'uses' => 'AlbumController@addPhotos']);
+  Route::delete('album/photo/{hash}', ['as' => 'album.photo.delete', 'uses' => 'AlbumController@removePhoto']);
 });
 

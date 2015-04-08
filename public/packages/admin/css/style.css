@@ -5627,7 +5627,7 @@ right: -1px;
 .media-gal .item {
     margin-bottom: 1%;
     margin-right: 1%;
-    width: 233px;
+    width: 198px;
     padding: 10px;
     border: 1px solid #ddd;
 }
@@ -5639,7 +5639,6 @@ right: -1px;
 }
 
 .media-gal .item img {
-    height: 200px;
     width: 100%;
 }
 
