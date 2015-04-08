@@ -3,7 +3,7 @@
 {{-- Page Title --}}
 @section('title')
 @parent
-	{{ucwords($disk->title)}}
+	{{ucwords($magazine->title)}}
 @stop
 
 
@@ -13,7 +13,7 @@
 	<div class="col-md-8 col-md-offset-2">
     <section class="panel">
       <header class="panel-heading">
-         {{ucwords($disk->title)}}
+         {{ucwords($magazine->title)}}
       </header>
       <div class="panel-body">
             <ul>
@@ -22,101 +22,76 @@
               @endforeach
             </ul>
             <div class="cover-pic">
-                <img src="{{asset('images/audio-disks/'.$disk->cover_photo)}}" class="img-responsive" alt=""> 
+                <img src="{{asset('images/magazines/'.$magazine->cover_photo_thumbnail)}}" class="img-responsive" alt=""> 
             </div><!-- /.cover-pic -->
-	        <form method="POST" action="{{ route('audiodisks.update',array($disk->id)) }}" accept-charset="UTF-8" enctype="multipart/form-data">
+	        <form method="POST" action="{{ route('magazines.update') }}" accept-charset="UTF-8" enctype="multipart/form-data">
 
-            <div class="form-group {{ ($errors->has('disk-cover-photo')) ? 'has-error' : '' }}">
-                <label>Change Cover Photo</label>
-                <input type="file" id="disk-cover-photo" name="disk-cover-photo">
-                <p class="help-block">Cover photo of disk(jpg, png files only)</p>
-                {{ ($errors->has('disk-cover-photo') ? $errors->first('disk-cover-photo') : '') }}
+            <div class="form-group {{ ($errors->has('magazine-cover-photo')) ? 'has-error' : '' }}">
+                <label>Change Magazine Cover Photo</label>
+                <input type="file" id="magazine-cover-photo" name="magazine-cover-photo">
+                <p class="help-block">Cover photo of magazine(jpg, png files only)</p>
+                {{ ($errors->has('magazine-cover-photo') ? $errors->first('magazine-cover-photo') : '') }}
             </div>
             <hr />
-
-            <div class="form-group {{ ($errors->has('disk-title')) ? 'has-error' : '' }}">
-                <label>Disk Title</label>
-                <input class="form-control" placeholder="Disk Title" name="disk-title" type="text"  value="{{ Input::old('disk-title') ? Input::old('disk-title') : $disk->title }}">
-                <span class="help-block">Avoid special characters in title</span>
-                {{ ($errors->has('disk-title') ? $errors->first('disk-title') : '') }}
-
+            <div class="form-group {{ ($errors->has('magazine-file')) ? 'has-error' : '' }}">
+                <label>Magazine File</label>
+                <input type="file" id="magazine-file" name="magazine-file">
+                <p class="help-block">Magazine file(pdf only)</p>
+                {{ ($errors->has('magazine-file') ? $errors->first('magazine-file') : '') }}
             </div>
 
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="form-group {{ ($errors->has('disk-price')) ? 'has-error' : '' }}">
-                        <label>Disk Price</label>
-                        <input class="form-control" placeholder="in INR" name="disk-price" type="text"  value="{{ Input::old('disk-price') ? Input::old('disk-price') : $disk->price }}">
-                        {{ ($errors->has('disk-price') ? $errors->first('disk-price') : '') }}
+            <div class="form-group {{ ($errors->has('magazine-title')) ? 'has-error' : '' }}">
+                <label>Magazine Title</label>
+                <input class="form-control" placeholder="Event Title" name="magazine-title" type="text"  value="{{ Input::old('magazine-title') ? Input::old('magazine-title') : $magazine->title }}">
+                <span class="help-block">Avoid special characters in title(eg piravi aug 2015)</span>
+                {{ ($errors->has('magazine-title') ? $errors->first('magazine-title') : '') }}
 
-                    </div>
-                </div><!-- /.col-md-6 -->
-                <div class="col-md-6">
-                    <div class="form-group {{ ($errors->has('disk-type')) ? 'has-error' : '' }}">
-                        <label>Disk Type</label>
-                        <div>
-                            <label class="radio-inline">
-                              <input type="radio" name="disk-type" id="dvd" value="1"
-                              @if($disk->disk_type == 1 || Input::old('disk-type')== 1) checked 
-                              @endif> Audio CD
-                            </label>
-                            <label class="radio-inline">
-                              <input type="radio" name="disk-type" id="vcd" value="2"
-                              @if($disk->disk_type == 2 || Input::old('disk-type')== 2) checked 
-                              @endif> MP3
-                            </label>
-                            {{ ($errors->has('disk-type') ? $errors->first('disk-type') : '') }}
-                        </div>
-
-                    </div>
-                </div><!-- /.col-md-6 -->
-            </div><!-- /.row -->
+            </div>
 
             <div class="row">
                 <div class="col-md-6">
                     <div class="form-group {{ ($errors->has('publish-date')) ? 'has-error' : '' }}">
                          <label>Published on</label>
-                        <input class="form-control" placeholder="" name="publish-date" type="text"  value="{{ Input::old('publish-date') ? Input::old('publish-date') : $disk->published_at }}" id="publish-date">
+                        <input class="form-control" placeholder="" name="publish-date" type="text"  value="{{ Input::old('publish-date') ? Input::old('publish-date') : $magazine->published_at }}" id="publish-date">
                         {{ ($errors->has('publish-date') ? $errors->first('publish-date') : '') }}
                     </div>
                 </div><!-- /.col-md-6 -->
                 <div class="col-md-6">
-                    <div class="form-group {{ ($errors->has('author')) ? 'has-error' : '' }}">
-                         <label>Authored By</label>
-                        <input class="form-control" placeholder="" name="author" type="text"  value="{{ Input::old('author') ? Input::old('author') : $disk->author }}" id="author" >
-                        {{ ($errors->has('author') ? $errors->first('author') : '') }}
+                    <div class="form-group {{ ($errors->has('magazine-price')) ? 'has-error' : '' }}">
+                        <label>Price</label>
+                        <input class="form-control" placeholder="in INR" name="magazine-price" type="text"  value="{{ Input::old('magazine-price') ? Input::old('magazine-price') : $magazine->price }}">
+                        {{ ($errors->has('magazine-price') ? $errors->first('magazine-price') : '') }}
+
                     </div>
                 </div><!-- /.col-md-6 -->
+                
             </div><!-- /.row -->
 
+
             <div class="form-group {{ ($errors->has('details')) ? 'has-error' : '' }}">
-                <label>Disk Detail</label>
-                <textarea rows="6" class="form-control" name="details">{{ Input::old('details') ? Input::old('details') : $disk->details }}</textarea>
-                <span class="help-block">Full detail of the disk</span>
+                <label>Edition Detail</label>
+                <textarea rows="6" class="form-control" name="details">{{ Input::old('details') ? Input::old('details') : $magazine->details }}</textarea>
+                <span class="help-block">Full detail of the magazine</span>
                 {{ ($errors->has('details') ? $errors->first('details') : '') }}
             </div>
 
             <div class="form-group {{ ($errors->has('excerpt')) ? 'has-error' : '' }}">
-                <label>Excerpt</label>
-                <textarea rows="6" class="form-control" name="excerpt">{{ Input::old('excerpt') ? Input::old('excerpt') : $disk->excerpt }}</textarea>
-                <span class="help-block">Small description of disk</span>
+                <label>Edition Excerpt</label>
+                <textarea rows="6" class="form-control" name="excerpt">{{ Input::old('excerpt') ? Input::old('excerpt') : $magazine->excerpt }}</textarea>
+                <span class="help-block">Small description of magazine</span>
                 {{ ($errors->has('excerpt') ? $errors->first('excerpt') : '') }}
             </div>
 
             <div class="form-group {{ ($errors->has('keywords')) ? 'has-error' : '' }}">
                 <label>Keywords</label>
-                <textarea rows="3" class="form-control" placeholder="" name="keywords">{{ Input::old('keywords') ? Input::old('keywords') : $disk->keywords }}</textarea>
+                <textarea rows="3" class="form-control" placeholder="" name="keywords">{{ Input::old('keywords') ? Input::old('keywords') : $magazine->keywords }}</textarea>
                 <span class="help-block">Some keywords</span>
                 {{ ($errors->has('keywords') ? $errors->first('keywords') : '') }}
             </div>
 
-            
-
-            
-
-            <input name="_method" value="PUT" type="hidden">
+           
             <input name="_token" value="{{ csrf_token() }}" type="hidden">
-            <input class="btn btn-primary" value="Update Disk Info" type="submit">
+            <input class="btn btn-primary" value="Create" type="submit">
 
         </form>
       </div>

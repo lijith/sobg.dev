@@ -29,13 +29,6 @@
                 <p class="help-block">Cover photo of magazine(jpg, png files only)</p>
                 {{ ($errors->has('magazine-cover-photo') ? $errors->first('magazine-cover-photo') : '') }}
             </div>
-            <hr />
-            <div class="form-group {{ ($errors->has('magazine-file')) ? 'has-error' : '' }}">
-                <label>Magazine File</label>
-                <input type="file" id="magazine-file" name="magazine-file">
-                <p class="help-block">Magazine file(pdf only)</p>
-                {{ ($errors->has('magazine-file') ? $errors->first('magazine-file') : '') }}
-            </div>
 
             <div class="form-group {{ ($errors->has('magazine-title')) ? 'has-error' : '' }}">
                 <label>Magazine Title</label>

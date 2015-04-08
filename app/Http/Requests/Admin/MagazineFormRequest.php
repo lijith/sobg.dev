@@ -28,8 +28,7 @@ class MagazineFormRequest extends Request {
 	    'keywords' 					=> 'required|min:10',
 	    'details' 					=> 'required|min:15',
 	    'publish-date' 			=> 'required|date_format:m/d/Y',
-	    'magazine-cover-photo'	=> 'required|mimes:jpeg,jpg,png',
-	    'magazine-file'	=> 'required|mimes:pdf'
+	    'magazine-cover-photo'	=> 'required|mimes:jpeg,jpg,png'
 		];
 	}
 

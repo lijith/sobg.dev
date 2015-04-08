@@ -38,7 +38,22 @@
                 </div>
 
                 <div class="in-panel">
+
+                @if($magazine->magazine_file == 'NO-ATTACHMENT')
+                  <div class="alert alert-warning">
+                      <strong>No file attached. Please upload pdf version</strong> 
+                  </div>
+                  <form method="POST" action="{{ route('magazines.show', array($magazine->id)) }}" enctype="multipart/form-data">
+                    <input name="_token" value="{{ csrf_token() }}" type="hidden">
+                    <div class="form-group">
+                        <input type="file" id="" name="magazine-attachment">
+                        <p class="help-block">Attach pdf version.</p>
+                        <button class="btn btn-primary">Attach</button>
+                    </div>
+                  </form>
+                @else
                   <a href="{{asset('magazines-pdf/'.$magazine->magazine_file)}}" target="_blank">{{$magazine->magazine_file}}</a>
+                @endif  
                 </div>
                  
 

@@ -325,6 +325,7 @@ Route::group(['prefix'=>'administrator', 'namespace' => 'Admin'], function(){
   Route::post('magazine', ['as' => 'magazines.store', 'uses' => 'MagazineController@store']);
   Route::get('magazine/', ['as' => 'magazines.list', 'uses' => 'MagazineController@index']);
   Route::get('magazine/{hash}', ['as' => 'magazines.show', 'uses' => 'MagazineController@show']);
+  Route::post('magazine/{hash}', ['as' => 'magazines.show', 'uses' => 'MagazineController@attach']);
   Route::get('magazine/{hash}/edit', ['as' => 'magazines.edit', 'uses' => 'MagazineController@edit']);
   Route::put('magazine/{hash}', ['as' => 'magazines.update', 'uses' => 'MagazineController@update']);
   Route::delete('magazine/{hash}', ['as' => 'magazines.destroy', 'uses' => 'MagazineController@destroy']);

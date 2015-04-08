@@ -5717,3 +5717,13 @@ right: -1px;
     margin-bottom: 15px;
     padding: 10px;
 }
+
+.item-wrap{
+    padding: 5px;
+    border: 1px solid #ddd;
+}
+
+.item-wrap .pic-wrap{
+    height: 180px;
+    overflow: hidden;
+}

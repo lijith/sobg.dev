@@ -55,7 +55,7 @@ class MagazineController extends Controller {
 		->paginate(3);
 
 		foreach ($magazines as $magazine) {
-			$magazine->id = $this->hashids->encode($magazine->id);
+			$magazine->id = $this->hashids->connection('magazine')->encode($magazine->id);
 			$pdate = Carbon::createFromFormat('Y-m-d H:i:s',$magazine->published_at);
 
 			$magazine->published_at = $pdate->toFormattedDateString();
@@ -91,15 +91,6 @@ class MagazineController extends Controller {
 			$files = $this->handleImages();
 		}
 
-		if (Input::hasFile('magazine-file')){
-
-			$upload_file = Input::file('magazine-file');
-
-			$files_save_name = Str::slug(Input::get('magazine-title')).'-'.time().'.'.$upload_file->getClientOriginalExtension();
-
-			$upload_file->move($this->_magazine_file_path,$this->_magazine_file_path.$files_save_name);
-
-		}
 
 		$magazine = new Magazine(array(
 			'title' => Input::get('magazine-title'),
@@ -107,7 +98,6 @@ class MagazineController extends Controller {
 			'excerpt' => Input::get('excerpt'),
 			'keywords' => Input::get('keywords'),
 			'details' => Input::get('details'),
-			'magazine_file' => $files_save_name,
 			'published_at' => Carbon::createFromFormat('m/d/Y', Input::get('publish-date')),
 			'cover_photo' => $files['filename'],
 			'cover_photo_thumbnail' => $files['thumb']
@@ -116,7 +106,9 @@ class MagazineController extends Controller {
 
 		$magazine->save();
 
-		return redirect()->route('magazines.list')->with('success', 'Magazine '.ucwords(Input::get('magazine-title')).' created');
+		$magazine_id = $this->hashids->connection('magazine')->encode($magazine->id);
+
+		return redirect()->route('magazines.show',array($magazine_id))->with('success', 'Magazine '.ucwords(Input::get('magazine-title')).' created,<br />Please attach digital version(pdf)');
 	}
 
 	/**
@@ -127,11 +119,11 @@ class MagazineController extends Controller {
 	 * @return View
 	 */
 	public function show($hash) {
-		$id = $this->hashids->decode($hash)[0];
+		$id = $this->hashids->connection('magazine')->decode($hash)[0];
 
 		$magazine = Magazine::find($id);
 
-		$magazine->id = $this->hashids->encode($magazine->id);
+		$magazine->id = $this->hashids->connection('magazine')->encode($magazine->id);
 
 		$pdate = Carbon::createFromFormat('Y-m-d H:i:s',$magazine->published_at);
 		$magazine->published_at = $pdate->toFormattedDateString();
@@ -148,14 +140,16 @@ class MagazineController extends Controller {
 	 * @return View
 	 */
 	public function edit($hash) { 
-		$id = $this->hashids->decode($hash)[0];
+		$id = $this->hashids->connection('magazine')->decode($hash)[0];
 
 		$magazine = Magazine::find($id);
 
-		$magazine->id = $this->hashids->encode($magazine->id);
+		$magazine->id = $this->hashids->connection('magazine')->encode($magazine->id);
 		$pdate = Carbon::createFromFormat('Y-m-d H:i:s',$magazine->published_at);
 
 		$magazine->published_at = $pdate->format('m/d/Y');
+
+		//echo $magazine->published_at;
 
 		return View::make('Admin.magazines.edit',['magazine' => $magazine]);
 	}
@@ -171,7 +165,7 @@ class MagazineController extends Controller {
 	 */
 	public function update(MagazineFormUpdateRequest $request,$hash) { 
 
-		$id = $this->hashids->decode($hash)[0];
+		$id = $this->hashids->connection('magazine')->decode($hash)[0];
 		$magazine = Magazine::find($id);
 
 		$cover_photo = $magazine->cover_photo;
@@ -214,7 +208,7 @@ class MagazineController extends Controller {
 	 */
 	public function destroy($hash){
 			// Decode the hashid
-			$id = $this->hashids->decode($hash)[0];
+			$id = $this->hashids->connection('magazine')->decode($hash)[0];
 			$magazine = Magazine::find($id);
 
 			$file_path = public_path().'/images/magazines/';
@@ -233,6 +227,32 @@ class MagazineController extends Controller {
 			
 	}
 
+	/**
+	 * resize and generate thumb of uploaded image
+	 *
+	 * @param  void
+	 * 
+	 * @return array
+	 **/
+	private function attach($hash){
+
+		$id = $this->hashids->connection('magazine')->decode($hash)[0];
+
+		if (Input::hasFile('magazine-attachment')){
+
+			$file = Input::file('magazine-file');
+
+			echo $file->getClientOriginalName();
+
+			// $upload_file = Input::file('magazine-file');
+
+			// $files_save_name = Str::slug(Input::get('magazine-title')).'-'.time().'.'.$upload_file->getClientOriginalExtension();
+
+			// $upload_file->move($this->_magazine_file_path,$this->_magazine_file_path.$files_save_name);
+
+		}
+	}
+	
 	/**
 	 * resize and generate thumb of uploaded image
 	 *
