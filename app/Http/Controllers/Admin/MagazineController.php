@@ -14,6 +14,7 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Carbon\Carbon;
 use Image;
 use App\Magazine;
+use App\SubscriptionRates;
 use View, Input, File, Validator;
 
 class MagazineController extends Controller {
@@ -293,6 +294,39 @@ class MagazineController extends Controller {
 			return redirect()->route('magazines.show',array($hash))->with('success', 'File added to '.ucwords(Input::get('magazine-title')));
 
 		}
+	}
+
+	/**
+	 * Show rates
+	 *
+	 * @param  void
+	 * 
+	 * @return view
+	 **/
+	public function subscription(){
+
+		$digitals = SubscriptionRates::where('type', '=', 'digital')->get();
+		$prints = SubscriptionRates::where('type', '=', 'print')->get();
+
+		return View::make('Admin.magazines.subscriptions',['digitals' => $digitals, 'prints' => $prints]);
+	}
+
+	/**
+	 * Update rates
+	 *
+	 * @param  void
+	 * 
+	 * @return redirect
+	 **/
+	public function updateSubscription(){
+
+		$sub = SubscriptionRates::find(Input::get('id'));
+
+		$sub->value = Input::get('rate');
+
+		$sub->save();
+
+		return redirect()->route('magazines.subscription.rates');
 	}
 	
 	/**
