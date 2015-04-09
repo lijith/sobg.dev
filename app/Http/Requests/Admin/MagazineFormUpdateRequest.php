@@ -2,7 +2,7 @@
 
 use App\Http\Requests\Request;
 
-class MagazineFormRequest extends Request {
+class MagazineFormUpdateRequest extends Request {
 
 	/**
 	 * Determine if the user is authorized to make this request.
@@ -29,7 +29,6 @@ class MagazineFormRequest extends Request {
 	    'details' 					=> 'required|min:15',
 	    'publish-date' 			=> 'required|date_format:m/d/Y',
 	    'magazine-cover-photo'	=> 'mimes:jpeg,jpg,png',
-	    'magazine-file'	=> 'mimes:pdf'
 		];
 	}
 

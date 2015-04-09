@@ -46,13 +46,28 @@
                   <form method="POST" action="{{ route('magazines.show', array($magazine->id)) }}" enctype="multipart/form-data">
                     <input name="_token" value="{{ csrf_token() }}" type="hidden">
                     <div class="form-group">
-                        <input type="file" id="" name="magazine-attachment">
+                        <input type="file" id="" name="magazine-file" />
                         <p class="help-block">Attach pdf version.</p>
-                        <button class="btn btn-primary">Attach</button>
+                        <button class="btn btn-primary" type="submit">Attach</button>
                     </div>
                   </form>
                 @else
-                  <a href="{{asset('magazines-pdf/'.$magazine->magazine_file)}}" target="_blank">{{$magazine->magazine_file}}</a>
+                <div>
+                  Current File : 
+                </div>
+                  <a href="{{asset('magazines-pdf/'.$magazine->magazine_file)}}" target="_blank" class="label label-warning"><i class="fa fa-file"></i> {{$magazine->magazine_file}}</a>
+
+                  <hr />
+
+                  <form method="POST" action="{{ route('magazines.show', array($magazine->id)) }}" enctype="multipart/form-data">
+                    <label>Change Attached File</label>
+                    <input name="_token" value="{{ csrf_token() }}" type="hidden">
+                    <div class="form-group">
+                        <input type="file" id="" name="magazine-file" />
+                        <p class="help-block">Attach pdf version.</p>
+                        <button class="btn btn-primary" type="submit">Attach</button>
+                    </div>
+                  </form>
                 @endif  
                 </div>
                  
@@ -84,7 +99,7 @@
                   <i class="fa fa-pencil-square-o"></i> Edit
                 </a>
                 <button type="submit" class="btn btn-danger confirm-delete">
-                  <i class="fa fa-trash-o"></i> Remove
+                  <i class="fa fa-trash-o"></i> Remove Edition
                 </button>
                 </form>
 

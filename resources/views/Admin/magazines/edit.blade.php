@@ -24,7 +24,7 @@
             <div class="cover-pic">
                 <img src="{{asset('images/magazines/'.$magazine->cover_photo_thumbnail)}}" class="img-responsive" alt=""> 
             </div><!-- /.cover-pic -->
-	        <form method="POST" action="{{ route('magazines.update') }}" accept-charset="UTF-8" enctype="multipart/form-data">
+	        <form method="POST" action="{{ route('magazines.update',array($magazine->id)) }}" accept-charset="UTF-8" enctype="multipart/form-data">
 
             <div class="form-group {{ ($errors->has('magazine-cover-photo')) ? 'has-error' : '' }}">
                 <label>Change Magazine Cover Photo</label>
@@ -33,13 +33,7 @@
                 {{ ($errors->has('magazine-cover-photo') ? $errors->first('magazine-cover-photo') : '') }}
             </div>
             <hr />
-            <div class="form-group {{ ($errors->has('magazine-file')) ? 'has-error' : '' }}">
-                <label>Magazine File</label>
-                <input type="file" id="magazine-file" name="magazine-file">
-                <p class="help-block">Magazine file(pdf only)</p>
-                {{ ($errors->has('magazine-file') ? $errors->first('magazine-file') : '') }}
-            </div>
-
+            
             <div class="form-group {{ ($errors->has('magazine-title')) ? 'has-error' : '' }}">
                 <label>Magazine Title</label>
                 <input class="form-control" placeholder="Event Title" name="magazine-title" type="text"  value="{{ Input::old('magazine-title') ? Input::old('magazine-title') : $magazine->title }}">
@@ -91,7 +85,8 @@
 
            
             <input name="_token" value="{{ csrf_token() }}" type="hidden">
-            <input class="btn btn-primary" value="Create" type="submit">
+            <input name="_method" value="PUT" type="hidden">
+            <input class="btn btn-primary" value="Update" type="submit">
 
         </form>
       </div>

@@ -2,6 +2,7 @@
 
 use Exception;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Session\TokenMismatchException;
 
 class Handler extends ExceptionHandler {
 
@@ -34,8 +35,15 @@ class Handler extends ExceptionHandler {
 	 * @param  \Exception  $e
 	 * @return \Illuminate\Http\Response
 	 */
-	public function render($request, Exception $e)
-	{
+	public function render($request, Exception $e){
+
+		if ($e instanceof TokenMismatchException){
+        //redirect to form an example of how i handle mine
+				if($request->is('administrator/magazine/*')){
+					return redirect()->back()->with('message', 'retry');;
+				}
+        
+    }
 		return parent::render($request, $e);
 	}
 

@@ -14,7 +14,7 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Carbon\Carbon;
 use Image;
 use App\Magazine;
-use View, Input, File;
+use View, Input, File, Validator;
 
 class MagazineController extends Controller {
 
@@ -183,11 +183,9 @@ class MagazineController extends Controller {
 
 		$magazine->title = Input::get('magazine-title');
 		$magazine->price = Input::get('magazine-price');
-		$magazine->author = Input::get('author');
 		$magazine->excerpt = Input::get('excerpt');
 		$magazine->keywords = Input::get('keywords');
 		$magazine->details = Input::get('details');
-		$magazine->published_by = Input::get('published-by');
 		$magazine->published_at = Carbon::createFromFormat('m/d/Y', Input::get('publish-date'));
 		$magazine->cover_photo = isset($files['filename']) ? $files['filename'] : $magazine->cover_photo;
 		$magazine->cover_photo_thumbnail = isset($files['thumb']) ? $files['thumb'] : $magazine->cover_photo_thumbnail;
@@ -211,15 +209,27 @@ class MagazineController extends Controller {
 			$id = $this->hashids->connection('magazine')->decode($hash)[0];
 			$magazine = Magazine::find($id);
 
-			$file_path = public_path().'/images/magazines/';
+			//del attached magazine
+			if($magazine->magazine_file != 'NO-ATTACHMENT'){
+				$del_mag_file = $this->_magazine_file_path.$magazine->magazine_file;
 
-			$cover_photo = $file_path.$magazine->cover_photo;
+				if (File::exists($del_mag_file)) {
+	        File::delete($del_mag_file);
+	      }
+			}
+
+			//del cover and thumbnail
+			$del_cover = $this->_cover_file_path.$magazine->cover_photo;
+			$del_thumbnail = $this->_cover_file_path.$magazine->cover_photo_thumbnail;
 
 
-				if (File::exists($cover_photo)) {
-					File::delete($cover_photo);
-				}  
+			if (File::exists($del_cover)) {
+        File::delete($del_cover);
+      }
 
+      if (File::exists($del_thumbnail)) {
+        File::delete($del_thumbnail);
+      }
 
 			$magazine->delete();
 			return redirect()->route('magazines.list',array($hash))->with('success', 'magazine removed');
@@ -234,21 +244,53 @@ class MagazineController extends Controller {
 	 * 
 	 * @return array
 	 **/
-	private function attach($hash){
+	public function attach($hash){
 
 		$id = $this->hashids->connection('magazine')->decode($hash)[0];
 
-		if (Input::hasFile('magazine-attachment')){
+		$magazine = Magazine::find($id);
+
+		$slug = $magazine->slug;
+
+		if (Input::hasFile('magazine-file')){
+
 
 			$file = Input::file('magazine-file');
+			$file_ext = $file->getClientOriginalExtension();
 
-			echo $file->getClientOriginalName();
+			$save_file_name = $slug.'.'.$file_ext;
 
-			// $upload_file = Input::file('magazine-file');
+        $validator = Validator::make(
+            array('file' => $file),
+            array('file' => 'required|mimes:pdf|max:2000')
+        );
 
-			// $files_save_name = Str::slug(Input::get('magazine-title')).'-'.time().'.'.$upload_file->getClientOriginalExtension();
+        
 
-			// $upload_file->move($this->_magazine_file_path,$this->_magazine_file_path.$files_save_name);
+        if ($validator->passes()) {
+  				if($magazine->magazine_file != 'NO-ATTACHMENT'){
+						//remove old attached file
+						$del_file = $this->_magazine_file_path.$magazine->magazine_file;
+
+						if (File::exists($del_file)) {
+			        File::delete($del_file);
+			      }
+					}
+
+					$file->move($this->_magazine_file_path,$save_file_name);
+
+					$magazine->magazine_file = $save_file_name;
+
+					$magazine->save();
+        }else{
+					return redirect()->route('magazines.show',array($hash))->with('error', 'Invalid file or file size too big');
+        }
+
+
+
+
+
+			return redirect()->route('magazines.show',array($hash))->with('success', 'File added to '.ucwords(Input::get('magazine-title')));
 
 		}
 	}
