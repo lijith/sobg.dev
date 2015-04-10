@@ -11,6 +11,7 @@ use App\AudioDisk;
 use App\VideoDisk;
 use App\Magazine;
 use App\Book;
+use App\SubscriptionRates;
 
 use Cart;
 
@@ -148,6 +149,24 @@ class EshopController extends SiteController {
 		return view('eshop-books-list')->with($this->page_data);
 	}
 
+	/**
+	 * piravi.
+	 *
+	 * @return view
+	 */
+	public function piravi(){
+		$this->page_data['title'] = 'Piravi Magazine';
+		$this->page_data['description'] = '';
+		$this->page_data['sub_page_active'] = 'piravi';
+
+		$this->page_data['magazines'] = Magazine::where('magazine_file', '<>', 'NO-ATTACHMENT	')->get();
+		$this->page_data['digital_subs'] = SubscriptionRates::where('type', '=', 'digital')->get();
+		$this->page_data['print_subs'] = SubscriptionRates::where('type', '=', 'print')->get();
+
+		return view('eshop-magazines-list')->with($this->page_data);
+	}
+
+
 
 	/**
 	 * Show dvd info.
@@ -223,6 +242,25 @@ class EshopController extends SiteController {
 		return view('eshop-item-book')->with($this->page_data);
 	}
 
+	/**
+	 * Show a book detail.
+	 *
+	 * @return view
+	 */
+	public function piraviShow($slug){
+		$magazine = Magazine::where('slug','=',$slug)->first();
+
+		$magazine->id = Hashids::connection('magazine')->encode($magazine->id);
+
+		$this->page_data['title'] = ucwords($magazine->title);
+		$this->page_data['description'] = $magazine->excerpt;
+		$this->page_data['sub_page_active'] = 'magazine';
+		$this->page_data['keywords'] = $magazine->keywords;
+		$this->page_data['magazine'] = $magazine;
+
+		return view('eshop-item-magazine')->with($this->page_data);
+	}
+
 
 
 
@@ -250,16 +288,5 @@ class EshopController extends SiteController {
 		return view('home')->with($this->page_data);
 	}
 
-	/**
-	 * piravi.
-	 *
-	 * @return Response
-	 */
-	public function piravi(){
-		$this->page_data['title'] = 'Piravi Magazine';
-		$this->page_data['description'] = '';
-		$this->page_data['sub_page_active'] = 'piravi';
-		return view('home')->with($this->page_data);
-	}
 
 }

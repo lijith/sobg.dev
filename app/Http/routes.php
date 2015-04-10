@@ -129,7 +129,7 @@ Route::group(['prefix' => 'e-shop'],function(){
 		Route::get('other-titles',['as' => 'otherbooks', 'uses' => 'EshopController@otherTitles']);
 	});
 	Route::get('piravi-magazine',['as' => 'piravi', 'uses' => 'EshopController@piravi']);
-	Route::get('piravi-magazine/{title}',['as' => 'magazine.show', 'uses' => 'EshopController@piravi']);
+	Route::get('piravi-magazine/{title}',['as' => 'magazine.show', 'uses' => 'EshopController@piraviShow']);
   
   Route::group(['prefix' => 'cart'],function(){
     Route::get('/',['as' => 'cart', 'uses' => 'ShoppingCartController@showCart']);

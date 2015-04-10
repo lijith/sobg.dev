@@ -24,6 +24,8 @@ use App\User;
 use App\Profile;
 use App\Shipping;
 use App\Order;
+use App\SubscriptionRates;
+use App\MagazineSubscribers;
 
 use Cart;
 
@@ -44,7 +46,10 @@ class ShoppingCartController extends SiteController {
    */
   public function showCart() {
 
-  	return View::make('shoppingcart')->with($this->page_data);
+    $this->page_data['digitals'] = SubscriptionRates::where('type', '=', 'digital')->get();
+    $this->page_data['prints'] = SubscriptionRates::where('type', '=', 'print')->get();
+
+    return View::make('shoppingcart')->with($this->page_data);
   }	
 
 	/**
@@ -76,19 +81,53 @@ class ShoppingCartController extends SiteController {
   		}
   	}
 
+    if(Input::has('subscribe-digital') && Input::has('magazine-sub')){
+
+      //var_dump(Input::all());
+
+      $id = Input::get('magazine-sub');
+
+      $sub = SubscriptionRates::find($id);
+      $price = $sub->value;
+      $item_sub_type = Input::get('item-sub-type');
+      $item_images = '';
+      $item_slug = '';
+
+      if($item_sub_type == 'digital'){
+
+        $name = $sub->key.' Magazine Subscription Digital' ;
+
+      }elseif($item_sub_type == 'print'){
+
+        $name = $sub->key.' Magazine Subscription Print' ;
+
+      }
+    }else{
+      $id = Input::get('item-id');
+      $name = ucwords($item->title);
+      $price = $item->price;
+      $item_slug = $item->slug;
+      $item_sub_type = Input::get('item-sub-type');
+      $item_images = $item->cover_photo_thumbnail;
+    }
+
+
+
   	$cart_item = array(
-  		'id' => Input::get('item-id'),
-  		'name' => ucwords($item->title),
+  		'id' => $id,
+  		'name' => $name,
   		'qty' => 1,
-  		'price' => $item->price,
+  		'price' => $price,
       'options' => array(
         'item_type' => Input::get('item-type'),
-        'item_slug' => $item->slug,
-        'item_sub_type' => Input::get('item-sub-type'),
-        'item_images' => $item->cover_photo_thumbnail,
+        'item_slug' => $item_slug,
+        'item_sub_type' => $item_sub_type,
+        'item_images' => $item_images,
         'shipping' => ''
        )
   	);
+
+   // var_dump($cart_item);
   	Cart::add($cart_item);
 
   	return redirect()->back();
@@ -208,6 +247,21 @@ class ShoppingCartController extends SiteController {
 
 
       foreach ($items as $item) {
+
+        if($item['options']['item_sub_type'] == 'digital' || $item['options']['item_sub_type'] == 'print'){
+          
+          if($item['options']['item_sub_type'] == 'digital'){
+            $digital = 1;
+            $print = 0;
+          }elseif ($item['options']['item_sub_type'] == 'digital') {
+             $digital = 0;
+            $print = 1;
+          }
+
+          $subscriber = new MagazineSubscribers(array(
+
+          ));
+        }
         
 
         switch($item['options']['item_type']){

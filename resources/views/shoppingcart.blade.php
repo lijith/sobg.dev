@@ -35,22 +35,29 @@
          </thead>
          <tbody>
          @foreach($side_cart as $item)
+          
             <tr>
               <td>
-              <img class="img-cart" 
-                @if($item->options->item_type == 'video')
-                  src="{{asset('images/video-disks/'.$item->options->item_images)}}"><br />
-                @elseif($item->options->item_type == 'audio')
-                  src="{{asset('images/audio-disks/'.$item->options->item_images)}}"><br />
-                @elseif($item->options->item_type == 'book')
-                  src="{{asset('images/books/'.$item->options->item_images)}}"><br />
-                @endif
+                @if( $item->options->item_type != 'magazine')
+                  <img class="img-cart" 
+                    @if($item->options->item_type == 'video')
+                      src="{{asset('images/video-disks/'.$item->options->item_images)}}"><br />
+                    @elseif($item->options->item_type == 'audio')
+                      src="{{asset('images/audio-disks/'.$item->options->item_images)}}"><br />
+                    @elseif($item->options->item_type == 'book')
+                      src="{{asset('images/books/'.$item->options->item_images)}}"><br />
+                    @endif
 
-                <br />
-                {{strtoupper($item->options->item_sub_type)}}
+                    <br />
+                  {{strtoupper($item->options->item_sub_type)}}
+                  @elseif($item->options->item_type == 'magazine')
+                    <img src="">
+                  @endif
+
               </td>
               <td>{{ucwords($item->name)}}</td>
               <td>
+              @if( $item->options->item_type != 'magazine')
                 <div class="clearfix">
                   
                   <form class="form-inline pull-left" action="{{ route('cart.update',$item->rowid) }}" method="POST">
@@ -66,6 +73,16 @@
                   </form>
                   
                 </div><!-- /.clearfix -->
+                @elseif($item->options->item_type == 'magazine')
+                  <div class="clearfix">
+                    
+
+                    <form class="form-inline" action="{{ route('cart.update',$item->rowid) }}" method="POST">
+                    <input name="_token" value="{{ csrf_token() }}" type="hidden">
+                      <a title="" rel="tooltip" class="btn btn-primary" href="#" data-original-title="Delete"><i class="fa fa-trash-o"></i> Remove Subscription</a>
+                    </form>
+                  </div><!-- /.clearfix -->
+                @endif
               </td>
               <td>{{$item->price}}</td>
               <td>{{$item->qty*$item->price}}</td>
@@ -103,7 +120,7 @@
           </tr>
           <tr class="all-total">
             <td class="text-right" colspan="4"><strong>Total</strong></td>
-            <td><strong>{{$side_cart_total+(180*$cart_count)}}</strong></td>
+            <td><strong>{{$side_cart_total}}</strong></td>
           </tr>
          </tbody>
         </table>
