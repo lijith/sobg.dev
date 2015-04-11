@@ -259,7 +259,7 @@ class ShoppingCartController extends SiteController {
           }
 
           $subscriber = new MagazineSubscribers(array(
-
+            
           ));
         }
         

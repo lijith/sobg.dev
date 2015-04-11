@@ -328,6 +328,35 @@ class MagazineController extends Controller {
 
 		return redirect()->route('magazines.subscription.rates');
 	}
+
+	/**
+	 * ADD rates
+	 *
+	 * @param  void
+	 * 
+	 * @return redirect
+	 **/
+	public function addsubscription(){
+		$title = Input::get('title');
+		$rate = Input::get('rate');
+		$period = Input::get('period');
+
+		$type = Input::get('type');
+
+		$subscription = new SubscriptionRates(array(
+			'type' => $type,
+			'key' => $title,
+			'value' => $rate,
+			'period' => $period
+		));
+
+		$subscription->save();
+
+		//var_dump(Input::all());
+		return redirect()->route('magazines.subscription.rates');
+
+
+	}
 	
 	/**
 	 * resize and generate thumb of uploaded image
