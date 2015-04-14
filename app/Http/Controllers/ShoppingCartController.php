@@ -245,6 +245,10 @@ class ShoppingCartController extends SiteController {
 
       $shipping->save();
 
+      $shipping_id = $shipping->id;
+
+      $user_id = Session::get('userId');
+
 
       foreach ($items as $item) {
 
@@ -258,8 +262,18 @@ class ShoppingCartController extends SiteController {
             $print = 1;
           }
 
+          $subscription = SubscriptionRates::find($item['id']);
+
+          $date = Carbon::now();
+          $date->addYears($subscription->period);
+
           $subscriber = new MagazineSubscribers(array(
-            
+            'user_id' => $user_id,
+            'shipping_id' => $shipping_id,
+            'digital' => $digital,
+            'print' => $print,
+            'active' => 1,
+            'ending_at' => $date
           ));
         }
         

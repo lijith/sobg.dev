@@ -64,6 +64,12 @@ return [
             'salt' => 'LnSIRCwZ8aRw7iK13KU6LxIhc8D5Xy0PSKSMEqbOZQNhQww8GprEwKwZ7SXC4NKx',
             'length' => 6,
             'alphabet' => 'abcdefghijklmnopqrstuvwxyz1234567890'
+        ],
+
+        'archive' => [
+            'salt' => '79cAerCHgPZw5K69HrTIIcG0MSDWFRDHLo2nNR3GtQExPH85O48XUjTNvkYNs0Ie',
+            'length' => 6,
+            'alphabet' => 'abcdefghijklmnopqrstuvwxyz1234567890'
         ]
 
 

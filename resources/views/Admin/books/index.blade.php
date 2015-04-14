@@ -39,8 +39,7 @@
                   <td>
                     
                     <a href="{{ action('\App\Http\Controllers\Admin\BookController@show', array($book->id)) }}">
-                      <img src="{{asset('images/books/'.$book->cover_photo_thumbnail)}}" alt="cover photo" class="img-responsive" />
-                      <br />
+                      
                       <strong>{{ucwords($book->title)}}</strong>
                     </a>
                   </td>

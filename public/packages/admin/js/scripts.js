@@ -169,16 +169,6 @@
 
     });
 
-    // $(document).delegate('*[data-toggle="lightbox"]', 'click', function(event) {
-    //     event.preventDefault();
-    //     $(this).ekkoLightbox();
-    // });
-
-    // if ($('.print-coupon').length > 0) {
-    //     $('button.print').on('click', function() {
-    //         $(".print-coupon").print();
-    //     })
-    // }
 
     // disabling dates
     var nowTemp = new Date();
@@ -233,3 +223,26 @@
     
 
 })(jQuery);
+
+
+var config = {
+    height: 100,
+    filebrowserBrowseUrl: '/elfinder/ckeditor4',
+    toolbarGroups: [
+        { name: 'clipboard',   groups: [ 'clipboard', 'undo' ] },
+        { name: 'editing',     groups: [ 'find', 'selection', 'spellchecker' ] },
+        { name: 'links' },
+        { name: 'insert' },
+        { name: 'forms' },
+        { name: 'tools' },
+        { name: 'document',    groups: [ 'mode', 'document', 'doctools' ] },
+        { name: 'others' },
+        //'/',
+        { name: 'basicstyles', groups: [ 'basicstyles', 'cleanup' ] },
+        { name: 'paragraph',   groups: [ 'list', 'indent', 'blocks', 'align', 'bidi' ] },
+        { name: 'styles' },
+        { name: 'colors' }
+    ]
+};
+
+CKEDITOR.replace( 'ckeditor1', config);

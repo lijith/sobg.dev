@@ -300,6 +300,13 @@ class AudioDiskController extends Controller {
     });
     $thumb_img->save($upload_to_dir.$save_file_name_thumb);
 
+    //fit thumbnail
+    $thumb_img = Image::make($upload_to_dir.$save_file_name_thumb);
+
+    $thumb_img->fit(350, 290, function ($constraint) {
+    });
+    $thumb_img->save($upload_to_dir.$save_file_name_thumb);
+
     return array(
       'filename' => $save_file_name,
       'thumb' => $save_file_name_thumb

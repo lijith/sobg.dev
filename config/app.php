@@ -148,7 +148,8 @@ return [
 		'Sentinel\SentinelServiceProvider',
 		'Cviebrock\EloquentSluggable\SluggableServiceProvider',
 		'Intervention\Image\ImageServiceProvider',
-		'Gloudemans\Shoppingcart\ShoppingcartServiceProvider'
+		'Gloudemans\Shoppingcart\ShoppingcartServiceProvider',
+		'Barryvdh\Elfinder\ElfinderServiceProvider'
 
 	],
 

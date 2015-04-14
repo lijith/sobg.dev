@@ -40,8 +40,7 @@
                   <td>
                     
                     <a href="{{ action('\App\Http\Controllers\Admin\AudioDiskController@show', array($disk->id)) }}">
-                      <img src="{{asset('images/audio-disks/'.$disk->cover_photo_thumbnail)}}" alt="cover photo" class="img-responsive" />
-                      <br />
+                     
                       <strong>{{ucwords($disk->title)}}</strong>
                     </a>
                   </td>

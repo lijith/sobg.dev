@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class Magazine extends Migration {
+class Subscriptionstable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,9 +12,7 @@ class Magazine extends Migration {
 	 */
 	public function up()
 	{
-		
-		Schema::drop('magazines');
-
+		Schema::drop('subscriptions');
 	}
 
 	/**
@@ -24,7 +22,7 @@ class Magazine extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('magazines');
+		Schema::drop('subscriptions');
 	}
 
 }

@@ -323,6 +323,8 @@ class MagazineController extends Controller {
 		$sub = SubscriptionRates::find(Input::get('id'));
 
 		$sub->value = Input::get('rate');
+		$sub->key = Input::get('title');
+		$sub->period = Input::get('period');
 
 		$sub->save();
 

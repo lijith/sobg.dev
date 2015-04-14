@@ -9,7 +9,8 @@
 		"rydurham/sentinel": "dev-master",
 		"cviebrock/eloquent-sluggable": "dev-master",
 		"intervention/image": "~2.1",
-		"gloudemans/shoppingcart": "dev-master"
+		"gloudemans/shoppingcart": "dev-master",
+		"barryvdh/laravel-elfinder": "0.3.3"
 	},
 	"require-dev": {
 		"phpunit/phpunit": "~4.0",

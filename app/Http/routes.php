@@ -161,10 +161,10 @@ Route::group(['prefix' => 'e-shop'],function(){
 |
 */
 
-Route::group(['prefix'=>'photo-gallery', 'namespace' => 'Member'], function(){
-  Route::get('/',['as' => 'albums', 'uses' => 'PhotoGalleryController@listAlbums']);
-  Route::get('/{title}',['as' => 'albums.pictures', 'uses' => 'PhotoGalleryController@showAlbum']);
-});
+// Route::group(['prefix'=>'photo-gallery', 'namespace' => 'Member'], function(){
+//   Route::get('/',['as' => 'albums', 'uses' => 'PhotoGalleryController@listAlbums']);
+//   Route::get('/{title}',['as' => 'albums.pictures', 'uses' => 'PhotoGalleryController@showAlbum']);
+// });
 
 
 /*
@@ -205,14 +205,14 @@ Route::group(['prefix'=>'member', 'namespace' => 'Member'], function(){
 |	gita family
 |
 */
-// Route::get('gita-family',['as' => 'gitafamily', 'uses' => 'GitaFamily@index']);
+Route::get('gita-family',['as' => 'gitafamily', 'uses' => 'GitaFamily@index']);
 
 /*
 |
 |	contact us
 |
 */
-// Route::get('contact-us',['as' => 'contact', 'uses' => 'ContactUs@index']);
+Route::get('contact-us',['as' => 'contact', 'uses' => 'ContactUs@index']);
 
 /*
 |
@@ -222,6 +222,8 @@ Route::group(['prefix'=>'member', 'namespace' => 'Member'], function(){
 Route::get('bhavishya',['as' => 'bhavishya', 'uses' => 'Bhavishya@index']);
 
 
+// Route::get('/elfinder/ckeditor4/',['uses' => '\Barryvdh\Elfinder\ElfinderController@showCKeditor4']);
+// Route::any('/elfinder/connector/', ['as' => 'elfinder.connector', 'uses' => '\Barryvdh\Elfinder\ElfinderController@showConnector']);
 
 /*
 | ----------------------
@@ -289,6 +291,15 @@ Route::group(['prefix'=>'administrator', 'namespace' => 'Admin'], function(){
   Route::get('events/{hash}/edit', ['as' => 'events.edit', 'uses' => 'EventController@edit']);
   Route::put('events/{hash}', ['as' => 'events.update', 'uses' => 'EventController@update']);
   Route::delete('events/{hash}', ['as' => 'events.destroy', 'uses' => 'EventController@destroy']);
+
+  //ARchives
+  Route::get('archives/create', ['as' => 'archives.create', 'uses' => 'ArchiveController@create']);
+  Route::post('archives', ['as' => 'archives.store', 'uses' => 'ArchiveController@store']);
+  Route::get('archives', ['as' => 'archives.list', 'uses' => 'ArchiveController@index']);
+  Route::get('archives/{hash}', ['as' => 'archives.show', 'uses' => 'ArchiveController@show']);
+  Route::get('archives/{hash}/edit', ['as' => 'archives.edit', 'uses' => 'ArchiveController@edit']);
+  Route::put('archives/{hash}', ['as' => 'archives.update', 'uses' => 'ArchiveController@update']);
+  Route::delete('archives/{hash}', ['as' => 'archives.destroy', 'uses' => 'ArchiveController@destroy']);
 
   //Dvds and Vcds Routes
   Route::get('videodisks/create', ['as' => 'videodisks.create', 'uses' => 'VideoDiskController@create']);

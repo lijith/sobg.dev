@@ -183,6 +183,18 @@
                         
                     </ul>
                 </li>
+
+                <li class="sub-menu">
+                    <a href="#">
+                        <i class="fa fa-book"></i>
+                        <span>News Archives</span>
+                    </a>
+                    <ul class="sub">
+                        <li><a href="{{ route('archives.list') }}">All Archives</a></li>
+                        <li><a href="{{ route('archives.create') }}"><i class="fa fa-plus"></i> Add New Archive</a></li>
+                        
+                    </ul>
+                </li>
                 <li class="sub-menu">
                     <a href="{{ route('sentinel.logout') }}">
                         <i class="fa fa-laptop"></i>
