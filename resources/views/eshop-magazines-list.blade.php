@@ -53,12 +53,9 @@
 		<h2 class="col-heading">Subscribe for Magazine</h2>
 		<div class="row">
 			<div class="col-md-6">
-				Subscribe for Digital Version
 				<div class="form-group">
 					<form class="form-horizontal" method="POST" action="{{ route('cart.add') }}">
-						<label class="checkbox-inline">
-                <input type="checkbox" value="subscribe" id="" name="subscribe-digital"> I want to subscribe digital version
-            </label>
+						<label> I want to subscribe digital version </label>
             <br />
 
             @foreach($digital_subs as $sub)
@@ -77,12 +74,10 @@
 				</div><!-- /.form-group -->
 			</div><!-- /.col-md-6 -->
 			<div class="col-md-6">
-				Subscribe for Print Version
 				<div class="form-group">
 					<form class="form-horizontal" method="POST" action="{{ route('cart.add') }}">
-						<label class="checkbox-inline">
-                <input type="checkbox" value="subscribe" id="" name="subscribe-print"> I want to subscribe print version
-            </label>
+						<label> I want to subscribe print version </label>
+
             <br />
             @foreach($print_subs as $sub)
             	<div class="radio">

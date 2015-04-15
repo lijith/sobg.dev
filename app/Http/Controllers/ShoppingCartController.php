@@ -81,11 +81,21 @@ class ShoppingCartController extends SiteController {
   		}
   	}
 
-    if(Input::has('subscribe-digital') && Input::has('magazine-sub')){
+    if(Input::has('magazine-sub')){
 
       //var_dump(Input::all());
 
+
+
       $id = Input::get('magazine-sub');
+
+      $search = Cart::search(array('id' => $id));
+
+
+
+      if($search){
+         return redirect()->back();
+      }
 
       $sub = SubscriptionRates::find($id);
       $price = $sub->value;

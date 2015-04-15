@@ -32,9 +32,21 @@ class SiteController extends Controller {
 	  	Session::put('shipping_charge', 80);
 	  }
 
-  	$this->page_data['side_cart'] = Cart::content();
-  	$this->page_data['side_cart_total'] = Cart::total() + Session::get('shipping_charge');
+	  $cart_content = Cart::content();
+
+  	$this->page_data['side_cart'] = $cart_content;
+  	$this->page_data['side_cart_total'] = Cart::total();
+  	$this->page_data['grand_cart_total'] = Cart::total() + Session::get('shipping_charge');
   	$this->page_data['cart_count'] = $this->cartCount();
+
+  	if($this->cartCount() == 1){
+
+
+
+	  	if($cart_content->first()->options->item_sub_type == 'digital'){
+	  		$this->page_data['grand_cart_total'] = Cart::total();
+	  	}
+	  }
   }
 
 
@@ -46,5 +58,11 @@ class SiteController extends Controller {
 	public function cartCount(){
 		return Cart::count();
 	}
+
+	/**
+	 * Show the application home page.
+	 *
+	 * @return Response
+	 */
 
 }

@@ -227,7 +227,7 @@
 
 var config = {
     height: 100,
-    filebrowserBrowseUrl: '/elfinder/ckeditor4',
+    filebrowserBrowseUrl: '/elfinder/ckeditor',
     toolbarGroups: [
         { name: 'clipboard',   groups: [ 'clipboard', 'undo' ] },
         { name: 'editing',     groups: [ 'find', 'selection', 'spellchecker' ] },
