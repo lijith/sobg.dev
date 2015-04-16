@@ -107,6 +107,14 @@ Route::get('donate-support',['as' => 'donate', 'uses' => 'donateController@index
 
 /*
 |
+| profile
+|
+*/
+
+
+
+/*
+|
 |	e-shop
 |
 */
@@ -160,11 +168,6 @@ Route::group(['prefix' => 'e-shop'],function(){
 | Photo gallery
 |
 */
-
-// Route::group(['prefix'=>'photo-gallery', 'namespace' => 'Member'], function(){
-//   Route::get('/',['as' => 'albums', 'uses' => 'PhotoGalleryController@listAlbums']);
-//   Route::get('/{title}',['as' => 'albums.pictures', 'uses' => 'PhotoGalleryController@showAlbum']);
-// });
 
 
 /*

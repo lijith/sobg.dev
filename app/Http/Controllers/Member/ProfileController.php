@@ -9,6 +9,10 @@ use Sentinel\Repositories\User\SentinelUserRepositoryInterface;
 use Sentinel\Traits\SentinelRedirectionTrait;
 use Sentinel\Traits\SentinelViewfinderTrait;
 
+use Cart;
+
+use App\User;
+
 class ProfileController extends BaseController
 {
 
@@ -17,6 +21,15 @@ class ProfileController extends BaseController
      */
     use SentinelRedirectionTrait;
     use SentinelViewfinderTrait;
+
+    public $page_data = array(
+        'title' => 'Profile',
+        'description' => 'SALAGRAMAM Ashram, envisaged and founded by Swami Sandeepananda Giri, is devoted to the understanding and spread of pure Knowledge.The School of Bhagavad Gita is the nucleus of the Ashram.',
+        'keywords' => 'Bhagavad Gita, School of Bhagavad Gita, Swami Sandeepananda Giri, Salagram, Chinmayananda, Indian heritage, spiritual,culture, vedas, upanishad, tradition, philosophy, ashram, non-sectarian, camps, retreats, discourses, lectures, satsang, yagnam, gita yagnam, jnana, yatra, sadhana, Kailas - Manasarovar Yatra, Himalaya Darsan',
+        'top_level_page' => 'home',
+        'sub_page_active' => '',
+        
+    );
 
     /**
      * Constructor
@@ -31,6 +44,24 @@ class ProfileController extends BaseController
 
         // You must have an active session to proceed
         $this->middleware('sentry.auth');
+
+        if(!Session::has('shipping_charge')){
+            Session::put('shipping_charge', 80);
+        }
+
+        $cart_content = Cart::content();
+
+        $this->page_data['side_cart'] = $cart_content;
+        $this->page_data['side_cart_total'] = Cart::total();
+        $this->page_data['grand_cart_total'] = Cart::total() + Session::get('shipping_charge');
+        $this->page_data['cart_count'] = Cart::count();
+
+        if($this->page_data['cart_count'] == 1){
+
+            if($cart_content->first()->options->item_sub_type == 'digital'){
+                $this->page_data['grand_cart_total'] = Cart::total();
+            }
+        }
     }
 
     /**
@@ -44,7 +75,10 @@ class ProfileController extends BaseController
         // Get the user
         $user = $this->userRepository->retrieveById(Session::get('userId'));
 
-        return $this->viewFinder('member.show', ['user' => $user]);
+        $this->page_data['user'] = $user;
+        $this->page_data['profile'] = User::find(Session::get('userId'))->profile;
+
+        return $this->viewFinder('member.show', $this->page_data);
     }
 
 

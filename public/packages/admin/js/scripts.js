@@ -226,7 +226,7 @@
 
 
 var config = {
-    height: 100,
+    height: 300,
     filebrowserBrowseUrl: '/elfinder/ckeditor',
     toolbarGroups: [
         { name: 'clipboard',   groups: [ 'clipboard', 'undo' ] },

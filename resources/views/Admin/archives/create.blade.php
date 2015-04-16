@@ -35,7 +35,7 @@
 
             <div class="form-group {{ ($errors->has('details')) ? 'has-error' : '' }}">
                 <label>Archive Detail</label>
-                <textarea rows="6" class="form-control ckeditor" name="details">{{ Input::old('details') }}</textarea>
+                <textarea rows="6" class="form-control" id="ckeditor1" name="details">{{ Input::old('details') }}</textarea>
                 <span class="help-block">Full detail of the archive</span>
                 {{ ($errors->has('details') ? $errors->first('details') : '') }}
             </div>

@@ -45,7 +45,7 @@
 
 
             <section class="in-panel">
-                <span class="label label-primary">Date</span> <br /><br />
+                <span class="label label-primary">Details</span> <br /><br />
                 {!!$event->details!!}
             </section>
 

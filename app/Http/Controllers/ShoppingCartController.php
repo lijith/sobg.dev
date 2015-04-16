@@ -37,6 +37,8 @@ class ShoppingCartController extends SiteController {
   use SentinelRedirectionTrait;
   use SentinelViewfinderTrait;
 
+  
+
 	/**
    * cart.
    *

@@ -22,7 +22,7 @@ class SentryAuth implements Middleware {
             }
             else
             {
-                return redirect()->guest(route('sentinel.login'));
+                return redirect()->guest(route('member.login'));
             }
         }
 
