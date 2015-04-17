@@ -123,6 +123,8 @@ return [
         'eshop'                        => ['route' => 'eshop'],
         'shipping_edit'                => ['route' => 'cart.shipping.edit'],
         'payment'                      => ['route' => 'cart.pay'],
+        'member_profile'               => ['route' => 'member.profile.show'],
+        'member_profile_update'        => ['route' => 'member.profile.show'],
         'session_store'                => ['route' => 'admin.dash'],
         'cart_account'                 => ['route' => 'cart.account'],
         'cart_session_store'           => ['route' => 'cart.shipping'],

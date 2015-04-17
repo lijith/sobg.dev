@@ -12,6 +12,11 @@ use Sentinel\Traits\SentinelViewfinderTrait;
 use Cart;
 
 use App\User;
+use App\Profile;
+
+use App\Http\Requests\Member\ProfilePersonalUpdateRequest;
+use App\Http\Requests\Member\ProfileAddressUpdateRequest;
+
 
 class ProfileController extends BaseController
 {
@@ -119,6 +124,54 @@ class ProfileController extends BaseController
         // Done!
         return $this->redirectViaResponse('profile_update', $result);
     }
+
+    /**
+     * Update profiles personal info.
+     *
+     * @return redirect
+     */
+    public function updatePersonal(ProfilePersonalUpdateRequest $request){
+        // Gather Input
+        $user_id = Session::get('userId');
+
+
+        $update = array(
+            'name' => Input::get('name'),
+            'nationality' => Input::get('nationality'),
+            'profession' => Input::get('profession'),
+            'marital_status' => Input::get('marital-status')
+
+        );
+
+        Profile::where('user_id','=', $user_id)
+        ->update($update);
+
+
+
+
+        // Done!
+        return redirect()->route('member.profile.show');
+    }
+
+    /**
+     * Update profiles address.
+     *
+     * @return Response
+     */
+    public function updateAddress(ProfileAddressUpdateRequest $request){
+        // Gather Input
+        $data       = Input::all();
+        $data['id'] = Session::get('userId');
+
+        // Attempt to update the user
+        $result = $this->userRepository->update($data);
+
+        // Done!
+        return $this->redirectViaResponse('profile_update', $result);
+    }
+
+
+
 
     /**
      * Process a password change request

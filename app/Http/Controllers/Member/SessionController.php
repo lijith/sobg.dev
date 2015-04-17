@@ -49,11 +49,11 @@ class SessionController extends SiteController
     {
         // Is this user already signed in?
         if (Sentry::check()) {
-            return $this->redirectTo('session_store');
+            return $this->redirectTo('member_profile');
         }
 
         // No - they are not signed in.  Show the login form.
-        return $this->viewFinder('Admin.login');
+        return $this->viewFinder('Member.login');
     }
 
     /**
@@ -130,7 +130,7 @@ class SessionController extends SiteController
                 return Response::json('success', 200);
             }
             // Views are enabled, so go to the determined route
-            $redirect_route = config('sentinel.routing.session_store');
+            $redirect_route = config('sentinel.routing.member_profile');
 
             return Redirect::intended($this->generateUrl($redirect_route));
         } else {
@@ -141,7 +141,7 @@ class SessionController extends SiteController
             }
             Session::flash('error', $result->getMessage());
 
-            return Redirect::route('sentinel.session.create')
+            return Redirect::route('member.session.create')
                 ->withInput();
         }
     }

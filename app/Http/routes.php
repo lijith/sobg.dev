@@ -199,7 +199,8 @@ Route::group(['prefix'=>'member', 'namespace' => 'Member'], function(){
   // Sentinel Profile
   Route::get('profile', ['as' => 'member.profile.show', 'uses' => 'ProfileController@show']);
   Route::get('profile/edit', ['as' => 'member.profile.edit', 'uses' => 'ProfileController@edit']);
-  Route::put('profile', ['as' => 'member.profile.update', 'uses' => 'ProfileController@update']);
+  Route::put('profile/personal', ['as' => 'member.profile.personalupdate', 'uses' => 'ProfileController@updatePersonal']);
+  Route::put('profile/address', ['as' => 'member.profile.addressupdate', 'uses' => 'ProfileController@updateAddress']);
   Route::post('profile/password', ['as' => 'member.profile.password', 'uses' => 'ProfileController@changePassword']);
 });
 

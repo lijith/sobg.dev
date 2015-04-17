@@ -74,6 +74,8 @@ return array(
     |
     */
 
-    'options' => array(),
+    'options' => array(
+        'uploadAllow' => array('image'),
+    ),
 
 );
