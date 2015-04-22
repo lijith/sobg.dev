@@ -18,7 +18,9 @@
 		<link rel="stylesheet" href="{{URL::asset('styles/focuspoint.css')}}">
 		<link rel="stylesheet" href="{{URL::asset('styles/component.css')}}">
 		<link rel="stylesheet" href="{{URL::asset('styles/layerslider.css')}}">
+		<link rel="stylesheet" href="{{URL::asset('styles/bootstrap-datepicker3.min.css')}}">
 		<link rel="stylesheet" href="{{URL::asset('styles/main.css')}}">
+		<link rel="stylesheet" href="{{URL::asset('styles/main_additonal.css')}}">
 
 		<script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.js"></script>
 	</head>
@@ -249,7 +251,7 @@
 		<script src="{{URL::asset('scripts/layerslider.kreaturamedia.jquery.js')}}"></script>
 		<script src="{{URL::asset('scripts/jquery.focuspoint.min.js')}}"></script>
 		<script src="{{URL::asset('scripts/layerslider.transitions.js')}}"></script>
-
+		<script src="{{URL::asset('scripts/bootstrap-datepicker.min.js')}}"></script>
 		<script src="{{URL::asset('scripts/main.js')}}"></script>
 	</body>
 </html>

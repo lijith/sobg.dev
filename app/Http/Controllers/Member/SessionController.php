@@ -53,7 +53,7 @@ class SessionController extends SiteController
         }
 
         // No - they are not signed in.  Show the login form.
-        return $this->viewFinder('Member.login');
+        return $this->viewFinder('Member.login')->with($this->page_data);
     }
 
     /**
@@ -156,7 +156,7 @@ class SessionController extends SiteController
     {
         $this->session->destroy();
 
-        return $this->redirectTo('session_destroy');
+        return $this->redirectTo('member_session_destroy');
     }
 
 }

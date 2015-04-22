@@ -3,10 +3,12 @@
 @section('content')
 
 
-
 <div class="split_30"></div><!-- /.split_30 -->
 
   <h1 class="page-header">Your Profile</h1>
+	<!-- Notifications -->
+	  @include('notifications')
+	<!-- ./ notifications -->
   <div class="row">
     <!-- left column -->
     <div class="col-sm-5 col-xs-12">
@@ -39,29 +41,46 @@
 								<br />
 								{{$profile->contact_number_2}}
 	            </p>
+	            <hr />
+	            <a href="{{ route('member.session.destroy') }}"> LOGOUT</a>
 
 	      </div><!--/panel-body-->
 	    </div><!--/panel-->
 
 	    <div class="well panel panel-default">
-	    	<form class="form-horizontal" role="form">
+			    <ul>
+            @foreach($errors->all() as $error)
+              <li>{{$error}}</li>
+            @endforeach
+          </ul>
+	    	<form class="form-horizontal" role="form" method="POST" action="{{ route('member.profile.password') }}">
+	    	<input name="_token" value="{{ csrf_token() }}" type="hidden">
 	      <div class="panel-body">
-	        <div class="form-group">
-	          <label class="col-md-3 control-label">Password:</label>
+	      	<div class="form-group {{ ($errors->has('oldPassword')) ? 'has-error' : '' }}">
+	          <label class="col-md-3 control-label">Old Password:</label>
 	          <div class="col-md-8">
-	            <input class="form-control" value="" type="password">
+	            <input class="form-control" value="" type="password" name="oldPassword">
+	            {{ ($errors->has('oldPassword') ? $errors->first('oldPassword') : '') }}
 	          </div>
 	        </div>
-	        <div class="form-group">
+	        <div class="form-group {{ ($errors->has('newPassword')) ? 'has-error' : '' }}">
+	          <label class="col-md-3 control-label">New Password:</label>
+	          <div class="col-md-8">
+	            <input class="form-control" value="" type="password" name="newPassword">
+	            {{ ($errors->has('newPassword') ? $errors->first('newPassword') : '') }}
+	          </div>
+	        </div>
+	        <div class="form-group {{ ($errors->has('newPassword_confirmation')) ? 'has-error' : '' }}">
 	          <label class="col-md-3 control-label">Confirm password:</label>
 	          <div class="col-md-8">
-	            <input class="form-control" value="" type="password">
+	            <input class="form-control" value="" type="password" name="newPassword_confirmation">
+	            {{ ($errors->has('newPassword_confirmation') ? $errors->first('newPassword_confirmation') : '') }}
 	          </div>
 	        </div>
 	        <div class="form-group">
 	          <label class="col-md-3 control-label"></label>
 	          <div class="col-md-8">
-	            <input class="btn btn-primary" value="Save Changes" type="button">
+	            <button class="btn btn-primary" type="submit">Change Password</button>
 	            
 	          </div>
 	        </div>
@@ -78,11 +97,15 @@
 		      <form class="form-horizontal" role="form" method="POST" action="{{ route('member.profile.personalupdate')}}">
             <input name="_method" value="PUT" type="hidden">
             <input name="_token" value="{{ csrf_token() }}" type="hidden">
+            <input name="form" value="personal" type="hidden">
+
+            @if(Input::old('form') == 'personal')
             <ul>
               @foreach($errors->all() as $error)
                 <li>{{$error}}</li>
               @endforeach
             </ul>
+            @endif
 		        <div class="form-group">
 		          <label class="col-lg-3 control-label">Name:</label>
 		          <div class="col-lg-8">
@@ -103,7 +126,9 @@
 		        <div class="form-group">
 		        <label class="col-lg-3 control-label">Date of Birth</label>
 		          <div class="col-lg-8">
-		          	<input type="text" name="dob" />
+		          	<div class="input-group date">
+								  <input type="text" class="form-control" name="dob" value="{{ Input::old('dob') ? Input::old('dob') : $profile->dob }}"><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
+								</div>
 		          </div>
 		        </div>
 		        <div class="form-group">
@@ -151,7 +176,21 @@
 		    <div class="well panel panel-default">
 		      <div class="panel-body">
 		      <h3>Address</h3>
-		      <form class="form-horizontal" role="form">
+            @if(Input::old('form') == 'address')
+            <ul>
+              @foreach($errors->all() as $error)
+                <li>{{$error}}</li>
+              @endforeach
+            </ul>
+            @endif
+
+		      <form class="form-horizontal" role="form" method="POST" action="{{ route('member.profile.addressupdate') }}">
+            <input name="_method" value="PUT" type="hidden">
+            <input name="_token" value="{{ csrf_token() }}" type="hidden">
+            <input name="form" value="address" type="hidden">
+
+
+
 		      <div class="row">
 		      	<div class="col-sm-6">
 			      	<h4>Permanent Address</h4>
@@ -165,7 +204,7 @@
 	      		<div class="form-group">
 		          <label class="col-xs-12">Address Line 1:</label>
 		          <div class="col-xs-12">
-		            <input class="form-control" name="address-line-1" value="{{ Input::old('permanent-address-line-1') ? Input::old('permanent-address-line-1') : $profile->permanent_address_1 }}" type="text">
+		            <input class="form-control" name="permanent-address-line-1" value="{{ Input::old('permanent-address-line-1') ? Input::old('permanent-address-line-1') : $profile->permanent_address_1 }}" type="text">
 			        </div>
 		        </div>
 		        <div class="form-group">
@@ -200,16 +239,17 @@
 		      	<div class="col-sm-6">
 		      		<h4>Contact Address</h4>
 			        <hr />
+
 			        <div class="checkbox">
 		            <label>
-		                <input type="checkbox" value="">
+		                <input type="checkbox" value="yes" name="address_same" {{ (Input::old('address_same') == 'yes') ? 'checked' : '' }}>
 		                Same as Permanent Address
 		            </label>
 	            </div>
 			        <div class="form-group">
 			          <label class="col-xs-12">Address Line 1:</label>
 			          <div class="col-xs-12">
-			            <input class="form-control" name="address-line-1" value="{{ Input::old('contact-address-line-1') ? Input::old('contact-address-line-1') : $profile->contact_address_1 }}" type="text">
+			            <input class="form-control" name="contact-address-line-1" value="{{ Input::old('contact-address-line-1') ? Input::old('contact-address-line-1') : $profile->contact_address_1 }}" type="text">
 			          </div>
 			        </div>
   		        <div class="form-group">

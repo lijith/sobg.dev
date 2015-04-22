@@ -3,13 +3,15 @@
 use App\Http\Controllers\Controller as BaseController;
 use Sentinel\FormRequests\ChangePasswordRequest;
 use Sentinel\FormRequests\UserUpdateRequest;
-use Session, Input, Response, Redirect;
+
 use Sentinel\Repositories\Group\SentinelGroupRepositoryInterface;
 use Sentinel\Repositories\User\SentinelUserRepositoryInterface;
 use Sentinel\Traits\SentinelRedirectionTrait;
 use Sentinel\Traits\SentinelViewfinderTrait;
 
-use Cart;
+use Session, Input, Response, Redirect, Cart, Validator;
+
+use Carbon\Carbon;
 
 use App\User;
 use App\Profile;
@@ -82,28 +84,11 @@ class ProfileController extends BaseController
 
         $this->page_data['user'] = $user;
         $this->page_data['profile'] = User::find(Session::get('userId'))->profile;
+        $dob = Carbon::createFromFormat('Y-m-d H:i:s',$this->page_data['profile']->dob);
+
+        $this->page_data['profile']->dob = $dob->month.'/'. $dob->day.'/'. $dob->year;
 
         return $this->viewFinder('member.show', $this->page_data);
-    }
-
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @return Response
-     */
-    public function edit()
-    {
-        // Get the user
-        $user = $this->userRepository->retrieveById(Session::get('userId'));
-
-        // Get all available groups
-        $groups = $this->groupRepository->all();
-
-        return $this->viewFinder('Admin.users.edit', [
-            'user' => $user,
-            'groups' => $groups
-        ]);
     }
 
 
@@ -134,19 +119,18 @@ class ProfileController extends BaseController
         // Gather Input
         $user_id = Session::get('userId');
 
-
         $update = array(
             'name' => Input::get('name'),
+            'dob' => Carbon::createFromFormat('m/d/Y',Input::get('dob')),
             'nationality' => Input::get('nationality'),
             'profession' => Input::get('profession'),
-            'marital_status' => Input::get('marital-status')
-
+            'marital_status' => Input::get('marital-status'),
+            'contact_number_1' => Input::get('contact-number-1'),
+            'contact_number_2' => Input::get('contact-number-2')
         );
 
         Profile::where('user_id','=', $user_id)
         ->update($update);
-
-
 
 
         // Done!
@@ -158,16 +142,71 @@ class ProfileController extends BaseController
      *
      * @return Response
      */
-    public function updateAddress(ProfileAddressUpdateRequest $request){
+    public function updateAddress(){
         // Gather Input
-        $data       = Input::all();
-        $data['id'] = Session::get('userId');
+        $user_id = Session::get('userId');
 
-        // Attempt to update the user
-        $result = $this->userRepository->update($data);
+        $data = Input::all();
+
+        $validator = Validator::make($data, [
+            'permanent-address-line-1' => 'required|min:6',
+            'permanent-address-line-2' => 'required|min:6',
+            'permanent-country' => 'required|min:3',
+            'permanent-city' => 'required|min:3',
+            'permanent-state' => 'required|min:3'
+        ]);
+
+        $validator->sometimes(['contact-address-line-1','contact-address-line-2'], 'required|min:6', function($input){
+             
+             return ($input->address_same == null) ? true : false;
+        });
+
+        $validator->sometimes(['contact-country','contact-city','contact-state'], 'required|min:3', function($input){
+             
+             return ($input->address_same == null) ? true : false;
+        });
+
+          //if checked copy permanent to contact address  
+          if(Input::has('address_same')){
+            Input::merge(array(
+                'contact-address-line-1' => Input::get('permanent-address-line-1'),
+                'contact-address-line-2' => Input::get('permanent-address-line-2'),
+                'contact-country' => Input::get('permanent-country'),
+                'contact-city' => Input::get('permanent-city'),
+                'contact-state' => Input::get('permanent-state')
+            ));
+          }
+
+        if ($validator->fails()){
+
+
+          return redirect()
+          ->route('member.profile.show')
+          ->withInput(Input::all())
+          ->withErrors($validator);
+
+        }else{
+
+            $update = array(
+                'permanent_address_1' => Input::get('permanent-address-line-1'),
+                'permanent_address_2' => Input::get('permanent-address-line-2'),
+                'permanent_country' => Input::get('permanent-country'),
+                'permanent_city' => Input::get('permanent-city'),
+                'permanent_state' => Input::get('permanent-state'),
+                'contact_address_1' => Input::get('contact-address-line-1'),
+                'contact_address_2' => Input::get('contact-address-line-2'),
+                'contact_country' => Input::get('contact-country'),
+                'contact_city' => Input::get('contact-city'),
+                'contact_state' => Input::get('contact-state')
+            );
+            // Attempt to update the user
+            Profile::where('user_id','=', $user_id)
+            ->update($update);
+        }
+
 
         // Done!
-        return $this->redirectViaResponse('profile_update', $result);
+        return redirect()->route('member.profile.show');
     }
 
 
@@ -184,6 +223,7 @@ class ProfileController extends BaseController
         $data       = Input::all();
         $data['id'] = Session::get('userId');
 
+
         // Grab the current user
         $user = $this->userRepository->getUser();
 
@@ -197,7 +237,7 @@ class ProfileController extends BaseController
             return Redirect::back();
         }
 
-        return $this->redirectViaResponse('profile_change_password', $result);
+        return $this->redirectViaResponse('member_change_password', $result);
     }
 
 }

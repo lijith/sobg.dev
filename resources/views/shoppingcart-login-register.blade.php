@@ -36,7 +36,7 @@
 			          </div>
 			          <div class="form-group {{ ($errors->has('password')) ? 'has-error' : '' }}">
 			            <label class="control-label">Password</label>
-			            <input type="password" class="form-control" name="password">
+			            <input type="password" placeholder="Password" class="form-control" name="password">
 			            {{ ($errors->has('password') ?  $errors->first('password') : '') }}
 			          </div>
 			          <div class="form-group {{ ($errors->has('password_confirmation')) ? 'has-error' : '' }}">

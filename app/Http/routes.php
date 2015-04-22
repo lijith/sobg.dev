@@ -193,7 +193,6 @@ Route::group(['prefix'=>'member', 'namespace' => 'Member'], function(){
   Route::post('reactivate', ['as' => 'member.reactivate.send', 'uses' => 'RegistrationController@resendActivation']);
   Route::get('forgot', ['as' => 'member.forgot.form', 'uses' => 'RegistrationController@forgotPasswordForm']);
   Route::post('forgot', ['as' => 'member.reset.request', 'uses' => 'RegistrationController@sendResetPasswordEmail']);
-  Route::get('reset/{hash}/{code}', ['as' => 'member.reset.form', 'uses' => 'RegistrationController@passwordResetForm']);
   Route::post('reset/{hash}/{code}', ['as' => 'member.reset.password', 'uses' => 'RegistrationController@resetPassword']);
 
   // Sentinel Profile
