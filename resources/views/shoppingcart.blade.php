@@ -134,6 +134,10 @@
 
            </tbody>
         </table>
+        <hr />
+        <div class="clearfix">
+          <a class="btn btn-primary pull-right" href="{{route('cart.account')}}">Next</a>
+        </div><!-- /.clearfix -->
 
       @else
 

@@ -203,6 +203,12 @@ class ShoppingCartController extends SiteController {
     //   return $this->redirectTo('eshop');
     // }
 
+    $user_id = Session::get('userId');
+
+    $profile = User::find($user_id)->profile;
+
+    $this->page_data['profile'] = $profile;
+
     if(Session::has('shipping_id')){
       return $this->redirectTo('shipping_edit');
     }
@@ -252,7 +258,7 @@ class ShoppingCartController extends SiteController {
         'shipping_contact_number_1' => Input::get('shipping-contact_number_1'),
         'shipping_contact_number_2' => Input::get('shipping-contact_number_2'),
         'quantity' => Cart::count(),
-        'amount' => Cart::total()
+        'amount' => Cart::total() + Session::get('shipping_charge')
       ));
 
       $shipping->save();
@@ -435,6 +441,8 @@ class ShoppingCartController extends SiteController {
 
     $shipping_id = Session::get('shipping_id');
 
+
+
     $orders = array();
 
     $items = Order::where('shipping_id', '=',$shipping_id)->get();
@@ -464,7 +472,7 @@ class ShoppingCartController extends SiteController {
 
     }
 
-    $this->page_data['shipping'] = Shipping::find($shipping_id)->first();
+    $this->page_data['shipping'] = Shipping::find($shipping_id);
     $this->page_data['orders'] = $orders;
 
 
@@ -488,6 +496,17 @@ class ShoppingCartController extends SiteController {
 
 
     return $this->redirectTo('cart');
+  }
+
+  /**
+   * Make orders.
+   *
+   * @param  shipping id
+   *
+   * @return void
+   */
+  public function makeOrders() {
+    
   }
 
 }

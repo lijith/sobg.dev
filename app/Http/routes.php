@@ -176,7 +176,7 @@ Route::group(['prefix' => 'e-shop'],function(){
 |
 */
 Route::group(['prefix'=>'member', 'namespace' => 'Member'], function(){
-
+  Route::get('/', ['as' => 'member', 'uses' => 'SessionController@create']);
   Route::get('login', ['as' => 'member.login', 'uses' => 'SessionController@create']);
   Route::get('logout', ['as' => 'member.logout', 'uses' => 'SessionController@destroy']);
   Route::get('sessions/create', ['as' => 'member.session.create', 'uses' => 'SessionController@create']);

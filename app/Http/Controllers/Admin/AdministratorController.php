@@ -29,8 +29,8 @@ class AdministratorController extends BaseController
         $this->userRepository  = $userRepository;
         $this->groupRepository = $groupRepository;
 
-        // You must have an active session to proceed
-        $this->middleware('sentry.auth');
+        // You must be admin
+        $this->middleware('sentry.admin');
     }
 
     /**

@@ -141,6 +141,22 @@ $(window).resize(function() {
 });
 
 
+$('.address-same').change(function(){
+    if(this.checked){
+
+    	$( "input[name ='shipping-name']" ).val($( "input[name ='billing-name']" ).val());
+    	$( "input[name ='shipping-address_1']" ).val($( "input[name ='billing-address_1']" ).val());
+    	$( "input[name ='shipping-address_2']" ).val($( "input[name ='billing-address_2']" ).val());
+    	$( "input[name ='shipping-city']" ).val($( "input[name ='billing-city']" ).val());
+    	$( "input[name ='shipping-state']" ).val($( "input[name ='billing-state']" ).val());
+    	$( "input[name ='shipping-country']" ).val($( "input[name ='billing-country']" ).val());
+    	$( "input[name ='shipping-contact_number_1']" ).val($( "input[name ='billing-contact_number_1']" ).val());
+    	$( "input[name ='shipping-contact_number_2']" ).val($( "input[name ='billing-contact_number_2']" ).val());
+  	}else{
+  		$( "input[name *='shipping']" ).val('');
+  	}
+
+});
 /**
  * Members
  * @usedPlugins jquery

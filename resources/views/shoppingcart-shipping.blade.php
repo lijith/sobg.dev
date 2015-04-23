@@ -30,11 +30,12 @@
           <h3>Billing Address</h3>
           <hr />
 
+
           <div class="form-group {{ ($errors->has('name')) ? 'has-error' : '' }}">
 
             <label class="col-sm-3 control-label">Name</label>
             <div class="col-sm-9">
-              <input type="text" placeholder="full name" class="form-control" name="billing-name" value="{{ Input::old('billing-name') }}">
+              <input type="text" placeholder="full name" class="form-control" name="billing-name" value="{{ Input::old('billing-name') ? Input::old('billing-name') : $profile->name }}">
               <span class="help-block">Full name of person to which we ship item(s)</span>
               {{ ($errors->has('billing-name') ? $errors->first('billing-name') : '') }}
             </div>
@@ -45,7 +46,7 @@
 
             <label class="col-sm-3 control-label">Address</label>
             <div class="col-sm-9">
-              <input type="text" placeholder="Address" class="form-control" name="billing-address_1" value="{{ Input::old('billing-address_1') }}">
+              <input type="text" placeholder="Address" class="form-control" name="billing-address_1" value="{{ Input::old('billing-address_1') ? Input::old('billing-address_1') : $profile->contact_address_1 }}">
               {{ ($errors->has('billing-address_1') ? $errors->first('billing-address_1') : '') }}
               <span class="help-block">Street address</span>
             </div>
@@ -53,7 +54,7 @@
           <div class="form-group {{ ($errors->has('billing-address_2')) ? 'has-error' : '' }}">
             <label class="col-sm-3 control-label">Address<br />(Line 2)</label>
             <div class="col-sm-9">
-              <input type="text" placeholder="Address (Line 2)" class="form-control" name="billing-address_2" value="{{ Input::old('billing-address_2') }}">
+              <input type="text" placeholder="Address (Line 2)" class="form-control" name="billing-address_2" value="{{ Input::old('billing-address_2') ? Input::old('billing-address_2') : $profile->contact_address_2 }}">
               {{ ($errors->has('billing-address_2') ? $errors->first('billing-address_2') : '') }}
               <span class="help-block">Apartment, suite, unit, building, floor, etc.</span>
             </div>
@@ -61,30 +62,31 @@
           <div class="form-group {{ ($errors->has('billing-city')) ? 'has-error' : '' }}">
             <label class="col-sm-3 control-label">City</label>
             <div class="col-sm-9">
-              <input type="text" placeholder="City" class="form-control" name="billing-city" value="{{ Input::old('billing-city') }}">
+              <input type="text" placeholder="City" class="form-control" name="billing-city" value="{{ Input::old('billing-city') ? Input::old('billing-city') : $profile->contact_city }}">
               {{ ($errors->has('billing-city') ? $errors->first('billing-city') : '') }}
             </div>
           </div>
           <div class="form-group {{ ($errors->has('billing-state')) ? 'has-error' : '' }}">
             <label class="col-sm-3 control-label">State</label>
-            <div class="col-sm-9" value="{{ Input::old('billing-state') }}">
-              <input type="text" placeholder="State" class="form-control" name="billing-state">
+            <div class="col-sm-9">
+              <input type="text" placeholder="State" class="form-control" name="billing-state" value="{{ Input::old('billing-state') ? Input::old('billing-state') : $profile->contact_state }}">
               {{ ($errors->has('billing-state') ? $errors->first('billing-state') : '') }}
             </div>
           </div>
           <div class="form-group {{ ($errors->has('billing-country')) ? 'has-error' : '' }}">
             <label class="col-sm-3 control-label">Country</label>
-            <div class="col-sm-9" value="{{ Input::old('billing-country') }}">
-              <input type="text" placeholder="Country" class="form-control" name="billing-country">
+            <div class="col-sm-9">
+              <input type="text" placeholder="Country" class="form-control" name="billing-country" value="{{ Input::old('billing-country') ? Input::old('billing-country') : $profile->contact_country }}">
               {{ ($errors->has('billing-country') ? $errors->first('billing-country') : '') }}
             </div>
           </div>
+
           <div class="form-group {{ ($errors->has('billing-contact_number_1')) ? 'has-error' : '' }}">
             <label class="col-sm-3 control-label">Contact Number(s)</label>
             <div class="col-sm-9" value="{{ Input::old('billing-contact_number_1') }}">
-              <input type="text" placeholder="Mobile" class="form-control" name="billing-contact_number_1">
+              <input type="text" placeholder="Mobile" class="form-control" name="billing-contact_number_1" value="{{ Input::old('billing-contact_number_1') ? Input::old('billing-contact_number_1') : $profile->contact_number_1 }}">
               <div class="split_10"></div>
-              <input type="text" placeholder="landline or secondary mobile" class="form-control" name="billing-contact_number_2" value="{{ Input::old('billing-contact_number_2') }}">
+              <input type="text" placeholder="landline or secondary mobile" class="form-control" name="billing-contact_number_2" value="{{ Input::old('billing-contact_number_2') ? Input::old('billing-contact_number_2') : $profile->  contact_number_2 }}">
               {{ ($errors->has('billing-contact_number_1') ? $errors->first('billing-contact_number_1') : '') }}
             </div>
           </div>
@@ -98,7 +100,7 @@
               <div class="col-sm-offset-3 col-sm-9">
                   <div class="checkbox">
                       <label>
-                          <input type="checkbox" name="address-same"> Same as billing address
+                          <input type="checkbox" name="address-same" class="address-same"> Same as billing address
                       </label>
                   </div>
               </div>

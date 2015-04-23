@@ -66,24 +66,25 @@
               {{ ($errors->has('billing-city') ? $errors->first('billing-city') : '') }}
             </div>
           </div>
+
           <div class="form-group {{ ($errors->has('billing-state')) ? 'has-error' : '' }}">
             <label class="col-sm-3 control-label">State</label>
-            <div class="col-sm-9" value="{{ Input::old('billing-state') ? Input::old('billing-state') : $shipping->billing_state }}">
-              <input type="text" placeholder="State" class="form-control" name="billing-state">
+            <div class="col-sm-9" >
+              <input type="text" placeholder="State" class="form-control" name="billing-state" value="{{ Input::old('billing-state') ? Input::old('billing-state') : $shipping->billing_state }}">
               {{ ($errors->has('billing-state') ? $errors->first('billing-state') : '') }}
             </div>
           </div>
           <div class="form-group {{ ($errors->has('billing-country')) ? 'has-error' : '' }}">
             <label class="col-sm-3 control-label">Country</label>
-            <div class="col-sm-9" value="{{ Input::old('billing-country') ? Input::old('billing-country') : $shipping->billing_country }}">
-              <input type="text" placeholder="Country" class="form-control" name="billing-country">
+            <div class="col-sm-9">
+              <input type="text" placeholder="Country" class="form-control" name="billing-country" value="{{ Input::old('billing-country') ? Input::old('billing-country') : $shipping->billing_country }}">
               {{ ($errors->has('billing-country') ? $errors->first('billing-country') : '') }}
             </div>
           </div>
           <div class="form-group {{ ($errors->has('billing-contact_number_1')) ? 'has-error' : '' }}">
             <label class="col-sm-3 control-label">Contact Number(s)</label>
-            <div class="col-sm-9" value="{{ Input::old('billing-contact_number_1') ? Input::old('billing-contact_number_1') : $shipping->billing_contact_number_1 }}">
-              <input type="text" placeholder="Mobile" class="form-control" name="billing-contact_number_1">
+            <div class="col-sm-9">
+              <input type="text" placeholder="Mobile" class="form-control" name="billing-contact_number_1" value="{{ Input::old('billing-contact_number_1') ? Input::old('billing-contact_number_1') : $shipping->billing_contact_number_1 }}">
               <div class="split_10"></div>
               <input type="text" placeholder="landline or secondary mobile" class="form-control" name="billing-contact_number_2" value="{{ Input::old('billing-contact_number_2') ? Input::old('billing-contact_number_2') : $shipping->billing_contact_number_2 }}">
               {{ ($errors->has('billing-contact_number_1') ? $errors->first('billing-contact_number_1') : '') }}
@@ -99,7 +100,7 @@
               <div class="col-sm-offset-3 col-sm-9">
                   <div class="checkbox">
                       <label>
-                          <input type="checkbox" name="address-same"> Same as billing address
+                          <input type="checkbox" name="address-same" class="address-same"> Same as billing address
                       </label>
                   </div>
               </div>
@@ -141,22 +142,22 @@
           </div>
           <div class="form-group {{ ($errors->has('shipping-state')) ? 'has-error' : '' }}">
             <label class="col-sm-3 control-label">State</label>
-            <div class="col-sm-9" value="{{ Input::old('shipping-state') ? Input::old('shipping-state') : $shipping->shipping_state }}">
-              <input type="text" placeholder="State" class="form-control" name="shipping-state">
+            <div class="col-sm-9">
+              <input type="text" placeholder="State" class="form-control" name="shipping-state" value="{{ Input::old('shipping-state') ? Input::old('shipping-state') : $shipping->shipping_state }}">
               {{ ($errors->has('shipping-state') ? $errors->first('shipping-state') : '') }}
             </div>
           </div>
           <div class="form-group {{ ($errors->has('shipping-country')) ? 'has-error' : '' }}">
             <label class="col-sm-3 control-label">Country</label>
-            <div class="col-sm-9" value="{{ Input::old('shipping-country') ? Input::old('shipping-country') : $shipping->shipping_country }}">
-              <input type="text" placeholder="Country" class="form-control" name="shipping-country">
+            <div class="col-sm-9">
+              <input type="text" placeholder="Country" class="form-control" name="shipping-country" value="{{ Input::old('shipping-country') ? Input::old('shipping-country') : $shipping->shipping_country }}">
               {{ ($errors->has('shipping-country') ? $errors->first('shipping-country') : '') }}
             </div>
           </div>
           <div class="form-group {{ ($errors->has('shipping-contact_number_1')) ? 'has-error' : '' }}">
             <label class="col-sm-3 control-label">Contact Number(s)</label>
-            <div class="col-sm-9" value="{{ Input::old('shipping-contact_number_1') ? Input::old('shipping-contact_number_1') : $shipping->shipping_contact_number_1 }}">
-              <input type="text" placeholder="Mobile" class="form-control" name="shipping-contact_number_1">
+            <div class="col-sm-9">
+              <input type="text" placeholder="Mobile" class="form-control" name="shipping-contact_number_1" value="{{ Input::old('shipping-contact_number_1') ? Input::old('shipping-contact_number_1') : $shipping->shipping_contact_number_1 }}">
               <div class="split_10"></div>
               <input type="text" placeholder="landline or secondary mobile" class="form-control" name="shipping-contact_number_2" value="{{ Input::old('shipping-contact_number_2') ? Input::old('shipping-contact_number_2') : $shipping->shipping_contact_number_2 }}">
               {{ ($errors->has('shipping-contact_number_1') ? $errors->first('shipping-contact_number_1') : '') }}

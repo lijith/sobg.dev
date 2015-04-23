@@ -42,7 +42,23 @@
 								{{$profile->contact_number_2}}
 	            </p>
 	            <hr />
-	            <a href="{{ route('member.session.destroy') }}"> LOGOUT</a>
+	            <div class="row">
+	            	<div class="col-sm-6">
+	            		<form method="POST" action="{{ route('member.session.destroy') }}">
+			            	 <input name="_token" value="{{ csrf_token() }}" type="hidden">
+		                <input name="_method" value="DELETE" type="hidden">
+		                <button class="btn btn-default">Log Out</button>
+			            </form>
+	            	</div><!-- /.col-sm-6 -->
+	            	<div class="col-sm-6">
+	            		@if($cart_count > 0)
+	            			<a href="{{ route('cart.shipping') }}" class="btn btn-default"><i class="fa fa-shopping-cart"></i> Cart Check Out</a>
+	            		@endif
+	            	</div><!-- /.col-sm-6 -->
+	            </div><!-- /.row -->
+	            
+
+	            
 
 	      </div><!--/panel-body-->
 	    </div><!--/panel-->
