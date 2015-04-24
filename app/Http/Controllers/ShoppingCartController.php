@@ -207,11 +207,16 @@ class ShoppingCartController extends SiteController {
 
     $profile = User::find($user_id)->profile;
 
+    $items = Cart::content()->toArray();
+
     $this->page_data['profile'] = $profile;
 
     if(Session::has('shipping_id')){
+
       return $this->redirectTo('shipping_edit');
     }
+
+    
 
 
     return View::make('shoppingcart-shipping')->with($this->page_data);
@@ -237,7 +242,6 @@ class ShoppingCartController extends SiteController {
       //save the shipping
       //some issue with accessing id value from collection, so using as array
       $items = Cart::content()->toArray();
-      $insert_data = array();
 
       $shipping = new Shipping(array(
         'user_id' => Session::get('userId'),
@@ -268,64 +272,9 @@ class ShoppingCartController extends SiteController {
       $user_id = Session::get('userId');
 
 
-      foreach ($items as $item) {
-
-        if($item['options']['item_sub_type'] == 'digital' || $item['options']['item_sub_type'] == 'print'){
-          
-          if($item['options']['item_sub_type'] == 'digital'){
-            $digital = 1;
-            $print = 0;
-          }elseif ($item['options']['item_sub_type'] == 'digital') {
-             $digital = 0;
-            $print = 1;
-          }
-
-          $subscription = SubscriptionRates::find($item['id']);
-
-          $date = Carbon::now();
-          $date->addYears($subscription->period);
-
-          $subscriber = new MagazineSubscribers(array(
-            'user_id' => $user_id,
-            'shipping_id' => $shipping_id,
-            'digital' => $digital,
-            'print' => $print,
-            'active' => 1,
-            'ending_at' => $date
-          ));
-        }
-        
-
-        switch($item['options']['item_type']){
-          case 'video':{
-            $item['id'] = Hashids::connection('video')->decode($item['id'])[0];
-          }
-          break;
-          case 'audio':{
-            $item['id'] = Hashids::connection('audio')->decode($item['id'])[0];
-          }
-          break;
-          case 'book':{
-            $item['id'] = Hashids::connection('book')->decode($item['id'])[0];
-          }
-        }
-
-
-        $row = array(
-          'shipping_id' => $shipping->id,
-          'item_id' => $item['id'],
-          'item_type' => $item['options']['item_type'],
-          'quantity' => $item['qty'],
-          'created_at' => Carbon::now(),
-          'updated_at' => Carbon::now()
-        );
-
-        array_push($insert_data, $row);
-      }
-
-      Order::insert($insert_data);
-
       Session::put('shipping_id',$shipping->id);
+
+      $this->makeOrders($shipping_id, $items);
 
       //Cart::destroy();
 
@@ -387,6 +336,10 @@ class ShoppingCartController extends SiteController {
 
     $shipping = Shipping::find($shipping_id);
 
+    $items = Cart::content()->toArray();
+
+
+
 
     if(Cart::count() > 0){
 
@@ -413,6 +366,8 @@ class ShoppingCartController extends SiteController {
       $shipping->amount = Cart::total();
 
       $shipping->save();
+
+      $this->makeOrders($shipping_id, $items);
 
       //redirect to payment page
       return $this->redirectTo('payment');
@@ -441,40 +396,59 @@ class ShoppingCartController extends SiteController {
 
     $shipping_id = Session::get('shipping_id');
 
+    $cart_items = Cart::content()->toArray();
 
+    $this->makeOrders($shipping_id, $cart_items);
 
     $orders = array();
 
     $items = Order::where('shipping_id', '=',$shipping_id)->get();
 
-    //dd($items);
 
     foreach ($items as $item) {
-      switch($item->item_type){
-        case 'video':{
-          $product = VideoDisk::find($item->item_id)->first();
-        }
-        break;
-        case 'audio':{
-          $product = AudioDisk::find($item->item_id)->first();
 
-        }
-        break;
-        case 'book':{
-          $product = Book::find($item->item_id)->first();
-        }
-      }
+      if($item->item_type == 'magazine'){
 
-      array_push($orders, array(
+        $product = SubscriptionRates::find($item->item_id);
+
+        $order = array(
+          'title' => ucwords($product->key.' '.$product->type.' Subscription'),
+          'quantity' => 1,
+        );
+
+      }else{
+
+        switch($item->item_type){
+          case 'video':{
+            $product = VideoDisk::find($item->item_id)->first();
+          }
+          break;
+          case 'audio':{
+            $product = AudioDisk::find($item->item_id)->first();
+
+          }
+          break;
+          case 'book':{
+            $product = Book::find($item->item_id)->first();
+          }
+          case 'magazine':{
+            $product = Subscription::find($item->item_id)->first();
+          }
+           
+        }
+
+        $order = array(
         'title' => $product->title,
         'quantity' => $item->quantity,
-      ));
+        );
+      }
+
+      array_push($orders, $order);
 
     }
 
     $this->page_data['shipping'] = Shipping::find($shipping_id);
     $this->page_data['orders'] = $orders;
-
 
     return View::make('shoppingcart-payment')->with($this->page_data);
 
@@ -501,12 +475,77 @@ class ShoppingCartController extends SiteController {
   /**
    * Make orders.
    *
-   * @param  shipping id
+   * @param  shipping id, curent cart items
    *
    * @return void
    */
-  public function makeOrders() {
-    
+  public function makeOrders($shipping_id, $items) {
+
+    //remove orders of shipping id if any
+    Order::where('shipping_id', '=', $shipping_id)->delete();
+
+    //re-populate orders
+
+    $insert_data = array();
+    $user_id = Session::get('userId');
+
+    foreach ($items as $item) {
+
+      //handle subscription from cart
+      if($item['options']['item_sub_type'] == 'digital' || $item['options']['item_sub_type'] == 'print'){
+        
+        if($item['options']['item_sub_type'] == 'digital'){
+          $digital = 1;
+          $print = 0;
+        }elseif ($item['options']['item_sub_type'] == 'digital') {
+           $digital = 0;
+          $print = 1;
+        }
+
+        $subscription = SubscriptionRates::find($item['id']);
+
+        $date = Carbon::now();
+        $date->addYears($subscription->period);
+
+        $subscriber = new MagazineSubscribers(array(
+          'user_id' => $user_id,
+          'shipping_id' => $shipping_id,
+          'digital' => $digital,
+          'print' => $print,
+          'active' => 0,
+          'ending_at' => $date
+        ));
+      }
+      
+      //handle eshop items
+      switch($item['options']['item_type']){
+        case 'video':{
+          $item['id'] = Hashids::connection('video')->decode($item['id'])[0];
+        }
+        break;
+        case 'audio':{
+          $item['id'] = Hashids::connection('audio')->decode($item['id'])[0];
+        }
+        break;
+        case 'book':{
+          $item['id'] = Hashids::connection('book')->decode($item['id'])[0];
+        }
+      }
+
+
+      $row = array(
+        'shipping_id' => $shipping_id,
+        'item_id' => $item['id'],
+        'item_type' => $item['options']['item_type'],
+        'quantity' => $item['qty'],
+        'created_at' => Carbon::now(),
+        'updated_at' => Carbon::now()
+      );
+
+      array_push($insert_data, $row);
+    }
+
+    Order::insert($insert_data);
   }
 
 }
