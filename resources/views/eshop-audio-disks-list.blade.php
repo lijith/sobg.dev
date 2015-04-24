@@ -47,13 +47,31 @@
 							<div class="pub-title">
 								@if($adisk->disk_type == 1)
 									<a href="{{route('acd.show',array($adisk->slug))}}">{{ucwords($adisk->title)}}</a>
+									<br />
 									Audio CD
 								@elseif($adisk->disk_type == 2)
 									<a href="{{route('mp3.show',array($adisk->slug))}}">{{ucwords($adisk->title)}}</a>
+									<br />
 									MP3
 								@endif
 								<p>Rs {{$adisk->price}}</p>
 							</div><!-- /.pub-title -->
+							<div class="item-add-to-cart">
+								<form method="POST" action="{{route('cart.add')}}">
+									@if($adisk->disk_type == 1)
+										<input type="hidden" name="item-sub-type" value="acd" />
+									@elseif($adisk->disk_type == 2)
+										<input type="hidden" name="item-sub-type" value="mp3" />
+									@endif
+									<input type="hidden" name="item-type" value="audio" />
+									<input type="hidden" name="item-id" value="{{$adisk->id}}" />
+									<input name="_token" value="{{ csrf_token() }}" type="hidden">
+									
+									<button class="btn btn-primary" type="submit">
+										<i class="fa fa-shopping-cart"></i> Add to Cart
+									</button>
+								</form>
+							</div><!-- /.item-add-to-cart -->
 						</div><!-- /.wrap -->
 					</div><!-- /.pub-item -->
 				@endforeach

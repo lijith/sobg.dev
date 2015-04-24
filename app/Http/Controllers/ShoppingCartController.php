@@ -65,7 +65,6 @@ class ShoppingCartController extends SiteController {
 
     //Cart::destroy();
 
-
   	switch(Input::get('item-type')){
   		case 'video':{
   			$id = Hashids::connection('video')->decode(Input::get('item-id'));

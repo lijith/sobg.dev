@@ -44,6 +44,18 @@
 								<p>Rs {{$book->price}}</p>
 								<p>by : {{ucwords($book->author)}}</p>
 							</div><!-- /.pub-title -->
+							<div class="item-add-to-cart">
+								<form method="POST" action="{{route('cart.add')}}">
+									<input type="hidden" name="item-sub-type" value="book" />
+									<input type="hidden" name="item-type" value="book" />
+									<input type="hidden" name="item-id" value="{{$book->id}}" />
+									<input name="_token" value="{{ csrf_token() }}" type="hidden">
+									
+									<button class="btn btn-primary" type="submit">
+										<i class="fa fa-shopping-cart"></i> Add to Cart
+									</button>
+								</form>
+							</div><!-- /.item-add-to-cart -->
 						</div><!-- /.wrap -->
 					</div><!-- /.pub-item -->
 				@endforeach

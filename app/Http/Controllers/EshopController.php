@@ -6,6 +6,7 @@ use App\Http\Controllers\SiteController;
 use Vinkla\Hashids\Facades\Hashids;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 use App\AudioDisk;
 use App\VideoDisk;
@@ -60,7 +61,12 @@ class EshopController extends SiteController {
 		$this->page_data['title'] = 'VCDs and DVDs from School of Bhagavat Gita';
 		$this->page_data['description'] = 'VCD and DVD';
 		$this->page_data['sub_page_active'] = '';
-		$this->page_data['video_disks'] = VideoDisk::get();
+		$this->page_data['video_disks'] = $this->titleLimit(VideoDisk::get());
+
+		//encode id
+		foreach ($this->page_data['video_disks'] as $disk) {
+			$disk->id = Hashids::connection('video')->encode($disk->id);
+		}
 
 		return view('eshop-video-disks-list')->with($this->page_data);
 	}
@@ -74,7 +80,13 @@ class EshopController extends SiteController {
 		$this->page_data['title'] = 'Audio Cds and Mp3s from School of Bhagavat Gita';
 		$this->page_data['description'] = 'Audio CD and MP3';
 		$this->page_data['sub_page_active'] = '';
-		$this->page_data['audio_disks'] = AudioDisk::get();
+		$this->page_data['audio_disks'] = $this->titleLimit(AudioDisk::get());
+
+		//encode id
+		foreach ($this->page_data['audio_disks'] as $disk) {
+			$disk->id = Hashids::connection('audio')->encode($disk->id);
+		}
+
 
 		return view('eshop-audio-disks-list')->with($this->page_data);
 	}
@@ -88,7 +100,12 @@ class EshopController extends SiteController {
 		$this->page_data['title'] = 'DVDs from School of Bhagavat Gita';
 		$this->page_data['description'] = 'DVD';
 		$this->page_data['sub_page_active'] = 'dvd';
-		$this->page_data['video_disks'] = VideoDisk::where('disk_type','=',1)->get();
+		$this->page_data['video_disks'] = $this->titleLimit(VideoDisk::where('disk_type','=',1)->get());
+
+		//encode id
+		foreach ($this->page_data['video_disks'] as $disk) {
+			$disk->id = Hashids::connection('video')->encode($disk->id);
+		}
 
 		return view('eshop-video-disks-list')->with($this->page_data);
 	}
@@ -102,7 +119,12 @@ class EshopController extends SiteController {
 		$this->page_data['title'] = 'VCDs from School of Bhagavat Gita';
 		$this->page_data['description'] = 'Video CDs';
 		$this->page_data['sub_page_active'] = 'vcd';
-		$this->page_data['video_disks'] = VideoDisk::where('disk_type','=',2)->get();
+		$this->page_data['video_disks'] = $this->titleLimit(VideoDisk::where('disk_type','=',2)->get());
+
+		//encode id
+		foreach ($this->page_data['video_disks'] as $disk) {
+			$disk->id = Hashids::connection('video')->encode($disk->id);
+		}
 
 		return view('eshop-video-disks-list')->with($this->page_data);
 	}
@@ -116,8 +138,12 @@ class EshopController extends SiteController {
 		$this->page_data['title'] = 'MP3 CDs from School of Bhagavat Gita';
 		$this->page_data['description'] = '';
 		$this->page_data['sub_page_active'] = 'mp3';
-		$this->page_data['audio_disks'] = AudioDisk::where('disk_type','=',2)->get();
+		$this->page_data['audio_disks'] = $this->titleLimit(AudioDisk::where('disk_type','=',2)->get());
 
+		//encode id
+		foreach ($this->page_data['audio_disks'] as $disk) {
+			$disk->id = Hashids::connection('audio')->encode($disk->id);
+		}
 		return view('eshop-audio-disks-list')->with($this->page_data);
 	}	
 
@@ -130,7 +156,12 @@ class EshopController extends SiteController {
 		$this->page_data['title'] = 'Audio CD from School of Bhagavat Gita';
 		$this->page_data['description'] = '';
 		$this->page_data['sub_page_active'] = 'acd';
-		$this->page_data['audio_disks'] = AudioDisk::where('disk_type','=',1)->get();
+		$this->page_data['audio_disks'] = $this->titleLimit(AudioDisk::where('disk_type','=',1)->get());
+
+		//encode id
+		foreach ($this->page_data['audio_disks'] as $disk) {
+			$disk->id = Hashids::connection('audio')->encode($disk->id);
+		}
 
 		return view('eshop-audio-disks-list')->with($this->page_data);
 	}
@@ -144,7 +175,12 @@ class EshopController extends SiteController {
 		$this->page_data['title'] = 'Books from School of Bhagavat Gita';
 		$this->page_data['description'] = '';
 		$this->page_data['sub_page_active'] = 'book';
-		$this->page_data['books'] = Book::get();
+		$this->page_data['books'] = $this->titleLimit(Book::get());
+
+		//encode id
+		foreach ($this->page_data['books'] as $book) {
+			$book->id = Hashids::connection('book')->encode($book->id);
+		}
 
 		return view('eshop-books-list')->with($this->page_data);
 	}
@@ -288,5 +324,18 @@ class EshopController extends SiteController {
 		return view('home')->with($this->page_data);
 	}
 
+
+	/**
+	 * limit title characters in item lists.
+	 * @param Collection
+	 * @return collection
+	 */
+
+	function titleLimit($items){
+		foreach ($items as $item) {
+			$item->title = Str::limit($item->title,15);
+		}
+		return $items;
+	}
 
 }

@@ -110,7 +110,7 @@
 
             <label class="col-sm-3 control-label">Name</label>
             <div class="col-sm-9">
-              <input type="text" placeholder="full name" class="form-control" name="shipping-name" value="{{ Input::old('shipping-address_1') ? Input::old('shipping-address_1') : $shipping->shipping_address_1 }}">
+              <input type="text" placeholder="full name" class="form-control" name="shipping-name" value="{{ Input::old('shipping-name') ? Input::old('shipping-name') : $shipping->shipping_name }}">
               <span class="help-block">Full name of person to which we ship item(s)</span>
               {{ ($errors->has('shipping-name') ? $errors->first('shipping-name') : '') }}
             </div>
