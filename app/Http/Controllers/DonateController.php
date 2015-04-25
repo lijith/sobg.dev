@@ -24,7 +24,7 @@ class DonateController extends Controller {
 	public function index(){
 		$this->page_data['title'] = 'Donate And Support';
 		$this->page_data['description'] = '';
-		$this->page_data['sub_page_active'] = 'kailas';
-		return view('home')->with($this->page_data);
+		$this->page_data['sub_page_active'] = 'donate';
+		return view('donations')->with($this->page_data);
 	}
 }

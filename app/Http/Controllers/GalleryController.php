@@ -9,4 +9,21 @@ class GalleryController extends SiteController {
 
 	//
 
+	/*
+	*
+	* List the albums
+	*
+	*/
+	public function listAlbums(){
+
+	}
+
+	/*
+	*
+	* Show Album
+	*
+	*/
+	public function showAlbum($album-title){
+		
+	}
 }

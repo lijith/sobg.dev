@@ -21,11 +21,23 @@ class CoursesAndRetreatsController extends Controller {
 	 *
 	 * @return Response
 	 */
+	public function index(){
+		$this->page_data['title'] = 'Courses in School of Bhagavad Gita';
+		$this->page_data['description'] = '';
+		$this->page_data['sub_page_active'] = 'courses';
+		return view('courses')->with($this->page_data);
+	}
+
+	/**
+	 * for children.
+	 *
+	 * @return Response
+	 */
 	public function children(){
 		$this->page_data['title'] = 'Courses for Children';
 		$this->page_data['description'] = '';
 		$this->page_data['sub_page_active'] = 'children';
-		return view('home')->with($this->page_data);
+		return view('for-children')->with($this->page_data);
 	}
 
 
@@ -38,7 +50,7 @@ class CoursesAndRetreatsController extends Controller {
 		$this->page_data['title'] = 'Courses for Seniors';
 		$this->page_data['description'] = '';
 		$this->page_data['sub_page_active'] = 'seniors';
-		return view('home')->with($this->page_data);
+		return view('for-seniors')->with($this->page_data);
 	}
 
 }

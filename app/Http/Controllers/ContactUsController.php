@@ -24,6 +24,6 @@ class ContactUsController extends Controller {
 	public function index(){
 		$this->page_data['title'] = 'Contact School of Bhagavat Gita';
 		$this->page_data['description'] = '';
-		return view('home')->with($this->page_data);
+		return view('contact')->with($this->page_data);
 	}
 }
