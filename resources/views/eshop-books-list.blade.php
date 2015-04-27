@@ -20,7 +20,15 @@
 		</div><!-- /.search-titles -->
 		<div class="split_30"></div><!-- /.split_30 -->
 		<div class="items-category">
-			<div class="pub-items-row">
+			<?php $item_count = 0; $total_item = 0; ?>
+
+			@foreach($books as $book)
+
+				@if($item_count == 0)
+					<div class="pub-items-row">
+				@endif
+				<?php $item_count++; $total_item++;?>
+
 				@if($books->count() < 1)
 					<div class="alert alert-warning ">
 	            <span class="alert-icon"><i class="fa fa-bell-o"></i></span>
@@ -32,7 +40,8 @@
 	        </div>
 				@endif
 
-				@foreach($books as $book)
+
+
 					<div class="pub-item">
 						<div class="wrap">
 							<div class="pub-image">
@@ -40,7 +49,6 @@
 							</div><!-- /.pub-image -->
 							<div class="pub-title">
 									<a href="{{route('book.show',array($book->slug))}}">{{ucwords($book->title)}}</a>
-									
 								<p>Rs {{$book->price}}</p>
 								<p>by : {{ucwords($book->author)}}</p>
 							</div><!-- /.pub-title -->
@@ -58,9 +66,15 @@
 							</div><!-- /.item-add-to-cart -->
 						</div><!-- /.wrap -->
 					</div><!-- /.pub-item -->
+					@if($item_count == 4 || $total_item == $books->count())
+					</div><!-- /.pub-items-row -->
+					<?php $item_count = 0; ?>
+					@endif
+
+
+
 				@endforeach
 
-			</div><!-- /.pub-items-row -->
 		</div><!-- /.items-category -->
 
 

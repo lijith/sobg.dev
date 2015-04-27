@@ -7,6 +7,8 @@ use Vinkla\Hashids\Facades\Hashids;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Carbon\Carbon;
+
 
 use App\AudioDisk;
 use App\VideoDisk;
@@ -196,8 +198,17 @@ class EshopController extends SiteController {
 		$this->page_data['sub_page_active'] = 'piravi';
 
 		$this->page_data['magazines'] = Magazine::where('magazine_file', '<>', 'NO-ATTACHMENT	')->get();
-		$this->page_data['digital_subs'] = SubscriptionRates::where('type', '=', 'digital')->get();
-		$this->page_data['print_subs'] = SubscriptionRates::where('type', '=', 'print')->get();
+		$this->page_data['digital_subs'] = SubscriptionRates::where('type', '=', 'digital')
+		->orderBy('period', 'ASC')
+		->get();
+		$this->page_data['print_subs'] = SubscriptionRates::where('type', '=', 'print')
+		->orderBy('period', 'ASC')
+		->get();
+
+		foreach ($this->page_data['magazines'] as $magazine) {
+			$mag_pub_date = Carbon::createFromFormat('Y-m-d H:i:s',$magazine->published_at);
+			$magazine->published_at =  $mag_pub_date->format('d M Y');
+		}
 
 		return view('eshop-magazines-list')->with($this->page_data);
 	}

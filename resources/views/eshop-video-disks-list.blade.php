@@ -27,7 +27,13 @@
 		<div class="split_30"></div><!-- /.split_30 -->
 
 		<div class="items-category">
-			<div class="pub-items-row">
+			<?php $item_count = 0; $total_item = 0; ?>
+
+			@if($item_count == 0)
+				<div class="pub-items-row">
+			@endif
+			
+			<?php $item_count++; $total_item++;?>
 
 			@if($video_disks->count() < 1)
 					<div class="alert alert-warning ">
@@ -74,9 +80,14 @@
 							</div><!-- /.item-add-to-cart -->
 						</div><!-- /.wrap -->
 					</div><!-- /.pub-item -->
+
+					@if($item_count == 4 || $total_item == $video_disks->count())
+					</div><!-- /.pub-items-row -->
+					<?php $item_count = 0; ?>
+					@endif
+
 				@endforeach
 
-			</div><!-- /.pub-items-row -->
 		</div><!-- /.items-category -->
 
 

@@ -111,3 +111,39 @@
 	background: #C9532D;
 	border-color: #B53300;
 }
+
+.publications-wrap .item .item-label a{
+	color: #fff;
+}
+
+.side-nav ul li a.select, 
+.side-cart .cart-wrap ul li a.select, 
+.continue-shopping ul li a.select, 
+#form-holder ul li a.select{
+	color: #FFF;
+}
+
+.magazine-subscription .subs{
+	background: #f7f6f4;
+  border: 1px solid #e7e6e4;
+  padding: 25px 12px;
+}
+
+.magazine-subscription .subs h3{
+	font-size: 110%;
+	margin-top: 0;
+}
+
+.magazine-subscription .subs .btn{
+		background: #c9532d;
+    border: medium none;
+    border-radius: 5px;
+    color: #fff;
+    padding: 10px;
+}
+.magazine-subscription .subs label{
+	padding: 8px 30px;
+	margin-bottom: 6px;
+	background: #FFF;
+	display: block;
+}
