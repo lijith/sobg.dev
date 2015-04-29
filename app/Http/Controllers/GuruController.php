@@ -25,8 +25,9 @@ class GuruController extends SiteController {
 	public function swami(){
 		$this->page_data['title'] = 'Swami Sandeepananda Giri';
 		$this->page_data['description'] = '';
+		$this->page_data['top_level_page'] = 'guru';
 		$this->page_data['sub_page_active'] = 'swami';
-		return view('home')->with($this->page_data);
+		return view('guru.swami')->with($this->page_data);
 	}
 
 	/**
@@ -37,8 +38,9 @@ class GuruController extends SiteController {
 	public function milestones(){
 		$this->page_data['title'] = 'Milestones in Spiritual Journey of Swami Sandeepananda Giri';
 		$this->page_data['description'] = '';
+		$this->page_data['top_level_page'] = 'guru';
 		$this->page_data['sub_page_active'] = 'milestones';
-		return view('home')->with($this->page_data);
+		return view('guru.milestones')->with($this->page_data);
 	}
 	/**
 	 * Show the about overview page.
@@ -48,8 +50,9 @@ class GuruController extends SiteController {
 	public function kashikananda(){
 		$this->page_data['title'] = 'Swami Kashikananda Giri Maharaj';
 		$this->page_data['description'] = '';
+		$this->page_data['top_level_page'] = 'guru';
 		$this->page_data['sub_page_active'] = 'kashikananda';
-		return view('home')->with($this->page_data);
+		return view('guru.kashikananda')->with($this->page_data);
 	}
 	/**
 	 * Show the about overview page.
@@ -59,8 +62,10 @@ class GuruController extends SiteController {
 	public function articlesAndInterviews(){
 		$this->page_data['title'] = '';
 		$this->page_data['description'] = '';
+		$this->page_data['top_level_page'] = 'guru';
 		$this->page_data['sub_page_active'] = 'articles';
-		return view('home')->with($this->page_data);
+		//return view('home')->with($this->page_data);
+		return 'articles';
 	}
 			/**
 	 * Show the about overview page.
@@ -70,8 +75,10 @@ class GuruController extends SiteController {
 	public function itinerary(){
 		$this->page_data['title'] = 'Itinerary Swami Sandeepananda Giri';
 		$this->page_data['description'] = '';
+		$this->page_data['top_level_page'] = 'guru';
 		$this->page_data['sub_page_active'] = 'itinerary';
-		return view('home')->with($this->page_data);
+		//return view('home')->with($this->page_data);
+		return 'itinerary';
 	}
 	/**
 	 * Show the about overview page.
@@ -81,8 +88,10 @@ class GuruController extends SiteController {
 	public function messageFromSwami(){
 		$this->page_data['title'] = 'Messages from Swami Sandeepananda Giri';
 		$this->page_data['description'] = '';
+		$this->page_data['top_level_page'] = 'guru';
 		$this->page_data['sub_page_active'] = 'swami-message';
-		return view('home')->with($this->page_data);
+		//return view('home')->with($this->page_data);
+		return 'message';
 	}
 			/**
 	 * Show the about overview page.
@@ -92,8 +101,10 @@ class GuruController extends SiteController {
 	public function writeToSwami(){
 		$this->page_data['title'] = 'Write to Swami Sandeepananda Giri';
 		$this->page_data['description'] = '';
+		$this->page_data['top_level_page'] = 'guru';
 		$this->page_data['sub_page_active'] = 'write-to-swami';
-		return view('home')->with($this->page_data);
+		//return view('home')->with($this->page_data);
+		return 'write to swami';
 	}
 
 }

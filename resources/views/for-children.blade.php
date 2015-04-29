@@ -9,7 +9,7 @@
 		<h1 class="col-heading">For Children</h1>
 		<div class="one-image">
 			<div class="pic-wrap">
-				<img src="images/salagramam-kids-front.jpg" alt="" />
+				<img src="{{ asset('images/salagramam-kids-front.jpg') }}" alt="" />
 			</div>
 		</div><!-- /.content-pic -->
 		
@@ -22,7 +22,7 @@
 		</blockquote>	
 
 			<div class="content-pic pull-right">
-				<img src="images/swami-kids.jpg" alt="" />
+				<img src="{{ asset('images/swami-kids.jpg') }}" alt="" />
 			</div><!-- /.content-pic pull-left -->
 		
 
@@ -30,13 +30,13 @@
 
 		<div class="clearfix">
 			<div class="content-pic pull-left">
-				<img src="images/swamiji-and-kids-at-play.jpg" alt="" />
+				<img src="{{ asset('images/swamiji-and-kids-at-play.jpg') }}" alt="" />
 			</div><!-- /.content-pic pull-left -->
 			<p>Swami Sandeepananda Giri shares a very special bond with youngsters. He maintains a good rapport with children and has the unique ability to see things from their angle. This has endeared him to youngsters who look forward to his empathetic acquaintance. </p>
 
 			<p>SCHOOL OF BHAGAVAD GITA’s Programmes for Children aims to provide a wholesome learning experience for children in an atmosphere of fun and freedom, love and laughter. </p>
 			<div class="content-pic pull-right">
-				<img src="images/swamiji-talking-to-kids.jpg" alt="" />
+				<img src="{{ asset('images/swamiji-talking-to-kids.jpg') }}" alt="" />
 			</div><!-- /.content-pic pull-left -->
 
 			<p>Conceptualised and guided personally by Swami Sandeepananda Giri, Director, School of Bhagavad Gita, the programmes will launch children on a voyage of discovery and awareness.</p>
@@ -51,7 +51,7 @@
 		<h3 class="sub-heading">Balagramam - A Celebration Of Creativity </h3>
 		<div class="one-image">
 			<div class="pic-wrap">
-				<img src="images/balagramam.jpg" alt="" />
+				<img src="{{ asset('images/balagramam.jpg') }}" alt="" />
 			</div>
 		</div><!-- /.content-pic -->
 		<p>Balagramam is the Children’s Heritage and Nature Camp that is held during school vacations. The Camp is basically residential and is open to boys and girls from all backgrounds.</p>
@@ -72,12 +72,12 @@
 		<div class="two-images">
 			<div class="col">
 				<div class="pic-wrap">
-					<img src="images/adventure sports.jpg" alt="" />
+					<img src="{{ asset('images/adventure sports.jpg') }}" alt="" />
 				</div><!-- /.pic-wrap -->
 			</div><!-- /.col -->
 			<div class="col">
 				<div class="pic-wrap">
-					<img src="images/kids-dance.jpg" alt="" />
+					<img src="{{ asset('images/kids-dance.jpg') }}" alt="" />
 				</div><!-- /.pic-wrap -->
 			</div><!-- /.col -->
 		</div><!-- /.clearfix -->
@@ -85,7 +85,7 @@
 		<div class="two-images">
 			<div class="col">
 				<div class="pic-wrap">
-					<img src="images/kids-pooja.jpg" alt="" />
+					<img src="{{ asset('images/kids-pooja.jpg') }}" alt="" />
 				</div><!-- /.pic-wrap -->
 			</div><!-- /.col -->
 			

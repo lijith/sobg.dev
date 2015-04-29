@@ -1,5 +1,9 @@
 <?php namespace App\Http\Controllers;
 
+use App\SobgEvent;
+
+use Carbon\Carbon;
+
 class HomeController extends SiteController {
 
 	/*
@@ -17,6 +21,9 @@ class HomeController extends SiteController {
 	 * @return Response
 	 */
 	public function index(){
+
+		$this->page_data['events'] = SobgEvent::where('end_date', '>', Carbon::now())->get();
+
 		return view('home')->with($this->page_data);
 	}
 

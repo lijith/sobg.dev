@@ -37,6 +37,7 @@ class EshopController extends SiteController {
 	public function index(){
 		$this->page_data['title'] = 'Publications from School of Bhagavat Gita';
 		$this->page_data['description'] = '';
+		$this->page_data['top_level_page'] = 'publications';
 		$this->page_data['sub_page_active'] = 'publications';
 
 		$this->page_data['video_disks'] = VideoDisk::take(4)
@@ -63,6 +64,7 @@ class EshopController extends SiteController {
 		$this->page_data['title'] = 'VCDs and DVDs from School of Bhagavat Gita';
 		$this->page_data['description'] = 'VCD and DVD';
 		$this->page_data['sub_page_active'] = '';
+		$this->page_data['top_level_page'] = 'publications';
 		$this->page_data['video_disks'] = $this->titleLimit(VideoDisk::get());
 
 		//encode id
@@ -82,6 +84,7 @@ class EshopController extends SiteController {
 		$this->page_data['title'] = 'Audio Cds and Mp3s from School of Bhagavat Gita';
 		$this->page_data['description'] = 'Audio CD and MP3';
 		$this->page_data['sub_page_active'] = '';
+		$this->page_data['top_level_page'] = 'publications';
 		$this->page_data['audio_disks'] = $this->titleLimit(AudioDisk::get());
 
 		//encode id
@@ -102,6 +105,7 @@ class EshopController extends SiteController {
 		$this->page_data['title'] = 'DVDs from School of Bhagavat Gita';
 		$this->page_data['description'] = 'DVD';
 		$this->page_data['sub_page_active'] = 'dvd';
+		$this->page_data['top_level_page'] = 'publications';
 		$this->page_data['video_disks'] = $this->titleLimit(VideoDisk::where('disk_type','=',1)->get());
 
 		//encode id
@@ -121,6 +125,7 @@ class EshopController extends SiteController {
 		$this->page_data['title'] = 'VCDs from School of Bhagavat Gita';
 		$this->page_data['description'] = 'Video CDs';
 		$this->page_data['sub_page_active'] = 'vcd';
+		$this->page_data['top_level_page'] = 'publications';
 		$this->page_data['video_disks'] = $this->titleLimit(VideoDisk::where('disk_type','=',2)->get());
 
 		//encode id
@@ -140,6 +145,7 @@ class EshopController extends SiteController {
 		$this->page_data['title'] = 'MP3 CDs from School of Bhagavat Gita';
 		$this->page_data['description'] = '';
 		$this->page_data['sub_page_active'] = 'mp3';
+		$this->page_data['top_level_page'] = 'publications';
 		$this->page_data['audio_disks'] = $this->titleLimit(AudioDisk::where('disk_type','=',2)->get());
 
 		//encode id
@@ -158,6 +164,7 @@ class EshopController extends SiteController {
 		$this->page_data['title'] = 'Audio CD from School of Bhagavat Gita';
 		$this->page_data['description'] = '';
 		$this->page_data['sub_page_active'] = 'acd';
+		$this->page_data['top_level_page'] = 'publications';
 		$this->page_data['audio_disks'] = $this->titleLimit(AudioDisk::where('disk_type','=',1)->get());
 
 		//encode id
@@ -177,6 +184,7 @@ class EshopController extends SiteController {
 		$this->page_data['title'] = 'Books from School of Bhagavat Gita';
 		$this->page_data['description'] = '';
 		$this->page_data['sub_page_active'] = 'book';
+		$this->page_data['top_level_page'] = 'publications';
 		$this->page_data['books'] = $this->titleLimit(Book::get());
 
 		//encode id
@@ -196,6 +204,7 @@ class EshopController extends SiteController {
 		$this->page_data['title'] = 'Piravi Magazine';
 		$this->page_data['description'] = '';
 		$this->page_data['sub_page_active'] = 'piravi';
+		$this->page_data['top_level_page'] = 'publications';
 
 		$this->page_data['magazines'] = Magazine::where('magazine_file', '<>', 'NO-ATTACHMENT	')->get();
 		$this->page_data['digital_subs'] = SubscriptionRates::where('type', '=', 'digital')
@@ -236,6 +245,7 @@ class EshopController extends SiteController {
 		$this->page_data['title'] = ucwords($disk->title);
 		$this->page_data['description'] = $disk->excerpt;
 		$this->page_data['sub_page_active'] = $disk_type;
+		$this->page_data['top_level_page'] = 'publications';
 		$this->page_data['keywords'] = $disk->keywords;
 		$this->page_data['disk'] = $disk;
 
@@ -264,6 +274,7 @@ class EshopController extends SiteController {
 		$this->page_data['title'] = ucwords($disk->title);
 		$this->page_data['description'] = $disk->excerpt;
 		$this->page_data['sub_page_active'] = $disk_type;
+		$this->page_data['top_level_page'] = 'publications';
 		$this->page_data['keywords'] = $disk->keywords;
 		$this->page_data['disk'] = $disk;
 
@@ -283,6 +294,7 @@ class EshopController extends SiteController {
 		$this->page_data['title'] = ucwords($book->title);
 		$this->page_data['description'] = $book->excerpt;
 		$this->page_data['sub_page_active'] = 'book';
+		$this->page_data['top_level_page'] = 'publications';
 		$this->page_data['keywords'] = $book->keywords;
 		$this->page_data['book'] = $book;
 
@@ -302,6 +314,7 @@ class EshopController extends SiteController {
 		$this->page_data['title'] = ucwords($magazine->title);
 		$this->page_data['description'] = $magazine->excerpt;
 		$this->page_data['sub_page_active'] = 'magazine';
+		$this->page_data['top_level_page'] = 'publications';
 		$this->page_data['keywords'] = $magazine->keywords;
 		$this->page_data['magazine'] = $magazine;
 
@@ -320,6 +333,7 @@ class EshopController extends SiteController {
 		$this->page_data['title'] = 'Books by Swami Sandeepananda Giri';
 		$this->page_data['description'] = '';
 		$this->page_data['sub_page_active'] = 'swami-books';
+		$this->page_data['top_level_page'] = 'publications';
 		return view('home')->with($this->page_data);
 	}
 
@@ -332,6 +346,7 @@ class EshopController extends SiteController {
 		$this->page_data['title'] = 'Book Titles available';
 		$this->page_data['description'] = '';
 		$this->page_data['sub_page_active'] = 'other-books';
+		$this->page_data['top_level_page'] = 'publications';
 		return view('home')->with($this->page_data);
 	}
 

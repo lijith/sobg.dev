@@ -11,7 +11,7 @@
 		<div class="shadow">
 			<div class="one-image">
 				<div class="pic-wrap">
-					<img src="images/kailas-yatra-mountain.jpg" alt="" />
+					<img src="{{ asset('images/kailas-yatra-mountain.jpg') }}" alt="" />
 				</div><!-- /.pic-wrap -->
 			</div><!-- /.one-image -->
 		</div><!-- /.shadow -->
@@ -31,7 +31,7 @@
 		<div class="shadow">
 			<div class="one-image">
 				<div class="pic-wrap">
-					<img src="images/masasarovar.jpg" alt="" />
+					<img src="{{ asset('images/masasarovar.jpg') }}" alt="" />
 				</div><!-- /.pic-wrap -->
 			</div><!-- /.one-image -->
 		</div><!-- /.shadow -->
@@ -45,12 +45,12 @@
 			<div class="two-images">
 				<div class="col">
 					<div class="pic-wrap">
-						<img src="images/kailas-1_450.jpg" alt="" />
+						<img src="{{ asset('images/kailas-1_450.jpg') }}" alt="" />
 					</div><!-- /.pic-wrap -->
 				</div><!-- /.col -->
 				<div class="col">
 					<div class="pic-wrap">
-						<img src="images/kailas-4_450.jpg" alt="" />
+						<img src="{{ asset('images/kailas-4_450.jpg') }}" alt="" />
 					</div><!-- /.pic-wrap -->
 				</div><!-- /.col -->
 			</div><!-- /.two-images -->
@@ -65,7 +65,7 @@
 
 	</div><!-- /.col-md-8 -->
 
-	@include('side-yatras')
+	@include('yatras.side-yatras')
 </div><!-- /.row -->
 
 							

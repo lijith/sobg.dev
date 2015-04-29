@@ -10,7 +10,7 @@
 		<div class="shadow">
 			<div class="one-image">
 				<div class="pic-wrap">
-					<img src="images/himalaya.jpeg" alt="" />
+					<img src="{{ asset('images/himalaya.jpeg" alt="" />
 				</div><!-- /.pic-wrap -->
 			</div><!-- /.one-image -->
 		</div><!-- /.shadow -->
@@ -27,7 +27,7 @@
 		<h2 class="sub-heading">Gangotri</h2>
 		<div class="clearfix">
 			<div class="content-pic pull-right">
-				<img src="images/gangotri.jpg" alt=""/>
+				<img src="{{ asset('images/gangotri.jpg') }}" alt=""/>
 			</div><!-- /.content-pic -->
 			<blockquote class="quote orange">
 			“At Gangotri…I can never forget those excursions which brought me new vigour and cheerfulness, great peace of mind and noble fancies.” 
@@ -41,7 +41,7 @@
 		<h2 class="sub-heading">Yamunotri</h2>
 		<div class="clearfix">
 			<div class="content-pic pull-right">
-				<img src="images/yamunotri.jpg" alt=""/>
+				<img src="{{ asset('images/yamunotri.jpg') }}" alt=""/>
 			</div><!-- /.content-pic -->
 			<blockquote class="quote orange">
 			“The way to Yamunotri is delightfully lovely…If there is a road to Nandanam Gardens it must be like this.”
@@ -54,7 +54,7 @@
 		<h2 class="sub-heading">Badrinath</h2>
 		<div class="clearfix">
 			<div class="content-pic pull-right">
-				<img src="images/badrinath.jpg" alt=""/>
+				<img src="{{ asset('images/badrinath.jpg') }}" alt=""/>
 			</div><!-- /.content-pic -->
 			<blockquote class="quote orange">
 			“ As soon as a devotee’s eyes fall on the lovely Lord of Badrinath his or her heart sheds all sinful tendencies and feels great devotion and happiness.” 
@@ -70,7 +70,7 @@
 		<h2 class="sub-heading">Kedarnath</h2>
 		<div class="clearfix">
 			<div class="content-pic pull-right">
-				<img src="images/kedarnath.jpg" alt=""/>
+				<img src="{{ asset('images/kedarnath.jpg') }}" alt=""/>
 			</div><!-- /.content-pic -->
 			<blockquote class="quote orange">
 			“ An all- pervading Divineness and Spirituality which declares the relationship between the place and the rishis and the Gods – in short, a landscape full of beauty, peace, and holiness.” 
@@ -88,17 +88,17 @@
 		<div class="three-images">
 			<div class="col">
 				<div class="pic-wrap">
-				<img src="images/haridwar.jpg" alt="" />
+				<img src="{{ asset('images/haridwar.jpg') }}" alt="" />
 				</div><!-- /.pic-wrap -->
 			</div><!-- /.col -->
 			<div class="col">
 				<div class="pic-wrap">
-				<img src="images/uttarakashi.jpg" alt="" />
+				<img src="{{ asset('images/uttarakashi.jpg') }}" alt="" />
 				</div><!-- /.pic-wrap -->
 			</div><!-- /.col -->
 			<div class="col">
 				<div class="pic-wrap">
-				<img src="images/rishikesh.jpg" alt="" />
+				<img src="{{ asset('images/rishikesh.jpg') }}" alt="" />
 				</div><!-- /.pic-wrap -->
 			</div><!-- /.col -->
 		</div><!-- /.three-img -->
@@ -115,7 +115,7 @@
 
 	</div><!-- /.col-md-8 -->
 
-	@include('side-yatras')
+	@include('yatras.side-yatras')
 </div><!-- /.row -->
 
 							

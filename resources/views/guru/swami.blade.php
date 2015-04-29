@@ -11,7 +11,7 @@
 		<div class="split_30"></div><!-- /.split_30 -->
 		<div class="clearfix">
 			<div class="content-pic pull-left">
-				<img src="images/swami-poster-500x563.png" alt=""/>
+				<img src="{{ asset('images/swami-poster-500x563.png') }}" alt=""/>
 
 			</div><!-- /.content-pic -->
 
@@ -26,13 +26,13 @@
 		
 		<div class="clearfix">
 			<div class="content-pic pull-right">
-				<img src="images/chinmayananda.jpg" alt=""/>
+				<img src="{{ asset('images/chinmayananda.jpg') }}" alt=""/>
 
 			</div><!-- /.content-pic -->
 			<p>Inspired by the life and work of Swami Chinmayananda, Swamiji took up the Vedanta Course at the Chinmaya International Foundation, following which he entered monastic life in 1994 as Br. Sandeep Chaitanya in the Chinmaya Mission with a dedication to spread the spiritual legacy of India and the wisdom of our Guru-parampara. He served the mission holding key positions and spearheading several of its projects and activities. In 2006, with the endorsement of Swami Tejomayananda and the Chinmaya Mission Trust, Swamiji founded the School of Bhagavad Gita so as to effectively benefit a wider section of the population. The activities of the organization were formally inaugurated in Delhi on 1 December 2006 by Smt. Sheila Dixit with the blessings of the then President of India, Dr. A.P.J. Abdul Kalam.</p>
 
 			<div class="content-pic pull-right">
-				<img src="images/kashikananda-giri-haharaj.jpg" alt=""/>
+				<img src="{{ asset('images/kashikananda-giri-haharaj.jpg') }}" alt=""/>
 
 			</div><!-- /.content-pic -->
 
@@ -53,7 +53,7 @@
 		
 	</div><!-- /.col-md-8 -->
 
-@include('side-nav-guru')
+@include('guru.side-nav-guru')
 
 </div><!-- /.row -->
 

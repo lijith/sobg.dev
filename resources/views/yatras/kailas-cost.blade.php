@@ -11,7 +11,7 @@
 		<div class="shadow">
 			<div class="one-image">
 				<div class="pic-wrap">
-					<img src="images/kailas-2.jpg" alt="" />
+					<img src="{{ asset('images/kailas-2.jpg') }}" alt="" />
 				</div><!-- /.pic-wrap -->
 			</div><!-- /.one-image -->
 		</div><!-- /.shadow -->
@@ -177,7 +177,7 @@
 
 	</div><!-- /.col-md-8 -->
 
-	@include('side-yatras')
+	@include('yatras.side-yatras')
 </div><!-- /.row -->
 
 							

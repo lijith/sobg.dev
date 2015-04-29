@@ -62,12 +62,13 @@ Route::group(['prefix' => 'courses-and-retreats'],function(){
 
 /*
 |
-|	publications listing
+|	Event Display
 |
 */
-// Route::group(['prefix' => 'publications'],function(){
-// 	Route::get('/',['as' => 'publications', 'uses' => 'PublicationsController@index']);
-// });
+Route::group(['prefix' => 'events'],function(){
+	Route::get('/',['as' => 'events', 'uses' => 'EventController@index']);
+  Route::get('/{title}',['as' => 'event.show', 'uses' => 'EventController@show']);
+});
 
 /*
 |

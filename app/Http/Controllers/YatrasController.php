@@ -25,7 +25,8 @@ class YatrasController extends SiteController {
 		$this->page_data['title'] = 'Kailas - Manasarovar Yatra';
 		$this->page_data['description'] = '';
 		$this->page_data['sub_page_active'] = 'kailas';
-		return view('kailas-highlights')->with($this->page_data);
+		$this->page_data['top_level_page'] = 'yatras';
+		return view('yatras.kailas-highlights')->with($this->page_data);
 	}
 
 	/**
@@ -37,7 +38,8 @@ class YatrasController extends SiteController {
 		$this->page_data['title'] = 'Kailas - Manasarovar Yatra';
 		$this->page_data['description'] = '';
 		$this->page_data['sub_page_active'] = 'kailas';
-		return view('kailas-cost')->with($this->page_data);
+		$this->page_data['top_level_page'] = 'yatras';
+		return view('yatras.kailas-cost')->with($this->page_data);
 	}
 
 	/**
@@ -45,11 +47,12 @@ class YatrasController extends SiteController {
 	 *
 	 * @return view
 	 */
-	public function kailasDetails(){
+	public function kailasTips(){
 		$this->page_data['title'] = 'Kailas - Manasarovar Tips';
 		$this->page_data['description'] = '';
 		$this->page_data['sub_page_active'] = 'kailas';
-		return view('kailas-tips')->with($this->page_data);
+		$this->page_data['top_level_page'] = 'yatras';
+		return view('yatras.kailas-tips')->with($this->page_data);
 	}
 
 
@@ -62,7 +65,8 @@ class YatrasController extends SiteController {
 		$this->page_data['title'] = 'Himalaya Darsan';
 		$this->page_data['description'] = '';
 		$this->page_data['sub_page_active'] = 'himalaya';
-		return view('himalaya-highlights')->with($this->page_data);
+		$this->page_data['top_level_page'] = 'yatras';
+		return view('yatras.himalaya-highlights')->with($this->page_data);
 	}
 
 
@@ -75,7 +79,8 @@ class YatrasController extends SiteController {
 		$this->page_data['title'] = 'Himalaya Darsan';
 		$this->page_data['description'] = '';
 		$this->page_data['sub_page_active'] = 'himalaya';
-		return view('home')->with($this->page_data);
+		$this->page_data['top_level_page'] = 'yatras';
+		return view('yatras.home')->with($this->page_data);
 	}
 	/**
 	 * amarnath yatra highlights
@@ -86,7 +91,8 @@ class YatrasController extends SiteController {
 		$this->page_data['title'] = 'Amarnath Yatra';
 		$this->page_data['description'] = '';
 		$this->page_data['sub_page_active'] = 'amarnath';
-		return view('home')->with($this->page_data);
+		$this->page_data['top_level_page'] = 'yatras';
+		return view('yatras.home')->with($this->page_data);
 	}
 	/**
 	 * amarnath yatra details
@@ -97,7 +103,8 @@ class YatrasController extends SiteController {
 		$this->page_data['title'] = 'Amarnath Yatra';
 		$this->page_data['description'] = '';
 		$this->page_data['sub_page_active'] = 'amarnath';
-		return view('home')->with($this->page_data);
+		$this->page_data['top_level_page'] = 'yatras';
+		return view('yatras.home')->with($this->page_data);
 	}
 	/**
 	 * other yatras.
@@ -108,7 +115,8 @@ class YatrasController extends SiteController {
 		$this->page_data['title'] = 'Spiritual Journeys';
 		$this->page_data['description'] = '';
 		$this->page_data['sub_page_active'] = 'children';
-		return view('home')->with($this->page_data);
+		$this->page_data['top_level_page'] = 'yatras';
+		//return view('yatras.home')->with($this->page_data);
 	}
 
 
@@ -121,7 +129,9 @@ class YatrasController extends SiteController {
 		$this->page_data['title'] = 'Yatri\'s Speak';
 		$this->page_data['description'] = '';
 		$this->page_data['sub_page_active'] = 'children';
-		return view('home')->with($this->page_data);
+		$this->page_data['top_level_page'] = 'yatras';
+		//return view('yatras.home')->with($this->page_data);
+
 	}
 
 
@@ -134,7 +144,8 @@ class YatrasController extends SiteController {
 		$this->page_data['title'] = 'Register for Spiritual Journey';
 		$this->page_data['description'] = '';
 		$this->page_data['sub_page_active'] = 'children';
-		return view('kailas-registration')->with($this->page_data);
+		$this->page_data['top_level_page'] = 'yatras';
+		return view('yatras.kailas-registration')->with($this->page_data);
 	}
 
 

@@ -4,14 +4,14 @@
 			<div class="heading">
 
 			</div><!-- /.heading -->
-			<a href="http://creativequb.com/projects/sobg.dev/yatras"><h3 class="sec-title">Spiritual Journey(Yatras)</h3></a><!-- /.sec-title -->
+			<a href="{{ route('yatras') }}"><h3 class="sec-title">Spiritual Journey(Yatras)</h3></a><!-- /.sec-title -->
 			<ul>
 				<li><a data-toggle="collapse" href="#kailas" aria-expanded="false" aria-controls="kailas">Kailas - Manasarovar Yatra</a>
 				<div id="kailas" class="collapse in">
 					<ul>
-						<li><a href="http://creativequb.com/projects/sobg.dev/kailas-highlights">Highlights</a></li>
-						<li><a href="http://creativequb.com/projects/sobg.dev/kailas-cost">Itinerary &amp; Cost</a></li>
-						<li><a href="">Registration</a></li>
+						<li><a href="{{ route('kailasHighlights') }}">Highlights</a></li>
+						<li><a href="{{ route('kailasyatra') }}">Itinerary &amp; Cost</a></li>
+						<li><a href="{{ route('kailasyatra') }}">Registration</a></li>
 						<li><a href="http://creativequb.com/projects/sobg.dev/kailas-tips">Tips for Yatris</a></li>
 					</ul>
 				</div><!-- /#kailas -->

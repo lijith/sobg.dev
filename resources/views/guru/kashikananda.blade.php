@@ -12,13 +12,13 @@
 
 		<div class="clearfix">
 			<div class="content-pic pull-left">
-				<img src="images/swami-kashikananda-giri.jpg" alt="" />
+				<img src="{{ asset('images/swami-kashikananda-giri.jpg') }}" alt="" />
 			</div><!-- /.content-pic pull-left -->
 			<p>The land of Kerala which has given birth to innumerable far- sighted spiritual scholars and teachers, it is said, has gifted three Shankaras to the world. The first, of course is Adi Shankaracharya who enlightened the world with Advaitha and the second is Sree Narayana Guru who popularized this vedic theory. The third Shankara is none other than H.H Acharya Mahamandaleswar Kashikananda Giri Maharaj whose very purpose of birth seemed to be to establish and strengthen the indisputable nature of the Advaitha philosophy.</p>
 		</div><!-- /.clearfix -->
 		<div class="clearfix">
 			<div class="content-pic pull-left">
-				<img src="images/kashikananda-bw.jpg" alt="" />
+				<img src="{{ asset('images/kashikananda-bw.jpg') }}" alt="" />
 			</div><!-- /.content-pic pull-left -->
 			<p>Born in 1924 in South Malabar, Kashikananda Giri Maharaj began his journey as a spiritual seeker at the age of 15. Barefooted and wearing nothing but a cloth around his waist, the young boy left the walls of his home and walked his way towards Varanasi. The journey thus begun, took him travelling by foot through rain and shine, across the length and breadth of India and the Himalayas which in those days was covered with thick jungle and teeming with wild animals.</p>
 
@@ -28,7 +28,7 @@
 			<div class="split_10"></div><!-- /.split_10 -->
 			<div class="one-image">
 				<div class="pic-wrap">
-					<img src="images/kashikananda-tiled.jpg" alt="" />
+					<img src="{{ asset('images/kashikananda-tiled.jpg') }}" alt="" />
 				</div><!-- /.pic-wrap -->
 			</div><!-- /.one-image -->
 			<div class="split_10"></div><!-- /.split_10 -->
@@ -47,12 +47,12 @@
 			<div class="two-images">
 				<div class="col">
 					<div class="pic-wrap">
-						<img src="images/kashikananda-swami.jpg" alt="" />
+						<img src="{{ asset('images/kashikananda-swami.jpg') }}" alt="" />
 					</div><!-- /.pic-wrap -->
 				</div><!-- /.col -->
 				<div class="col">
 					<div class="pic-wrap">
-						<img src="images/vedha-kashikananda.jpg" alt="" />
+						<img src="{{ asset('images/vedha-kashikananda.jpg') }}" alt="" />
 					</div><!-- /.pic-wrap -->
 				</div><!-- /.col -->
 			</div>
@@ -69,7 +69,7 @@
 		
 	</div><!-- /.col-md-8 -->
 
-@include('side-nav-guru')
+@include('guru.side-nav-guru')
 
 </div><!-- /.row -->
 

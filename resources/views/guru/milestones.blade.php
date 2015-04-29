@@ -14,7 +14,7 @@
 		<h2 class="sub-heading">First Time Ever - 108 Days’ Bhagavad Gita Jnana Yajnam -2003-04</h2>
 		<div class="clearfix">
 			<div class="content-pic pull-right">
-				<img src="images/njana-yajnam-2003.jpg" alt="" />
+				<img src="{{ asset('images/njana-yajnam-2003.jpg') }}" alt="" />
 			</div><!-- /.content-pic pull-left -->
 			<p>After initiating and coordinating several projects in Chinmaya Mission for about a decade, Swamiji, then known as Br. Sandeep Chaitanya, created history by conducting the 108 days continuous discourse series on the Bhagavad Gita. Held at the Vyloppilli Samskriti Bhavan Open air auditorium in Trivandrum, the event attracted a daily audience of around 2000. Swamiji’s simple explanation of the Gita, replete with examples from everyday life and laced with his inimical humour was an eye-opener for the common man.</p>
 
@@ -33,10 +33,10 @@
 		<h2 class="sub-heading">School Of Bhagavad Gita Founded – 2006</h2>
 		<div class="clearfix">
 			<div class="content-pic pull-right">
-				<img src="images/sobg-rastrapthi-bhavan.jpg" alt="" />
+				<img src="{{ asset('images/sobg-rastrapthi-bhavan.jpg') }}" alt="" />
 			</div><!-- /.content-pic pull-left -->
 			<div class="content-pic pull-right">
-				<img src="images/sobg-delhi.jpg" alt="" />
+				<img src="{{ asset('images/sobg-delhi.jpg') }}" alt="" />
 			</div><!-- /.content-pic pull-left -->
 			<p>In 2006 Swami Sandeep Chaitanya founded the School of Bhagavad Gita with a vision to expound the universal character of the Bhagavad Gita and its practicality in everyday life. The aspiration is also to nurture the true essence of India’s cultural and spiritual heritage with all its open-mindedness and tolerance. The ultimate mission of the organization is to reach out and benefit a wider section of the population across the globe.</p>
 		</div><!-- /.clearfix -->	
@@ -45,10 +45,10 @@
 		<h2 class="sub-heading">The Art Of Man Making – Bhagavad Gita Series In The UAE For The First Time</h2>
 		<div class="clearfix">
 			<div class="content-pic pull-right">
-				<img src="images/amm-uae-1.jpg" alt="" />
+				<img src="{{ asset('images/amm-uae-1.jpg') }}" alt="" />
 			</div><!-- /.content-pic pull-left -->
 			<div class="content-pic pull-right">
-				<img src="images/amm-uae-2.jpg" alt="" />
+				<img src="{{ asset('images/amm-uae-2.jpg') }}" alt="" />
 			</div><!-- /.content-pic pull-left -->
 			<p>The Art of Man Making, a 45 days long event held in 2007 at The Indian Consulate hall, Dubai, was a mile stone, whereby discourses on the entire Gita was held for the first time ever in the UAE.</p>
 
@@ -60,7 +60,7 @@
 
 		<div class="clearfix">
 			<div class="content-pic pull-left">
-				<img src="images/release-braiile-gita.jpg" alt="" />
+				<img src="{{ asset('images/release-braiile-gita.jpg') }}" alt="" />
 			</div><!-- /.content-pic pull-left -->
 			<p>In April 2007, Swamiji launched Tamaso Ma Jyothir Gamaya- the project of presenting the Bhagavad Gita in Braille for the visually impaired- to kindle the light within. For the first time, the Gita was published in Malayalam Braille. The copies, along with their MP3 audio CDs, were released by eminent poetess and social activist Padmasri Sugatha Kumari, who distributed them to deserving visually impaired students.</p>
 		</div><!-- /.clearfix -->
@@ -70,7 +70,7 @@
 		<h2 class="sub-heading">Launch Of Piravi- The Spiritual Magazine With A Difference</h2>
 		<div class="clearfix">
 			<div class="content-pic pull-right">
-				<img src="images/launch-piravi.jpg" alt="" />
+				<img src="{{ asset('images/launch-piravi.jpg') }}" alt="" />
 			</div><!-- /.content-pic pull-left -->
 			<p>Realising the absence of a positive outlook magazine in Malayalam that can be enjoyed by all, Swamiji launched PIRAVI in August 2008, under the editorship of Sri. C. Radhakrishnan. It is meant to be a forum where members of the general public, from the common man to the scholar, can together enjoy spiritual reading or give literal expression to their thoughts and a vehicle that will deliver the goods to suit the spiritual needs of our time.</p>
 		</div><!-- /.clearfix -->	
@@ -80,7 +80,7 @@
 		<h2 class="sub-heading">Making A World Of Difference  - Pre - Parliament Summit Of The Parliament Of The World's Religions</h2>
 		<div class="clearfix">
 			<div class="content-pic pull-left">
-				<img src="images/pre-parliament.jpg" alt="" />
+				<img src="{{ asset('images/pre-parliament.jpg') }}" alt="" />
 			</div><!-- /.content-pic pull-left -->
 			<p>Making a World of Difference - the Pre Parliament Summit of the Parliament of the World’s Religions was hosted and organized by SOBG under the leadership of Swamiji. It was inaugurated in Trivandrum by Geshe Lama Thubten Gurung on 3 August, 2008, amidst the presence of a wide and varied gathering of internationally known speakers and audience.</p>
 		</div><!-- /.clearfix -->
@@ -91,12 +91,12 @@
 		<div class="two-images">
 			<div class="col">
 				<div class="pic-wrap">
-					<img src="images/thodopuzha.jpg" alt="" />
+					<img src="{{ asset('images/thodopuzha.jpg') }}" alt="" />
 				</div><!-- /.pic-wrap -->
 			</div><!-- /.col -->
 			<div class="col">
 				<div class="pic-wrap">
-					<img src="images/thrissur.jpg" alt="" />
+					<img src="{{ asset('images/thrissur.jpg') }}" alt="" />
 				</div><!-- /.pic-wrap -->
 			</div><!-- /.col -->
 		</div><!-- /.two-images -->
@@ -107,12 +107,12 @@
 		<div class="two-images">
 			<div class="col">
 				<div class="pic-wrap">
-					<img src="images/chatur-gakara-inaug.jpg" alt="" />
+					<img src="{{ asset('images/chatur-gakara-inaug.jpg') }}" alt="" />
 				</div><!-- /.pic-wrap -->
 			</div><!-- /.col -->
 			<div class="col">
 				<div class="pic-wrap">
-					<img src="images/chatur-audience.jpg" alt="" />
+					<img src="{{ asset('images/chatur-audience.jpg') }}" alt="" />
 				</div><!-- /.pic-wrap -->
 			</div><!-- /.col -->
 		</div><!-- /.two-images -->
@@ -122,12 +122,12 @@
 		<div class="two-images">
 			<div class="col">
 				<div class="pic-wrap">
-					<img src="images/ganga-darsan-special-train.jpg" alt="" />
+					<img src="{{ asset('images/ganga-darsan-special-train.jpg') }}" alt="" />
 				</div><!-- /.pic-wrap -->
 			</div><!-- /.col -->
 			<div class="col">
 				<div class="pic-wrap">
-					<img src="images/palakkadu.jpg" alt="" />
+					<img src="{{ asset('images/palakkadu.jpg') }}" alt="" />
 				</div><!-- /.pic-wrap -->
 			</div><!-- /.col -->
 		</div><!-- /.two-images -->
@@ -136,12 +136,12 @@
 		<div class="two-images">
 			<div class="col">
 				<div class="pic-wrap">
-					<img src="images/ernakulam-01.jpg" alt="" />
+					<img src="{{ asset('images/ernakulam-01.jpg') }}" alt="" />
 				</div><!-- /.pic-wrap -->
 			</div><!-- /.col -->
 			<div class="col">
 				<div class="pic-wrap">
-					<img src="images/ganga-darsan-gangajal-samarpan.jpg" alt="" />
+					<img src="{{ asset('images/ganga-darsan-gangajal-samarpan.jpg') }}" alt="" />
 				</div><!-- /.pic-wrap -->
 			</div><!-- /.col -->
 		</div><!-- /.two-images -->
@@ -156,12 +156,12 @@
 		<div class="two-images">
 			<div class="col">
 				<div class="pic-wrap">
-					<img src="images/vedha-01.jpg" alt="" />
+					<img src="{{ asset('images/vedha-01.jpg') }}" alt="" />
 				</div><!-- /.pic-wrap -->
 			</div><!-- /.col -->
 			<div class="col">
 				<div class="pic-wrap">
-					<img src="images/inaug.jpg" alt="" />
+					<img src="{{ asset('images/inaug.jpg') }}" alt="" />
 				</div><!-- /.pic-wrap -->
 			</div><!-- /.col -->
 		</div><!-- /.two-images -->
@@ -170,12 +170,12 @@
 		<div class="two-images">
 			<div class="col">
 				<div class="pic-wrap">
-					<img src="images/vedha-19.jpg" alt="" />
+					<img src="{{ asset('images/vedha-19.jpg') }}" alt="" />
 				</div><!-- /.pic-wrap -->
 			</div><!-- /.col -->
 			<div class="col">
 				<div class="pic-wrap">
-					<img src="images/valedictry- govner.jpg" alt="" />
+					<img src="{{ asset('images/valedictry- govner.jpg') }}" alt="" />
 				</div><!-- /.pic-wrap -->
 			</div><!-- /.col -->
 		</div><!-- /.two-images -->
@@ -190,12 +190,12 @@
 		<div class="two-images">
 			<div class="col">
 				<div class="pic-wrap">
-					<img src="images/hindu-congress.jpg" alt="" />
+					<img src="{{ asset('images/hindu-congress.jpg') }}" alt="" />
 				</div><!-- /.pic-wrap -->
 			</div><!-- /.col -->
 			<div class="col">
 				<div class="pic-wrap">
-					<img src="images/hindu-congress1.jpg" alt="" />
+					<img src="{{ asset('images/hindu-congress1.jpg') }}" alt="" />
 				</div><!-- /.pic-wrap -->
 			</div><!-- /.col -->
 		</div><!-- /.two-images -->
@@ -207,7 +207,7 @@
 
 		<div class="clearfix">
 			<div class="content-pic pull-right">
-				<img src="images/hindu-congress2.jpg" alt="" />
+				<img src="{{ asset('images/hindu-congress2.jpg') }}" alt="" />
 			</div><!-- /.content-pic pull-left -->
 			<p>The Parliament of the World's Religions - the largest inter-religious congregations in the world - opened with a series of blessings that acknowledged and honoured the diverse spiritual and religious traditions of the world. Swamiji representing the Hindu faith, offered blessings of peace to the world with the chanting of  'OM', the universal mantra, followed by the Shanti mantra - 'Poornamada' of the Upanishads.</p>
 		</div><!-- /.clearfix -->
@@ -221,12 +221,12 @@
 		<div class="two-images">
 			<div class="col">
 				<div class="pic-wrap">
-					<img src="images/sanyasam1.jpg" alt="" />
+					<img src="{{ asset('images/sanyasam1.jpg') }}" alt="" />
 				</div><!-- /.pic-wrap -->
 			</div><!-- /.col -->
 			<div class="col">
 				<div class="pic-wrap">
-					<img src="images/sanyasam3.jpg" alt="" />
+					<img src="{{ asset('images/sanyasam3.jpg') }}" alt="" />
 				</div><!-- /.pic-wrap -->
 			</div><!-- /.col -->
 		</div><!-- /.two-images -->
@@ -237,7 +237,7 @@
 		<h2 class="sub-heading">Apj Abdul Kalam Inaugurates Gita Kshetram At Salagramam</h2>
 		<div class="clearfix">
 			<div class="content-pic pull-left">
-				<img src="images/apj-sal-large1.jpg" alt="" />
+				<img src="{{ asset('images/apj-sal-large1.jpg') }}" alt="" />
 			</div><!-- /.content-pic pull-left -->
 			<p>Former President of India Dr. A.P.J. Abdul Kalam visited Salagramam on 14-10-2010. Kalamji inaugurated the meditation hall "Geethakshethram" and dedicated it to all seekers.</p>
 		</div><!-- /.clearfix -->
@@ -246,7 +246,7 @@
 		<h2 class="sub-heading">Chatutvidha Purushartha Vichara Yajnam</h2>
 		<div class="clearfix">
 			<div class="content-pic pull-left">
-				<img src="images/chathur-puru2.jpg" alt="" />
+				<img src="{{ asset('images/chathur-puru2.jpg') }}" alt="" />
 			</div><!-- /.content-pic pull-left -->
 			<p>A  72 days long mega event of discourse series in 18 venues covering all 14 districts of Kerala from October to December 2010. The series was based on Purusharthas, or the four aims of human life - Dharma, Artha, Kama and Moksha- was inaugurated by Dr. A.P.J. Abdul Kalam.</p>
 		</div><!-- /.clearfix -->
@@ -257,7 +257,7 @@
 		<h2 class="sub-heading">Srimad Bhagavatha Thattva Jnan Yajnam</h2>
 		<div class="one-image">
 			<div class="pic-wrap">
-				<img src="images/thattva-yajnam.jpg" alt="" />
+				<img src="{{ asset('images/thattva-yajnam.jpg') }}" alt="" />
 			</div><!-- /.pic-wrap -->
 		</div><!-- /.one-image -->
 		<div class="split_10"></div><!-- /.split_10 -->
@@ -273,7 +273,7 @@
 
 	</div><!-- /.col-md-8 -->
 
-@include('side-nav-guru')
+@include('guru.side-nav-guru')
 	
 </div><!-- /.row -->
 

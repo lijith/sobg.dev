@@ -121,63 +121,56 @@
 		<div class="shadow">
 			<h2 class="col-heading">Events</h2>
 			<div class="events-wrap">
+			@if($events->count() > 0)
+				<?php $count = 0;?>
 				<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
 
 
 					<!-- Wrapper for slides -->
 					<div class="carousel-inner" role="listbox">
-						<div class="item active">
+					@foreach($events as $event)
+						<?php $start_date = \Carbon\Carbon::createFromFormat('Y-m-d H:i:s',$event->start_date);?>
+						<?php $end_date = \Carbon\Carbon::createFromFormat('Y-m-d H:i:s',$event->end_date);?>
+						<?php $end_date->addMonth(); ?>
+
+						<div class="item {{ ($count == 0) ? 'active' : '' }}">
 							<div class="event">
 								<div class="event-date">
 								<div class="day">
-									21
+									@if($start_date->diffInDays($end_date) > 0 )
+										{{$start_date->day}} - {{$end_date->day}}
+									@else
+										{{$start_date->day}}
+									@endif
+
 								</div><!-- /.day -->
 								<div class="month">
-									May
+									@if($start_date->format('M') != $end_date->format('M') )
+										{{$start_date->format('M')}} - {{$end_date->format('M')}}
+									@else
+										{{$start_date->format('M')}}
+									@endif
 								</div><!-- /.month -->
 								<div class="year">
-									2015
+									{{$start_date->year}}
 								</div><!-- /.year -->
 							</div><!-- /.event-date -->
 							<div class="event-image">
-								<img src="{{URL::asset('images/vidya3.jpg')}}" alt="" />
+								<img src="{{URL::asset('images/events/'.$event->cover_photo_thumbnail)}}" alt="" />
 							</div><!-- /.event-image -->
 
 							<div class="event-details">
-								<h3 class="event-title">Explicabo iure non</h3>
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sit cumque nobis quo et ducimus. Porro, minima, facilis. Explicabo iure non optio quae! Eveniet dolore ex sunt nemo maiores eum voluptatum.</p>
-								<p class="read-more"><a href="">read more &raquo;</a></p>
+								<h3 class="event-title">{{ ucwords($event->title) }}</h3>
+								<p>{{ \Illuminate\Support\Str::limit($event->excerpt,150) }}</p>
+								<p class="read-more"><a href="{{ route('event.show', array($event->slug)) }}">read more &raquo;</a></p>
 							</div><!-- /.event-details -->
 
-						</div><!-- /.event -->
+							</div><!-- /.event -->
 						</div><!-- /.item -->
-						<div class="item">
-							<div class="event">
-
-							<div class="event-date">
-								<div class="day">
-									05
-								</div><!-- /.day -->
-								<div class="month">
-									Sep
-								</div><!-- /.month -->
-								<div class="year">
-									2015
-								</div><!-- /.year -->
-							</div><!-- /.event-date -->
-							<div class="event-image">
-								<img src="{{URL::asset('images/vidya1.jpg')}}" alt="" />
-							</div><!-- /.event-image -->
-
-							<div class="event-details">
-								<h3 class="event-title">Sit cumque nobis</h3>
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sit cumque nobis quo et ducimus. Porro, minima, facilis. Explicabo iure non optio quae! Eveniet dolore ex sunt nemo maiores eum voluptatum.</p>
-								<p class="read-more"><a href="">read more &raquo;</a></p>
-							</div><!-- /.event-details -->
-
-						</div><!-- /.event -->
-						</div>
-					</div>
+						<?php $count++;?>
+					@endforeach
+						
+					</div><!-- /.carousel-inner -->
 
 					<!-- Controls -->
 					<div class="events-control">
@@ -192,6 +185,7 @@
 					</div><!-- /.events-control -->
 
 				</div>
+				@endif
 			</div><!-- /.events-wrap -->
 
 		</div><!-- /.shadow -->

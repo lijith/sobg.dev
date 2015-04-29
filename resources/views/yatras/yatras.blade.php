@@ -11,7 +11,7 @@
 		<div class="shadow">
 			<div class="one-image">
 				<div class="pic-wrap">
-					<img src="images/yatras_cover.jpg" alt="" />
+					<img src="{{ asset('images/yatras_cover.jpg') }}" alt="" />
 				</div><!-- /.pic-wrap -->
 			</div><!-- /.one-image -->
 		</div><!-- /.shadow -->
@@ -22,12 +22,12 @@
 		<div class="two-images">
 			<div class="col">
 				<div class="pic-wrap">
-					<img src="images/amarnath-swami_450x338.jpg" alt="" />
+					<img src="{{ asset('images/amarnath-swami_450x338.jpg') }}" alt="" />
 				</div><!-- /.pic-wrap -->
 			</div><!-- /.col -->
 			<div class="col">
 				<div class="pic-wrap">
-					<img src="images/amarnath-4_450x338.jpg" alt="" />
+					<img src="{{ asset('images/amarnath-4_450x338.jpg') }}" alt="" />
 				</div><!-- /.pic-wrap -->
 			</div><!-- /.col -->
 		</div><!-- /.two-images -->
@@ -40,12 +40,12 @@
 		<div class="two-images">
 			<div class="col">
 				<div class="pic-wrap">
-					<img src="images/kailas-3_450x338.jpg" alt="" />
+					<img src="{{ asset('images/kailas-3_450x338.jpg') }}" alt="" />
 				</div><!-- /.pic-wrap -->
 			</div><!-- /.col -->
 			<div class="col">
 				<div class="pic-wrap">
-					<img src="images/amarnath-yatra_450x338.jpg" alt="" />
+					<img src="{{ asset('images/amarnath-yatra_450x338.jpg') }}" alt="" />
 				</div><!-- /.pic-wrap -->
 			</div><!-- /.col -->
 		</div><!-- /.two-images -->

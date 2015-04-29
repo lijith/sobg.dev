@@ -7,10 +7,10 @@
 			<h3 class="sec-title">Courses &amp; Retreats</h3><!-- /.sec-title -->
 			<ul>
 				<li>
-					<a href="http://creativequb.com/projects/sobg.dev/for-children">For Children</a>
+					<a href="{{ route('children') }}">For Children</a>
 				</li>
 				<li>
-					<a href="http://creativequb.com/projects/sobg.dev/for-seniors">For Seniors</a>
+					<a href="{{ route('seniors') }}">For Seniors</a>
 				</li>
 			</ul>
 		</div><!-- /.side-nav -->

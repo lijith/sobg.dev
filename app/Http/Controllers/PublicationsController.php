@@ -10,7 +10,7 @@ use Magazine;
 use Book;
 
 
-class PublicationsController extends Controller {
+class PublicationsController extends SiteController {
 
 	/*
 	|--------------------------------------------------------------------------
@@ -18,18 +18,6 @@ class PublicationsController extends Controller {
 	|--------------------------------------------------------------------------
 	|
 	*/
-
-	/**
-	 * page meta data
-	 *
-	 */
-	private $page_data = array(
-		'title' => 'School of Bhagavat Gita',
-		'description' => 'SALAGRAMAM Ashram, envisaged and founded by Swami Sandeepananda Giri, is devoted to the understanding and spread of pure Knowledge.The School of Bhagavad Gita is the nucleus of the Ashram.',
-		'keywords' => 'Bhagavad Gita, School of Bhagavad Gita, Swami Sandeepananda Giri, Salagram, Chinmayananda, Indian heritage, spiritual,culture, vedas, upanishad, tradition, philosophy, ashram, non-sectarian, camps, retreats, discourses, lectures, satsang, yagnam, gita yagnam, jnana, yatra, sadhana, Kailas - Manasarovar Yatra, Himalaya Darsan',
-		'top_level_page' => 'publications',
-		'sub_page_active' => ''
-	);
 
 
 
@@ -41,6 +29,7 @@ class PublicationsController extends Controller {
 	public function index(){
 		$this->page_data['title'] = 'Publications from School of Bhagavat Gita';
 		$this->page_data['description'] = '';
+		$this->page_data['top_level_page'] = 'publications';
 		$this->page_data['sub_page_active'] = 'publications';
 
 		$video_disks = VideoDisk::take(4)
@@ -66,6 +55,7 @@ class PublicationsController extends Controller {
 	public function dvdList(){
 		$this->page_data['title'] = 'DVDs from School of Bhagavat Gita';
 		$this->page_data['description'] = '';
+		$this->page_data['top_level_page'] = 'publications';
 		$this->page_data['sub_page_active'] = 'dvd';
 		return view('home')->with($this->page_data);
 	}
@@ -78,6 +68,7 @@ class PublicationsController extends Controller {
 	public function mp3List(){
 		$this->page_data['title'] = 'VCDs from School of Bhagavat Gita';
 		$this->page_data['description'] = '';
+		$this->page_data['top_level_page'] = 'publications';
 		$this->page_data['sub_page_active'] = 'vcd';
 		return view('home')->with($this->page_data);
 	}	
@@ -90,6 +81,7 @@ class PublicationsController extends Controller {
 	public function audioList(){
 		$this->page_data['title'] = 'Audio CD and MP3s from School of Bhagavat Gita';
 		$this->page_data['description'] = '';
+		$this->page_data['top_level_page'] = 'publications';
 		$this->page_data['sub_page_active'] = 'audio';
 		return view('home')->with($this->page_data);
 	}
@@ -102,6 +94,7 @@ class PublicationsController extends Controller {
 	public function booksBySwami(){
 		$this->page_data['title'] = 'Books by Swami Sandeepananda Giri';
 		$this->page_data['description'] = '';
+		$this->page_data['top_level_page'] = 'publications';
 		$this->page_data['sub_page_active'] = 'swami-books';
 		return view('home')->with($this->page_data);
 	}
@@ -114,6 +107,7 @@ class PublicationsController extends Controller {
 	public function otherTitles(){
 		$this->page_data['title'] = 'Book Titles available';
 		$this->page_data['description'] = '';
+		$this->page_data['top_level_page'] = 'publications';
 		$this->page_data['sub_page_active'] = 'other-books';
 		return view('home')->with($this->page_data);
 	}
@@ -126,6 +120,7 @@ class PublicationsController extends Controller {
 	public function piravi(){
 		$this->page_data['title'] = 'Piravi Magazine';
 		$this->page_data['description'] = '';
+		$this->page_data['top_level_page'] = 'publications';
 		$this->page_data['sub_page_active'] = 'piravi';
 		return view('home')->with($this->page_data);
 	}
