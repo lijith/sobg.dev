@@ -12,7 +12,7 @@
 		
 		<div class="clearfix">
 			
-			<img  class="pull-right" src="images/hisvision-image.jpg" alt=""/>
+			<img  class="pull-right" src="{{ asset('images/hisvision-image.jpg') }}" alt=""/>
 
 			
 
@@ -56,28 +56,8 @@
 
 	</div><!-- /.col-md-8 -->
 
-	<div class="col-md-4 col-md-pull-8">
-		<div class="shadow">
-			<div class="side-nav">
-				<div class="heading">
+	@include('about-sobg.side-nav-about')
 
-				</div><!-- /.heading -->
-				<h3 class="sec-title">About SOBG</h3><!-- /.sec-title -->
-				<ul>
-					<li><a href="">Overview</a></li>
-					<li><a href="">Salagramam Ashram</a>
-						<ul>
-							<li><a href="">Guided tour of Ashram</a></li>
-							<li><a href="">Homestay at Salagramam</a></li>
-							<li><a href="">Facilities for public</a></li>
-						</ul>
-					</li>
-					<li><a href="">Centers</a></li>
-					<li><a href="">His Vision</a></li>
-				</ul>
-			</div><!-- /.side-nav -->
-		</div><!-- /.shadow -->
-	</div><!-- /.col-md-4 -->
 </div><!-- /.row -->
 
 							

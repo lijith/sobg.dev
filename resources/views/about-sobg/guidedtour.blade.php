@@ -12,7 +12,7 @@
 		<h2 class="sub-heading">Poomukham</h2>
 			<div class="clearfix">
 				<div class="content-pic pull-right">
-					<img src="images/ganapathi welcomes.jpg" alt=""/>
+					<img src="{{ asset('images/ganapathi welcomes.jpg') }}" alt=""/>
 
 				</div><!-- /.content-pic -->
 				<p>Before the entrance doorway to the ashram, stands a Ganesha idol, hands wide open in welcome. As a mark of deep reverence, placed inside,are the pair of sandals (padukam) and  the portrait of the youthful <strong>Swami Chimayananda</strong> who is the spiritual Guru and the inspiration for Swami Sandeepananda Giri, the founder of School of Bhagavad Gita.</p>
@@ -24,7 +24,7 @@
 		<div class="shadow">
 			<div class="one-image">
 				<div class="pic-wrap">
-					<img src="images/gita-kshetram-inner.jpg" alt="" />
+					<img src="{{ asset('images/gita-kshetram-inner.jpg') }}" alt="" />
 				</div><!-- /.pic-wrap -->
 			</div><!-- /.one-image -->
 		</div><!-- /.shadow -->
@@ -36,19 +36,19 @@
 			<div class="two-images">
 				<div class="col">
 					<div class="pic-wrap">
-						<img src="images/gita-kshetram-01.jpg" alt="" />
+						<img src="{{ asset('images/gita-kshetram-01.jpg') }}" alt="" />
 					</div><!-- /.pic-wrap -->
 				</div><!-- /.col -->
 				<div class="col">
 					<div class="pic-wrap">
-						<img src="images/gita-kshetram-02.jpg" alt="" />
+						<img src="{{ asset('images/gita-kshetram-02.jpg') }}" alt="" />
 					</div><!-- /.pic-wrap -->
 				</div><!-- /.col -->
 			</div><!-- /.two-images -->
 			<p>
 			This venue is meant to be an open forum to all seekers, for kindling creativity and free thinking and to equip them with the knowledge to lead a practical life that is rooted in the universal values as outlined in the Bhagavad Gita.</p>
 			<div class="content-pic pull-left">
-				<img src="images/abdul-kalam.jpg" alt=""/>
+				<img src="{{ asset('images/abdul-kalam.jpg') }}" alt=""/>
 			</div><!-- /.content-pic -->
 			<p>
 			This unique structure radiating a regal beauty all its own, is probably one of its kind in the country, or even the world, perhaps. Fittingly, it was inaugurated by none other than <strong>Dr. A.P.J Abdul Kalam, former President of India</strong> and a much respected global citizen.</p>
@@ -63,12 +63,12 @@
 			<div class="two-images">
 				<div class="col">
 					<div class="pic-wrap">
-						<img src="images/veda-01.jpg" alt="" />
+						<img src="{{ asset('images/veda-01.jpg') }}" alt="" />
 					</div><!-- /.pic-wrap -->
 				</div><!-- /.col -->
 				<div class="col">
 					<div class="pic-wrap">
-						<img src="images/vedha-02.jpg" alt="" />
+						<img src="{{ asset('images/vedha-02.jpg') }}" alt="" />
 					</div><!-- /.pic-wrap -->
 				</div><!-- /.col -->
 			</div><!-- /.two-images -->
@@ -81,7 +81,7 @@
 
 			<div class="clearfix">
 				<div class="content-pic pull-right">
-					<img src="images/naimisharanyam.jpg" alt=""/>
+					<img src="{{ asset('images/naimisharanyam.jpg') }}" alt=""/>
 				</div><!-- /.content-pic -->
 				<p>Naimisharanya is the hall for satsangs, talks, discussions and meetings. It is named after the ancient place “ Naimisharanya, the blessed spot where sages did penance, wise men gave discourses, many puranas were written and where <strong>Sri Suka</strong> narrated the <strong>Bhagavatham</strong> to <strong>Maharaja Parikshit</strong>.</p>
 			</div><!-- /.cleafix -->
@@ -94,17 +94,17 @@
 			<div class="three-images">
 				<div class="col">
 					<div class="pic-wrap">
-					<img alt="" src="images/salagramam-room-01.jpg">
+					<img alt="" src="{{ asset('images/salagramam-room-01.jpg') }}">
 					</div><!-- /.pic-wrap -->
 				</div><!-- /.col -->
 				<div class="col">
 					<div class="pic-wrap">
-					<img alt="" src="images/salagramam-room-02.jpg">
+					<img alt="" src="{{ asset('images/salagramam-room-02.jpg') }}">
 					</div><!-- /.pic-wrap -->
 				</div><!-- /.col -->
 				<div class="col">
 					<div class="pic-wrap">
-					<img alt="" src="images/dorm-room.jpg">
+					<img alt="" src="{{ asset('images/dorm-room.jpg') }}">
 					</div><!-- /.pic-wrap -->
 				</div><!-- /.col -->
 			</div>
@@ -120,7 +120,7 @@
 		<h2 class="sub-heading">Nalanda- Takshasila – Library Complex</h2>
 		<div class="one-image">
 			<div class="pic-wrap">
-				<img src="images/library.jpg" alt="" />
+				<img src="{{ asset('images/library.jpg') }}" alt="" />
 			</div>
 		</div><!-- /.content-pic -->
 		<p>A well-stocked library with over 2000 books mainly on culture, heritage and spirituality, is available for reference and reading on campus.</p>
@@ -130,7 +130,7 @@
 		<h2 class="sub-heading">Sapta Bhumika – The Labyrinth</h2>
 		<div class="one-image">
 			<div class="pic-wrap">
-				<img src="images/labyrinth.jpg" alt="" />
+				<img src="{{ asset('images/labyrinth.jpg') }}" alt="" />
 			</div>
 		</div><!-- /.content-pic -->
 		<p>Sapta Bhumika ,the labyrinth (maze) is designed to enable <strong>“walking meditation”</strong>. The winding paths lead to the point inside and symbolically, this is meant to be an inner journey to the Self.</p>
@@ -138,7 +138,7 @@
 
 	</div><!-- /.col-md-8 -->
 
-	@include('side-nav-about')
+	@include('about-sobg.side-nav-about')
 
 </div>							
 @stop

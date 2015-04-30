@@ -11,14 +11,14 @@
 			<div class="shadow">
 				<div class="one-image">
 					<div class="pic-wrap">
-						<img src="images/salagramam-facilities.jpg" alt="" />
+						<img src="{{ asset('images/salagramam-facilities.jpg') }}" alt="" />
 					</div><!-- /.pic-wrap -->
 				</div><!-- /.one-image -->
 			</div><!-- /.shadow -->
 			<div class="split_30"></div><!-- /.split_30 -->
 			<div class="clearfix">
 				<div class="content-pic pull-left">
-					<img src="images/salagramam-dorm-01.jpg" alt=""/>
+					<img src="{{ asset('images/salagramam-dorm-01.jpg') }}" alt=""/>
 
 				</div><!-- /.content-pic -->
 
@@ -34,12 +34,12 @@
 				<div class="two-images">
 					<div class="col">
 						<div class="pic-wrap">
-							<img src="images/salagramam-room-01.jpg" alt="" />
+							<img src="{{ asset('images/salagramam-room-01.jpg') }}" alt="" />
 						</div><!-- /.pic-wrap -->
 					</div><!-- /.col -->
 					<div class="col">
 						<div class="pic-wrap">
-							<img src="images/salagramam-room-02.jpg" alt="" />
+							<img src="{{ asset('images/salagramam-room-02.jpg') }}" alt="" />
 						</div><!-- /.pic-wrap -->
 					</div><!-- /.col -->
 					
@@ -50,7 +50,7 @@
 				<div class="two-images">
 					<div class="col">
 						<div class="pic-wrap">
-							<img src="images/dorm-room.jpg" alt="" />
+							<img src="{{ asset('images/dorm-room.jpg') }}" alt="" />
 						</div><!-- /.pic-wrap -->
 					</div><!-- /.col -->
 					<div class="col">
@@ -70,7 +70,7 @@
 			<h2 class="sub-heading">Library</h2>
 			<div class="clearfix">
 				<div class="content-pic pull-left">
-					<img src="images/library.jpg" alt=""/>
+					<img src="{{ asset('images/library.jpg') }}" alt=""/>
 
 				</div><!-- /.content-pic -->
 				<p> well-stocked library with over 2000 books mainly on culture, heritage and spirituality is available for guests for reading on campus.</p>
@@ -140,7 +140,7 @@
 			
 		</div><!-- /.col-md-8 -->
 
-	@include('side-nav-about')
+	@include('about-sobg.side-nav-about')
 	</div>
 
 	@stop

@@ -16,7 +16,7 @@
 
 		<div class="clearfix">
 			<div class="content-pic pull-left">
-				<img src="images/salagramam-tulasi.jpg" alt=""/>
+				<img src="{{ asset('images/salagramam-tulasi.jpg') }}" alt=""/>
 				
 
 			</div><!-- /.content-pic -->
@@ -36,7 +36,7 @@
 
 		<div class="one-image">
 			<div class="pic-wrap">
-				<img src="images/salagramam-river.jpg" alt="" />
+				<img src="{{ asset('images/salagramam-river.jpg') }}" alt="" />
 			</div>
 		</div><!-- /.content-pic -->
 		
@@ -46,12 +46,12 @@
 		<div class="two-images">
 			<div class="col">
 				<div class="pic-wrap">
-					<img src="images/foundation stone 1.jpg" alt="" />
+					<img src="{{ asset('images/foundation stone 1.jpg') }}" alt="" />
 				</div><!-- /.pic-wrap -->
 			</div><!-- /.col -->
 			<div class="col">
 				<div class="pic-wrap">
-					<img src="images/inauguration-01.jpg" alt="" />
+					<img src="{{ asset('images/inauguration-01.jpg') }}" alt="" />
 				</div><!-- /.pic-wrap -->
 			</div><!-- /.col -->
 			
@@ -69,6 +69,6 @@
 		
 	</div><!-- /.col-md-8 -->
 
-	@include('side-nav-about')
+	@include('about-sobg.side-nav-about')
 </div><!-- /.row -->
 @stop
