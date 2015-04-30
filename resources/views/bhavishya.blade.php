@@ -14,7 +14,7 @@
 		<div class="shadow">	
 			<div class="one-image">
 				<div class="pic-wrap">
-					<img src="images/bhavishya-web-poster.jpg" alt="" />
+					<img src="{{ asset('images/bhavishya-web-poster.jpg') }}" alt="" />
 				</div>
 			</div><!-- /.content-pic -->
 		</div>
@@ -31,7 +31,7 @@
 		<div class="shadow">
 				<div class="one-image">
 					<div class="pic-wrap">
-						<img src="images/bhavishya-logo-2.jpg" alt="" />
+						<img src="{{ asset('images/bhavishya-logo-2.jpg') }}" alt="" />
 					</div>
 				</div><!-- /.content-pic -->
 		</div><!-- /.shadow -->

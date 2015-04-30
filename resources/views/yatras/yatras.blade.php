@@ -55,7 +55,7 @@
 
 	</div><!-- /.col-md-8 -->
 
-	@include('side-yatras')
+	@include('yatras.side-yatras')
 </div><!-- /.row -->
 
 							

@@ -112,8 +112,8 @@
 				</div><!-- /.heading -->
 				<h3 class="sec-title">Centers</h3><!-- /.sec-title -->
 				<ul>
-					<li><a href="http://creativequb.com/projects/sobg.dev/">In India</a></li>
-					<li><a href="http://creativequb.com/projects/sobg.dev/">Overseas</a></li>
+					<li><a href="">In India</a></li>
+					<li><a href="">Overseas</a></li>
 				</ul>
 			</div><!-- /.side-nav -->
 		</div><!-- /.shadow -->

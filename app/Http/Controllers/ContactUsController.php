@@ -5,7 +5,7 @@ use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 
-class ContactUsController extends Controller {
+class ContactUsController extends SiteController {
 
 	/*
 	|--------------------------------------------------------------------------
@@ -17,9 +17,9 @@ class ContactUsController extends Controller {
 
 
 	/**
-	 * kailas yatra highlights.
+	 * Contact us page.
 	 *
-	 * @return Response
+	 * @return View
 	 */
 	public function index(){
 		$this->page_data['title'] = 'Contact School of Bhagavat Gita';

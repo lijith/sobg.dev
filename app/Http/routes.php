@@ -104,7 +104,7 @@ Route::group(['prefix' => 'spiritual-journeys'],function(){
 |	Donate
 |
 */
-Route::get('donate-support',['as' => 'donate', 'uses' => 'donateController@index']);
+Route::get('donate-support',['as' => 'donate', 'uses' => 'DonateController@index']);
 
 /*
 |
@@ -216,14 +216,14 @@ Route::get('gita-family',['as' => 'gitafamily', 'uses' => 'GitaFamily@index']);
 |	contact us
 |
 */
-Route::get('contact-us',['as' => 'contact', 'uses' => 'ContactUs@index']);
+Route::get('contact-us',['as' => 'contact', 'uses' => 'ContactUsController@index']);
 
 /*
 |
 |	contact us
 |
 */
-Route::get('bhavishya',['as' => 'bhavishya', 'uses' => 'Bhavishya@index']);
+Route::get('bhavishya',['as' => 'bhavishya', 'uses' => 'BhavishyaController@index']);
 
 
 // Route::get('/elfinder/ckeditor4/',['uses' => '\Barryvdh\Elfinder\ElfinderController@showCKeditor4']);

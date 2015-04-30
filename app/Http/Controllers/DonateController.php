@@ -5,7 +5,7 @@ use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 
-class DonateController extends Controller {
+class DonateController extends SiteController {
 
 	/*
 	|--------------------------------------------------------------------------

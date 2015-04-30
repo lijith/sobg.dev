@@ -11,18 +11,75 @@
 
 		<p>Please click on the links to see instructions and tips to participants of Kailas yatra, given by Swami Sandeepananda Giri.</p>
 
-		<div class="video-instructions">
+		<div class="row">
+	    <div class="col-sm-6">
+				<div class="embed-responsive embed-responsive-16by9">
+	    		<iframe class="embed-responsive-item" src="//www.youtube.com/embed/ywniwfLQnuM"></iframe>
+				</div>
+	    </div>
+
+	    <div class="col-sm-6">
+				<div class="embed-responsive embed-responsive-16by9">
+	    		<iframe class="embed-responsive-item" src="//www.youtube.com/embed/gIFgdEpfoMw"></iframe>
+				</div>
+	    </div>
+	    
+	  </div>
+<div class="split_30"></div><!-- /.split_30 -->
+	  <div class="row">
+	    <div class="col-sm-6">
+				<div class="embed-responsive embed-responsive-16by9">
+	    		<iframe class="embed-responsive-item" src="//www.youtube.com/embed/-Q_q4M_iSh8"></iframe>
+				</div>
+	    </div>
+
+	    <div class="col-sm-6">
+				<div class="embed-responsive embed-responsive-16by9">
+	    		<iframe class="embed-responsive-item" src="//www.youtube.com/embed/V9kA7qOmydA"></iframe>
+				</div>
+	    </div>
+	    
+	  </div>
+<div class="split_30"></div><!-- /.split_30 -->
+	  <div class="row">
+	    <div class="col-sm-6">
+				<div class="embed-responsive embed-responsive-16by9">
+	    		<iframe class="embed-responsive-item" src="//www.youtube.com/embed/UYVYLApsORo"></iframe>
+				</div>
+	    </div>
+
+	    <div class="col-sm-6">
+				<div class="embed-responsive embed-responsive-16by9">
+	    		<iframe class="embed-responsive-item" src="//www.youtube.com/embed/z38pPICfVDA"></iframe>
+				</div>
+	    </div>
+	    
+	  </div>
+
+<div class="split_30"></div><!-- /.split_30 -->
+	  <div class="row">
+	    <div class="col-sm-6">
+				<div class="embed-responsive embed-responsive-16by9">
+	    		<iframe class="embed-responsive-item" src="//www.youtube.com/embed/X4G8PDDFdKw"></iframe>
+				</div>
+	    </div>
+
+	    
+	    
+	  </div>
+
+		<!--<div class="video-instructions">
 			<ul>
-				<li><a href="http://www.youtube.com/watch?v=ywniwfLQnuM" class="mfp-iframe"><i class="fa fa-youtube-play"></i> Video</a></li>
-				<li><a href="http://www.youtube.com/watch?v=gIFgdEpfoMw" class="mfp-iframe"><i class="fa fa-youtube-play"></i> Video</a></li>
-				<li><a href="http://www.youtube.com/watch?v=-Q_q4M_iSh8" class="mfp-iframe"><i class="fa fa-youtube-play"></i> Video</a></li>
-				<li><a href="http://www.youtube.com/watch?v=V9kA7qOmydA" class="mfp-iframe"><i class="fa fa-youtube-play"></i> Video</a></li>
-				<li><a href="http://www.youtube.com/watch?v=UYVYLApsORo" class="mfp-iframe"><i class="fa fa-youtube-play"></i> Video</a></li>
-				<li><a href="http://www.youtube.com/watch?v=z38pPICfVDA" class="mfp-iframe"><i class="fa fa-youtube-play"></i> Video</a></li>
-				<li><a href="http://www.youtube.com/watch?v=X4G8PDDFdKw" class="mfp-iframe"><i class="fa fa-youtube-play"></i> Video</a></li>
+				<li><a href="http://www.youtube.com/watch?v=" class="mfp-iframe"><i class="fa fa-youtube-play"></i> Video</a></li>
+				<li><a href="http://www.youtube.com/watch?v=" class="mfp-iframe"><i class="fa fa-youtube-play"></i> Video</a></li>
+				<li><a href="http://www.youtube.com/watch?v=-" class="mfp-iframe"><i class="fa fa-youtube-play"></i> Video</a></li>
+				<li><a href="http://www.youtube.com/watch?v=" class="mfp-iframe"><i class="fa fa-youtube-play"></i> Video</a></li>
+				<li><a href="http://www.youtube.com/watch?v=" class="mfp-iframe"><i class="fa fa-youtube-play"></i> Video</a></li>
+				<li><a href="http://www.youtube.com/watch?v=" class="mfp-iframe"><i class="fa fa-youtube-play"></i> Video</a></li>
+				<li><a href="http://www.youtube.com/watch?v=" class="mfp-iframe"><i class="fa fa-youtube-play"></i> Video</a></li>
 			</ul>
 			 ,
-		</div><!-- /.video-instructions -->
+		</div> /.video-instructions -->
 		<h2 class="sub-heading">List Of Essential Items To Be Carried On Kailas Yatra</h2>
 		<ol>
 			<li>Identity Card</li>
