@@ -58,29 +58,38 @@
 		<hr />
 		<div id="form-holder">
 
-			<form action="sent_mail.php" id="contact-form" method="post" class="form-horizontal">
+			<form action="{{ route('contact-post') }}" id="contact-form" method="post" class="contact-form form-horizontal">
+			<input name="_token" value="{{ csrf_token() }}" type="hidden">
 				<div class="form-group">
           <label class="col-sm-4 control-label">Name</label>
           <div class="col-sm-8">
-            <input type="text" placeholder="Name" class="form-control">
+            <input type="text" placeholder="Name" class="form-control" required="" name="name">
           </div>
         </div>
 				<div class="form-group">
           <label class="col-sm-4 control-label">Email</label>
           <div class="col-sm-8">
-            <input type="text" placeholder="Email" class="form-control">
+            <input type="email" placeholder="Email" class="form-control" required="" name="email">
           </div>
         </div>
 				<div class="form-group">
           <label class="col-sm-4 control-label">Contact Number</label>
           <div class="col-sm-8">
-            <input type="text" placeholder="Contact Number" class="form-control">
+            <input type="text" placeholder="Contact Number" class="form-control" required="" name="contact-number">
           </div>
         </div>
+
+        <div class="form-group">
+          <label class="col-sm-4 control-label">Subject</label>
+          <div class="col-sm-8">
+            <input type="text" placeholder="message subject" class="form-control" required="" name="subject">
+          </div>
+        </div>
+
 				<div class="form-group">
           <label class="col-sm-4 control-label">Message</label>
           <div class="col-sm-8">
-            <textarea placeholder="Message" class="form-control"></textarea>
+            <textarea placeholder="Message" class="form-control" required="" name="message"></textarea>
           </div>
         </div>
         <div class="form-group">
@@ -90,11 +99,16 @@
 						</button>
           </div>
         </div>
+        <div class="form-group">
+          <div class="col-sm-8 col-sm-offset-4">
+            <div class="output-contact"></div>
+          </div>
+        </div>
         
 
 			</form>
 
-			<div id="output-contact"></div>
+			
 
 		</div>
 

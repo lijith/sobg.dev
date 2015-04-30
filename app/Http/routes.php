@@ -217,6 +217,7 @@ Route::get('gita-family',['as' => 'gitafamily', 'uses' => 'GitaFamily@index']);
 |
 */
 Route::get('contact-us',['as' => 'contact', 'uses' => 'ContactUsController@index']);
+Route::post('contact-us',['as' => 'contact-post', 'uses' => 'ContactUsController@sendMessage']);
 
 /*
 |

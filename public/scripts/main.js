@@ -71,6 +71,38 @@ if (eventCarousel.length > 0) {
 	eventCarousel.carousel();
 }
 
+	/**
+	 * Php Ajax Contact Form
+	 * @usedPlugins jquery
+	 * @usedAt      Contact Page
+	 */
+	$('.contact-form').bind('submit', function() {
+		var form = $(this);
+		var me = $(this).children('button[type=submit]');
+
+		me.attr('disabled', 'disabled');
+		var message = $('.output-contact');
+		$.ajax({
+			type: "POST",
+			url: "http://sitesobg.dev/contact-us",
+			data: form.serialize(),
+			beforeSend: function(){
+				message.html('Sending your message....');
+			},
+			success: function(returnedInfo) {
+				
+				returnedInfo == 1 ? message.html('Message was successfully delivered') : message.html('Our Mail Servers Are Currently Down').show();
+				setInterval(function() {
+					message.fadeOut()
+				}, 5000);
+				me.removeAttr('disabled');
+				form[0].reset();
+
+			}
+		});
+		return false;
+	});
+
 /**
  * Scroll Speed and Styling
  * @usedPlugins jquery,nicescroll

@@ -5,6 +5,7 @@
 		<meta name="description" content="">
 		<meta name="viewport" content="user-scalable=no,width=device-width, initial-scale=1, minimal-ui, maximum-scale=1, minimum-scale=1">
 		
+		
 		<title>{{$title}}</title>
 		<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
@@ -67,7 +68,7 @@
 										</li><!-- /.vcenter -->
 										<span class="separator">|</span>
 										<li class="">
-											<a href="#contact">
+											<a href="{{ route('contact') }}">
 											<i class="fa fa-envelope"></i> Contact Us</a>
 										</li><!-- /. -->
 									</ul><!-- /.clean_list  -->
