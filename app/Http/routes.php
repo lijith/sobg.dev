@@ -227,6 +227,14 @@ Route::post('contact-us',['as' => 'contact-post', 'uses' => 'ContactUsController
 Route::get('bhavishya',['as' => 'bhavishya', 'uses' => 'BhavishyaController@index']);
 
 
+/*
+|
+| archives of news and events
+|
+*/
+Route::get('archives',['as' => 'archives', 'uses' => 'ArchivesController@index']);
+
+
 // Route::get('/elfinder/ckeditor4/',['uses' => '\Barryvdh\Elfinder\ElfinderController@showCKeditor4']);
 // Route::any('/elfinder/connector/', ['as' => 'elfinder.connector', 'uses' => '\Barryvdh\Elfinder\ElfinderController@showConnector']);
 
