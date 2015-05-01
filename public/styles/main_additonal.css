@@ -147,3 +147,49 @@
 	background: #FFF;
 	display: block;
 }
+.album-preview {
+  display: block;
+  overflow: hidden;
+  position: relative;
+}
+
+.album-wrap{
+	box-shadow: 0 0 10px #D7D7D7;
+	padding: 10px;
+	border-radius: 3px;
+}
+
+.album-preview{
+	height: 290px;
+	overflow: hidden;
+	text-align: center;
+}
+
+.album .overlay {
+  background-color: rgba(0, 0, 0, 0.5);
+  height: 100%;
+  left: -100%;
+  position: absolute;
+  text-align: center;
+  top: 0;
+  width: 100%;
+  color: #FFF;
+}
+
+.album-details {
+  background-color: #f3f5f5;
+  padding: 20px;
+}
+
+.photo{
+	width: 25%;
+}
+
+.photo .photo-wrap{
+	padding: 2px;
+	background: #E7E6E4;
+}
+
+.photo img{
+	width: 100%;
+}

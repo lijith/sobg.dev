@@ -242,8 +242,10 @@
 		
 		<script src="//cdnjs.cloudflare.com/ajax/libs/nicescroll/3.5.4/jquery.nicescroll.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.0.0/jquery.magnific-popup.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/masonry/3.3.0/masonry.pkgd.min.js"></script>
 
 		<script src="{{URL::asset('scripts/jquery.dlmenu.js')}}"></script>
+		<script src="{{URL::asset('scripts/hoverdir.js')}}"></script>
 		<script src="{{URL::asset('scripts/page-loading.js')}}"></script>
 		<script src="{{URL::asset('scripts/equal-height.js')}}')}}"></script>
 		<script src="{{URL::asset('scripts/jquery-easing-1.3.js')}}"></script>

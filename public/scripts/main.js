@@ -223,6 +223,30 @@ $('.address-same').change(function(){
 
 
 /**
+ * hover overlay in albums
+ * @usedPlugins hoverdir, jquery
+ * @usedAt Member albums page
+ */
+
+	$('.album-preview').each(function(){
+		$(this).hoverdir({
+			speed: 300,
+			easing: 'ease',
+			hoverDelay: 0,
+			inverse: false
+		});
+	});
+
+var $container = $('.photos-container').masonry();
+// initialize Masonry after all images have loaded  
+$container.imagesLoaded( function() {
+  $container.masonry({
+  	columnWidth: 200,
+	  itemSelector: '.photo'
+  });
+});
+
+/**
  * Google Map
  * @usedPlugins jquery,nicescroll
  * @usedAt contact page
