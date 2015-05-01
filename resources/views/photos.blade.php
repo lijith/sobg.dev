@@ -10,7 +10,9 @@
 
 			<div class="photo">
 				<div class="photo-wrap">
-					<img src="{{ asset('images/albums/'.$photo->image_thumbnail) }}" alt="" /> 
+					<a href="{{ asset('images/albums/'.$photo->image_name) }}" class="image-link">
+						<img src="{{ asset('images/albums/'.$photo->image_thumbnail) }}" alt="" /> 
+					</a>
 				</div><!-- /.photo-wrap -->
 			</div><!-- /.col-md-3 -->
 
