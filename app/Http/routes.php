@@ -232,8 +232,8 @@ Route::get('bhavishya',['as' => 'bhavishya', 'uses' => 'BhavishyaController@inde
 | archives of news and events
 |
 */
-Route::get('archives',['as' => 'archives', 'uses' => 'ArchivesController@index']);
-
+Route::get('news-archives',['as' => 'archives', 'uses' => 'ArchivesController@index']);
+Route::get('news-archives/{type}/{slug}',['as' => 'archive.showdetails', 'uses' => 'ArchivesController@show']);
 
 // Route::get('/elfinder/ckeditor4/',['uses' => '\Barryvdh\Elfinder\ElfinderController@showCKeditor4']);
 // Route::any('/elfinder/connector/', ['as' => 'elfinder.connector', 'uses' => '\Barryvdh\Elfinder\ElfinderController@showConnector']);

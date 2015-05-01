@@ -48,7 +48,7 @@ class ArchivesController extends SiteController {
 			$t = array(
 				'date' => $dt->timestamp,
 				'id' => $archive->id,
-				'type' => 'archive',
+				'type' => 'news',
 				'title' => $archive->title,
 				'slug'=> $archive->slug
 			);
@@ -72,11 +72,35 @@ class ArchivesController extends SiteController {
 
 		}
 
-		array_multisort($dates, SORT_ASC, $dates);
+		array_multisort($dates, SORT_DESC, $dates);
 
-		dd($dates);
+		$this->page_data['archives'] = $dates;
 
-		//return view('archives-list')->with($this->page_data);
+		return view('archives-list')->with($this->page_data);
+	}
+
+
+	/*
+	*
+	* Show archive page
+	* 
+	 */
+	public function show($type, $slug){
+
+		if($type == 'event'){
+
+			$archive = SobgEvent::where('slug', '=', $slug)->first();
+
+		}elseif($type == 'news'){
+
+			$archive = Archive::where('slug', '=', $slug)->first();
+			
+		}
+
+		$this->page_data['type'] = $type;
+		$this->page_data['archive'] = $archive;
+
+		return view('archive-show')->with($this->page_data);
 	}
 
 

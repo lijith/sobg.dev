@@ -131,7 +131,7 @@
 					@foreach($events as $event)
 						<?php $start_date = \Carbon\Carbon::createFromFormat('Y-m-d H:i:s',$event->start_date);?>
 						<?php $end_date = \Carbon\Carbon::createFromFormat('Y-m-d H:i:s',$event->end_date);?>
-						<?php $end_date->addMonth(); ?>
+						
 
 						<div class="item {{ ($count == 0) ? 'active' : '' }}">
 							<div class="event">
