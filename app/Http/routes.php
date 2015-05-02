@@ -164,12 +164,6 @@ Route::group(['prefix' => 'e-shop'],function(){
 
 });
 
-/*
-|
-| Photo gallery
-|
-*/
-
 
 /*
 |

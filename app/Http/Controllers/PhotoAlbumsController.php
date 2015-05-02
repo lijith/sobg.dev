@@ -27,8 +27,7 @@ class PhotoAlbumsController extends SiteController {
 	 * @return View
 	 */
 	public function index(){
-		$this->page_data['title'] = 'News Archives';
-		$this->page_data['description'] = '';
+		$this->page_data['title'] = 'Photo Albums';
 		$this->page_data['albums'] = Album::paginate(2);
 
 
@@ -44,6 +43,11 @@ class PhotoAlbumsController extends SiteController {
 	public function show($slug){
 
 		$album = Album::where('slug', '=', $slug)->first();
+
+		$this->page_data['title'] = ucwords($album->title);
+		$this->page_data['description'] = ucwords($album->description);
+
+		$this->page_data['album'] = $album;
 
 		$this->page_data['photos'] = Album::find($album->id)->photos;
 

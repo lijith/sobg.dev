@@ -244,6 +244,7 @@ $('.address-same').change(function(){
 	var $container = $('.photos-container').masonry();
 	// initialize Masonry after all images have loaded  
 	$container.imagesLoaded( function() {
+		$container.removeClass('loading');
 	  $container.masonry({
 		  itemSelector: '.photo'
 	  });

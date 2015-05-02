@@ -193,3 +193,7 @@
 .photo img{
 	width: 100%;
 }
+
+.photos-container.loading{
+	display: none;
+}

@@ -193,23 +193,23 @@
 						<div class="link-col">
 							<h4 class="footer-link-title">Quick Links</h4><!-- /.footer-link-title -->
 							<ul class="clean_list">
-								<li><i class="fa fa-circle"></i> <a href="">Salagramam Ashram</a></li>
-								<li><i class="fa fa-circle"></i> <a href="#">Swami Sandeepananda Giri</a></li>
-								<li><i class="fa fa-circle"></i> <a href="">Our Publications</a></li>
-								<li><i class="fa fa-circle"></i> <a href="">Yatras - Spiritual Journeys</a></li>
-								<li><i class="fa fa-circle"></i> <a href="">Courses and Retreats</a></li>
-								<li><i class="fa fa-circle"></i> <a href="">Donate - Support Us</a></li>
-								<li><i class="fa fa-circle"></i> <a href="">News Archives</a></li>
+								
+								<li><i class="fa fa-circle"></i> <a href="{{ route('swami') }}">Swami Sandeepananda Giri</a></li>
+								<li><i class="fa fa-circle"></i> <a href="{{ route('eshop') }}">Our Publications</a></li>
+								<li><i class="fa fa-circle"></i> <a href="{{ route('yatras') }}">Yatras - Spiritual Journeys</a></li>
+								<li><i class="fa fa-circle"></i> <a href="{{ route('courses') }}">Courses and Retreats</a></li>
+								<li><i class="fa fa-circle"></i> <a href="{{ route('donate') }}">Donate - Support Us</a></li>
+								<li><i class="fa fa-circle"></i> <a href="{{ route('photo.albums') }}">Picture Gallery</a></li>
+								<li><i class="fa fa-circle"></i> <a href="{{ route('archives') }}">News Archives</a></li>
 							</ul>
 						</div><!-- /.col-md-4 -->
 						<div class="link-col">
 							<h4 class="footer-link-title">Ashram</h4><!-- /.footer-link-title -->
 							<ul class="clean_list">
-								<li><i class="fa fa-circle"></i> <a href="">Guided tour of Ashram</a></li>
-								<li><i class="fa fa-circle"></i> <a href="">Homestay at Salagramam</a></li>
-								<li><i class="fa fa-circle"></i> <a href="">Facilities for public</a></li>
-								<li><i class="fa fa-circle"></i> <a href="">Geetha Kshethram</a></li>
-								<li><i class="fa fa-circle"></i> <a href="">Weekend Gurukula for Children</a></li>
+								<li><i class="fa fa-circle"></i> <a href="{{ route('salagramam') }}">Salagramam Ashram</a></li>
+								<li><i class="fa fa-circle"></i> <a href="{{ route('guidedTour') }}">Guided tour of Ashram</a></li>
+								<li><i class="fa fa-circle"></i> <a href="{{ route('facilities') }}">Facilities for public</a></li>
+								<li><i class="fa fa-circle"></i> <a href="{{ route('children') }}"> For Children</a></li>
 							</ul>
 						</div><!-- /.col-md-4 -->
 					</div><!-- /.row -->
