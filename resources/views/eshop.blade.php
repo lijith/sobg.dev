@@ -9,9 +9,9 @@
 		<h1 class="col-heading">E-Shop</h1>
 		<div class="split_30"></div><!-- /.split_30 -->
 		<div class="search-titles clearfix">
-			<form action="">
+			<form method="GET" action="{{ route('search.eshop') }}">
         <div class="clearfix">
-          <input type="text" placeholder="search title...">
+          <input type="text" placeholder="search title..." name="for">
           <button type="submit" class="submit">
 						<i class="fa fa-search"></i> search
 					</button>
@@ -33,10 +33,10 @@
 							<div class="pub-title">
 								@if($vdisk->disk_type == 1)
 									<a href="{{route('dvd.show',array($vdisk->slug))}}">{{ucwords($vdisk->title)}}</a>
-									DVD
+									<br /><span class="disk-type">DVD</span>
 								@elseif($vdisk->disk_type == 2)
 									<a href="{{route('vcd.show',array($vdisk->slug))}}">{{ucwords($vdisk->title)}}</a>
-									VCD
+									<br /><span class="disk-type">VCD</span>
 								@endif
 							</div><!-- /.pub-title -->
 						</div><!-- /.wrap -->
@@ -44,7 +44,9 @@
 				@endforeach
 
 			</div><!-- /.pub-items-row -->
-			<div class="more-ebook-items">more</div><!-- /.more-ebook-items -->
+			<div class="more-items"> 
+				<a href="{{ route('eshop.videos') }}">more <i class="fa fa-angle-double-right"></i></a>
+			</div><!-- /.more-items -->
 		</div><!-- /.items-category -->
 
 
@@ -58,13 +60,23 @@
 							<div class="pub-image">
 								<img src="{{asset('images/audio-disks/'.$adisk->cover_photo_thumbnail)}}" alt="" />
 							</div><!-- /.pub-image -->
-							<div class="pub-title"><a href="">{{$adisk->title}}</a></div><!-- /.pub-title -->
+							<div class="pub-title">
+								@if($adisk->disk_type == 1)
+									<a href="{{route('dvd.show',array($adisk->slug))}}">{{ucwords($adisk->title)}}</a>
+									<br /><span class="disk-type">Audio CD</span>
+								@elseif($adisk->disk_type == 2)
+									<a href="{{route('vcd.show',array($adisk->slug))}}">{{ucwords($adisk->title)}}</a>
+									<br /><span class="disk-type">MP3</span>
+								@endif
+							</div><!-- /.pub-title -->
 						</div><!-- /.wrap -->
 					</div><!-- /.pub-item -->
 				@endforeach
 
 			</div><!-- /.pub-items-row -->
-			<div class="more-ebook-items">more</div><!-- /.more-ebook-items -->
+			<div class="more-items">
+				<a href="{{ route('eshop.audios') }}">more <i class="fa fa-angle-double-right"></i></a>
+			</div><!-- /.more-items -->
 		</div><!-- /.items-category -->
 
 		<div class="items-category">
@@ -83,7 +95,9 @@
 				@endforeach
 
 			</div><!-- /.pub-items-row -->
-			<div class="more-ebook-items">more</div><!-- /.more-ebook-items -->
+			<div class="more-items">
+				<a href="{{ route('books') }}">more <i class="fa fa-angle-double-right"></i></a>
+			</div><!-- /.more-items -->
 		</div><!-- /.items-category -->
 
 
@@ -103,7 +117,9 @@
 				@endforeach
 
 			</div><!-- /.pub-items-row -->
-			<div class="more-ebook-items">more</div><!-- /.more-ebook-items -->
+			<div class="more-items">
+				<a href="{{ route('piravi') }}">more <i class="fa fa-angle-double-right"></i></a>
+			</div><!-- /.more-items -->
 		</div><!-- /.items-category -->
 
 		<div class="split_30"></div><!-- /.split_30 -->

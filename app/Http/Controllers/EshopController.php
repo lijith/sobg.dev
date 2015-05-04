@@ -16,7 +16,7 @@ use App\Magazine;
 use App\Book;
 use App\SubscriptionRates;
 
-use Cart;
+use Cart, Input;
 
 
 class EshopController extends SiteController {
@@ -40,17 +40,18 @@ class EshopController extends SiteController {
 		$this->page_data['top_level_page'] = 'publications';
 		$this->page_data['sub_page_active'] = 'publications';
 
-		$this->page_data['video_disks'] = VideoDisk::take(4)
-		->get();
+		$this->page_data['video_disks'] = $this->titleLimit(VideoDisk::take(4)
+		->get());
 
-		$this->page_data['audio_disks'] = AudioDisk::take(4)
-		->get();
+		$this->page_data['audio_disks'] = $this->titleLimit(AudioDisk::take(4)
+		->get());
 
-		$this->page_data['books'] = Book::take(4)
-		->get();
+		$this->page_data['books'] = $this->titleLimit(Book::take(4)
+		->get());
 
-		$this->page_data['magazines'] = Magazine::take(4)
-		->get();
+		$this->page_data['magazines'] = $this->titleLimit(Magazine::take(4)
+		->get());
+
 
 		return view('eshop')->with($this->page_data);
 	}
@@ -348,6 +349,32 @@ class EshopController extends SiteController {
 		$this->page_data['sub_page_active'] = 'other-books';
 		$this->page_data['top_level_page'] = 'publications';
 		return view('home')->with($this->page_data);
+	}
+
+	/**
+	 * Search all shop items.
+	 * @param Collection
+	 * @return collection
+	 */
+
+	function search(){
+
+		$query = Input::get('for');
+
+		$this->page_data['search'] = $query;
+
+		if(strlen($query) < 4){
+
+		}else{
+
+			$this->page_data['video_result'] = VideoDisk::search($query)->get();
+			$this->page_data['audio_result'] = AudioDisk::search($query)->get();
+			$this->page_data['book_result'] = Book::search($query)->get();
+			//$this->page_data['magazine_result'] = Magazine::search($query)->get();
+
+		}
+
+		return view('eshop-search')->with($this->page_data);
 	}
 
 

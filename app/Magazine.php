@@ -2,12 +2,16 @@
 use Cviebrock\EloquentSluggable\SluggableInterface;
 use Cviebrock\EloquentSluggable\SluggableTrait;
 
+use Nicolaslopezj\Searchable\SearchableTrait;
+
 use Illuminate\Database\Eloquent\Model;
 
 class Magazine extends Model implements SluggableInterface{
 
 	//
 	use SluggableTrait;
+		use SearchableTrait;
+
 
 	/**
 	 * The database table used by the model.
@@ -34,6 +38,20 @@ class Magazine extends Model implements SluggableInterface{
     'price',
     'author'
 	];
+
+	/**
+   * Searchable rules.
+   *
+   * @var array
+   */
+  protected $searchable = [
+	  'columns' => [
+	      'title' => 10,
+	      'details' => 10,
+	      'keywords' => 10
+	  ]
+  ];
+
 
 
 	protected $sluggable = array(

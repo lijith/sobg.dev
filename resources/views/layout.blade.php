@@ -63,7 +63,7 @@
 										<span class="separator">|</span>
 										@endif
 										<li class="">
-											<a href="#gita-family">
+											<a href="{{ route('gitafamily') }}">
 											<i class="fa fa-users"></i> Gita Family</a>
 										</li><!-- /.vcenter -->
 										<span class="separator">|</span>

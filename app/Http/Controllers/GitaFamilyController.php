@@ -9,4 +9,11 @@ class GitaFamilyController extends SiteController {
 
 	//
 
+	public function index(){
+
+		$this->page_data['title'] = 'Gita Family, School of Bhagavad Gita, Swami Sandeepananda Giri, Salagramam Ashram';
+
+		return view('gita-family')->with($this->page_data);
+	}
+
 }

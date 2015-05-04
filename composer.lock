@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "b12699b28d03867cc9b9a8ade298dc60",
+    "hash": "aaaa2e3cc2fe10a4bd8fdaa91eef0504",
     "packages": [
         {
             "name": "barryvdh/elfinder-builds",
@@ -1306,6 +1306,51 @@
             "time": "2015-03-26 03:05:57"
         },
         {
+            "name": "nicolaslopezj/searchable",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/nicolaslopezj/searchable.git",
+                "reference": "cd6b430e2ac99bcb562eb0ea7ae5dbbdddc2f6cb"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/nicolaslopezj/searchable/zipball/cd6b430e2ac99bcb562eb0ea7ae5dbbdddc2f6cb",
+                "reference": "cd6b430e2ac99bcb562eb0ea7ae5dbbdddc2f6cb",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/database": "4.2.x|~5.0",
+                "php": ">=5.4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Nicolaslopezj\\Searchable\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nicolas Lopez",
+                    "email": "nicolaslopezj@me.com"
+                }
+            ],
+            "description": "Eloquent model search trait.",
+            "keywords": [
+                "database",
+                "eloquent",
+                "laravel",
+                "model",
+                "search",
+                "searchable"
+            ],
+            "time": "2015-04-22 01:33:52"
+        },
+        {
             "name": "nikic/php-parser",
             "version": "v1.2.2",
             "source": {
@@ -1519,7 +1564,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/rydurham/Sentinel/zipball/9e33d41f801c9916975b76c57c85977f45c25863",
+                "url": "https://api.github.com/repos/rydurham/Sentinel/zipball/0de87e7bfd1588d4e5f2a61a317c866c31c72e92",
                 "reference": "9e33d41f801c9916975b76c57c85977f45c25863",
                 "shasum": ""
             },
@@ -3560,7 +3605,8 @@
     "stability-flags": {
         "rydurham/sentinel": 20,
         "cviebrock/eloquent-sluggable": 20,
-        "gloudemans/shoppingcart": 20
+        "gloudemans/shoppingcart": 20,
+        "nicolaslopezj/searchable": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

@@ -98,7 +98,23 @@
 	border-color: #1CA347;
 }
 
+span.disk-type{
+	color: #dea32b;
+	font-weight:bold;
+}
 
+.more-items{
+	padding-top: 10px;
+	overflow: hidden;
+}
+.more-items a{
+	display: block;
+	float: right;
+	color: #FFF;
+	background: #dea32b;
+	padding: 2px 10px;
+	border-radius: 3px;
+}
 .pub-item .pub-image{
 	height: 150px;
 	overflow: hidden;

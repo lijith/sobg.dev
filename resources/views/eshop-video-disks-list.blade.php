@@ -10,7 +10,7 @@
 			@if($sub_page_active == 'dvd')
 			DVDs
 			@elseif($sub_page_active == 'vcd')
-			Vido CDs
+			Video CDs
 			@endif
 		</h1>
 		<div class="split_30"></div><!-- /.split_30 -->
@@ -29,11 +29,6 @@
 		<div class="items-category">
 			<?php $item_count = 0; $total_item = 0; ?>
 
-			@if($item_count == 0)
-				<div class="pub-items-row">
-			@endif
-			
-			<?php $item_count++; $total_item++;?>
 
 			@if($video_disks->count() < 1)
 					<div class="alert alert-warning ">
@@ -47,6 +42,12 @@
 				@endif
 
 				@foreach($video_disks as $vdisk)
+					@if($item_count == 0)
+						<div class="pub-items-row">
+					@endif
+					
+					<?php $item_count++; $total_item++;?>
+
 					<div class="pub-item">
 						<div class="wrap">
 							<div class="pub-image">

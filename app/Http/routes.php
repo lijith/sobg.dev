@@ -159,6 +159,7 @@ Route::group(['prefix' => 'e-shop'],function(){
 
   });
 
+  Route::get('search',['as' => 'search.eshop', 'uses' => 'EshopController@search']);
 
 
 
@@ -203,7 +204,7 @@ Route::group(['prefix'=>'member', 'namespace' => 'Member'], function(){
 |	gita family
 |
 */
-Route::get('gita-family',['as' => 'gitafamily', 'uses' => 'GitaFamily@index']);
+Route::get('gita-family',['as' => 'gitafamily', 'uses' => 'GitaFamilyController@index']);
 
 /*
 |

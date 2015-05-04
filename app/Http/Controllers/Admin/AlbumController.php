@@ -365,7 +365,7 @@ class AlbumController extends Controller {
     $cover_photo->move($upload_to_dir,$save_file_name);
 
     $rez_image = Image::make($upload_to_dir.$save_file_name); 
-    $rez_image->resize(1280, null, function ($constraint) {
+    $rez_image->resize(500, null, function ($constraint) {
         $constraint->aspectRatio();
         $constraint->upsize();
     });
@@ -378,8 +378,16 @@ class AlbumController extends Controller {
       $constraint->upsize();
     });
 
-
     $thumb_img->save($upload_to_dir.$save_file_name_thumb);
+
+
+
+    //fit cover photo
+    $cover_fit = Image::make($upload_to_dir.$save_file_name);
+
+    $cover_fit->fit(350, 300, function ($constraint) {
+    });
+    $cover_fit->save($upload_to_dir.$save_file_name);
 
     //fit thumbnail
     $thumb_img = Image::make($upload_to_dir.$save_file_name_thumb);
