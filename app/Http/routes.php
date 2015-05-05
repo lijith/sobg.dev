@@ -93,7 +93,7 @@ Route::group(['prefix' => 'spiritual-journeys'],function(){
 		Route::get('highlights',['as' => 'amarnathHighlights', 'uses' => 'YatrasController@amarnathHighlights']);
 		Route::get('itinerary-and-cost',['as' => 'amarnathDetails', 'uses' => 'YatrasController@amarnathDetails']);
 	});
-	Route::get('registration',['as' => 'Registration', 'uses' => 'YatrasController@Registration']);
+	Route::get('registration/{yatra}',['as' => 'Registration', 'uses' => 'YatrasController@Registration']);
 	Route::get('other-yathras',['as' => 'otherYatras', 'uses' => 'YatrasController@otherYatras']);
 	Route::get('yathris-speak',['as' => 'testimonials', 'uses' => 'YatrasController@testimonials']);
 
@@ -368,5 +368,16 @@ Route::group(['prefix'=>'administrator', 'namespace' => 'Admin'], function(){
   Route::delete('album/{hash}', ['as' => 'album.destroy', 'uses' => 'AlbumController@destroy']);
   Route::post('album/{hash}/upload', ['as' => 'album.photo.upload', 'uses' => 'AlbumController@addPhotos']);
   Route::delete('album/photo/{hash}', ['as' => 'album.photo.delete', 'uses' => 'AlbumController@removePhoto']);
+
+
+  //yatras
+  Route::get('yatra/create', ['as' => 'yatra.create', 'uses' => 'YatraController@create']);
+  Route::post('yatra', ['as' => 'yatra.store', 'uses' => 'YatraController@store']);
+  Route::get('yatra/', ['as' => 'yatra.list', 'uses' => 'YatraController@index']);
+  Route::get('yatra/{part}/{hash}', ['as' => 'yatra.show', 'uses' => 'YatraController@show']);
+  Route::get('yatra/{part}/{hash}/edit', ['as' => 'yatra.edit', 'uses' => 'YatraController@edit']);
+  Route::put('yatra/{part}/{hash}', ['as' => 'yatra.update', 'uses' => 'YatraController@update']);
+  Route::delete('yatra/{hash}', ['as' => 'yatra.destroy', 'uses' => 'YatraController@destroy']);
+
 });
 

@@ -162,12 +162,18 @@ class YatrasController extends SiteController {
 	 *
 	 * @return view
 	 */
-	public function registration(){
-		$this->page_data['title'] = 'Register for Spiritual Journey';
+	public function registration($yatra){
+
+		if($yatra == 'kailas'){
+			$this->page_data['title'] = 'Kailas Yatra Registeration';
+		}
 		$this->page_data['description'] = '';
 		$this->page_data['sub_page_active'] = 'registration';
 		$this->page_data['top_level_page'] = 'yatras';
-		return view('yatras.kailas-registration')->with($this->page_data);
+		$this->page_data['toggle_active'] = '';
+
+
+		//return view('yatras.kailas-registration')->with($this->page_data);
 	}
 
 

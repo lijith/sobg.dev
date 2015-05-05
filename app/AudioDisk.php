@@ -10,7 +10,7 @@ class AudioDisk extends Model implements SluggableInterface{
 
 	//
 	use SluggableTrait;
-		use SearchableTrait;
+	use SearchableTrait;
 
 
 	/**

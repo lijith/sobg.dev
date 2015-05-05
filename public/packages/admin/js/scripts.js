@@ -246,3 +246,4 @@ var config = {
 };
 
 CKEDITOR.replace( 'ckeditor1', config);
+CKEDITOR.replace( 'ckeditor2', config);

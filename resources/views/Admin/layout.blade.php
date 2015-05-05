@@ -172,6 +172,19 @@
                         
                     </ul>
                 </li>
+                
+
+                <li class="sub-menu">
+                    <a href="#">
+                        <i class="fa fa-book"></i>
+                        <span>News Archives</span>
+                    </a>
+                    <ul class="sub">
+                        <li><a href="{{ route('archives.list') }}">All Archives</a></li>
+                        <li><a href="{{ route('archives.create') }}"><i class="fa fa-plus"></i> Add New Archive</a></li>
+                        
+                    </ul>
+                </li>
                 <li class="sub-menu">
                     <a href="#">
                         <i class="fa fa-picture-o"></i>
@@ -183,15 +196,14 @@
                         
                     </ul>
                 </li>
-
                 <li class="sub-menu">
                     <a href="#">
-                        <i class="fa fa-book"></i>
-                        <span>News Archives</span>
+                        <i class="fa fa-picture-o"></i>
+                        <span>Yatras</span>
                     </a>
                     <ul class="sub">
-                        <li><a href="{{ route('archives.list') }}">All Archives</a></li>
-                        <li><a href="{{ route('archives.create') }}"><i class="fa fa-plus"></i> Add New Archive</a></li>
+                        <li><a href="{{ route('yatra.list') }}">Albums</a></li>
+                        <li><a href="{{ route('yatra.create') }}"><i class="fa fa-plus"></i> Add Yatra</a></li>
                         
                     </ul>
                 </li>
