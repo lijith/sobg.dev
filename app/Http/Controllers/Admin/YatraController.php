@@ -9,7 +9,6 @@ use Illuminate\Support\Str;
 use Vinkla\Hashids\HashidsManager;
 use App\Http\Requests\Admin\YatrasFormRequest;
 use App\Http\Requests\Admin\YatrasFormUpdateRequest;
-use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Carbon\Carbon;
 
 use App\Yatra;
@@ -33,7 +32,7 @@ class YatraController extends Controller {
   }
 
   /**
-   * List all the events in desc order of creation.
+   * List all the yatras in desc order of creation.
    *
    * @param  void
    *
@@ -52,7 +51,7 @@ class YatraController extends Controller {
 
 
   /**
-   * Create an event.
+   * Create an yatra.
    *
    * @param  void
    *
@@ -64,7 +63,7 @@ class YatraController extends Controller {
 
 
   /**
-   * save event to database.
+   * save yatra to database.
    *
    * @param  none
    *
@@ -74,7 +73,7 @@ class YatraController extends Controller {
 
   	$yatra = new Yatra(array(
   		'name' => Input::get('name'),
-  		'highlights' => Input::get('hightlights'),
+  		'highlights' => Input::get('highlights'),
   		'itenary_cost' => Input::get('itenary')
   	));
 
@@ -84,7 +83,7 @@ class YatraController extends Controller {
   }
 
   /**
-   * Show the event.
+   * Show the yatra.
    *
    * @param  string $hash
    *
@@ -102,7 +101,7 @@ class YatraController extends Controller {
   }
 
   /**
-   * Edit a event.
+   * Edit a yatra.
    *
    * @param  string $hash
    *
@@ -121,7 +120,7 @@ class YatraController extends Controller {
 
 
   /**
-   * Update the event.
+   * Update the yatra.
    *
    * @param  string $hash
    *
@@ -134,11 +133,12 @@ class YatraController extends Controller {
 
     if($part == 'highlights'){
       $yatra->highlights = Input::get('highlights');
-    }elseif ($part == 'itenary') {
+    }elseif ($part == 'itenarary') {
       $yatra->itenary_cost = Input::get('itenary');
     }
 
     $yatra->save();
+
 
     $yatra->id = $this->hashids->encode($yatra->id);
 
@@ -147,7 +147,7 @@ class YatraController extends Controller {
   }
 
   /**
-   * Remove the event.
+   * Remove the yatra.
    *
    * @param  string $hash
    *
@@ -156,83 +156,13 @@ class YatraController extends Controller {
   public function destroy($hash){
       // Decode the hashid
       $id = $this->hashids->decode($hash)[0];
-      $event = SobgEvent::find($id);
+      $yatra = Yatra::find($id);
 
-      $cover_photo = $event->cover_photo;
-      $thumb = $event->cover_photo_thumbnail;
-
-      //remove cover pictures
-      if (Input::hasFile('event-cover-photo')){
-
-        if (File::exists($cover_photo)) {
-          File::delete($cover_photo);
-        }  
-
-        if (File::exists($thumb)) {
-          File::delete($thumb);
-        } 
-
-      }
-
-      $event->delete();
-      return redirect()->route('events.list',array($hash))->with('success', 'Event removed');
+      $yatra->delete();
+      return redirect()->route('yatra.list')->with('success', 'yatra removed');
 
       
   }
-
-  /**
-   * resize and generate thumb of uploaded image
-   *
-   * @param  void
-   * 
-   * @return array
-   **/
-  private function handleImages(){
-
-    $upload_to_dir = public_path().'/images/events/';
-    $files_save_name = Str::slug(Input::get('event-title')).'-'.time();
-
-    $cover_photo = Input::file('event-cover-photo');
-    $file_ext = $cover_photo->getClientOriginalExtension();
-
-    $save_file_name = $files_save_name.'.'.$file_ext;
-
-    $save_file_name_thumb = $files_save_name.'_thumb.'.$file_ext;
-
-    $cover_photo->move($upload_to_dir,$save_file_name);
-
-    $rez_image = Image::make($upload_to_dir.$save_file_name); 
-    $rez_image->resize(1280, null, function ($constraint) {
-        $constraint->aspectRatio();
-        $constraint->upsize();
-    });
-    $rez_image->save(); 
-
-    $thumb_img = Image::make($upload_to_dir.$save_file_name);
-
-    $thumb_img->resize(450, 290, function ($constraint) {
-      $constraint->aspectRatio();
-      $constraint->upsize();
-    });
-    $thumb_img->save($upload_to_dir.$save_file_name_thumb);
-
-        //fit thumbnail
-    $thumb_img = Image::make($upload_to_dir.$save_file_name_thumb);
-
-    $thumb_img->fit(350, 290, function ($constraint) {
-    });
-    $thumb_img->save($upload_to_dir.$save_file_name_thumb);
-
-
-    return array(
-      'filename' => $save_file_name,
-      'thumb' => $save_file_name_thumb
-    );
-
-  }
-
-
-
 
 
 }

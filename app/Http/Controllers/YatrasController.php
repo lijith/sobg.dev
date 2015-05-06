@@ -5,6 +5,8 @@ use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 
+use App\Yatra;
+
 class YatrasController extends SiteController {
 
 	/*
@@ -36,12 +38,16 @@ class YatrasController extends SiteController {
 	 * @return view
 	 */
 	public function kailasHighlights(){
+
+		$yatra = Yatra::where('slug','=','kailas-manasarovar-yatra')->first();
+
 		$this->page_data['title'] = 'Kailas - Manasarovar Yatra';
 		$this->page_data['description'] = '';
+		$this->page_data['page'] = $yatra->highlights;
 		$this->page_data['sub_page_active'] = 'kailas-highlight';
 		$this->page_data['top_level_page'] = 'yatras';
 		$this->page_data['toggle_active'] = 'kailas';
-		return view('yatras.kailas-highlights')->with($this->page_data);
+		return view('yatras.yatra-page')->with($this->page_data);
 	}
 
 	/**
@@ -50,12 +56,16 @@ class YatrasController extends SiteController {
 	 * @return view
 	 */
 	public function kailasDetails(){
+
+		$yatra = Yatra::where('slug','=','kailas-manasarovar-yatra')->first();
+
 		$this->page_data['title'] = 'Kailas - Manasarovar Yatra';
 		$this->page_data['description'] = '';
+		$this->page_data['page'] = $yatra->itenary_cost;
 		$this->page_data['sub_page_active'] = 'kailas-details';
 		$this->page_data['top_level_page'] = 'yatras';
 		$this->page_data['toggle_active'] = 'kailas';
-		return view('yatras.kailas-cost')->with($this->page_data);
+		return view('yatras.yatra-page')->with($this->page_data);
 	}
 
 	/**

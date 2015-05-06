@@ -37,4 +37,19 @@ class Yatra extends Model implements SluggableInterface{
    );
 
 
+	public function packages(){
+    return $this->hasMany('App\YatraPackage');
+  }
+
+
+	public function delete(){
+    // delete all associated photos 
+    $this->packages()->delete();
+    
+    // delete the user
+    return parent::delete();
+  }
+
+
+
 }

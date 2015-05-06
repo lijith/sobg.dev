@@ -202,8 +202,19 @@
                         <span>Yatras</span>
                     </a>
                     <ul class="sub">
-                        <li><a href="{{ route('yatra.list') }}">Albums</a></li>
+                        <li><a href="{{ route('yatra.list') }}">Yatras</a></li>
                         <li><a href="{{ route('yatra.create') }}"><i class="fa fa-plus"></i> Add Yatra</a></li>
+                        
+                    </ul>
+                </li>
+                <li class="sub-menu">
+                    <a href="#">
+                        <i class="fa fa-picture-o"></i>
+                        <span>Yatras Packages</span>
+                    </a>
+                    <ul class="sub">
+                        <li><a href="{{ route('package.list') }}">Yatras</a></li>
+                        <li><a href="{{ route('package.create') }}"><i class="fa fa-plus"></i> Add Yatra</a></li>
                         
                     </ul>
                 </li>

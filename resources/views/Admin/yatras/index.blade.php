@@ -17,7 +17,7 @@
       </header>
       <div class="panel-body">
         <div class="crearfix">
-          <a href="{{ route('events.create') }}" class="btn btn-primary pull-right"><i class="fa fa-plus"></i> Create New Event</a>
+          <a href="{{ route('yatra.create') }}" class="btn btn-primary pull-right"><i class="fa fa-plus"></i> New Yatra</a>
         </div><!-- /.crearfix -->
       	<div class="table-responsive">
 	        <table class="table table-striped table-hover">
@@ -25,6 +25,7 @@
 	              <th>Title</th>
 	              <th>Highlight</th>
 	              <th>Itenarary & Cost</th>
+                <th>&nbsp;</th>
 	          </thead>
             <tbody>
               @foreach($yatras as $yatra)
@@ -34,11 +35,20 @@
                   </td>
                   <td>
                     <a href="{{ route('yatra.show',array('highlight',$yatra->id)) }}">Show</a> | 
-                    <a href="{{ route('yatra.edit',array('itenarary',$yatra->id)) }}">Edit</a>
+                    <a href="{{ route('yatra.edit',array('highlight',$yatra->id)) }}">Edit</a>
                   </td>
                   <td>
-                    <a href="{{ route('yatra.show',array('highlight',$yatra->id)) }}">Show</a> | 
+                    <a href="{{ route('yatra.show',array('itenarary',$yatra->id)) }}">Show</a> | 
                     <a href="{{ route('yatra.edit',array('itenarary',$yatra->id)) }}">Edit</a>
+                  </td>
+
+                  <td>
+                    <form action="{{ route('yatra.destroy', array($yatra->id)) }}" method="POST" >
+                        <input name="_token" value="{{ csrf_token() }}" type="hidden">
+                        <input name="_method" value="DELETE" type="hidden">
+
+                       <button type="submit" class="btn btn-default">Remove</button>
+                    </form>
                   </td>
                 </tr>
               @endforeach

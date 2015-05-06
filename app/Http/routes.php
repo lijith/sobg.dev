@@ -379,5 +379,13 @@ Route::group(['prefix'=>'administrator', 'namespace' => 'Admin'], function(){
   Route::put('yatra/{part}/{hash}', ['as' => 'yatra.update', 'uses' => 'YatraController@update']);
   Route::delete('yatra/{hash}', ['as' => 'yatra.destroy', 'uses' => 'YatraController@destroy']);
 
+  //yatras
+  Route::get('yatra-package/create', ['as' => 'package.create', 'uses' => 'PackageController@create']);
+  Route::post('yatra-package', ['as' => 'package.store', 'uses' => 'PackageController@store']);
+  Route::get('yatra-package/', ['as' => 'package.list', 'uses' => 'PackageController@index']);
+  Route::get('yatra-package/{hash}/edit', ['as' => 'package.edit', 'uses' => 'PackageController@edit']);
+  Route::put('yatra-package/{hash}', ['as' => 'package.update', 'uses' => 'PackageController@update']);
+  Route::delete('yatra-package/{hash}', ['as' => 'package.destroy', 'uses' => 'PackageController@destroy']);
+
 });
 
