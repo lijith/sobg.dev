@@ -2,7 +2,10 @@
 <html class="no-js" lang="">
 	<head>
 		<meta charset="utf-8">
-		<meta name="description" content="">
+		
+		<meta name="description" content="{{ $description }}">
+		<meta name="keywords" content="{{ $keywords }}">
+
 		<meta name="viewport" content="user-scalable=no,width=device-width, initial-scale=1, minimal-ui, maximum-scale=1, minimum-scale=1">
 		
 		

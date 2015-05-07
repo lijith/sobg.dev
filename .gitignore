@@ -7,5 +7,4 @@
 /public/images/magazines/*
 /public/images/video-disks/*
 /public/images/albums/*
-/public/files/*
 .env

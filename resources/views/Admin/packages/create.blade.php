@@ -50,8 +50,8 @@
               @foreach($yatras as $yatra)
                 <div class="radio">
                     <label>
-                        <input type="radio" value="{{$yatra->id}}" name="yatra">
-                        {{ ucwords($yatra->name) }}
+                        <input type="radio" value="{{$yatra->id}}" name="yatra" />
+                        {{ $yatra->name }}
                     </label>
                 </div>
               @endforeach

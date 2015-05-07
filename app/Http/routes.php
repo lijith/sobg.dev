@@ -94,7 +94,9 @@ Route::group(['prefix' => 'spiritual-journeys'],function(){
 		Route::get('itinerary-and-cost',['as' => 'amarnathDetails', 'uses' => 'YatrasController@amarnathDetails']);
 	});
 	Route::get('registration/{yatra}',['as' => 'Registration', 'uses' => 'YatrasController@Registration']);
-	Route::get('other-yathras',['as' => 'otherYatras', 'uses' => 'YatrasController@otherYatras']);
+  Route::post('registration/',['as' => 'Registration.store', 'uses' => 'YatrasController@RegistrationStore']);
+
+  Route::get('other-yathras',['as' => 'otherYatras', 'uses' => 'YatrasController@otherYatras']);
 	Route::get('yathris-speak',['as' => 'testimonials', 'uses' => 'YatrasController@testimonials']);
 
 });

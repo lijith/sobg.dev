@@ -50,6 +50,7 @@ class PackageController extends Controller {
       $packages[$yatra->name] = $pkg;
     }
 
+
     return View::make('Admin.packages.index',['yatras' => $yatras,'packages' => $packages]);
   }
 

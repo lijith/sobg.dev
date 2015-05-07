@@ -213,8 +213,8 @@
                         <span>Yatras Packages</span>
                     </a>
                     <ul class="sub">
-                        <li><a href="{{ route('package.list') }}">Yatras</a></li>
-                        <li><a href="{{ route('package.create') }}"><i class="fa fa-plus"></i> Add Yatra</a></li>
+                        <li><a href="{{ route('package.list') }}">Packages</a></li>
+                        <li><a href="{{ route('package.create') }}"><i class="fa fa-plus"></i> Add New Package</a></li>
                         
                     </ul>
                 </li>

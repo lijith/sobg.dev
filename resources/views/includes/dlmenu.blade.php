@@ -67,7 +67,7 @@
 				<ul class="dl-submenu">
 					<li><a href="{{route('kailasHighlights')}}">Highlights</a></li>
 					<li><a href="{{route('kailasDetails')}}">Itinerary &amp; Costs</a></li>
-					<li><a href="{{route('Registration')}}">Registration</a></li>
+					<li><a href="{{route('Registration',array('kailas-yatra'))}}">Registration</a></li>
 					<li><a href="{{route('kailastips')}}">Tips for yatris</a></li>
 				</ul><!-- /.dl-submenu -->
 			</li>
@@ -76,7 +76,7 @@
 				<ul class="dl-submenu">
 					<li><a href="{{route('himalayaHighlights')}}">Highlights</a></li>
 					<li><a href="{{route('himalayaDetails')}}">Itinerary &amp; Costs</a></li>
-					<li><a href="{{route('Registration')}}">Registration</a></li>
+					<li><a href="{{route('Registration',array('himalaya-yatra'))}}">Registration</a></li>
 				</ul><!-- /.dl-submenu -->
 			</li>
 			<li>
@@ -84,7 +84,7 @@
 				<ul class="dl-submenu">
 					<li><a href="{{route('amarnathHighlights')}}">Highlights</a></li>
 					<li><a href="{{route('amarnathDetails')}}">Itinerary &amp; Costs</a></li>
-					<li><a href="{{route('Registration')}}">Registration</a></li>
+					<li><a href="{{route('Registration',array('amarnath-yatra'))}}">Registration</a></li>
 				</ul><!-- /.dl-submenu -->
 			</li>
 			<li><a href="{{route('otherYatras')}}">Other yatras</a></li>

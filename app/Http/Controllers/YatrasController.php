@@ -5,7 +5,10 @@ use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 
+use App\Http\Requests\YatraRegisterRequest;
+
 use App\Yatra;
+use App\YatraPackage;
 
 class YatrasController extends SiteController {
 
@@ -22,6 +25,21 @@ class YatrasController extends SiteController {
 	 *
 	 * @return view
 	 */
+	
+	public $common_keywords = 'Divine in Nature, pilgrimages, Culture, tourism, darsans, spiritual journeys, Puja, Holy Bath, India, Kerala, School of Bhagavad Gita, Sandeepananda giri, Salagramam, tour, tour package';
+
+	public $kailas_description = 'A spiritual journeys to a new dimension. The Kailas - Mansarovar, Himalaya Darsan and Amarnath yatras are organised and personally guided by Swami Sandeepananda Giri.';
+
+	public $kailas_keywords = 'Mount Kailas, Manasarovar, Gauri Kund, Rakshasa Tal, parikrama, Pashupatinath Temple,  BodhnathStupa, Kodari Border, Nyalam, Zhuthulpuk , Dromla Pass, Kathmandu';
+
+	public $himalaya_description = 'A special pilgrimage that promises to take one through a rare experience that combines spiritual exercises, appreciation of Nature and Indian culture, satsangs and repose for the mind.';
+
+	public $himalaya_keywords = 'Mount Kailas, Manasarovar, Gauri Kund, Rakshasa Tal, parikrama, Pashupatinath Temple,  BodhnathStupa, Kodari Border, Nyalam, Zhuthulpuk , Dromla Pass, Kathmandu';
+
+	public $amarnath_description = 'The annual yatra to Holy Amarnath Cave, Vaishno Devi temple, Kshir Bhavani, sightseeing at Srinagar, visit to Golden Temple, Amritsar and Wagah border';
+
+	public $amarnath_keywords = 'Amarnath Cave, Vaishno Devi temple, Kshir Bhavani, Srinagar, Golden Temple, Amritsar, Wagah border';
+
 	public function index(){
 		$this->page_data['title'] = 'Spiritual Journeys';
 		$this->page_data['description'] = '';
@@ -41,9 +59,14 @@ class YatrasController extends SiteController {
 
 		$yatra = Yatra::where('slug','=','kailas-manasarovar-yatra')->first();
 
-		$this->page_data['title'] = 'Kailas - Manasarovar Yatra';
-		$this->page_data['description'] = '';
+		$this->page_data['title'] = 'Kailas - Manasarovar Yatra Highlight';
+
+		$this->page_data['description'] = $this->kailas_description;
+
 		$this->page_data['page'] = $yatra->highlights;
+
+		$this->page_data['keywords'] = $this->kailas_keywords.', '.$this->common_keywords;
+
 		$this->page_data['sub_page_active'] = 'kailas-highlight';
 		$this->page_data['top_level_page'] = 'yatras';
 		$this->page_data['toggle_active'] = 'kailas';
@@ -59,9 +82,14 @@ class YatrasController extends SiteController {
 
 		$yatra = Yatra::where('slug','=','kailas-manasarovar-yatra')->first();
 
-		$this->page_data['title'] = 'Kailas - Manasarovar Yatra';
-		$this->page_data['description'] = '';
+		$this->page_data['title'] = 'Kailas - Manasarovar Yatra Itinerary and Cost';
+
+		$this->page_data['description'] = $this->kailas_description;
+
 		$this->page_data['page'] = $yatra->itenary_cost;
+
+		$this->page_data['keywords'] = $this->kailas_keywords.', '.$this->common_keywords;
+
 		$this->page_data['sub_page_active'] = 'kailas-details';
 		$this->page_data['top_level_page'] = 'yatras';
 		$this->page_data['toggle_active'] = 'kailas';
@@ -74,8 +102,12 @@ class YatrasController extends SiteController {
 	 * @return view
 	 */
 	public function kailasTips(){
+
 		$this->page_data['title'] = 'Kailas - Manasarovar Tips';
-		$this->page_data['description'] = '';
+		$this->page_data['description'] = $this->kailas_description;
+
+		$this->page_data['keywords'] = $this->kailas_keywords.', '.$this->common_keywords;
+
 		$this->page_data['sub_page_active'] = 'kailas-tips';
 		$this->page_data['top_level_page'] = 'yatras';
 		$this->page_data['toggle_active'] = 'kailas';
@@ -90,12 +122,20 @@ class YatrasController extends SiteController {
 	 * @return view
 	 */
 	public function himalayaHighlights(){
-		$this->page_data['title'] = 'Himalaya Darsan';
-		$this->page_data['description'] = '';
+		$yatra = Yatra::where('slug','=','himalaya-darsan-chardham-yatra')->first();
+
+		$this->page_data['title'] = 'Himalaya Darsan Chardham Yatra';
+
+		$this->page_data['description'] = $this->himalaya_description;
+
+		$this->page_data['keywords'] = $this->himalaya_keywords.', '.$this->common_keywords;
+
+		$this->page_data['page'] = $yatra->highlights;
+
 		$this->page_data['sub_page_active'] = 'himalaya-highlight';
 		$this->page_data['top_level_page'] = 'yatras';
 		$this->page_data['toggle_active'] = 'himalaya';
-		return view('yatras.himalaya-highlights')->with($this->page_data);
+		return view('yatras.yatra-page')->with($this->page_data);
 	}
 
 
@@ -105,12 +145,21 @@ class YatrasController extends SiteController {
 	 * @return view
 	 */
 	public function himalayaDetails(){
-		$this->page_data['title'] = 'Himalaya Darsan';
-		$this->page_data['description'] = '';
+
+		$yatra = Yatra::where('slug','=','himalaya-darsan-chardham-yatra')->first();
+
+		$this->page_data['title'] = 'Himalaya Darsan Chardham Yatra';
+
+		$this->page_data['description'] = $this->himalaya_description;
+
+		$this->page_data['keywords'] = $this->himalaya_keywords.', '.$this->common_keywords;
+
+		$this->page_data['page'] = $yatra->itenary_cost;
+
 		$this->page_data['sub_page_active'] = 'himalaya-details';
 		$this->page_data['top_level_page'] = 'yatras';
 		$this->page_data['toggle_active'] = 'himalaya';
-		return view('yatras.himalaya-highlights')->with($this->page_data);
+		return view('yatras.yatra-page')->with($this->page_data);
 	}
 	/**
 	 * amarnath yatra highlights
@@ -118,12 +167,21 @@ class YatrasController extends SiteController {
 	 * @return view
 	 */
 	public function amarnathHighlights(){
-		$this->page_data['title'] = 'Amarnath Yatra';
-		$this->page_data['description'] = '';
+
+		$yatra = Yatra::where('slug','=','sri-amarnath-vaishno-devi-yatra')->first();
+
+		$this->page_data['title'] = 'Sri Amarnath – Vaishno Devi Yatra';
+
+		$this->page_data['description'] = $this->amarnath_description;
+
+		$this->page_data['keywords'] = $this->amarnath_keywords.', '.$this->common_keywords;
+
+		$this->page_data['page'] = $yatra->highlights;
+
 		$this->page_data['sub_page_active'] = 'amarnath-highlight';
 		$this->page_data['top_level_page'] = 'yatras';
 		$this->page_data['toggle_active'] = 'amarnath';
-		return view('yatras.amarnath-highlights')->with($this->page_data);
+		return view('yatras.yatra-page')->with($this->page_data);
 	}
 	/**
 	 * amarnath yatra details
@@ -131,12 +189,21 @@ class YatrasController extends SiteController {
 	 * @return view
 	 */
 	public function amarnathDetails(){
-		$this->page_data['title'] = 'Amarnath Yatra';
-		$this->page_data['description'] = '';
+
+		$yatra = Yatra::where('slug','=','sri-amarnath-vaishno-devi-yatra')->first();
+
+		$this->page_data['title'] = 'Sri Amarnath – Vaishno Devi Yatra';
+
+		$this->page_data['description'] = $this->amarnath_description;
+
+		$this->page_data['keywords'] = $this->amarnath_keywords.', '.$this->common_keywords;
+		
+		$this->page_data['page'] = $yatra->itenary_cost;
+
 		$this->page_data['sub_page_active'] = 'amarnath-details';
 		$this->page_data['top_level_page'] = 'yatras';
 		$this->page_data['toggle_active'] = 'amarnath';
-		return view('yatras.amarnath-highlights')->with($this->page_data);
+		return view('yatras.yatra-page')->with($this->page_data);
 	}
 	/**
 	 * other yatras.
@@ -174,16 +241,87 @@ class YatrasController extends SiteController {
 	 */
 	public function registration($yatra){
 
-		if($yatra == 'kailas'){
+		if($yatra == 'kailas-yatra'){
+
 			$this->page_data['title'] = 'Kailas Yatra Registeration';
+
+			$yatra = Yatra::where('slug','=','kailas-manasarovar-yatra')->first();
+
+			$packages = Yatra::find($yatra->id)->packages;
+
+			foreach ($packages as $package) {
+				$package->amount = $this->moneyFormatIndia($package->amount);
+			}
+
+
+		}elseif($yatra == 'himalaya-yatra'){
+
+			$this->page_data['title'] = 'Himalaya Darsan Chardham Yatra Registeration';
+
+			$yatra = Yatra::where('slug','=','himalaya-darsan-chardham-yatra')->first();
+
+			$packages = Yatra::find($yatra->id)->packages;
+
+			foreach ($packages as $package) {
+				$package->amount = $this->moneyFormatIndia($package->amount);
+			}
+
+		}elseif($yatra == 'amarnath-yatra'){
+
+			$this->page_data['title'] = 'Amarnath Yatra Registeration';
+
+			$yatra = Yatra::where('slug','=','sri-amarnath-vaishno-devi-yatra')->first();
+
+			$packages = Yatra::find($yatra->id)->packages;
+
+			foreach ($packages as $package) {
+				$package->amount = $this->moneyFormatIndia($package->amount);
+			}
+
 		}
+		
+		$this->page_data['packages'] = $packages;
 		$this->page_data['description'] = '';
 		$this->page_data['sub_page_active'] = 'registration';
 		$this->page_data['top_level_page'] = 'yatras';
 		$this->page_data['toggle_active'] = '';
 
 
-		//return view('yatras.kailas-registration')->with($this->page_data);
+		return view('yatras.kailas-registration')->with($this->page_data);
+	}
+
+	/**
+	 * registration store.
+	 *
+	 * @return view
+	 */
+	public function RegistrationStore(YatraRegisterRequest $request){
+
+
+	}
+
+
+	function moneyFormatIndia($num){
+    $explrestunits = "" ;
+    if(strlen($num)>3){
+	    $lastthree = substr($num, strlen($num)-3, strlen($num));
+	    $restunits = substr($num, 0, strlen($num)-3); // extracts the last three digits
+	    $restunits = (strlen($restunits)%2 == 1)?"0".$restunits:$restunits; // explodes the remaining digits in 2's formats, adds a zero in the beginning to maintain the 2's grouping.
+	    $expunit = str_split($restunits, 2);
+      for($i=0; $i<sizeof($expunit); $i++){
+          // creates each of the 2's group and adds a comma to the end
+          if($i==0)
+          {
+              $explrestunits .= (int)$expunit[$i].","; // if is first value , convert into integer
+          }else{
+              $explrestunits .= $expunit[$i].",";
+          }
+      }
+      $thecash = $explrestunits.$lastthree;
+	  } else {
+	      $thecash = $num;
+	  }
+	  return $thecash; // writes the final format where $currency is the currency symbol.
 	}
 
 
