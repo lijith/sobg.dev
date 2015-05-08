@@ -227,6 +227,39 @@ $('.address-same').change(function(){
 
 
 /**
+ * payment options toggle
+ * @usedPlugins jquery
+ * @usedAt yatra registration page
+ */	
+
+if($('.payment-mode').length > 0){
+	
+	if($('.payment-mode').is(':checked')){
+		if($('.payment-mode:checked').val() == 'dd'){
+			$('.payment.dd').removeClass('collapse');
+		}
+
+		if($('.payment-mode:checked').val() == 'transfer'){
+			$('.payment.bank-transfer').removeClass('collapse');
+		}
+	}
+	
+	$('.payment-mode').change(function(){
+
+			$('.payment').addClass('collapse');
+
+			if($('.payment-mode:checked').val() == 'dd'){
+				$('.payment.dd').removeClass('collapse');
+			}
+
+			if($('.payment-mode:checked').val() == 'transfer'){
+				$('.payment.bank-transfer').removeClass('collapse');
+			}
+	})
+}
+
+
+/**
  * hover overlay in albums
  * @usedPlugins hoverdir, jquery
  * @usedAt Member albums page

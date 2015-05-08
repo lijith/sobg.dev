@@ -56,18 +56,18 @@
 											@endfor
 		                </select>&nbsp;
 		                <select class="form-control" name="dob-month">
-		                  <option>January</option>
-		                  <option>February</option>
-		                  <option>March</option>
-		                  <option>April</option>
-		                  <option>May</option>
-		                  <option>June</option>
-		                  <option>July</option>
-		                  <option>August</option>
-		                  <option>September</option>
-		                  <option>October</option>
-		                  <option>November</option>
-		                  <option>December</option>
+		                  <option value="jan">January</option>
+		                  <option value="feb">February</option>
+		                  <option value="mar">March</option>
+		                  <option value="apr">April</option>
+		                  <option value="may">May</option>
+		                  <option value="jun">June</option>
+		                  <option value="jul">July</option>
+		                  <option value="aug">August</option>
+		                  <option value="sep">September</option>
+		                  <option value="oct">October</option>
+		                  <option value="nov">November</option>
+		                  <option value="dec">December</option>
 		                </select>&nbsp;
 		                <select class="form-control" name="dob-year">
 		                	@for ($i = 2000; $i > 1940; $i--)
@@ -184,109 +184,118 @@
 		            	
 		            </div>
 		          </div>
-		          <div class="form-group">
+		          <div class="form-group {{ ($errors->has('payment-mode')) ? 'has-error' : '' }}">
 		            <label class="col-sm-4 control-label">Payment Mode</label>
 		            <div class="col-sm-8">
 		              <label class="radio-inline">
-									  <input type="radio" name="payment_mode" id="payment_dd" value="dd"> DD
+									  <input type="radio" name="payment-mode" class="payment-mode" value="dd"> DD
 									</label>
 									<label class="radio-inline">
-									  <input type="radio" name="payment_mode" id="payment_transfer" value="transfer"> Bank Transfer
-									</label>
-									<label class="radio-inline">
-									  <input type="radio" name="payment_mode" id="payment_online" value="online"> Online
+									  <input type="radio" name="payment-mode" class="payment-mode" value="transfer" checked=""> Bank Transfer
 									</label>
 		            </div>
-		            <div class="payment-dd">
-				          <div class="form-group">
-				            <label class="col-sm-4 control-label">DD Number</label>
-				            <div class="col-sm-8">
-		              		<input type="text" placeholder="DD Number" class="form-control">
-				            </div>
-				          </div>
-				          <div class="form-group">
-				            <label class="col-sm-4 control-label">Date</label>
-				            <div class="col-sm-8">
-				              <div class="form-inline">
-				                <select class="form-control">
-				                  <option>-</option>
-				                  <option>1</option>
-				                  <option>2</option>
-				                  <option>3</option>
-				                  <option>4</option>
-				                </select>&nbsp;
-				                <select class="form-control">
-				                  <option>January</option>
-				                  <option>February</option>
-				                  <option>March</option>
-				                  <option>April</option>
-				                </select>&nbsp;
-				                <select class="form-control">
-				                  <option>2012</option>
-				                  <option>1991</option>
-				                  <option>1990</option>
-				                  <option>1989</option>
-				                </select>
-				              </div>
-				            </div>
-				          </div>
-				          <div class="form-group">
-				            <label class="col-sm-4 control-label">Name and branch of Bank</label>
-				            <div class="col-sm-8">
-		              		<input type="text" placeholder="Bank" class="form-control">
-				            </div>
-				          </div>
-				          <div class="form-group">
-				            <label class="col-sm-4 control-label">Amount</label>
-				            <div class="col-sm-8">
-		              		<input type="text" placeholder="Amount" class="form-control">
-				            </div>
-				          </div>
-		            </div><!-- /.payment-dd -->
+	            </div>
+	            <div class="payment dd collapse">
+			          <div class="form-group {{ ($errors->has('dd-number')) ? 'has-error' : '' }}">
+			            <label class="col-sm-4 control-label">DD Number</label>
+			            <div class="col-sm-8">
+	              		<input type="text" placeholder="DD Number" class="form-control" name="dd-number">
+			            </div>
+			          </div>
+			          <div class="form-group">
+			            <label class="col-sm-4 control-label">Date</label>
+			            <div class="col-sm-8">
+			              <div class="form-inline">
+			                <select class="form-control" name="dd-date-day">
+			                	@for ($i = 1; $i < 32; $i++)
+												    <option>{{ $i }}</option>{{ $i }}
+												@endfor
+			                </select>&nbsp;
+			                <select class="form-control" name="dd-date-month">
+			                  <option value="jan">January</option>
+			                  <option value="feb">February</option>
+			                  <option value="mar">March</option>
+			                  <option value="apr">April</option>
+			                  <option value="may">May</option>
+			                  <option value="jun">June</option>
+			                  <option value="jul">July</option>
+			                  <option value="aug">August</option>
+			                  <option value="sep">September</option>
+			                  <option value="oct">October</option>
+			                  <option value="nov">November</option>
+			                  <option value="dec">December</option>
+			                </select>&nbsp;
+			                <select class="form-control" name="dd-date-year">
+			                <?php $current_year = \Carbon\Carbon::now()->year;?>
+			                	@for ($i = $current_year; $i > $current_year-2; $i--)
+												    <option>{{ $i }}</option>{{ $i }}
+												@endfor
+			                </select>
+			              </div>
+			            </div>
+			          </div>
+			          <div class="form-group {{ ($errors->has('dd-bank')) ? 'has-error' : '' }}">
+			            <label class="col-sm-4 control-label">Name and branch of Bank</label>
+			            <div class="col-sm-8">
+	              		<input type="text" placeholder="Bank" class="form-control" name="dd-bank" >
+			            </div>
+			          </div>
+			          <div class="form-group {{ ($errors->has('dd-amount')) ? 'has-error' : '' }}">
+			            <label class="col-sm-4 control-label">Amount</label>
+			            <div class="col-sm-8">
+	              		<input type="text" placeholder="Amount" class="form-control" name="dd-amount">
+			            </div>
+			          </div>
+	            </div><!-- /.payment-dd -->
 
-		            <div class="payment-bank-transfer">
-		            	
-				          <div class="form-group">
-				            <label class="col-sm-4 control-label">Date</label>
-				            <div class="col-sm-8">
-				              <div class="form-inline">
-				                <select class="form-control">
-				                  <option>-</option>
-				                  <option>1</option>
-				                  <option>2</option>
-				                  <option>3</option>
-				                  <option>4</option>
-				                </select>&nbsp;
-				                <select class="form-control">
-				                  <option>January</option>
-				                  <option>February</option>
-				                  <option>March</option>
-				                  <option>April</option>
-				                </select>&nbsp;
-				                <select class="form-control">
-				                  <option>2012</option>
-				                  <option>1991</option>
-				                  <option>1990</option>
-				                  <option>1989</option>
-				                </select>
-				              </div>
-				            </div>
-				          </div>
-				          <div class="form-group">
-				            <label class="col-sm-4 control-label">Name and branch of Bank</label>
-				            <div class="col-sm-8">
-		              		<input type="text" placeholder="Bank" class="form-control">
-				            </div>
-				          </div>
-				          <div class="form-group">
-				            <label class="col-sm-4 control-label">Amount</label>
-				            <div class="col-sm-8">
-		              		<input type="text" placeholder="Amount" class="form-control">
-				            </div>
-				          </div>
-		            
-		            </div><!-- /.payment-bank-transfer -->
-		          </div>
+	            <div class="payment bank-transfer collapse">
+	            	
+			          <div class="form-group">
+			            <label class="col-sm-4 control-label">Date</label>
+			            <div class="col-sm-8">
+			              <div class="form-inline">
+			                <select class="form-control" name="bank-transfer-date-day">
+			                	@for ($i = 1; $i < 32; $i++)
+												    <option>{{ $i }}</option>{{ $i }}
+												@endfor
+			                </select>&nbsp;
+			                <select class="form-control" name="bank-transfer-date-month">
+			                  <option>January</option>
+			                  <option>February</option>
+			                  <option>March</option>
+			                  <option>April</option>
+			                  <option>May</option>
+			                  <option>June</option>
+			                  <option>July</option>
+			                  <option>August</option>
+			                  <option>September</option>
+			                  <option>October</option>
+			                  <option>November</option>
+			                  <option>December</option>
+			                </select>&nbsp;
+			                <select class="form-control" name="bank-transfer-date-year">
+			                <?php $current_year = \Carbon\Carbon::now()->year;?>
+			                	@for ($i = $current_year; $i > $current_year-2; $i--)
+												    <option>{{ $i }}</option>{{ $i }}
+												@endfor
+			                </select>
+			              </div>
+			            </div>
+			          </div>
+			          <div class="form-group {{ ($errors->has('bank-transfer-bank')) ? 'has-error' : '' }}">
+			            <label class="col-sm-4 control-label">Name and branch of Bank</label>
+			            <div class="col-sm-8">
+	              		<input type="text" placeholder="Bank" class="form-control" name="bank-transfer-bank">
+			            </div>
+			          </div>
+			          <div class="form-group {{ ($errors->has('bank-transfer-amount')) ? 'has-error' : '' }}">
+			            <label class="col-sm-4 control-label">Amount</label>
+			            <div class="col-sm-8">
+	              		<input type="text" placeholder="Amount" class="form-control" name="bank-transfer-amount">
+			            </div>
+			          </div>
+	            
+            </div><!-- /.payment-bank-transfer -->
 				     <div class="clearfix">
 		        	<button class="btn btn-primary pull-right">Register</button>
 		     	   </div><!-- /.clearfix -->

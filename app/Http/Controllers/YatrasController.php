@@ -287,7 +287,8 @@ class YatrasController extends SiteController {
 		$this->page_data['toggle_active'] = '';
 
 
-		return view('yatras.kailas-registration')->with($this->page_data);
+		//return view('yatras.kailas-registration')->with($this->page_data);
+		return view('emails.base-layout');
 	}
 
 	/**
@@ -297,11 +298,43 @@ class YatrasController extends SiteController {
 	 */
 	public function RegistrationStore(YatraRegisterRequest $request){
 
+		$data = array();
 
-	}
+		$data['name'] = Input::get('first-name').' '.Input::get('last-name');
+		$data['gender'] = Input::get('gender');
+		$data['dob'] = Input::get('dob-day').'-'.Input::get('dob-month').'-'.Input::get('dob-year');
+		$data['nationality'] = Input::get('nationality');
+		$data['blood_group'] = Input::get('blood-group');
+		$data['passport_name'] = Input::get('passport-name');
+		$data['passport_number'] = Input::get('passport-number');
+		$data['accompanying_persons'] = Input::get('accompanying-persons');
+		$data['address_line_1'] = Input::get('address-line-1');
+		$data['address_line_2'] = Input::get('address-line-2');
+		$data['city'] = Input::get('city');
+		$data['state'] = Input::get('state');
+		$data['country'] = Input::get('country');
+		$data['contact_mobile'] = Input::get('contact-mobile');
+		$data['contact_landline'] = Input::get('contact-landline');
+		$data['email'] = Input::get('email');
+		$data['special_requirement'] = Input::get('special-requirement');
+		$data['yatra_package'] = Input::get('yatra-package');
+		$data['payment_mode'] = Input::get('payment-mode');
+		$data['dd_number'] = Input::get('dd-number');
+		$data['dd_date'] = Input::get('dd-date-day').'-'.Input::get('dd-date-month').'-'.Input::get('dd-date-year');
+		$data['dd_bank'] = Input::get('dd-bank');
+		$data['dd_amount'] = Input::get('dd-amount');
+		$data['bank_transfer_date'] = Input::get('bank-transfer-date-day').'-'.Input::get('bank-transfer-date-month').'-'.Input::get('bank-transfer-date-year');
+		$data['bank_transfer_bank'] = Input::get('bank_transfer_bank');
+		$data['bank_transfer_amount'] = Input::get('bank_transfer_amount');
+
+
+		return view('emails.base-layout',['data' => $data]);
+
+	} 
 
 
 	function moneyFormatIndia($num){
+		
     $explrestunits = "" ;
     if(strlen($num)>3){
 	    $lastthree = substr($num, strlen($num)-3, strlen($num));

@@ -251,7 +251,7 @@
 		<script src="{{URL::asset('scripts/jquery.dlmenu.js')}}"></script>
 		<script src="{{URL::asset('scripts/hoverdir.js')}}"></script>
 		<script src="{{URL::asset('scripts/page-loading.js')}}"></script>
-		<script src="{{URL::asset('scripts/equal-height.js')}}')}}"></script>
+		<script src="{{URL::asset('scripts/equal-height.js')}}"></script>
 		<script src="{{URL::asset('scripts/jquery-easing-1.3.js')}}"></script>
 		<script src="{{URL::asset('scripts/jquery-transit-modified.js')}}"></script>
 		<script src="{{URL::asset('scripts/jquery.flexverticalcenter.js')}}"></script>

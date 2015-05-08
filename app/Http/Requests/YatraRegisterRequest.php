@@ -37,7 +37,13 @@ class YatraRegisterRequest extends FormRequest {
 	    'contact-mobile' => 'required|min:10',
 	    'contact-landline' => 'required|min:10',
 	    'email' => 'required|email',
-	    'yatra-package' => 'required'
+	    'yatra-package' => 'required',
+	    'payment-mode' => 'required',
+	    'dd-number' => 'required_if:payment-mode,dd',
+	    'dd-bank' => 'required_if:payment-mode,dd',
+	    'dd-amount' => 'required_if:payment-mode,dd',
+	    'bank-transfer-bank' => 'required_if:payment-mode,transfer',
+	    'bank-transfer-amount' => 'required_if:payment-mode,transfer'
 
 		];
 	}
