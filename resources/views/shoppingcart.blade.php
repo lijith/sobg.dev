@@ -49,14 +49,14 @@
                       @endif
 
                       <br />
-                    {{strtoupper($item->options->item_sub_type)}}
+                    
                     @elseif($item->options->item_type == 'magazine')
-                      <img src="">
+                      <img src="{{ asset('images/piravi.jpg') }}" title="magazine cover" alt="magazine cover">
                     @endif
 
                 </td>
-                <td>{{ucwords($item->name)}}</td>
-                <td>
+                <td valign="middle">{{ucwords($item->name)}} ({{strtoupper($item->options->item_sub_type)}})</td>
+                <td valign="middle">
                 @if( $item->options->item_type != 'magazine')
                   <div class="clearfix">
                     
@@ -64,6 +64,7 @@
                       <input type="text" value="{{$item->qty}}" class="form-control" name="update-quantity">
                       <input name="_method" value="PUT" type="hidden">
                       <input name="_token" value="{{ csrf_token() }}" type="hidden">
+
                       <button class="btn btn-default" title="" rel="tooltip" data-original-title="Update" type="submit"><i class="fa fa-pencil"></i></button>
                     </form>
 
@@ -71,6 +72,7 @@
 
                       <input name="_token" value="{{ csrf_token() }}" type="hidden">
                       <input name="_method" value="DELETE" type="hidden">
+                      <span>&nbsp;</span>
                       <button type="submit" class="btn btn-default"><i class="fa fa-times-circle"></i></button>
                       
                     </form>
@@ -84,7 +86,7 @@
 
                       <input name="_token" value="{{ csrf_token() }}" type="hidden">
                       <input name="_method" value="DELETE" type="hidden">
-                      <button type="submit" class="btn btn-default"><i class="fa fa-times-circle"></i></button>
+                      <button type="submit" class="btn btn-default"><i class="fa fa-times-circle"></i> Remove</button>
                       
                     </form>
                     </div><!-- /.clearfix -->

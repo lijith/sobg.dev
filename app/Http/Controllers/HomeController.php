@@ -22,6 +22,8 @@ class HomeController extends SiteController {
 	 */
 	public function index(){
 
+		$this->page_data['top_level_page'] = 'home';
+
 		$this->page_data['events'] = SobgEvent::where('end_date', '>', Carbon::now())->get();
 
 		return view('home')->with($this->page_data);

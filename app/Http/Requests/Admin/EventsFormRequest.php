@@ -28,8 +28,7 @@ class EventsFormRequest extends Request {
 	    'details' 					=> 'required|min:15',
 	    'event-start-date'	=> 'required|date_format:m/d/Y',
 	    'event-end-date' 		=> 'required|date_format:m/d/Y',
-	    'event-cover-photo' => 'required|mimes:jpeg,jpg,png',
-	    'event-attachment' 	=> 'required|mimes:jpeg,jpg,png,pdf'
+	    'event-cover-photo' => 'required|mimes:jpeg,jpg,png'
 		];
 	}
 

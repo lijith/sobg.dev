@@ -389,7 +389,7 @@ class MagazineController extends Controller {
 
 		$thumb_img = Image::make($this->_cover_file_path.$save_file_name);
 
-		$thumb_img->resize(250, 250, function ($constraint) {
+		$thumb_img->resize(165, 150, function ($constraint) {
 			$constraint->aspectRatio();
 			$constraint->upsize();
 		});

@@ -1,4 +1,4 @@
-@extends('admin.layout')
+@extends('Admin.layout')
 
 {{-- Page Title --}}
 @section('title')
@@ -63,6 +63,15 @@
                 <span class="label label-primary">Excerpt</span> <br /><br />
                  <i>{{$disk->excerpt}}</i>
             </section>
+
+            @if($disk->youtube_link != '')
+              <section class="in-panel">
+                  <!-- 4:3 aspect ratio -->
+                  <div class="embed-responsive embed-responsive-16by9">
+                    <iframe class="embed-responsive-item" src="{{$disk->youtube_link}}"></iframe>
+                  </div>
+              </section>
+            @endif
 
             <div class="panel-body">
                 

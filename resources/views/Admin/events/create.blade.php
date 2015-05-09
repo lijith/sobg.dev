@@ -1,4 +1,4 @@
-@extends('admin.layout')
+@extends('Admin.layout')
 
 {{-- Page Title --}}
 @section('title')
@@ -78,12 +78,6 @@
                 {{ ($errors->has('event-cover-photo') ? $errors->first('event-cover-photo') : '') }}
             </div>
 
-            <div class="form-group {{ ($errors->has('event-attachment')) ? 'has-error' : '' }}">
-                <label>Event Brochure</label>
-                <input type="file" id="" name="event-attachment">
-                <p class="help-block">Attach brochure of event if any(jpg, png, pdf files only)</p>
-                {{ ($errors->has('event-attachment') ? $errors->first('event-attachment') : '') }}
-            </div>
 
            
             <input name="_token" value="{{ csrf_token() }}" type="hidden">

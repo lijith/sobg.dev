@@ -55,10 +55,10 @@
 							</div><!-- /.pub-image -->
 							<div class="pub-title">
 								@if($vdisk->disk_type == 1)
-									<a href="{{route('dvd.show',array($vdisk->slug))}}">{{ucwords($vdisk->title)}}</a>
+									<a href="{{route('dvd.show',array($vdisk->slug))}}">{{ucwords($vdisk->title)}}</a> <br />
 									DVD
 								@elseif($vdisk->disk_type == 2)
-									<a href="{{route('vcd.show',array($vdisk->slug))}}">{{ucwords($vdisk->title)}}</a>
+									<a href="{{route('vcd.show',array($vdisk->slug))}}">{{ucwords($vdisk->title)}}</a> <br />
 									VCD
 								@endif
 								<p>Rs {{$vdisk->price}}</p>

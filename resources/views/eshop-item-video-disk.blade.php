@@ -13,7 +13,7 @@
 			<div class="split_30"></div><!-- /.split_30 -->
 				
 				<div class="row">
-					<div class="col-sm-4">
+					<div class="col-sm-5">
 						<div class="row">
 							<div class="col-sm-12 col-xs-4">
 								<div class="img-wrap">
@@ -28,15 +28,17 @@
 							</div><!-- /.col-md-12 col-sm-4 -->
 						</div><!-- /.row -->
 					</div><!-- /.col-sm-4 -->
-					<div class="col-sm-8">
+					<div class="col-sm-7">
 						<p class="description">
 							{{$disk->details}}
 						</p><!-- /.description -->
-						<div class="split_30"></div><!-- /.split_30 -->
+						<div class="split_10"></div><!-- /.split_30 -->
 						<div class="media-player">
-							<div class="wrap">
-								<img src="images/video-placeholder.jpg" alt="" class="placeholder" />
-							</div><!-- /.wrap -->
+							@if($disk->youtube_link != '')
+                <div class="embed-responsive embed-responsive-16by9">
+                  <iframe class="embed-responsive-item" src="{{$disk->youtube_link}}"></iframe>
+                </div>
+	            @endif
 						</div><!-- /.media-player -->
 						<div class="split_30"></div><!-- /.split_30 -->
 						<div class="add-to-cart">

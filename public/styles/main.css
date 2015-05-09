@@ -18,7 +18,7 @@
 body {
   -webkit-font-smoothing: subpixel-antialiased;
   font-family: 'Open Sans';
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 400;
   color: #666666;
   -webkit-user-select: none;
@@ -1324,10 +1324,10 @@ h3.sub-heading {
   }
 
   .top-colums .pic-wrap {
-    height: 230px;
+    height: 197px;
   }
   .top-colums .pic-wrap.ashram-pic {
-    height: 230px;
+    height: 197px;
   }
 
   .content {
@@ -1398,7 +1398,7 @@ h3.sub-heading {
     padding-bottom: 3px;
   }
   .header-top .header-right .header-top-links {
-    width: 36%;
+    width: 40%;
   }
   .header-top .header-right .header_search {
     width: 29%;

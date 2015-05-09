@@ -90,14 +90,6 @@ class EventController extends Controller {
       $files = $this->handleImages();
 		}
 
-		if (Input::hasFile('event-attachment')){
-
-			$attachment = Input::file('event-attachment');
-
-	    $attachment_name = $attachment->getClientOriginalName();
-
-	    $attachment->move($upload_to_dir,$attachment_name);
-		}
     
   	
 
@@ -110,7 +102,7 @@ class EventController extends Controller {
   		'end_date' => Carbon::createFromFormat('m/d/Y', Input::get('event-end-date')),
   		'cover_photo' => $files['filename'],
       'cover_photo_thumbnail' => $files['thumb'],
-  		'attachment' => $attachment_name
+  		'attachment' => ''
   	));
 
   	$sobg_event->save();
@@ -266,6 +258,7 @@ class EventController extends Controller {
 
     $cover_photo->move($upload_to_dir,$save_file_name);
 
+    //resize cover
     $rez_image = Image::make($upload_to_dir.$save_file_name); 
     $rez_image->resize(1280, null, function ($constraint) {
         $constraint->aspectRatio();
@@ -273,6 +266,16 @@ class EventController extends Controller {
     });
     $rez_image->save(); 
 
+
+    //fit thumbnail
+    $rez_image = Image::make($upload_to_dir.$save_file_name); 
+
+    $rez_image->fit(1000, 250, function ($constraint) {
+    });
+    $rez_image->save();
+
+
+    //resize thumb
     $thumb_img = Image::make($upload_to_dir.$save_file_name);
 
     $thumb_img->resize(450, 290, function ($constraint) {
@@ -281,7 +284,7 @@ class EventController extends Controller {
     });
     $thumb_img->save($upload_to_dir.$save_file_name_thumb);
 
-        //fit thumbnail
+    //fit thumbnail
     $thumb_img = Image::make($upload_to_dir.$save_file_name_thumb);
 
     $thumb_img->fit(350, 290, function ($constraint) {

@@ -286,7 +286,7 @@ class AudioDiskController extends Controller {
     $cover_photo->move($upload_to_dir,$save_file_name);
 
     $rez_image = Image::make($upload_to_dir.$save_file_name); 
-    $rez_image->resize(1280, null, function ($constraint) {
+    $rez_image->resize(700, null, function ($constraint) {
         $constraint->aspectRatio();
         $constraint->upsize();
     });
@@ -303,7 +303,7 @@ class AudioDiskController extends Controller {
     //fit thumbnail
     $thumb_img = Image::make($upload_to_dir.$save_file_name_thumb);
 
-    $thumb_img->fit(350, 290, function ($constraint) {
+    $thumb_img->fit(165, 150, function ($constraint) {
     });
     $thumb_img->save($upload_to_dir.$save_file_name_thumb);
 

@@ -49,11 +49,15 @@ class EventController extends SiteController {
 		$this->page_data['event'] = SobgEvent::where('slug', '=', $slug)->first();
 
 		$this->page_data['past_events'] = SobgEvent::where('end_date', '<', Carbon::now())
+		->where('slug', '<>', $slug)
 		->orderBy('end_date','DESC')
+		->take(10)
 		->get();
 
 		$this->page_data['upcoming_events'] = SobgEvent::where('end_date', '>', Carbon::now())
+		->where('slug', '<>', $slug)
 		->orderBy('end_date','ASC')
+		->take(10)
 		->get();
 
 		return view('event')->with($this->page_data);

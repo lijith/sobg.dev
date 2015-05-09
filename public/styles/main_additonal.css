@@ -213,3 +213,34 @@ span.disk-type{
 .photos-container.loading{
 	display: none;
 }
+
+.event-cover-photo{
+	height: 186px;
+	overflow: hidden;
+}
+.event-cover-photo img{
+	width: 100%;
+}
+.event-dates{
+	background-color: #c9532d;
+  color: #fff;
+  float: left;
+  padding: 10px 15px;
+  text-align: center;
+}
+img.left{
+	float: left;
+	margin-right: 10px;
+	margin-bottom: 10px;
+}
+
+img.right{
+	float: right;
+	margin-left: 10px;
+	margin-bottom: 10px;
+}
+
+
+.main-cart .table > tbody > tr > td{
+	vertical-align: middle;
+}
