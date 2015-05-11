@@ -133,7 +133,7 @@ if($('.video-instructions').length>0){
 	$('.video-instructions a').magnificPopup()
 }
 
-
+$('[data-toggle="tooltip"]').tooltip()
 
 
 equalheight = function(container) {

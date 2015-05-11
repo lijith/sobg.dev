@@ -46,6 +46,8 @@
                         src="{{asset('images/audio-disks/'.$item->options->item_images)}}"><br />
                       @elseif($item->options->item_type == 'book')
                         src="{{asset('images/books/'.$item->options->item_images)}}"><br />
+                      @elseif($item->options->item_type == 'magazine-print')
+                        src="{{asset('images/magazines/'.$item->options->item_images)}}"><br />
                       @endif
 
                       <br />

@@ -19,6 +19,14 @@
 			</form>
 		</div><!-- /.search-titles -->
 		<div class="split_30"></div><!-- /.split_30 -->
+
+		@if(strlen($search) < 4)
+			searched word is too small.
+		@else
+
+			@if($result_count < 1)
+				<p>Sorry. nothing found.</p>
+			@endif
 		
 		@if($video_result->count() > 0)
 
@@ -35,14 +43,22 @@
 				<div class="pub-item">
 					<div class="wrap">
 						<div class="pub-image">
-							<img src="{{asset('images/video-disks/'.$video->cover_photo_thumbnail)}}" alt="{{ucwords($video->title)}}" />
+							@if($video->disk_type == 1)
+								<a href="{{route('dvd.show',array($video->slug))}}" title="{{ucwords($video->title)}}">
+									<img src="{{asset('images/video-disks/'.$video->cover_photo_thumbnail)}}" alt="{{ucwords($video->title)}}" />
+							@elseif($video->disk_type == 2)
+								<a href="{{route('vcd.show',array($video->slug))}}" title="{{ucwords($video->title)}}">
+									<img src="{{asset('images/video-disks/'.$video->cover_photo_thumbnail)}}" alt="{{ucwords($video->title)}}" />
+							@endif
 						</div><!-- /.pub-image -->
 						<div class="pub-title">
 							@if($video->disk_type == 1)
-								<a href="{{route('dvd.show',array($video->slug))}}">{{ucwords($video->title)}}</a>
+								<a href="{{route('dvd.show',array($video->slug))}}">
+								{{ ucwords(\Illuminate\Support\Str::limit($video->title,15)) }}</a>
 								<br /><span class="disk-type">DVD</span>
 							@elseif($video->disk_type == 2)
-								<a href="{{route('vcd.show',array($video->slug))}}">{{ucwords($video->title)}}</a>
+								<a href="{{route('vcd.show',array($video->slug))}}">
+								{{ ucwords(\Illuminate\Support\Str::limit($video->title,15)) }}</a>
 								<br /><span class="disk-type">VCD</span>
 							@endif
 						</div><!-- /.pub-title -->
@@ -79,14 +95,22 @@
 				<div class="pub-item">
 					<div class="wrap">
 						<div class="pub-image">
-							<img src="{{asset('images/audio-disks/'.$audio->cover_photo_thumbnail)}}" alt="{{ucwords($audio->title)}}" />
+							@if($audio->disk_type == 1)
+								<a href="{{route('acd.show',array($audio->slug))}}" title="{{ucwords($audio->title)}}">
+									<img src="{{asset('images/audio-disks/'.$audio->cover_photo_thumbnail)}}" alt="{{ucwords($audio->title)}}" />
+							@elseif($audio->disk_type == 2)
+								<a href="{{route('mp3.show',array($audio->slug))}}" title="{{ucwords($audio->title)}}">
+									<img src="{{asset('images/audio-disks/'.$audio->cover_photo_thumbnail)}}" alt="{{ucwords($audio->title)}}" />
+							@endif
 						</div><!-- /.pub-image -->
 						<div class="pub-title">
 							@if($audio->disk_type == 1)
-								<a href="{{route('acd.show',array($audio->slug))}}">{{ucwords($audio->title)}}</a>
+								<a href="{{route('acd.show',array($audio->slug))}}" data-toggle="tooltip" data-placement="bottom" title="{{ ucwords($audio->title) }}" class="red-tooltip">
+								{{ ucwords(\Illuminate\Support\Str::limit($audio->title,15)) }}</a>
 								<br /><span class="disk-type">Audio CD</span>
 							@elseif($audio->disk_type == 2)
-								<a href="{{route('mp3.show',array($audio->slug))}}">{{ucwords($audio->title)}}</a>
+								<a href="{{route('mp3.show',array($audio->slug))}}" data-toggle="tooltip" data-placement="bottom" title="{{ ucwords($audio->title) }}" class="red-tooltip">
+								{{ ucwords(\Illuminate\Support\Str::limit($audio->title,15)) }}</a>
 								<br /><span class="disk-type">MP3</span>
 							@endif
 						</div><!-- /.pub-title -->
@@ -123,10 +147,14 @@
 				<div class="pub-item">
 					<div class="wrap">
 						<div class="pub-image">
-							<img src="{{asset('images/books/'.$book->cover_photo_thumbnail)}}" alt="{{ucwords($book->title)}}" />
+							<a href="{{ route('book.show',array($book->slug)) }}" title="{{ucwords($book->title)}}">
+								<img src="{{asset('images/books/'.$book->cover_photo_thumbnail)}}" alt="{{ucwords($book->title)}}" />
+							</a>
 						</div><!-- /.pub-image -->
 						<div class="pub-title">
-							<a href="{{route('book.show',array($book->slug))}}">{{ucwords($book->title)}}</a>
+							<a href="{{ route('book.show',array($book->slug)) }}" data-toggle="tooltip" data-placement="bottom" title="{{ ucwords($book->title) }}" class="red-tooltip">
+								{{ ucwords(\Illuminate\Support\Str::limit($book->title,15)) }}
+							</a>
 						</div><!-- /.pub-title -->
 						
 						</div><!-- /.wrap -->
@@ -143,6 +171,7 @@
 
 		@endif
 
+	@endif
 
 		<div class="split_30"></div><!-- /.split_30 -->
 	</div><!-- /.col-md-8 -->

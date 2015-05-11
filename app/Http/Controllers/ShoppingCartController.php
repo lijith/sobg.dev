@@ -80,6 +80,10 @@ class ShoppingCartController extends SiteController {
   			$id = Hashids::connection('book')->decode(Input::get('item-id'));
   			$item = Book::find($id)->first();
   		}
+      case 'magazine-print':{
+        $id = Hashids::connection('magazine')->decode(Input::get('item-id'));
+        $item = Magazine::find($id)->first();
+      }
   	}
 
     if(Input::has('magazine-sub')){

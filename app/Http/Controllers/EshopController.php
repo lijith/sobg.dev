@@ -35,25 +35,22 @@ class EshopController extends SiteController {
 	 * @return Response
 	 */
 	public function index(){
+
 		$this->page_data['title'] = 'Publications from School of Bhagavat Gita';
 		$this->page_data['description'] = '';
 		$this->page_data['top_level_page'] = 'publications';
 		$this->page_data['sub_page_active'] = 'publications';
 
-		$this->page_data['video_disks'] = $this->titleLimit(VideoDisk::take(4)
-		->get());
+		$this->page_data['video_disks'] = VideoDisk::take(4)->get();
 
-		$this->page_data['audio_disks'] = $this->titleLimit(AudioDisk::take(4)
-		->get());
+		$this->page_data['audio_disks'] = AudioDisk::take(4)->get();
 
-		$this->page_data['books'] = $this->titleLimit(Book::take(4)
-		->get());
+		$this->page_data['books'] = Book::take(4)->get();
 
-		$this->page_data['magazines'] = $this->titleLimit(Magazine::take(4)
-		->get());
-
+		$this->page_data['magazines'] = Magazine::take(4)->get();
 
 		return view('eshop')->with($this->page_data);
+
 	}
 
 	/**
@@ -66,7 +63,7 @@ class EshopController extends SiteController {
 		$this->page_data['description'] = 'VCD and DVD';
 		$this->page_data['sub_page_active'] = '';
 		$this->page_data['top_level_page'] = 'publications';
-		$this->page_data['video_disks'] = $this->titleLimit(VideoDisk::get());
+		$this->page_data['video_disks'] = VideoDisk::get();
 
 		//encode id
 		foreach ($this->page_data['video_disks'] as $disk) {
@@ -86,7 +83,7 @@ class EshopController extends SiteController {
 		$this->page_data['description'] = 'Audio CD and MP3';
 		$this->page_data['sub_page_active'] = '';
 		$this->page_data['top_level_page'] = 'publications';
-		$this->page_data['audio_disks'] = $this->titleLimit(AudioDisk::get());
+		$this->page_data['audio_disks'] = AudioDisk::get();
 
 		//encode id
 		foreach ($this->page_data['audio_disks'] as $disk) {
@@ -107,7 +104,7 @@ class EshopController extends SiteController {
 		$this->page_data['description'] = 'DVD';
 		$this->page_data['sub_page_active'] = 'dvd';
 		$this->page_data['top_level_page'] = 'publications';
-		$this->page_data['video_disks'] = $this->titleLimit(VideoDisk::where('disk_type','=',1)->get());
+		$this->page_data['video_disks'] =VideoDisk::where('disk_type','=',1)->get();
 
 		//encode id
 		foreach ($this->page_data['video_disks'] as $disk) {
@@ -127,7 +124,7 @@ class EshopController extends SiteController {
 		$this->page_data['description'] = 'Video CDs';
 		$this->page_data['sub_page_active'] = 'vcd';
 		$this->page_data['top_level_page'] = 'publications';
-		$this->page_data['video_disks'] = $this->titleLimit(VideoDisk::where('disk_type','=',2)->get());
+		$this->page_data['video_disks'] = VideoDisk::where('disk_type','=',2)->get();
 
 		//encode id
 		foreach ($this->page_data['video_disks'] as $disk) {
@@ -147,7 +144,7 @@ class EshopController extends SiteController {
 		$this->page_data['description'] = '';
 		$this->page_data['sub_page_active'] = 'mp3';
 		$this->page_data['top_level_page'] = 'publications';
-		$this->page_data['audio_disks'] = $this->titleLimit(AudioDisk::where('disk_type','=',2)->get());
+		$this->page_data['audio_disks'] = AudioDisk::where('disk_type','=',2)->get();
 
 		//encode id
 		foreach ($this->page_data['audio_disks'] as $disk) {
@@ -166,7 +163,7 @@ class EshopController extends SiteController {
 		$this->page_data['description'] = '';
 		$this->page_data['sub_page_active'] = 'acd';
 		$this->page_data['top_level_page'] = 'publications';
-		$this->page_data['audio_disks'] = $this->titleLimit(AudioDisk::where('disk_type','=',1)->get());
+		$this->page_data['audio_disks'] = AudioDisk::where('disk_type','=',1)->get();
 
 		//encode id
 		foreach ($this->page_data['audio_disks'] as $disk) {
@@ -186,7 +183,7 @@ class EshopController extends SiteController {
 		$this->page_data['description'] = '';
 		$this->page_data['sub_page_active'] = 'book';
 		$this->page_data['top_level_page'] = 'publications';
-		$this->page_data['books'] = $this->titleLimit(Book::get());
+		$this->page_data['books'] = Book::get();
 
 		//encode id
 		foreach ($this->page_data['books'] as $book) {
@@ -364,12 +361,16 @@ class EshopController extends SiteController {
 		$this->page_data['search'] = $query;
 
 		if(strlen($query) < 4){
+			$this->page_data['search'] = $query;
 
 		}else{
 
+			
 			$this->page_data['video_result'] = VideoDisk::search($query)->get();
 			$this->page_data['audio_result'] = AudioDisk::search($query)->get();
 			$this->page_data['book_result'] = Book::search($query)->get();
+
+			$this->page_data['result_count'] = $this->page_data['book_result']->count() + $this->page_data['video_result']->count() +$this->page_data['audio_result']->count();
 			//$this->page_data['magazine_result'] = Magazine::search($query)->get();
 
 		}

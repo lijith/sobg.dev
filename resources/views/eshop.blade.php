@@ -28,14 +28,29 @@
 					<div class="pub-item">
 						<div class="wrap">
 							<div class="pub-image">
-								<img src="{{asset('images/video-disks/'.$vdisk->cover_photo_thumbnail)}}" alt="{{ucwords($vdisk->title)}}" />
+
+								@if($vdisk->disk_type == 1)
+									<a href="{{route('dvd.show',array($vdisk->slug))}}">
+										<img src="{{asset('images/video-disks/'.$vdisk->cover_photo_thumbnail)}}" alt="{{ ucwords($vdisk->title) }}" />
+									</a>
+								@elseif($vdisk->disk_type == 2)
+									<a href="{{route('vcd.show',array($vdisk->slug))}}">
+										<img src="{{asset('images/video-disks/'.$vdisk->cover_photo_thumbnail)}}" alt="{{ ucwords($vdisk->title) }}" />
+									</a>
+								@endif
+								
 							</div><!-- /.pub-image -->
+
 							<div class="pub-title">
 								@if($vdisk->disk_type == 1)
-									<a href="{{route('dvd.show',array($vdisk->slug))}}">{{ucwords($vdisk->title)}}</a>
+									<a href="{{route('dvd.show',array($vdisk->slug))}}" data-toggle="tooltip" data-placement="bottom" title="{{ ucwords($vdisk->title) }}" class="red-tooltip">
+									{{ ucwords(\Illuminate\Support\Str::limit($vdisk->title,15)) }}
+									</a>
 									<br /><span class="disk-type">DVD</span>
 								@elseif($vdisk->disk_type == 2)
-									<a href="{{route('vcd.show',array($vdisk->slug))}}">{{ucwords($vdisk->title)}}</a>
+									<a href="{{route('vcd.show',array($vdisk->slug))}}" data-toggle="tooltip" data-placement="bottom" title="{{ ucwords($vdisk->title) }}" class="red-tooltip">
+									{{ ucwords(\Illuminate\Support\Str::limit($vdisk->title,15)) }}
+									</a>
 									<br /><span class="disk-type">VCD</span>
 								@endif
 							</div><!-- /.pub-title -->
@@ -58,17 +73,31 @@
 					<div class="pub-item">
 						<div class="wrap">
 							<div class="pub-image">
-								<img src="{{asset('images/audio-disks/'.$adisk->cover_photo_thumbnail)}}" alt="" />
+								@if($adisk->disk_type == 1)
+									<a href="{{route('dvd.show',array($adisk->slug))}}">
+										<img src="{{asset('images/audio-disks/'.$adisk->cover_photo_thumbnail)}}" alt="{{ ucwords($adisk->title) }}" />
+									</a>
+								@elseif($adisk->disk_type == 2)
+									<a href="{{route('vcd.show',array($adisk->slug))}}">
+										<img src="{{asset('images/audio-disks/'.$adisk->cover_photo_thumbnail)}}" alt="{{ ucwords($adisk->title) }}" />
+									</a>
+								@endif
 							</div><!-- /.pub-image -->
+
 							<div class="pub-title">
 								@if($adisk->disk_type == 1)
-									<a href="{{route('dvd.show',array($adisk->slug))}}">{{ucwords($adisk->title)}}</a>
+									<a href="{{route('dvd.show',array($adisk->slug))}}" data-toggle="tooltip" data-placement="bottom" title="{{ ucwords($adisk->title) }}" class="red-tooltip">
+									{{ ucwords(\Illuminate\Support\Str::limit($adisk->title,15)) }}
+									</a>
 									<br /><span class="disk-type">Audio CD</span>
 								@elseif($adisk->disk_type == 2)
-									<a href="{{route('vcd.show',array($adisk->slug))}}">{{ucwords($adisk->title)}}</a>
+									<a href="{{route('vcd.show',array($adisk->slug))}}" data-toggle="tooltip" data-placement="bottom" title="{{ ucwords($adisk->title) }}" class="red-tooltip">
+									{{ ucwords(\Illuminate\Support\Str::limit($adisk->title,15)) }}
+									</a>
 									<br /><span class="disk-type">MP3</span>
 								@endif
 							</div><!-- /.pub-title -->
+
 						</div><!-- /.wrap -->
 					</div><!-- /.pub-item -->
 				@endforeach
@@ -87,9 +116,15 @@
 					<div class="pub-item">
 						<div class="wrap">
 							<div class="pub-image">
-								<img src="{{asset('images/books/'.$book->cover_photo_thumbnail)}}" alt="" />
+								<a href="{{route('book.show',array($book->slug))}}">
+									<img src="{{asset('images/books/'.$book->cover_photo_thumbnail)}}" alt="{{ ucwords($book->title) }}" />
+								</a>
 							</div><!-- /.pub-image -->
-							<div class="pub-title"><a href="">{{$book->title}}</a></div><!-- /.pub-title -->
+							<div class="pub-title">
+								<a href="{{route('book.show',array($book->slug))}}" data-toggle="tooltip" data-placement="bottom" title="{{ ucwords($book->title) }}" class="red-tooltip">
+								{{ ucwords(\Illuminate\Support\Str::limit($book->title)) }}
+								</a>
+							</div><!-- /.pub-title -->
 						</div><!-- /.wrap -->
 					</div><!-- /.pub-item -->
 				@endforeach
@@ -109,9 +144,15 @@
 					<div class="pub-item">
 						<div class="wrap">
 							<div class="pub-image">
+							<a href="{{ route('magazine.show', array($magazine->slug)) }}">
 								<img src="{{asset('images/magazines/'.$magazine->cover_photo_thumbnail)}}" alt="" />
+							</a>	
 							</div><!-- /.pub-image -->
-							<div class="pub-title"><a href="">{{$magazine->title}}</a></div><!-- /.pub-title -->
+							<div class="pub-title">
+								<a href="{{ route('magazine.show', array($magazine->slug)) }}" data-toggle="tooltip" data-placement="bottom" title="{{ ucwords($magazine->title) }}" class="red-tooltip">
+								{{ ucwords(\Illuminate\Support\Str::limit($magazine->title)) }}
+								</a>
+							</div><!-- /.pub-title -->
 						</div><!-- /.wrap -->
 					</div><!-- /.pub-item -->
 				@endforeach

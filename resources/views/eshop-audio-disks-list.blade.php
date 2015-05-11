@@ -49,15 +49,21 @@
 					<div class="pub-item">
 						<div class="wrap">
 							<div class="pub-image">
-								<img src="{{asset('images/audio-disks/'.$adisk->cover_photo_thumbnail)}}" alt="{{ucwords($adisk->title)}}" />
+								<a href="route('acd.show',array($adisk->slug))" title="{{ ucwords($adisk->title) }}">
+									<img src="{{asset('images/audio-disks/'.$adisk->cover_photo_thumbnail)}}" alt="{{ucwords($adisk->title)}}" />
+								</a>
 							</div><!-- /.pub-image -->
 							<div class="pub-title">
 								@if($adisk->disk_type == 1)
-									<a href="{{route('acd.show',array($adisk->slug))}}">{{ucwords($adisk->title)}}</a>
+									<a href="{{ route('acd.show',array($adisk->slug)) }}" data-toggle="tooltip" data-placement="bottom" title="{{ ucwords($adisk->title) }}" class="red-tooltip">
+									{{ucwords(\Illuminate\Support\Str::limit($adisk->title,15))}}
+									</a>
 									<br />
 									Audio CD
 								@elseif($adisk->disk_type == 2)
-									<a href="{{route('mp3.show',array($adisk->slug))}}">{{ucwords($adisk->title)}}</a>
+									<a href="{{route('mp3.show',array($adisk->slug))}}" data-toggle="tooltip" data-placement="bottom" title="{{ ucwords($adisk->title) }}" class="red-tooltip">
+									{{ucwords(\Illuminate\Support\Str::limit($adisk->title,15))}}
+									</a>
 									<br />
 									MP3
 								@endif

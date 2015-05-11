@@ -39,8 +39,8 @@
 						<div class="split_30"></div><!-- /.split_30 -->
 						<div class="add-to-cart">
 							<form method="POST" action="{{route('cart.add')}}">
-									<input type="hidden" name="item-sub-type" value="book" />
-								<input type="hidden" name="item-type" value="book" />
+								<input type="hidden" name="item-sub-type" value="magazine" />
+								<input type="hidden" name="item-type" value="magazine-print" />
 								<input type="hidden" name="item-id" value="{{$magazine->id}}" />
 								<input name="_token" value="{{ csrf_token() }}" type="hidden">
 								

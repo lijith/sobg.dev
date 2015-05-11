@@ -45,12 +45,19 @@
 					<div class="pub-item">
 						<div class="wrap">
 							<div class="pub-image">
-								<img src="{{asset('images/books/'.$book->cover_photo_thumbnail)}}" alt="{{ucwords($book->title)}}" />
+								<a href="{{ route('book.show',array($book->slug)) }}" title="{{ucwords($book->title)}}">
+									<img src="{{asset('images/books/'.$book->cover_photo_thumbnail)}}" alt="{{ucwords($book->title)}}" />
+								</a>	
 							</div><!-- /.pub-image -->
 							<div class="pub-title">
-									<a href="{{route('book.show',array($book->slug))}}">{{ucwords($book->title)}}</a>
-								<p>Rs {{$book->price}}</p>
-								<p>by : {{ucwords($book->author)}}</p>
+									<a href="{{ route('book.show',array($book->slug)) }}" data-toggle="tooltip" data-placement="bottom" title="{{ ucwords($book->title) }}" class="red-tooltip">
+									{{ucwords($book->title)}}
+									</a>
+									<p>by : {{ ucwords(\Illuminate\Support\Str::limit($book->author,15)) }}</p>
+									<p>Rs {{$book->price}} <br />{{ucwords($book->language)}}		
+									</p>
+								
+
 							</div><!-- /.pub-title -->
 							<div class="item-add-to-cart">
 								<form method="POST" action="{{route('cart.add')}}">

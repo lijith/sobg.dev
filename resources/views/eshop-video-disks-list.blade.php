@@ -51,14 +51,25 @@
 					<div class="pub-item">
 						<div class="wrap">
 							<div class="pub-image">
-								<img src="{{asset('images/video-disks/'.$vdisk->cover_photo_thumbnail)}}" alt="{{ucwords($vdisk->title)}}" />
+								@if($vdisk->disk_type == 1)
+									<a href="{{route('dvd.show',array($vdisk->slug))}}" title="{{ ucwords($vdisk->title) }}">
+										<img src="{{asset('images/video-disks/'.$vdisk->cover_photo_thumbnail)}}" alt="{{ucwords($vdisk->title)}}" />
+									</a>	
+								@elseif($vdisk->disk_type == 2)
+									<a href="{{route('vcd.show',array($vdisk->slug))}}" title="{{ ucwords($vdisk->title) }}">
+										<img src="{{asset('images/video-disks/'.$vdisk->cover_photo_thumbnail)}}" alt="{{ucwords($vdisk->title)}}" />
+									</a>	
+								@endif
+
 							</div><!-- /.pub-image -->
 							<div class="pub-title">
 								@if($vdisk->disk_type == 1)
-									<a href="{{route('dvd.show',array($vdisk->slug))}}">{{ucwords($vdisk->title)}}</a> <br />
+									<a href="{{route('dvd.show',array($vdisk->slug))}}" data-toggle="tooltip" data-placement="bottom" title="{{ ucwords($vdisk->title) }}" class="red-tooltip">
+									{{ ucwords(\Illuminate\Support\Str::limit($vdisk->title,15)) }}</a> <br />
 									DVD
 								@elseif($vdisk->disk_type == 2)
-									<a href="{{route('vcd.show',array($vdisk->slug))}}">{{ucwords($vdisk->title)}}</a> <br />
+									<a href="{{route('vcd.show',array($vdisk->slug))}}" data-toggle="tooltip" data-placement="bottom" title="{{ ucwords($vdisk->title) }}" class="red-tooltip">
+									{{ ucwords(\Illuminate\Support\Str::limit($vdisk->title,15)) }}</a> <br />
 									VCD
 								@endif
 								<p>Rs {{$vdisk->price}}</p>

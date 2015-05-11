@@ -244,3 +244,10 @@ img.right{
 .main-cart .table > tbody > tr > td{
 	vertical-align: middle;
 }
+
+.red-tooltip + .tooltip > .tooltip-inner {
+	background-color: #c9532d;
+}
+.red-tooltip + .tooltip > .tooltip-arrow { 
+	border-bottom-color:#c9532d; 
+}

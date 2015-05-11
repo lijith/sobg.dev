@@ -7,7 +7,7 @@
 				@foreach($upcoming_events as $event)
 				<?php $date = \Carbon\Carbon::createFromFormat('Y-m-d H:i:s',$event->start_date); ?>
 				<li>
-					<a href="{{ route('event.show', array($event->slug)) }}">{{ $date->format('d/M/Y') }} | {{ucwords($event->title)}}</a>
+					<a href="{{ route('event.show', array($event->slug)) }}">{{ $date->format('M d, Y') }} | {{ucwords($event->title)}}</a>
 				</li>
 				@endforeach
 			</ul>
@@ -24,7 +24,7 @@
 				@foreach($past_events as $event)
 				<?php $date = \Carbon\Carbon::createFromFormat('Y-m-d H:i:s',$event->end_date); ?>
 				<li>
-					<a href="{{ route('event.show', array($event->slug)) }}">{{ $date->format('d/M/Y') }} | {{ucwords($event->title)}}</a>
+					<a href="{{ route('event.show', array($event->slug)) }}">{{ $date->format('M d, Y') }} | {{ucwords($event->title)}}</a>
 				</li>
 				@endforeach
 			</ul>

@@ -45,10 +45,13 @@
 					<div class="pub-item">
 						<div class="wrap">
 							<div class="pub-image">
-								<img src="{{asset('images/magazines/'.$magazine->cover_photo_thumbnail)}}" alt="{{ucwords($magazine->title)}}" />
+								<a href="{{ route('magazine.show',array($magazine->slug)) }}">
+									<img src="{{asset('images/magazines/'.$magazine->cover_photo_thumbnail)}}" alt="{{ucwords($magazine->title)}}" />
+								</a>
 							</div><!-- /.pub-image -->
 							<div class="pub-title">
-									<a href="{{route('magazine.show',array($magazine->slug))}}">{{ucwords($magazine->title)}}</a>
+									<a href="{{ route('magazine.show',array($magazine->slug)) }}" data-toggle="tooltip" data-placement="bottom" title="{{ ucwords($magazine->title) }}" class="red-tooltip">
+										{{ ucwords(\Illuminate\Support\Str::limit($magazine->title,15)) }}</a>
 									<p>Issue : {{$magazine->published_at}}</p>
 									
 							</div><!-- /.pub-title -->
