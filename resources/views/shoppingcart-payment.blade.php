@@ -5,7 +5,7 @@
 
 <div class="row">
 
-@include('side-cart')
+@include('no-side-cart')
 
 	<div class="col-sm-8 main-cart">
 		<h1 class="col-heading">Your Cart</h1>
@@ -69,8 +69,8 @@
 		              		</tr>
 		              		@foreach($orders as $order)
 		              		<tr>
-		              			<td>{{$order['title']}}</td>
-		              			<td>{{$order['quantity']}}</td>
+		              			<td>{{ $order['title'] }}</td>
+		              			<td>{{ $order['quantity'] }}</td>
 		              		</tr>
 		              		@endforeach
 		              	</table>
@@ -82,26 +82,26 @@
 		              <div class="panel-heading">Amount</div>
 		              <div class="panel-body">
 		              	<table class="table table-bordered">
-		              		<tr>
-		              			<td>Shipping</td>
-		              			<td>{{Session::get('shipping_charge')}}</td>
-		              		</tr>
-		              		<tr>
-		              			<td>Amount</td>
-		              			<td>{{$shipping->amount}}</td>
-		              		</tr>
+		              		
 		              		<tr>
 		              			<td>Total Amount</td>
-		              			<td>{{$shipping->amount + Session::get('shipping_charge')}}</td>
+		              			<td>{{ $shipping->amount }}
+		              			 </td>
 		              		</tr>
 		              	</table>
+		              	<i>includes shipping charges if any</i>
 		              </div>
 		          </div>
 			    	</div><!-- /.col-md-6 -->
 			    </div><!-- /.row -->					              
 		      <hr />
+
 		      <div class="clearfix">
+	      	 @if($shipping->amount == 0)
+		      	<a class="btn btn-primary pull-right" href="login.html">Check E-Shop for items</a>
+			      @else
 		      	<a class="btn btn-primary pull-right" href="login.html">Proceed To Checkout</a>
+		      	@endif
 		      </div><!-- /.clearfix -->
 		    </div>
 		  </div>

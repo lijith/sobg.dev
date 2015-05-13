@@ -29,4 +29,5 @@ class HomeController extends SiteController {
 		return view('home')->with($this->page_data);
 	}
 
+
 }

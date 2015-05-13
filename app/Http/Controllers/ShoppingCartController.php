@@ -52,6 +52,7 @@ class ShoppingCartController extends SiteController {
     $this->page_data['prints'] = SubscriptionRates::where('type', '=', 'print')->get();
 
     return View::make('shoppingcart')->with($this->page_data);
+
   }	
 
 	/**
@@ -64,24 +65,24 @@ class ShoppingCartController extends SiteController {
   public function add() {
 
     //Cart::destroy();
-
   	switch(Input::get('item-type')){
   		case 'video':{
-  			$id = Hashids::connection('video')->decode(Input::get('item-id'));
+  			$id = Hashids::connection('video')->decode(Input::get('item-id'))[0];
   			$item = VideoDisk::find($id)->first();
   		}
   		break;
   		case 'audio':{
-  			$id = Hashids::connection('audio')->decode(Input::get('item-id'));
+  			$id = Hashids::connection('audio')->decode(Input::get('item-id'))[0];
   			$item = AudioDisk::find($id)->first();
   		}
   		break;
   		case 'book':{
-  			$id = Hashids::connection('book')->decode(Input::get('item-id'));
+  			$id = Hashids::connection('book')->decode(Input::get('item-id'))[0];
   			$item = Book::find($id)->first();
   		}
+      break;
       case 'magazine-print':{
-        $id = Hashids::connection('magazine')->decode(Input::get('item-id'));
+        $id = Hashids::connection('magazine')->decode(Input::get('item-id'))[0];
         $item = Magazine::find($id)->first();
       }
   	}
@@ -118,6 +119,7 @@ class ShoppingCartController extends SiteController {
 
       }
     }else{
+
       $id = Input::get('item-id');
       $name = ucwords($item->title);
       $price = $item->price;
@@ -145,6 +147,9 @@ class ShoppingCartController extends SiteController {
    // var_dump($cart_item);
   	Cart::add($cart_item);
 
+    //update shipping and order list
+    $this->updateShippingOnCartChange();
+
   	return redirect()->back();
 
   }	
@@ -169,6 +174,9 @@ class ShoppingCartController extends SiteController {
       }
     }
 
+    //update shipping and order list
+    $this->updateShippingOnCartChange();
+
     return redirect()->back();
   }
 
@@ -182,7 +190,34 @@ class ShoppingCartController extends SiteController {
    * @return redirect
    */
   public function removeItem($hash) {
+
     Cart::remove($hash);
+
+    //if updating a cart then reflect removal in shipping and order
+    if(Session::has('shipping_id')){
+
+      //adjust current amount to updated cart
+
+      $shipping_id = Session::get('shipping_id');
+
+      $shipping = Shipping::find($shipping_id);
+
+      $shipping->amount = ( Cart::count() < 1 ) ? 0 : $this->totalAmount();
+
+      $shipping->save();
+
+      // remake orders list
+      Order::where('shipping_id', '=', $shipping_id)->delete();
+
+      $items = Cart::content()->toArray();
+
+      $this->makeOrders($shipping_id, $items);
+
+    }
+
+    //update shipping and order list
+    $this->updateShippingOnCartChange();
+
     return redirect()->back();
   }
 
@@ -195,16 +230,18 @@ class ShoppingCartController extends SiteController {
    * @return view
    */
   public function showShipping() {
-    // Is this user already signed in?
-    // if (!Sentry::check()) {
-    //   // No - they are not signed in.  redirect to account login/create form.
-    //   return $this->redirectTo('cart_account');
-    // }
 
-    // if(Cart::count() < 1){
-    //   //if cart is empty redirect to eshop
-    //   return $this->redirectTo('eshop');
-    // }
+    if(Cart::count() < 1){
+      //if cart is empty redirect to eshop
+      return $this->redirectTo('eshop');
+    }
+
+    //Is this user already signed in?
+    if (!Sentry::check()) {
+      // No - they are not signed in.  redirect to account login/create form.
+      return $this->redirectTo('cart_account');
+    }
+
 
     $user_id = Session::get('userId');
 
@@ -234,6 +271,7 @@ class ShoppingCartController extends SiteController {
    * @return redirect
    */
   public function storeShipping(ShippingFormRequest $request) {
+
     // Is this user already signed in?
     if (!Sentry::check()) {
       // No - they are not signed in.  redirect to account login/create form.
@@ -248,6 +286,7 @@ class ShoppingCartController extends SiteController {
 
       $shipping = new Shipping(array(
         'user_id' => Session::get('userId'),
+        'reference_id' => $this->generateReference(),
         'billing_name' => Input::get('billing-name'),
         'billing_address_1' => Input::get('billing-address_1'),
         'billing_address_2' => Input::get('billing-address_2'),
@@ -265,7 +304,7 @@ class ShoppingCartController extends SiteController {
         'shipping_contact_number_1' => Input::get('shipping-contact_number_1'),
         'shipping_contact_number_2' => Input::get('shipping-contact_number_2'),
         'quantity' => Cart::count(),
-        'amount' => Cart::total() + Session::get('shipping_charge')
+        'amount' => $this->totalAmount()
       ));
 
       $shipping->save();
@@ -274,11 +313,10 @@ class ShoppingCartController extends SiteController {
 
       $user_id = Session::get('userId');
 
-
       Session::put('shipping_id',$shipping->id);
 
       $this->makeOrders($shipping_id, $items);
-
+      $this->makeSubscription($items);
       //Cart::destroy();
 
       //redirect to payment page
@@ -300,16 +338,19 @@ class ShoppingCartController extends SiteController {
    * @return view
    */
   public function editShipping() {
-    // Is this user already signed in?
-    // if (!Sentry::check()) {
-    //   // No - they are not signed in.  redirect to account login/create form.
-    //   return $this->redirectTo('cart_account');
-    // }
 
-    // if(Cart::count() < 1){
-    //   //if cart is empty redirect to eshop
-    //   return $this->redirectTo('eshop');
-    // }
+     if(Cart::count() < 1){
+      //if cart is empty redirect to eshop
+      return $this->redirectTo('eshop');
+    }
+
+    //Is this user already signed in?
+    if (!Sentry::check()) {
+      // No - they are not signed in.  redirect to account login/create form.
+      return $this->redirectTo('cart_account');
+    }
+
+   
 
     $shipping_id = Session::get('shipping_id');
 
@@ -342,13 +383,10 @@ class ShoppingCartController extends SiteController {
     $items = Cart::content()->toArray();
 
 
-
-
     if(Cart::count() > 0){
 
       //save the shipping
       //some issue with accessing id value from collection, so using as array
-
       $shipping->billing_name = Input::get('billing-name');
       $shipping->billing_address_1 = Input::get('billing-address_1');
       $shipping->billing_address_2 = Input::get('billing-address_2');
@@ -366,11 +404,13 @@ class ShoppingCartController extends SiteController {
       $shipping->shipping_contact_number_1 = Input::get('shipping-contact_number_1');
       $shipping->shipping_contact_number_2 = Input::get('shipping-contact_number_2');
       $shipping->quantity = Cart::count();
-      $shipping->amount = Cart::total();
+      $shipping->amount = $this->totalAmount();
 
       $shipping->save();
 
       $this->makeOrders($shipping_id, $items);
+      $this->makeSubscription($items);
+
 
       //redirect to payment page
       return $this->redirectTo('payment');
@@ -398,10 +438,6 @@ class ShoppingCartController extends SiteController {
     }
 
     $shipping_id = Session::get('shipping_id');
-
-    $cart_items = Cart::content()->toArray();
-
-    $this->makeOrders($shipping_id, $cart_items);
 
     $orders = array();
 
@@ -434,6 +470,7 @@ class ShoppingCartController extends SiteController {
           case 'book':{
             $product = Book::find($item->item_id)->first();
           }
+          break;
           case 'magazine':{
             $product = Subscription::find($item->item_id)->first();
           }
@@ -465,6 +502,7 @@ class ShoppingCartController extends SiteController {
    * @return redirect
    */
   public function updateShippingCharges() {
+
     if(Input::get('ship-to') == 'IN'){
       Session::put('shipping_charge', 80);
     }elseif(Input::get('ship-to') == 'OUT'){
@@ -474,6 +512,61 @@ class ShoppingCartController extends SiteController {
 
     return $this->redirectTo('cart');
   }
+
+
+  /**
+   * Make subscription.
+   *
+   * @param curent cart items
+   *
+   * @return void
+   */
+  public function makeSubscription($cart_items){
+
+    $shipping_id = Session::get('shipping_id');
+    $user_id = Session::get('userId');
+
+    //remove orders of shipping id if any
+    MagazineSubscribers::where('shipping_id', '=', $shipping_id)->delete();
+
+    foreach ($cart_items as $item) {
+      # code...
+      //handle subscription from cart
+      if($item['options']['item_sub_type'] == 'digital' || $item['options']['item_sub_type'] == 'print'){
+
+        if($item['options']['item_sub_type'] == 'digital'){
+          $digital = 1;
+          $print = 0;
+        }elseif ($item['options']['item_sub_type'] == 'digital') {
+           $digital = 0;
+          $print = 1;
+        }
+
+        $subscription = SubscriptionRates::find($item['id']);
+
+        $date = Carbon::now();
+        $date->addYears($subscription->period);
+
+        $subscribers = new MagazineSubscribers(array(
+          'user_id' => $user_id,
+          'shipping_id' => $shipping_id,
+          'digital' => $digital,
+          'print' => $print,
+          'active' => 0,
+          'ending_at' => $date,
+          'created_at' => Carbon::now(),
+          'updated_at' => Carbon::now()
+
+        ));
+
+        $subscribers->save();
+
+      }
+    }  
+
+  }
+
+
 
   /**
    * Make orders.
@@ -494,31 +587,7 @@ class ShoppingCartController extends SiteController {
 
     foreach ($items as $item) {
 
-      //handle subscription from cart
-      if($item['options']['item_sub_type'] == 'digital' || $item['options']['item_sub_type'] == 'print'){
-        
-        if($item['options']['item_sub_type'] == 'digital'){
-          $digital = 1;
-          $print = 0;
-        }elseif ($item['options']['item_sub_type'] == 'digital') {
-           $digital = 0;
-          $print = 1;
-        }
 
-        $subscription = SubscriptionRates::find($item['id']);
-
-        $date = Carbon::now();
-        $date->addYears($subscription->period);
-
-        $subscriber = new MagazineSubscribers(array(
-          'user_id' => $user_id,
-          'shipping_id' => $shipping_id,
-          'digital' => $digital,
-          'print' => $print,
-          'active' => 0,
-          'ending_at' => $date
-        ));
-      }
       
       //handle eshop items
       switch($item['options']['item_type']){
@@ -549,6 +618,100 @@ class ShoppingCartController extends SiteController {
     }
 
     Order::insert($insert_data);
+
   }
+
+  /**
+   * update shipping details.
+   *
+   * @param  void
+   *
+   * @return string
+   */
+  public function updateShippingOnCartChange(){
+
+    if(Session::has('shipping_id')){
+      
+      $shipping_id = Session::get('shipping_id');
+
+      $amount = $this->totalAmount();
+
+      $shipping = Shipping::find($shipping_id);
+
+      $shipping->amount = $amount;
+
+      $shipping->save();
+
+      if(Cart::count() > 0){
+        $this->makeOrders($shipping_id, Cart::content()->toArray());
+      }
+    }
+
+  }
+
+
+  /**
+   * make shipping reference number.
+   *
+   * @param  void
+   *
+   * @return string
+   */
+  public function generateReference(){
+
+    $ship_rate = Session::get('shipping_charge');
+
+    $ship_rate = substr("000".$ship_rate,-4);
+
+    $newID = rand(1000, 9999);
+
+    $date1 = date('ymd');
+
+    $ref_id = $newID.$ship_rate.(date('s')).$date1;
+    
+    return $ref_id;
+  }
+
+
+  /**
+   * total amount.
+   *
+   * @param  void
+   *
+   * @return integer
+   */
+
+  public function totalAmount(){
+
+    $amount = 0;
+
+    if(Cart::count() == 0){
+      return $amount;
+    }
+
+    if(Cart::count() == 1){
+
+      $items = Cart::content()->toArray();
+
+      foreach ($items as $item) {
+        if($item['options']['item_sub_type'] == 'digital'){
+          $amount = Cart::total();
+        }else{
+           $amount = Cart::total() + Session::get('shipping_charge');
+        }
+      }
+
+    }else{
+
+      $amount = Cart::total() + Session::get('shipping_charge');
+
+    }
+
+    return $amount;
+
+  }
+
+
+
 
 }
