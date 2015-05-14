@@ -16,10 +16,8 @@
       <div class="panel panel-default">
 	      <div class="panel-body">
 
-		      <!--<div class="text-center">
-		        <img src="http://lorempixel.com/200/200/people/9/" class="avatar img-circle img-thumbnail" alt="avatar">
-		      </div>-->
-	          	
+		      
+	          	@if($profile != null)
 	            <h2>{{ucwords($profile->name)}}</h2>
 	            <p><strong>{{$user->email}}</strong></p>
 	            <p><strong>Contact Address: </strong>
@@ -41,21 +39,14 @@
 								<br />
 								{{$profile->contact_number_2}}
 	            </p>
+	            @else
+	            	<p>Please update profile details</p>
+	            @endif
 	            <hr />
-	            <div class="row">
-	            	<div class="col-sm-6">
-	            		<form method="POST" action="{{ route('member.session.destroy') }}">
-			            	 <input name="_token" value="{{ csrf_token() }}" type="hidden">
-		                <input name="_method" value="DELETE" type="hidden">
-		                <button class="btn btn-default">Log Out</button>
-			            </form>
-	            	</div><!-- /.col-sm-6 -->
-	            	<div class="col-sm-6">
-	            		@if($cart_count > 0)
-	            			<a href="{{ route('cart.shipping') }}" class="btn btn-default"><i class="fa fa-shopping-cart"></i> Cart Check Out</a>
-	            		@endif
-	            	</div><!-- /.col-sm-6 -->
-	            </div><!-- /.row -->
+	            <p>
+	            	<a href="{{ route('member.logout') }}" class="btn btn-default">Log out</a>
+	            </p>
+	            <!-- /.row -->
 	            
 
 	            
@@ -63,14 +54,28 @@
 	      </div><!--/panel-body-->
 	    </div><!--/panel-->
 
+	    <div class="panel panel-default">
+	      <div class="panel-body">
+					
+					<h3>Magazine Subscription</h3>
+					
+
+	      </div><!--/panel-body-->
+	    </div><!--/panel-->
+
+
 	    <div class="well panel panel-default">
+	    	@if(Input::old('form') == 'password')
 			    <ul>
             @foreach($errors->all() as $error)
               <li>{{$error}}</li>
             @endforeach
           </ul>
+        @endif  
 	    	<form class="form-horizontal" role="form" method="POST" action="{{ route('member.profile.password') }}">
 	    	<input name="_token" value="{{ csrf_token() }}" type="hidden">
+	    	<input name="form" value="password" type="hidden">
+
 	      <div class="panel-body">
 	      	<div class="form-group {{ ($errors->has('oldPassword')) ? 'has-error' : '' }}">
 	          <label class="col-md-3 control-label">Old Password:</label>
@@ -180,10 +185,10 @@
 		          </div>
 		        </div>
 		        <div class="form-group">
-	          <div class="col-lg-offset-3 col-md-8">
-	            <button class="btn btn-primary" value="Save Changes" type="submit">Save Changes</button>
-	          </div>
-	        </div>
+		          <div class="col-lg-offset-3 col-md-8">
+		            <button class="btn btn-primary" value="Save Changes" type="submit">Save Changes</button>
+		          </div>
+	        	</div>
 		        </form>
 		      </div><!--panel-body-->
 		    </div><!--panel panel-default-->
@@ -191,6 +196,7 @@
 
 		    <div class="well panel panel-default">
 		      <div class="panel-body">
+
 		      <h3>Address</h3>
             @if(Input::old('form') == 'address')
             <ul>

@@ -107,25 +107,31 @@ table[class=social]{ text-align:right;}
 
 <!--  Banner Part Start-->
 <table width="600" border="0" cellspacing="0" cellpadding="0" class="main">
-  <tr>
-    <td align="left" valign="top"><img src="images/banner.png" width="600" height="326" alt="" style="display:block;width:100% !important; height:auto !important; " /></td>
-    </tr>
+  
   <tr>
     <td align="left" valign="top">
     
     <!--  Banner Text Start-->
     <table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" class="main">
       <tr>
-        <td align="left" valign="top" bgcolor="#DEA32B" style="background:#DEA32B; border-bottom:#d86a12 solid 1px; padding:12px 0px 12px 20px;" class="borter-inner-bottom"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <td align="left" valign="top" bgcolor="#DEA32B" style="background:#DEA32B; border-bottom:#d86a12 solid 1px; padding:12px;" class="borter-inner-bottom"><table width="100%" border="0" cellspacing="0" cellpadding="0">
           <tr>
-            <td align="left" valign="top" style="font:Normal 24px Arial, Helvetica, sans-serif; color:#FFF; padding:20px 0px 0px 0px;">There are many variations of passages</td>
+            <td align="left" valign="top" style="font:Normal 24px Arial, Helvetica, sans-serif; color:#FFF; padding:20px 0px 0px 0px;">
+              {{ $heading }}
+            </td>
           </tr>
           <tr>
-            <td align="left" valign="top" style="font:Normal 12px Arial, Helvetica, sans-serif; color:#FFF; padding:8px 0px 16px 4px; line-height:22px;">
-            
-            <!-- content starts here -->    
-              @yield('content')
-            <!-- content ends here -->    
+            <td align="left" valign="top" style="font:Normal 12px Arial, Helvetica, sans-serif; color:#FFF; padding:10px;">
+
+            <table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
+              <tr>
+                <td style="background:#FFF; color:#000; padding:10px">
+                  <!-- content starts here -->    
+                    @yield('content')
+                  <!-- content ends here -->    
+                </td>
+              </tr>
+            </table>
 
             </td>
           </tr>
@@ -158,9 +164,7 @@ table[class=social]{ text-align:right;}
         
         <!--  Footer Part Start-->
         <table width="600" border="0" cellspacing="0" cellpadding="0" class="main">
-          <tr>
-            <td align="left" valign="top" style="border-bottom:#ececec solid 1px; border-top:#DEA32B solid 3px;" class="borter-footer-bottom"><img src="images/footer-add.png" width="600" height="97" alt="" style="display:block;width:100% !important; height:auto !important; " /></td>
-          </tr>
+          
           <tr>
             <td align="left" valign="top" bgcolor="#ffffff" style="background:#ffffff; text-align:center; font:normal 12px Arial, Helvetica, sans-serif; color:#3b3b3b; line-height:18px; padding:34px 60px 34px 60px;">You have received this email because you have subscribed to us admin@sobg.com. <br />
 <span style="color:#DEA32B;">Copyright © 2012 School of Bhagavad Gita</span></td>

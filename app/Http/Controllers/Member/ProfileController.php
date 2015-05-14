@@ -15,6 +15,7 @@ use Carbon\Carbon;
 
 use App\User;
 use App\Profile;
+use App\MagazineSubscriber;
 
 use App\Http\Requests\Member\ProfilePersonalUpdateRequest;
 use App\Http\Requests\Member\ProfileAddressUpdateRequest;
@@ -84,11 +85,34 @@ class ProfileController extends BaseController
 
         $this->page_data['user'] = $user;
         $this->page_data['profile'] = User::find(Session::get('userId'))->profile;
-        $dob = Carbon::createFromFormat('Y-m-d H:i:s',$this->page_data['profile']->dob);
 
-        $this->page_data['profile']->dob = $dob->month.'/'. $dob->day.'/'. $dob->year;
+        $subscription = User::find(Session::get('userId'))->subscription;
 
-        return $this->viewFinder('member.show', $this->page_data);
+        if($subscription->active){
+
+          if($subscription != null){
+            
+            $sub_end = Carbon::createFromFormat('Y-m-d H:i:s',$subscription->ending_at);
+            $today = Carbon::now();
+
+            if($today->diffInDays($sub_end,false) < 1){
+              $subscription->active = 0;
+              $subscription->save();
+            }
+          }
+
+        }
+
+
+        if($this->page_data['profile'] != null){
+
+          $dob = Carbon::createFromFormat('Y-m-d H:i:s',$this->page_data['profile']->dob);
+
+          $this->page_data['profile']->dob = $dob->month.'/'. $dob->day.'/'. $dob->year;
+        
+        }
+
+        //return $this->viewFinder('member.show', $this->page_data);
     }
 
 

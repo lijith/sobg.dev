@@ -25,7 +25,7 @@ use App\Profile;
 use App\Shipping;
 use App\Order;
 use App\SubscriptionRates;
-use App\MagazineSubscribers;
+use App\MagazineSubscriber;
 
 use Cart;
 
@@ -527,7 +527,7 @@ class ShoppingCartController extends SiteController {
     $user_id = Session::get('userId');
 
     //remove orders of shipping id if any
-    MagazineSubscribers::where('shipping_id', '=', $shipping_id)->delete();
+    MagazineSubscriber::where('shipping_id', '=', $shipping_id)->delete();
 
     foreach ($cart_items as $item) {
       # code...
@@ -547,7 +547,7 @@ class ShoppingCartController extends SiteController {
         $date = Carbon::now();
         $date->addYears($subscription->period);
 
-        $subscribers = new MagazineSubscribers(array(
+        $subscribers = new MagazineSubscriber(array(
           'user_id' => $user_id,
           'shipping_id' => $shipping_id,
           'digital' => $digital,

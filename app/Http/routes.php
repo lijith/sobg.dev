@@ -13,6 +13,8 @@
 
 Route::get('/',['as' => 'home','uses' => 'HomeController@index']);
 
+Route::get('mail',['as' => 'mail','uses' => 'HomeController@mail']);
+
 /*
 |
 |	about sobg routes

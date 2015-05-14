@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Eloquent\Model;
 
-class MagazineSubscribers extends Model {
+class MagazineSubscriber extends Model {
 
 	//
 	/**
@@ -18,6 +18,10 @@ class MagazineSubscribers extends Model {
 		'active',
 		'ending_at'
 	];
+
+	public function subscriber(){
+    return $this->belongsTo('App\User');
+  }
 
 
 

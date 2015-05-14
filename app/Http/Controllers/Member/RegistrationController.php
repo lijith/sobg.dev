@@ -17,6 +17,7 @@ use App\AudioDisk;
 use App\VideoDisk;
 use App\Magazine;
 use App\Book;
+use App\Profile;
 
 use Cart;
 
@@ -85,6 +86,23 @@ class RegistrationController extends SiteController{
         // Attempt Registration
         $result = $this->userRepository->store($data);
 
+        //create profile
+
+        if($result->isSuccessful()){
+
+            $user_id = $result->getPayload()['user']->id;
+
+            $profile = new Profile(array(
+                'user_id' => $user_id,
+                'dob' => \Carbon\Carbon::now()
+            ));
+
+            $profile->save();
+        }
+
+
+        //create a empty profile
+
         // It worked!  Use config to determine where we should go.
         return $this->redirectViaResponse('member_registration_complete', $result);
     }
@@ -104,6 +122,8 @@ class RegistrationController extends SiteController{
 
         // Attempt the activation
         $result = $this->userRepository->activate($id, $code);
+
+
 
         // It worked!  Use config to determine where we should go.
         return $this->redirectViaResponse('member_registration_activated', $result);

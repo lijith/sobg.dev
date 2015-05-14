@@ -29,5 +29,13 @@ class HomeController extends SiteController {
 		return view('home')->with($this->page_data);
 	}
 
+	public function mail(){
+
+		\Mail::send('emails.welcome', ['heading' => 'Welcome','data' => 'hello'], function($message){
+	    $message->to('creativequb@gmail.com', 'Lijith')->subject('Welcome!');
+		});
+
+	}
+
 
 }
