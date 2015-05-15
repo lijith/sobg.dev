@@ -201,6 +201,9 @@ Route::group(['prefix'=>'member', 'namespace' => 'Member'], function(){
   Route::put('profile/personal', ['as' => 'member.profile.personalupdate', 'uses' => 'ProfileController@updatePersonal']);
   Route::put('profile/address', ['as' => 'member.profile.addressupdate', 'uses' => 'ProfileController@updateAddress']);
   Route::post('profile/password', ['as' => 'member.profile.password', 'uses' => 'ProfileController@changePassword']);
+  Route::get('profile/magazines/{year?}', ['as' => 'member.list.magazines', 'uses' => 'ProfileController@listMagazines']);
+  Route::get('profile/magazine/{hash}', ['as' => 'member.show.magazines', 'uses' => 'ProfileController@showMagazine']);
+
 });
 
 /*

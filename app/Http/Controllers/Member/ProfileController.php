@@ -15,6 +15,7 @@ use Carbon\Carbon;
 
 use App\User;
 use App\Profile;
+use App\Magazine;
 use App\MagazineSubscriber;
 
 use App\Http\Requests\Member\ProfilePersonalUpdateRequest;
@@ -88,9 +89,11 @@ class ProfileController extends BaseController
 
         $subscription = User::find(Session::get('userId'))->subscription;
 
-        if($subscription->active){
+        
 
-          if($subscription != null){
+        if($subscription != null){
+
+          if($subscription->active){
             
             $sub_end = Carbon::createFromFormat('Y-m-d H:i:s',$subscription->ending_at);
             $today = Carbon::now();
@@ -99,9 +102,12 @@ class ProfileController extends BaseController
               $subscription->active = 0;
               $subscription->save();
             }
+
           }
 
         }
+
+        $this->page_data['subscription'] = $subscription;
 
 
         if($this->page_data['profile'] != null){
@@ -112,7 +118,7 @@ class ProfileController extends BaseController
         
         }
 
-        //return $this->viewFinder('member.show', $this->page_data);
+        return $this->viewFinder('member.show', $this->page_data);
     }
 
 
@@ -262,6 +268,64 @@ class ProfileController extends BaseController
         }
 
         return $this->redirectViaResponse('member_change_password', $result);
+    }
+
+
+    /*
+    * View list Magazines
+    *
+    * @return view
+    */
+    public function listMagazines($year = null){
+
+      //find the oldest year of issue
+
+      $oldest = Magazine::take(1)->orderBy('published_at', 'asc')->first();
+
+      $oldest_date = Carbon::createFromFormat('Y-m-d H:i:s',$oldest->published_at)->startOfYear();
+
+      $magazines = array();
+      
+      $diffYears = $oldest_date->diffInYears(Carbon::now());
+
+      for($i = $diffYears; $i >= 0 ; $i-- ){
+
+        $date_range = $oldest_date->copy()->addYears($i);
+
+        $mags = Magazine::whereBetween('published_at', array($date_range, $date_range->copy()->endOfYear()))->get();
+
+        //echo $date_range.' '.$date_range->copy()->endOfYear().'<br />';
+        if($mags->count() > 0){
+          $magazines[$date_range->year] = $mags;
+        }  
+
+      }
+
+      if($year == null){
+
+        $current_year = Carbon::now()->startOfYear();
+
+      }else{
+
+        $current_year = Carbon::create($year, 1, 01, 0, 0, 0);
+      }
+
+      $current_year_magazines = Magazine::whereBetween('published_at', array($current_year, $current_year->copy()->endOfYear()))->get();
+
+      $this->page_data['magazines'] = $magazines;
+      $this->page_data['current_year_magazines'] = $current_year_magazines;
+
+
+      return $this->viewFinder('member.magazine-list', $this->page_data);
+    }
+
+    /*
+    * View a magazine
+    *
+    * 
+    */
+    public function showMagazine(){
+
     }
 
 }

@@ -9,6 +9,14 @@
 	<!-- Notifications -->
 	  @include('notifications')
 	<!-- ./ notifications -->
+
+	@if($profile->name == '' || $profile->contact_address_1 == '')
+
+	<div class="alert alert-warning fade in">
+    Please update your personal and address details
+  </div>
+
+	@endif
   <div class="row">
     <!-- left column -->
     <div class="col-sm-5 col-xs-12">
@@ -58,6 +66,17 @@
 	      <div class="panel-body">
 					
 					<h3>Magazine Subscription</h3>
+
+					@if($subscription == null)
+						<p>Would you like to have a susbscription of Piravi Magazine</p>
+						<p><a href="{{ route('piravi') }}">Subscribe Now</a></p>
+					@elseif(!$subscription->active)
+						<p>Renew Subscription</p>
+					@elseif($subscription->active && $subscription->digital)
+						<p>
+							<a href="{{ route('member.list.magazines') }}">View Magazines</a>
+						</p>
+					@endif
 					
 
 	      </div><!--/panel-body-->
