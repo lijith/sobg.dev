@@ -306,6 +306,17 @@ if($('.payment-mode').length > 0){
 	  }
 	});
 
+
+
+/**
+ * orange box
+ * @orangebox jquery
+ * @profile magazine
+ */
+oB.settings.contentBorderWidth= 1;
+oB.settings.contentMaxSize = [1, 1];
+
+
 /**
  * Google Map
  * @usedPlugins jquery,nicescroll

@@ -5,7 +5,7 @@
 
 <div class="split_30"></div><!-- /.split_30 -->
 
-  <h1 class="page-header">Magazines</h1>
+  <h1 class="page-header">Magazines({{ $current_year }})</h1>
 	<!-- Notifications -->
 	  @include('notifications')
 	<!-- ./ notifications -->
@@ -13,33 +13,63 @@
   <div class="row">
     <!-- left column -->
     <div class="col-sm-3 col-xs-12">
-      
-      <div class="panel panel-default">
-	      <div class="panel-body">
-	      	<h2>Year</h2>
-	      		<hr />
-	      	<ul>
+
+    <div class="shadow">
+    	<div class="publication-years">
+    		<h2>Year(s)</h2>
+    			<ul>
 	      		@foreach($magazines as $year => $magazine)
 							<li>
-								<a href="{{ route('member.list.magazines', array($year)) }}">{{ $year }}</a>
+								<a href="{{ route('member.list.magazines', array($year)) }}" class="{{ ($current_year == $year) ? 'select' : '' }}">{{ $year }}</a>
 							</li>
 	      		@endforeach
 	      	</ul>
-	      </div><!--/panel-body-->
-	    </div><!--/panel-->
+    	</div><!-- /.publication-years -->
+    </div><!-- /.shadow -->
 
 
-    </div>
+    </div><!-- col-sm-3 -->
 
-    <!-- edit form column -->
+
     <div class="col-sm-9 col-xs-12">
 	    <div class="well panel panel-default">
 		      <div class="panel-body">
-		      	@foreach($current_year_magazines as $magazine)
-		      		{{ $magazine->title }}
-		      		<a href="{{ asset('viewerjs') }}/#magazines-pdf/magaznie-title-2015.pdf">pdf</a>
-		      		<iframe src = "viewerjs/#magazines-pdf/magaznie-title-2015.pdf" width='400' height='300' allowfullscreen webkitallowfullscreen></iframe> 
-		      	@endforeach
+						
+						<?php $count = 0;?>
+
+						@foreach($current_year_magazines as $magazine)
+
+							@if($count ==0)
+								<div class="row magazines">
+									
+							@endif
+							<?php $count++; ?>
+
+								<div class="cols">
+									<div class="magazine-wrap">
+										<div class="cover-wrap">
+											<img src="{{ asset('images/magazines/'.$magazine->cover_photo_thumbnail) }}" alt="" />
+										</div><!-- /.cover-wrap -->
+										<div class="details">
+											<p>Issue : {{ \Carbon\Carbon::createFromFormat('Y-m-d H:i:s',$magazine->published_at)->format('M d, Y') }}</p>
+											<a href="{{ asset('magazines-pdf/magaznie-title-2015.pdf') }}" data-ob="lightbox" class="btn"><i class="fa fa-file-text"></i> Read Magazine</a>
+										</div><!-- /.details -->
+									</div><!-- /.magazine-wrap -->
+								</div><!-- /.col-sm-3 -->
+
+
+							@if($count == 4 || $count == $current_year_magazines->count())
+								</div><!-- /.row -->
+								<?php $count = 0; ?>
+							@endif
+
+
+						@endforeach
+
+		      	
+		      		
+		      		
+		      	
 		      </div><!--panel-body-->
 		    </div><!--panel panel-default-->
 

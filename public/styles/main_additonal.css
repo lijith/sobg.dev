@@ -251,3 +251,78 @@ img.right{
 .red-tooltip + .tooltip > .tooltip-arrow { 
 	border-bottom-color:#c9532d; 
 }
+.publication-years {
+  background: none repeat 0 0 #f7f6f4;
+  border: 1px solid #e7e6e4;
+  padding: 25px 12px;
+}
+.publication-years h2 {
+  background: url("../images/side-nav-heading-border.jpg") repeat-x left bottom transparent;
+  border: medium none;
+  color: #dea32b;
+  margin-top: 0;
+  padding-bottom: 25px;
+}
+.publication-years ul, .publication-years li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.publication-years a {
+  background: none repeat #fff;
+  border: 1px solid #f7f6f4;
+  border-radius: 8px;
+  color: #5d5d5d;
+  display: block;
+  padding: 10px 24px;
+  text-decoration: none;
+}
+.publication-years a.select {
+  background: #c9532d;
+  color: #FFF;
+}
+
+.magazines {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.magazines .cols {
+  position: relative;
+  float: left;
+  width: 50%;
+  min-height: 1px;
+  padding-left: 7.5px;
+  padding-right: 7.5px;
+  position: relative;
+  min-height: 1px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+@media (min-width: 768px) {
+  .magazines .cols {
+    float: left;
+    width: 25%;
+  }
+}
+.magazines .cols .magazine-wrap {
+  border-radius: 3px;
+  background: #FFF;
+  border: 1px solid #D8D8D6;
+  padding: 2px;
+}
+.magazines .cols .magazine-wrap .cover-wrap {
+  overflow: hidden;
+  height: 180px;
+}
+.magazines .cols .magazine-wrap .cover-wrap img {
+  width: 100%;
+}
+.magazines .cols .magazine-wrap .details {
+  text-align: center;
+  padding: 5px;
+}
+.magazines .cols .magazine-wrap .details a.btn {
+  background: #c9532d;
+  border-color: #b53300;
+  color: #fff;
+}

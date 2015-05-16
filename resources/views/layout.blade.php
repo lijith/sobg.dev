@@ -23,6 +23,7 @@
 		<link rel="stylesheet" href="{{URL::asset('styles/component.css')}}">
 		<link rel="stylesheet" href="{{URL::asset('styles/layerslider.css')}}">
 		<link rel="stylesheet" href="{{URL::asset('styles/bootstrap-datepicker3.min.css')}}">
+		<link rel="stylesheet" href="{{URL::asset('scripts/orangebox/orangebox.css')}}">
 		<link rel="stylesheet" href="{{URL::asset('styles/main.css')}}">
 		<link rel="stylesheet" href="{{URL::asset('styles/main_additonal.css')}}">
 
@@ -259,6 +260,7 @@
 		<script src="{{URL::asset('scripts/jquery.focuspoint.min.js')}}"></script>
 		<script src="{{URL::asset('scripts/layerslider.transitions.js')}}"></script>
 		<script src="{{URL::asset('scripts/bootstrap-datepicker.min.js')}}"></script>
+		<script src="{{URL::asset('scripts/orangebox/orangebox.3.0.0.min.js')}}"></script>
 		<script src="{{URL::asset('scripts/main.js')}}"></script>
 	</body>
 </html>

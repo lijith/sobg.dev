@@ -310,9 +310,14 @@ class ProfileController extends BaseController
         $current_year = Carbon::create($year, 1, 01, 0, 0, 0);
       }
 
-      $current_year_magazines = Magazine::whereBetween('published_at', array($current_year, $current_year->copy()->endOfYear()))->get();
+      $current_year_magazines = Magazine::whereBetween('published_at', array($current_year, $current_year->copy()->endOfYear()))
+      ->orderBy('published_at','desc')
+      ->get();
+
+      $this->page_data['title'] = 'Piravi Magazine Issues';
 
       $this->page_data['magazines'] = $magazines;
+      $this->page_data['current_year'] = $current_year->year;
       $this->page_data['current_year_magazines'] = $current_year_magazines;
 
 
