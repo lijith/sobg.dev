@@ -5,7 +5,7 @@
 
 <div class="split_30"></div><!-- /.split_30 -->
 
-  <h1 class="page-header">Magazines({{ $current_year }})</h1>
+  <h1 class="page-header col-heading">Magazines({{ $current_year }})</h1>
 	<!-- Notifications -->
 	  @include('notifications')
 	<!-- ./ notifications -->
@@ -24,7 +24,13 @@
 							</li>
 	      		@endforeach
 	      	</ul>
+
+	      	<div class="split_30"><div class="groove"></div><!-- /.groove --></div>
+
+	      	<a href="{{ route('member.profile.show') }}" class="btn btn-default"><i class="fa fa-user"></i> Profile Page</a>
     	</div><!-- /.publication-years -->
+
+
     </div><!-- /.shadow -->
 
 

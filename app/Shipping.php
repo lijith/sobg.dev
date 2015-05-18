@@ -19,6 +19,7 @@ class Shipping extends Model {
 	protected $fillable = [
 			'user_id',
 			'reference_id',
+			'admin_viewed',
 			'shipping_status',
 			'payment_status',
 			'shipping_name',

@@ -52,7 +52,7 @@
 	            @endif
 	            <hr />
 	            <p>
-	            	<a href="{{ route('member.logout') }}" class="btn btn-default">Log out</a>
+	            	<a href="{{ route('member.logout') }}" class="btn btn-default"><i class="fa fa-power-off"></i> Log out</a>
 	            </p>
 	            <!-- /.row -->
 	            

@@ -14,7 +14,8 @@
         if (($user->email == Sentry::getUser()->email)) {
             $editAction = route('sentinel.profile.edit');
         } else {
-            $editAction =  action('App\Http\Controllers\Admin\UserController@edit', [$user->hash]);
+            // $editAction =  action('App\Http\Controllers\Admin\UserController@edit', [$user->hash]);
+        	$editAction = route('sentinel.users.edit',array($user->hash));
         }
 
         $userGroups = $user->getGroups();
@@ -25,7 +26,7 @@
         <!--earning graph start-->
         <section class="panel">
             <header class="panel-heading">
-                Earning Graph
+                User
             </header>
             <div class="panel-body">
         	    @if ($user->first_name)

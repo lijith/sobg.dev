@@ -365,6 +365,10 @@ Route::group(['prefix'=>'administrator', 'namespace' => 'Admin'], function(){
   Route::put('magazine/{hash}', ['as' => 'magazines.update', 'uses' => 'MagazineController@update']);
   Route::delete('magazine/{hash}', ['as' => 'magazines.destroy', 'uses' => 'MagazineController@destroy']);
 
+  //shippings
+  Route::get('new-orders', ['as' => 'new.order', 'uses' => 'ShippingController@newOrders']);
+  Route::get('new-orders/{reference_id}', ['as' => 'reference.order', 'uses' => 'ShippingController@showOrder']);
+
   //photo albums
   Route::get('album/create', ['as' => 'album.create', 'uses' => 'AlbumController@create']);
   Route::post('album', ['as' => 'album.store', 'uses' => 'AlbumController@store']);

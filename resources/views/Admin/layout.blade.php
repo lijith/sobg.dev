@@ -173,6 +173,19 @@
                     </ul>
                 </li>
                 
+                <li class="sub-menu">
+                    <a href="#">
+                        <i class="fa fa-book"></i>
+                        <span>Eshop Orders</span>
+                    </a>
+                    <ul class="sub">
+                        <li><a href="{{ route('new.order') }}">New Orders</a></li>
+                        <li><a href="{{ route('new.order') }}">Unconfirmed Orders</a></li>
+                        <li><a href="{{ route('new.order') }}">Confirmed Orders</a></li>
+                        <li><a href="{{ route('new.order') }}">All Orders</a></li>
+                        
+                    </ul>
+                </li>
 
                 <li class="sub-menu">
                     <a href="#">

@@ -287,6 +287,7 @@ class ShoppingCartController extends SiteController {
       $shipping = new Shipping(array(
         'user_id' => Session::get('userId'),
         'reference_id' => $this->generateReference(),
+        'admin_viewed' => 0,
         'billing_name' => Input::get('billing-name'),
         'billing_address_1' => Input::get('billing-address_1'),
         'billing_address_2' => Input::get('billing-address_2'),
