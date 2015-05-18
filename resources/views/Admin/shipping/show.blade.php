@@ -18,17 +18,17 @@
       <div class="panel-body">
         <div class="row">
 
-          <div class="col-md-6">
+          <div class="col-md-4">
             <section class="panel">
               <header class="panel-heading">
                   Shipping Address
               </header>
                <div class="panel-body">
-                {{ ucwords($order->shipping_name) }}<br />
-                {{ nl2br($order->shipping_address_1) }}<br />
-                {{ nl2br($order->shipping_address_2) }}<br />
-                {{ nl2br($order->shipping_city) }}<br />
-                {{ nl2br($order->shipping_state) }}<br />
+                {{ strtoupper($order->shipping_name) }}<br />
+                {{ nl2br(strtoupper($order->shipping_address_1)) }}<br />
+                {{ nl2br(strtoupper($order->shipping_address_2)) }}<br />
+                {{ nl2br(strtoupper($order->shipping_city)) }}<br />
+                {{ nl2br(strtoupper($order->shipping_state)) }}<br />
                 {{ nl2br($order->shipping_contact_number_1) }}<br />
                 {{ nl2br($order->shipping_contact_number_2) }}<br />
 
@@ -36,13 +36,13 @@
             </section><!-- /.panel -->
           </div><!-- /.col-md-6 -->
 
-          <div class="col-md-6">
+          <div class="col-md-8">
             <section class="panel">
               <header class="panel-heading">
                   Ordered Items
               </header>
                <div class="panel-body">
-                  <table>
+                  <table class="table table-bordered">
                     <thead>
                       <tr>
                         <th>Type</th>

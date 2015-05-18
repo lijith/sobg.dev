@@ -179,10 +179,10 @@
                         <span>Eshop Orders</span>
                     </a>
                     <ul class="sub">
-                        <li><a href="{{ route('new.order') }}">New Orders</a></li>
-                        <li><a href="{{ route('new.order') }}">Unconfirmed Orders</a></li>
-                        <li><a href="{{ route('new.order') }}">Confirmed Orders</a></li>
-                        <li><a href="{{ route('new.order') }}">All Orders</a></li>
+                        <li><a href="{{ route('new.orders') }}">New Orders</a></li>
+                        <li><a href="{{ route('unconfirmed.orders') }}">Unconfirmed Orders</a></li>
+                        <li><a href="{{ route('confirmed.orders') }}">Confirmed Orders</a></li>
+                        <li><a href="{{ route('all.orders') }}">All Orders</a></li>
                         
                     </ul>
                 </li>

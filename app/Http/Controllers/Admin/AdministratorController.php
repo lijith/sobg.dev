@@ -45,7 +45,7 @@ class AdministratorController extends BaseController
         $user = $this->userRepository->retrieveById(Session::get('userId'));
 
         // return $this->viewFinder('Sentinel::users.show', ['user' => $user]);
-        return $this->viewFinder('admin.users.show', ['user' => $user]);
+        return $this->viewFinder('Admin.users.show', ['user' => $user]);
         
     }
 
@@ -63,7 +63,7 @@ class AdministratorController extends BaseController
         // Get all available groups
         $groups = $this->groupRepository->all();
 
-        return $this->viewFinder('admin.users.edit', [
+        return $this->viewFinder('Admin.users.edit', [
             'user' => $user,
             'groups' => $groups
         ]);

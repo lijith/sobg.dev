@@ -49,8 +49,42 @@ class ShippingController extends Controller {
     ->orderBy('updated_at','desc')
     ->get();
 
-    return View::make('Admin.shipping.new-orders',array('new_orders' => $new_orders));
+    return View::make('Admin.shipping.orders-list',array('orders' => $new_orders));
 
+  }
+
+  /**
+   * List all confirmed shipping orders.
+   *
+   * @param  void
+   *
+   * @return View
+   */
+  public function confirmedOrders(){
+    $orders = Shipping::where('shipping_status', '=', 1)
+    ->where('payment_status', '=', 1)
+    ->orderBy('updated_at','desc')
+    ->get();
+
+    return View::make('Admin.shipping.orders-list',array('orders' => $orders));
+  }
+
+
+
+  /**
+   * List all unconfirmed shipping orders.
+   *
+   * @param  void
+   *
+   * @return View
+   */
+  public function unconfirmedOrders(){
+    $orders = Shipping::where('shipping_status', '=', 0)
+    ->where('payment_status', '=', 1)
+    ->orderBy('updated_at','desc')
+    ->get();
+
+    return View::make('Admin.shipping.orders-list',array('orders' => $orders));
   }
 
 
@@ -80,15 +114,26 @@ class ShippingController extends Controller {
       switch($item->item_type){
         case 'video':{
           $product = VideoDisk::find($item->item_id)->first();
+          if($product->disk_type == 1){
+            $type = 'DVD';
+          }elseif($product->disk_type == 2){
+            $type = 'VCD';
+          }
         }
         break;
         case 'audio':{
           $product = AudioDisk::find($item->item_id)->first();
+          if($product->disk_type == 1){
+            $type = 'Audio CD';
+          }elseif($product->disk_type == 2){
+            $type = 'MP3';
+          }
 
         }
         break;
         case 'book':{
           $product = Book::find($item->item_id)->first();
+          $type = 'Book';
         }
         break;
         
@@ -97,7 +142,7 @@ class ShippingController extends Controller {
       $order_row = array(
       'title' => $product->title,
       'quantity' => $item->quantity,
-      'type' => $item->item_type
+      'type' => $type
       );
 
       array_push($order_list, $order_row);

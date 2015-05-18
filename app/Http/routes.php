@@ -366,8 +366,11 @@ Route::group(['prefix'=>'administrator', 'namespace' => 'Admin'], function(){
   Route::delete('magazine/{hash}', ['as' => 'magazines.destroy', 'uses' => 'MagazineController@destroy']);
 
   //shippings
-  Route::get('new-orders', ['as' => 'new.order', 'uses' => 'ShippingController@newOrders']);
-  Route::get('new-orders/{reference_id}', ['as' => 'reference.order', 'uses' => 'ShippingController@showOrder']);
+  Route::get('orders', ['as' => 'all.orders', 'uses' => 'ShippingController@allOrders']);
+  Route::get('new-orders', ['as' => 'new.orders', 'uses' => 'ShippingController@newOrders']);
+  Route::get('unconfirmed-orders', ['as' => 'unconfirmed.orders', 'uses' => 'ShippingController@unconfirmedOrders']);
+  Route::get('confirmed-orders', ['as' => 'confirmed.orders', 'uses' => 'ShippingController@confirmedOrders']);
+  Route::get('order/{reference_id}', ['as' => 'reference.order', 'uses' => 'ShippingController@showOrder']);
 
   //photo albums
   Route::get('album/create', ['as' => 'album.create', 'uses' => 'AlbumController@create']);

@@ -35,7 +35,7 @@
             </tr>
           </thead>
           <tbody>
-            @foreach($new_orders as $order)
+            @foreach($orders as $order)
               <tr>
                 <td><a href="{{ route('reference.order', array($order->reference_id)) }}">{{ $order->reference_id }}</a></td>
                 <td>{{ $order->shipping_name }}</td>
