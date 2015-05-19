@@ -49,7 +49,7 @@ class ShippingController extends Controller {
     ->orderBy('updated_at','desc')
     ->get();
 
-    return View::make('Admin.shipping.orders-list',array('orders' => $new_orders));
+    return View::make('Admin.shipping.orders-list',array('orders' => $new_orders, 'title' => 'New Orders'));
 
   }
 
@@ -66,7 +66,7 @@ class ShippingController extends Controller {
     ->orderBy('updated_at','desc')
     ->get();
 
-    return View::make('Admin.shipping.orders-list',array('orders' => $orders));
+    return View::make('Admin.shipping.orders-list',array('orders' => $orders, 'title' => 'Unconfirmed Orders'));
   }
 
 
@@ -84,8 +84,23 @@ class ShippingController extends Controller {
     ->orderBy('updated_at','desc')
     ->get();
 
-    return View::make('Admin.shipping.orders-list',array('orders' => $orders));
+    return View::make('Admin.shipping.orders-list',array('orders' => $orders, 'title' => 'Confirmed Orders'));
   }
+
+  /**
+   * List all shipping orders.
+   *
+   * @param  void
+   *
+   * @return View
+   */
+  public function allOrders(){
+    $orders = Shipping::orderBy('updated_at','desc')
+    ->simplePaginate(50);
+
+    return View::make('Admin.shipping.orders-list',array('orders' => $orders, 'title' => 'All Orders'));
+  }
+
 
 
   /**

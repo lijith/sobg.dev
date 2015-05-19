@@ -32,6 +32,13 @@
                 {{ nl2br($order->shipping_contact_number_1) }}<br />
                 {{ nl2br($order->shipping_contact_number_2) }}<br />
 
+                @if(!$order->shipping_status)
+
+                <hr />
+                <a href="" class="btn btn-default">Confirm Shipment</a>
+
+                @endif
+
                </div>
             </section><!-- /.panel -->
           </div><!-- /.col-md-6 -->

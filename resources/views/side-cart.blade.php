@@ -59,10 +59,8 @@
 				<div class="wrap">
 					<div class="shipping">
 						<div class="item-label">
-							Shipping
 						</div><!-- /.item-label -->
 						<div class="amount">
-							Rs 80/-
 						</div><!-- /.amount -->
 					</div><!-- /.shipping -->
 				</div><!-- /.wrap -->
@@ -78,7 +76,7 @@
 				</div><!-- /.wrap -->
 				
 			</div><!-- /.cart-total -->
-			<div class="split_40"></div><!-- /.split_40 -->	
+			<div class="split_20"></div><!-- /.split_40 -->	
 			<div class="clearfix">
 				<a href="{{route('cart')}}" class="btn btn-primary pull-right">Show Cart</a>
 			</div><!-- /.clearfix -->

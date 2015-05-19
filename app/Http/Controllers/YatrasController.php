@@ -243,7 +243,7 @@ class YatrasController extends SiteController {
 
 		if($yatra == 'kailas-yatra'){
 
-			$this->page_data['title'] = 'Kailas Yatra Registeration';
+			$this->page_data['title'] = 'Kailas - Manasarovar Yatra Registration';
 
 			$yatra = Yatra::where('slug','=','kailas-manasarovar-yatra')->first();
 
@@ -256,7 +256,7 @@ class YatrasController extends SiteController {
 
 		}elseif($yatra == 'himalaya-yatra'){
 
-			$this->page_data['title'] = 'Himalaya Darsan Chardham Yatra Registeration';
+			$this->page_data['title'] = 'Himalaya Darsan Chardham Yatra Registration';
 
 			$yatra = Yatra::where('slug','=','himalaya-darsan-chardham-yatra')->first();
 
@@ -268,7 +268,7 @@ class YatrasController extends SiteController {
 
 		}elseif($yatra == 'amarnath-yatra'){
 
-			$this->page_data['title'] = 'Amarnath Yatra Registeration';
+			$this->page_data['title'] = 'Amarnath Yatra Registration';
 
 			$yatra = Yatra::where('slug','=','sri-amarnath-vaishno-devi-yatra')->first();
 
@@ -287,8 +287,8 @@ class YatrasController extends SiteController {
 		$this->page_data['toggle_active'] = '';
 
 
-		//return view('yatras.kailas-registration')->with($this->page_data);
-		return view('emails.base-layout');
+		return view('yatras.yatra-registration')->with($this->page_data);
+		//return view('emails.base-layout');
 	}
 
 	/**

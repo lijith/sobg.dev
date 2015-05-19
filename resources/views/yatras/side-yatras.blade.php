@@ -11,7 +11,7 @@
 					<ul>
 						<li><a href="{{ route('kailasHighlights') }}" class="{{ ($sub_page_active == 'kailas-highlight') ? 'select' : '' }}">Highlights</a></li>
 						<li><a href="{{ route('kailasDetails') }}" class="{{ ($sub_page_active == 'kailas-details') ? 'select' : '' }}">Itinerary &amp; Cost</a></li>
-						<li><a href="{{ route('Registration') }}" class="{{ ($sub_page_active == 'registration') ? 'select' : '' }}">Registration</a></li>
+						<li><a href="{{ route('Registration',array('kailas-yatra')) }}" class="{{ ($sub_page_active == 'registration') ? 'select' : '' }}">Registration</a></li>
 						<li><a href="{{ route('kailastips') }}" class="{{ ($sub_page_active == 'kailas-tips') ? 'select' : '' }}">Tips for Yatris</a></li>
 					</ul>
 				</div><!-- /#kailas -->
@@ -21,7 +21,7 @@
 					<ul>
 						<li><a href="{{ route('amarnathHighlights') }}" class="{{ ($sub_page_active == 'amarnath-highlight') ? 'select' : '' }}">Highlights</a></li>
 						<li><a href="{{ route('amarnathDetails') }}" class="{{ ($sub_page_active == 'amarnath-details') ? 'select' : '' }}">Itinerary &amp; Cost</a></li>
-						<li><a href="{{ route('amarnathHighlights') }}" class="{{ ($sub_page_active == 'amarnath-registration') ? 'select' : '' }}">Registration</a></li>
+						<li><a href="{{ route('Registration',array('himalaya-yatra')) }}" class="{{ ($sub_page_active == 'amarnath-registration') ? 'select' : '' }}">Registration</a></li>
 					</ul>
 				</div><!-- /#amarnath.collapse -->
 				</li>
@@ -30,7 +30,7 @@
 					<ul>
 						<li><a href="{{ route('himalayaHighlights') }}" class="{{ ($sub_page_active == 'himalaya-highlight') ? 'select' : '' }}">Highlights</a></li>
 						<li><a href="{{ route('himalayaDetails') }}" class="{{ ($sub_page_active == 'himalaya-details') ? 'select' : '' }}">Itinerary &amp; Cost</a></li>
-						<li><a href="{{ route('Registration') }}" class="{{ ($sub_page_active == 'himalaya-registration') ? 'select' : '' }}">Registration</a></li>
+						<li><a href="{{ route('Registration',array('amarnath-yatra')) }}" class="{{ ($sub_page_active == 'himalaya-registration') ? 'select' : '' }}">Registration</a></li>
 					</ul>
 				</div><!-- /#himalaya.collapse -->
 				</li>

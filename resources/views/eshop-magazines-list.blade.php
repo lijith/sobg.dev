@@ -9,14 +9,8 @@
 		<h1 class="col-heading">Magazines</h1>
 		<div class="split_30"></div><!-- /.split_30 -->
 		<div class="search-titles clearfix">
-			<form action="">
-        <div class="clearfix">
-          <input type="text" placeholder="search title...">
-          <button type="submit" class="submit">
-						<i class="fa fa-search"></i> search
-					</button>
-     		</div>
-			</form>
+			@include('eshop-search-form')
+			
 		</div><!-- /.search-titles -->
 		<div class="split_30"></div><!-- /.split_30 -->
 		<div class="items-category">

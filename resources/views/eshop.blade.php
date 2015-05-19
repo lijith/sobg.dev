@@ -9,14 +9,7 @@
 		<h1 class="col-heading">E-Shop</h1>
 		<div class="split_30"></div><!-- /.split_30 -->
 		<div class="search-titles clearfix">
-			<form method="GET" action="{{ route('search.eshop') }}">
-        <div class="clearfix">
-          <input type="text" placeholder="search title..." name="for">
-          <button type="submit" class="submit">
-						<i class="fa fa-search"></i> search
-					</button>
-     		</div>
-			</form>
+			@include('eshop-search-form')
 		</div><!-- /.search-titles -->
 		<div class="split_30"></div><!-- /.split_30 -->
 
@@ -109,7 +102,7 @@
 		</div><!-- /.items-category -->
 
 		<div class="items-category">
-			<h2 class="col-heading">Books</h2>
+			<h2 class="col-heading">Latest Books</h2>
 			<div class="pub-items-row">
 
 				@foreach($books as $book)
@@ -137,7 +130,7 @@
 
 
 		<div class="items-category">
-			<h2 class="col-heading">Magazines</h2>
+			<h2 class="col-heading">Latest Piravi Issues</h2>
 			<div class="pub-items-row">
 
 				@foreach($magazines as $magazine)

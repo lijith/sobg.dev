@@ -3,7 +3,7 @@
 {{-- Page Title --}}
 @section('title')
 @parent
-	New Orders
+	{{ $title }}
 @stop
 
 
@@ -13,11 +13,11 @@
 	<div class="col-md-10 col-md-offset-1">
     <section class="panel">
       <header class="panel-heading">
-          New Orders
+        {{ $title }}
       </header>
       <div class="panel-body">
 
-      @if($new_orders == null)
+      @if($orders == null)
         <p>no new order</p>
       @else
 
@@ -32,23 +32,46 @@
                 <th>Order Date</th>
                 <th>No:Items</th>
                 <th>Amount</th>
+                @if($title == 'All Orders')
+                <th>Shipped</th>
+                @endif
             </tr>
           </thead>
           <tbody>
             @foreach($orders as $order)
               <tr>
                 <td><a href="{{ route('reference.order', array($order->reference_id)) }}">{{ $order->reference_id }}</a></td>
-                <td>{{ $order->shipping_name }}</td>
+                <td>{{ strtoupper($order->shipping_name) }}</td>
                 <td>{{ \Carbon\Carbon::createFromFormat('Y-m-d H:i:s',$order->updated_at)->format('M d, Y') }}</td>
                 <td>{{ $order->quantity }}</td>
                 <td>{{ $order->amount }}</td>
+                @if($title == 'All Orders')
+                  <td>
+                  @if($order->shipping_status)
+                    <label>Shipped</label>
+                  @else
+                    <label>Not Shipped</label>
+                  @endif
+                  </td>
+                @endif
               </tr>
               
             @endforeach
           </tbody>
           
         </table>
+
+
       </div><!--.adv-table -->
+
+        <div class="clearfix"></div><!-- /.clearfix -->
+
+        <div class="pg">
+          <hr />
+          @if($title == 'All Orders')
+            {!! $orders->render() !!}
+          @endif
+        </div><!-- /.pg -->
 
       </div><!--.panel-body -->
     </section>

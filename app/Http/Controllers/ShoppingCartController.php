@@ -68,22 +68,22 @@ class ShoppingCartController extends SiteController {
   	switch(Input::get('item-type')){
   		case 'video':{
   			$id = Hashids::connection('video')->decode(Input::get('item-id'))[0];
-  			$item = VideoDisk::find($id)->first();
+  			$item = VideoDisk::find($id);
   		}
   		break;
   		case 'audio':{
   			$id = Hashids::connection('audio')->decode(Input::get('item-id'))[0];
-  			$item = AudioDisk::find($id)->first();
+  			$item = AudioDisk::find($id);
   		}
   		break;
   		case 'book':{
   			$id = Hashids::connection('book')->decode(Input::get('item-id'))[0];
-  			$item = Book::find($id)->first();
+  			$item = Book::find($id);
   		}
       break;
       case 'magazine-print':{
         $id = Hashids::connection('magazine')->decode(Input::get('item-id'))[0];
-        $item = Magazine::find($id)->first();
+        $item = Magazine::find($id);
       }
   	}
 

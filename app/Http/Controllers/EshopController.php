@@ -41,13 +41,21 @@ class EshopController extends SiteController {
 		$this->page_data['top_level_page'] = 'publications';
 		$this->page_data['sub_page_active'] = 'publications';
 
-		$this->page_data['video_disks'] = VideoDisk::take(4)->get();
+		$this->page_data['video_disks'] = VideoDisk::take(4)
+		->orderBy('published_at','desc')
+		->get();
 
-		$this->page_data['audio_disks'] = AudioDisk::take(4)->get();
+		$this->page_data['audio_disks'] = AudioDisk::take(4)
+		->orderBy('published_at','desc')
+		->get();
 
-		$this->page_data['books'] = Book::take(4)->get();
+		$this->page_data['books'] = Book::take(4)
+		->orderBy('published_at','desc')
+		->get();
 
-		$this->page_data['magazines'] = Magazine::take(4)->get();
+		$this->page_data['magazines'] = Magazine::take(4)
+		->orderBy('published_at','desc')
+		->get();
 
 		return view('eshop')->with($this->page_data);
 
@@ -63,7 +71,7 @@ class EshopController extends SiteController {
 		$this->page_data['description'] = 'VCD and DVD';
 		$this->page_data['sub_page_active'] = '';
 		$this->page_data['top_level_page'] = 'publications';
-		$this->page_data['video_disks'] = VideoDisk::get();
+		$this->page_data['video_disks'] = VideoDisk::orderBy('title','asc')->paginate(12);
 
 		//encode id
 		foreach ($this->page_data['video_disks'] as $disk) {
@@ -83,7 +91,7 @@ class EshopController extends SiteController {
 		$this->page_data['description'] = 'Audio CD and MP3';
 		$this->page_data['sub_page_active'] = '';
 		$this->page_data['top_level_page'] = 'publications';
-		$this->page_data['audio_disks'] = AudioDisk::get();
+		$this->page_data['audio_disks'] = AudioDisk::orderBy('title','asc')->paginate(12);
 
 		//encode id
 		foreach ($this->page_data['audio_disks'] as $disk) {
@@ -104,7 +112,9 @@ class EshopController extends SiteController {
 		$this->page_data['description'] = 'DVD';
 		$this->page_data['sub_page_active'] = 'dvd';
 		$this->page_data['top_level_page'] = 'publications';
-		$this->page_data['video_disks'] =VideoDisk::where('disk_type','=',1)->get();
+		$this->page_data['video_disks'] =VideoDisk::where('disk_type','=',1)
+		->orderBy('title','asc')
+		->paginate(12);
 
 		//encode id
 		foreach ($this->page_data['video_disks'] as $disk) {
@@ -124,8 +134,9 @@ class EshopController extends SiteController {
 		$this->page_data['description'] = 'Video CDs';
 		$this->page_data['sub_page_active'] = 'vcd';
 		$this->page_data['top_level_page'] = 'publications';
-		$this->page_data['video_disks'] = VideoDisk::where('disk_type','=',2)->get();
-
+		$this->page_data['video_disks'] = VideoDisk::where('disk_type','=',2)
+		->orderBy('title','asc')
+		->paginate(12);
 		//encode id
 		foreach ($this->page_data['video_disks'] as $disk) {
 			$disk->id = Hashids::connection('video')->encode($disk->id);
@@ -144,7 +155,9 @@ class EshopController extends SiteController {
 		$this->page_data['description'] = '';
 		$this->page_data['sub_page_active'] = 'mp3';
 		$this->page_data['top_level_page'] = 'publications';
-		$this->page_data['audio_disks'] = AudioDisk::where('disk_type','=',2)->get();
+		$this->page_data['audio_disks'] = AudioDisk::where('disk_type','=',2)
+		->orderBy('title','asc')
+		->paginate(12);
 
 		//encode id
 		foreach ($this->page_data['audio_disks'] as $disk) {
@@ -163,7 +176,9 @@ class EshopController extends SiteController {
 		$this->page_data['description'] = '';
 		$this->page_data['sub_page_active'] = 'acd';
 		$this->page_data['top_level_page'] = 'publications';
-		$this->page_data['audio_disks'] = AudioDisk::where('disk_type','=',1)->get();
+		$this->page_data['audio_disks'] = AudioDisk::where('disk_type','=',1)
+		->orderBy('title','asc')
+		->paginate(12);
 
 		//encode id
 		foreach ($this->page_data['audio_disks'] as $disk) {
@@ -183,7 +198,8 @@ class EshopController extends SiteController {
 		$this->page_data['description'] = '';
 		$this->page_data['sub_page_active'] = 'book';
 		$this->page_data['top_level_page'] = 'publications';
-		$this->page_data['books'] = Book::get();
+		$this->page_data['books'] = Book::orderBy('title','asc')
+		->paginate(12);
 
 		//encode id
 		foreach ($this->page_data['books'] as $book) {
@@ -204,7 +220,11 @@ class EshopController extends SiteController {
 		$this->page_data['sub_page_active'] = 'piravi';
 		$this->page_data['top_level_page'] = 'publications';
 
-		$this->page_data['magazines'] = Magazine::where('magazine_file', '<>', 'NO-ATTACHMENT	')->get();
+		//$this->page_data['magazines'] = Magazine::where('magazine_file', '<>', 'NO-ATTACHMENT')->get();
+		
+		$this->page_data['magazines'] = Magazine::orderBy('published_at','desc')
+		->paginate(12);	
+		
 		$this->page_data['digital_subs'] = SubscriptionRates::where('type', '=', 'digital')
 		->orderBy('period', 'ASC')
 		->get();
@@ -214,7 +234,7 @@ class EshopController extends SiteController {
 
 		foreach ($this->page_data['magazines'] as $magazine) {
 			$mag_pub_date = Carbon::createFromFormat('Y-m-d H:i:s',$magazine->published_at);
-			$magazine->published_at =  $mag_pub_date->format('d M Y');
+			$magazine->published_at =  $mag_pub_date->format('d M, Y');
 		}
 
 		return view('eshop-magazines-list')->with($this->page_data);

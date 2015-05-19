@@ -32,7 +32,7 @@
 
 		<div class="items-category">
 			<?php $item_count = 0; $total_item = 0; ?>
-			<h2>Video Disks</h2>
+			<h2 class="sub-heading">Video Disks</h2>
 			@foreach($video_result as $video)
 
 				@if($item_count == 0)
@@ -74,6 +74,7 @@
 				@endforeach
 
 		</div><!-- /.items-category -->
+		<hr />
 
 		@endif
 
@@ -84,7 +85,7 @@
 
 		<div class="items-category">
 			<?php $item_count = 0; $total_item = 0; ?>
-			<h2>Audio Disks</h2>
+			<h2 class="sub-heading">Audio Disks</h2>
 			@foreach($audio_result as $audio)
 
 				@if($item_count == 0)
@@ -126,7 +127,7 @@
 				@endforeach
 
 			</div><!-- /.items-category -->
-
+			<hr />
 		@endif
 
 
@@ -136,7 +137,7 @@
 
 		<div class="items-category">
 			<?php $item_count = 0; $total_item = 0; ?>
-			<h2>Books</h2>
+			<h2 class="sub-heading">Books</h2>
 			@foreach($book_result as $book)
 
 				@if($item_count == 0)
@@ -168,7 +169,7 @@
 				@endforeach
 
 			</div><!-- /.items-category -->
-
+			<hr />
 		@endif
 
 	@endif

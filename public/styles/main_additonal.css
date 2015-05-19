@@ -150,12 +150,13 @@ span.disk-type{
 	margin-top: 0;
 }
 
-.magazine-subscription .subs .btn{
-		background: #c9532d;
-    border: medium none;
-    border-radius: 5px;
-    color: #fff;
-    padding: 10px;
+.magazine-subscription .subs .btn,
+.yatra-registration .btn{
+	background: #c9532d;
+  border: medium none;
+  border-radius: 5px;
+  color: #fff;
+  padding: 10px;
 }
 .magazine-subscription .subs label{
 	padding: 8px 30px;
