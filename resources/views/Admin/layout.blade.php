@@ -6,9 +6,9 @@
     <meta name="description" content="">
     <meta name="author" content="Administrator">
     <link rel="shortcut icon" href="images/favicon.png">
-    <title> 
-        @section('title') 
-        @show 
+    <title>
+        @section('title')
+        @show
     </title>
     <!--Core CSS -->
     <link href="{{asset('packages/admin/bs3/css/bootstrap.min.css')}}" rel="stylesheet" />
@@ -30,14 +30,16 @@
     <link href="{{asset('packages/admin/js/data-tables/DT_bootstrap.css')}}" rel="stylesheet" />
 
     <link href="{{asset('packages/admin/js/bootstrap-datepicker/css/datepicker.css')}}" rel="stylesheet" type="text/css" />
-       
+
     <link href="{{asset('js/bootstrap-daterangepicker/daterangepicker-bs3.css')}}" rel="stylesheet" type="text/css" />
-    
+
 
     <!-- Custom styles for this template -->
     <link href="{{asset('packages/admin/css/style.css')}}" rel="stylesheet" />
     <link href="{{asset('packages/admin/css/style-responsive.css')}}" rel="stylesheet"/>
     <link href="{{asset('packages/admin/css/orange-theme.css')}}" rel="stylesheet"/>
+    <link href="{{asset('packages/admin/css/additional.css')}}" rel="stylesheet"/>
+
     <!-- Just for debugging purposes. Don't actually copy this line! -->
     <!--[if lt IE 9]>
     <script src="js/ie8-responsive-file-warning.js"></script><![endif]-->
@@ -56,7 +58,7 @@
 
     <a href="{{ route('admin.dash') }}" class="logo">
         <h1>Admin</h1>
-    </a>    
+    </a>
 
     <div class="sidebar-toggle-box">
         <div class="fa fa-bars"></div>
@@ -68,7 +70,7 @@
 <div class="top-nav clearfix">
     <!--search & user info start-->
     <ul class="nav pull-right top-menu">
-        
+
         <!-- user login dropdown start-->
         <li class="dropdown">
             <a data-toggle="dropdown" class="dropdown-toggle" href="#">
@@ -80,7 +82,7 @@
                 <li><a href="{{ route('sentinel.logout') }}"><i class="fa fa-key"></i> Log Out</a></li>
             </ul>
         </li>
-        
+
     </ul>
     <!--search & user info end-->
 </div>
@@ -118,7 +120,7 @@
                     <ul class="sub">
                         <li><a href="{{ route('events.list') }}">All Events</a></li>
                         <li><a href="{{ action('\App\Http\Controllers\Admin\EventController@create') }}">Create Event</a></li>
-                        
+
                     </ul>
                 </li>
                 <li class="sub-menu">
@@ -131,7 +133,7 @@
                         <li><a href="{{ route('videodisks.list.type',array('dvd')) }}">DVDs</a></li>
                         <li><a href="{{ route('videodisks.list.type',array('vcd')) }}">VCDs</a></li>
                         <li><a href="{{ action('\App\Http\Controllers\Admin\VideoDiskController@create') }}"><i class="fa fa-plus"></i> Add Video Disk</a></li>
-                        
+
                     </ul>
                 </li>
                 <li class="sub-menu">
@@ -144,7 +146,7 @@
                         <li><a href="{{ route('audiodisks.list.type',array('acd')) }}">Audio CDs</a></li>
                         <li><a href="{{ route('audiodisks.list.type',array('mp3')) }}">MP3s</a></li>
                         <li><a href="{{ action('\App\Http\Controllers\Admin\AudioDiskController@create') }}"><i class="fa fa-plus"></i> Add Audio Disk</a></li>
-                        
+
                     </ul>
                 </li>
                 <li class="sub-menu">
@@ -157,7 +159,7 @@
                         <li><a href="{{ route('books.list.type',array('sobg')) }}">By School</a></li>
                         <li><a href="{{ route('books.list.type',array('other')) }}">By Others</a></li>
                         <li><a href="{{ action('\App\Http\Controllers\Admin\BookController@create') }}"><i class="fa fa-plus"></i> Add Book</a></li>
-                        
+
                     </ul>
                 </li>
                 <li class="sub-menu">
@@ -169,10 +171,10 @@
                         <li><a href="{{ route('magazines.list') }}">Magazine</a></li>
                         <li><a href="{{ action('\App\Http\Controllers\Admin\MagazineController@create') }}"><i class="fa fa-plus"></i> Add New Magazine</a></li>
                         <li><a href="{{ route('magazines.subscription.rates') }}">Subscription Rate</a></li>
-                        
+
                     </ul>
                 </li>
-                
+
                 <li class="sub-menu">
                     <a href="#">
                         <i class="fa fa-book"></i>
@@ -183,7 +185,7 @@
                         <li><a href="{{ route('unconfirmed.orders') }}">Unconfirmed Orders</a></li>
                         <li><a href="{{ route('confirmed.orders') }}">Confirmed Orders</a></li>
                         <li><a href="{{ route('all.orders') }}">All Orders</a></li>
-                        
+
                     </ul>
                 </li>
 
@@ -195,7 +197,7 @@
                     <ul class="sub">
                         <li><a href="{{ route('archives.list') }}">All Archives</a></li>
                         <li><a href="{{ route('archives.create') }}"><i class="fa fa-plus"></i> Add New Archive</a></li>
-                        
+
                     </ul>
                 </li>
                 <li class="sub-menu">
@@ -206,7 +208,7 @@
                     <ul class="sub">
                         <li><a href="{{ route('album.list') }}">Albums</a></li>
                         <li><a href="{{ route('album.create') }}"><i class="fa fa-plus"></i> Add Album</a></li>
-                        
+
                     </ul>
                 </li>
                 <li class="sub-menu">
@@ -217,7 +219,7 @@
                     <ul class="sub">
                         <li><a href="{{ route('yatra.list') }}">Yatras</a></li>
                         <li><a href="{{ route('yatra.create') }}"><i class="fa fa-plus"></i> Add Yatra</a></li>
-                        
+
                     </ul>
                 </li>
                 <li class="sub-menu">
@@ -228,7 +230,7 @@
                     <ul class="sub">
                         <li><a href="{{ route('package.list') }}">Packages</a></li>
                         <li><a href="{{ route('package.create') }}"><i class="fa fa-plus"></i> Add New Package</a></li>
-                        
+
                     </ul>
                 </li>
                 <li class="sub-menu">
@@ -237,7 +239,7 @@
                         <span>Logout</span>
                     </a>
                 </li>
-            </ul> 
+            </ul>
        </div>
         <!-- sidebar menu end-->
     </div>
@@ -255,7 +257,7 @@
     <!-- Notifications -->
     @yield('content')
     <!-- Notifications -->
-    
+
 
 
     </section>
@@ -277,30 +279,13 @@
 <!--[if lte IE 8]><script language="javascript" type="text/javascript" src="js/flot-chart/excanvas.min.js"></script><![endif]-->
 <script src="{{asset('packages/admin/js/skycons/skycons.js')}}"></script>
 <script src="{{asset('packages/admin/js/jquery.scrollTo/jquery.scrollTo.js')}}"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js')}}"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
 <script src="{{asset('packages/admin/js/calendar/clndr.js')}}"></script>
-<script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.2/underscore-min.js')}}"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.2/underscore-min.js"></script>
 <script src="{{asset('packages/admin/js/calendar/moment-2.2.1.js')}}"></script>
 <script src="{{asset('packages/admin/js/evnt.calendar.init.js')}}"></script>
 <script src="{{asset('packages/admin/js/jvector-map/jquery-jvectormap-1.2.2.min.js')}}"></script>
 <script src="{{asset('packages/admin/js/jvector-map/jquery-jvectormap-us-lcc-en.js')}}"></script>
-{{-- <script src="js/gauge/gauge.js"></script> --}}
-<!--clock init-->
-<script src="{{asset('packages/admin/js/css3clock/js/css3clock.js')}}"></script>
-<!--Easy Pie Chart-->
-<script src="{{asset('packages/admin/js/easypiechart/jquery.easypiechart.js')}}"></script>
-<!--Sparkline Chart-->
-<script src="{{asset('packages/admin/js/sparkline/jquery.sparkline.js')}}"></script>
-<!--Morris Chart-->
-<script src="{{asset('packages/admin/js/morris-chart/morris.js')}}"></script>
-<script src="{{asset('packages/admin/js/morris-chart/raphael-min.js')}}"></script>
-<!--jQuery Flot Chart-->
-<script src="{{asset('packages/admin/js/flot-chart/jquery.flot.js')}}"></script>
-<script src="{{asset('packages/admin/js/flot-chart/jquery.flot.tooltip.min.js')}}"></script>
-<script src="{{asset('packages/admin/js/flot-chart/jquery.flot.resize.js')}}"></script>
-<script src="{{asset('packages/admin/js/flot-chart/jquery.flot.pie.resize.js')}}"></script>
-<script src="{{asset('packages/admin/js/flot-chart/jquery.flot.animator.min.js')}}"></script>
-<script src="{{asset('packages/admin/js/flot-chart/jquery.flot.growraf.js')}}"></script>
 <script src="{{asset('packages/admin/js/dashboard.js')}}"></script>
 <script src="{{asset('packages/admin/js/ekko-lightbox.min.js')}}"></script>
 <script src="{{asset('packages/admin/js/jQuery.print.js')}}"></script>

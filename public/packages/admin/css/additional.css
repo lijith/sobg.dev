@@ -1,0 +1,68 @@
+.admin-yatra-show .col-heading{
+	border-bottom: 2px solid #c9532d;
+  color: #c9532d;
+  font-family: "Bree Serif",serif;
+  font-size: 125%;
+  font-weight: 500;
+  padding-bottom: 5px;
+}
+.admin-yatra-show .sub-heading{
+	border: medium none;
+  color: #dea32b;
+  font-size: 115%;
+}
+.admin-yatra-show blockquote.orange {
+    border-left-color: #dea32b;
+    color: #5d5d5d;
+    text-align: left;
+    background: #FFF !important;
+}
+
+.admin-yatra-show blockquote.orange small {
+    color: #dea32b;
+}
+.admin-yatra-show .two-images,
+.admin-yatra-show .three-images{
+	overflow: hidden;
+}
+
+.admin-yatra-show .two-images .col {
+    float: left;
+    min-height: 1px;
+    padding-left: 5px;
+    padding-right: 5px;
+    position: relative;
+    width: 50%;
+}
+.admin-yatra-show .three-images .col{
+		float: left;
+    min-height: 1px;
+    padding-left: 3px;
+    padding-right: 3px;
+    position: relative;
+    width: 33.3333%;
+}
+
+.admin-yatra-show .col .pic-wrap {
+    background: #f7f6f4 none repeat scroll 0 0;
+    border: 1px solid #d8d8d6;
+    border-radius: 5px;
+    padding: 5px;
+}
+.admin-yatra-show img{
+	width: 100%;
+}
+
+.admin-yatra-show .content-pic {
+    background: #f7f6f4 none repeat scroll 0 0;
+    border: 1px solid #d8d8d6;
+    padding: 5px;
+    width: 35%;
+}
+
+.pull-right{
+	float: right;
+}
+.pull-left{
+	float: left;
+}

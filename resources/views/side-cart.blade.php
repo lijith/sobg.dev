@@ -40,7 +40,7 @@
 
 							<input name="_token" value="{{ csrf_token() }}" type="hidden">
               <input name="_method" value="DELETE" type="hidden">
-							<button type="submit" class=""><i class="fa fa-times-circle"></i></button>
+							<button type="submit" class="del"><i class="fa fa-times-circle"></i></button>
 							
 						</form>
 					</div><!-- /.cart-action -->

@@ -4,6 +4,86 @@
 		"selected_items":
 		[
 			[
+				"pub",
+				"published_at"
+			],
+			[
+				"strt",
+				"strtoupper"
+			],
+			[
+				"order",
+				"orderBy"
+			],
+			[
+				"t",
+				"thead	Tag"
+			],
+			[
+				"new",
+				"$new_orders〔variable〕"
+			],
+			[
+				"maga",
+				"magazines"
+			],
+			[
+				"bor",
+				"border-radius"
+			],
+			[
+				"or",
+				"orderBy"
+			],
+			[
+				"current",
+				"$current_year〔variable〕"
+			],
+			[
+				"di",
+				"diffInYears"
+			],
+			[
+				"Subs",
+				"Subscription"
+			],
+			[
+				"Input",
+				"Input::old"
+			],
+			[
+				"nu",
+				"null"
+			],
+			[
+				"Inp",
+				"Input::all"
+			],
+			[
+				"up",
+				"updateShippingOnCartChange〔function〕"
+			],
+			[
+				"shi",
+				"shipping_id"
+			],
+			[
+				"make",
+				"makeOrders〔function〕"
+			],
+			[
+				"tot",
+				"totalAmount"
+			],
+			[
+				"cart",
+				"cart_item"
+			],
+			[
+				"ma",
+				"magazine"
+			],
+			[
 				"f",
 				"function"
 			],
@@ -92,10 +172,6 @@
 				"filename"
 			],
 			[
-				"shi",
-				"shipping"
-			],
-			[
 				"shipping",
 				"shipping_id"
 			],
@@ -120,20 +196,12 @@
 				"uses"
 			],
 			[
-				"cart",
-				"cartHasItems"
-			],
-			[
 				"A",
 				"App〔namespace〕"
 			],
 			[
 				"filr",
 				"$file_ext〔variable〕"
-			],
-			[
-				"maga",
-				"magazines"
 			],
 			[
 				"vide",
@@ -224,16 +292,8 @@
 				"list-style"
 			],
 			[
-				"ma",
-				"margin-top"
-			],
-			[
 				"font",
 				"font-size"
-			],
-			[
-				"bor",
-				"border-radius"
 			],
 			[
 				"spli",
@@ -363,16 +423,24 @@
 			"file": "app/Http/routes.php",
 			"settings":
 			{
-				"buffer_size": 20771,
+				"buffer_size": 23491,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "app/Http/Controllers/GalleryController.php",
+			"file": "resources/views/yatras/yatra-registration.blade.php",
 			"settings":
 			{
-				"buffer_size": 332,
-				"line_ending": "Unix"
+				"buffer_size": 16797,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "resources/views/side-cart.blade.php",
+			"settings":
+			{
+				"buffer_size": 3320,
+				"line_ending": "Windows"
 			}
 		}
 	],
@@ -426,73 +494,114 @@
 		"/I/websites/sitesobg.dev/app",
 		"/I/websites/sitesobg.dev/app/Http",
 		"/I/websites/sitesobg.dev/app/Http/Controllers",
-		"/I/websites/sitesobg.dev/app/Http/Controllers/Member",
-		"/I/websites/sitesobg.dev/app/Http/Middleware",
-		"/I/websites/sitesobg.dev/app/Http/Middleware/Sentinel",
-		"/I/websites/sitesobg.dev/app/Http/Requests",
-		"/I/websites/sitesobg.dev/app/Http/Requests/Admin",
-		"/I/websites/sitesobg.dev/app/Http/Requests/Member",
-		"/I/websites/sitesobg.dev/config",
-		"/I/websites/sitesobg.dev/database",
-		"/I/websites/sitesobg.dev/database/migrations",
+		"/I/websites/sitesobg.dev/app/Http/Controllers/Admin",
 		"/I/websites/sitesobg.dev/public",
-		"/I/websites/sitesobg.dev/public/scripts",
 		"/I/websites/sitesobg.dev/public/styles",
 		"/I/websites/sitesobg.dev/resources",
 		"/I/websites/sitesobg.dev/resources/views",
-		"/I/websites/sitesobg.dev/resources/views/Admin",
-		"/I/websites/sitesobg.dev/resources/views/Admin/events",
-		"/I/websites/sitesobg.dev/resources/views/Admin/videodisks",
-		"/I/websites/sitesobg.dev/resources/views/Member"
+		"/I/websites/sitesobg.dev/resources/views/emails",
+		"/I/websites/sitesobg.dev/resources/views/includes",
+		"/I/websites/sitesobg.dev/resources/views/yatras",
+		"/I/websites/sitesobg.dev/storage"
 	],
 	"file_history":
 	[
 		"/I/websites/sitesobg.dev/app/Http/Controllers/EshopController.php",
+		"/I/websites/sitesobg.dev/resources/views/eshop-books-list.blade.php",
+		"/I/websites/sitesobg.dev/app/Http/Controllers/ShoppingCartController.php",
+		"/I/websites/sitesobg.dev/resources/views/eshop.blade.php",
+		"/I/websites/sitesobg.dev/resources/views/side-cart.blade.php",
+		"/I/websites/sitesobg.dev/resources/views/eshop_side_bar.blade.php",
+		"/I/websites/sitesobg.dev/public/styles/main_additonal.css",
+		"/I/websites/sitesobg.dev/public/styles/main.css",
+		"/I/websites/sitesobg.dev/resources/views/eshop-search.blade.php",
+		"/I/websites/sitesobg.dev/resources/views/eshop-magazines-list.blade.php",
+		"/I/websites/sitesobg.dev/resources/views/eshop-video-disks-list.blade.php",
+		"/I/websites/sitesobg.dev/resources/views/eshop-audio-disks-list.blade.php",
+		"/I/websites/sitesobg.dev/resources/views/eshop-search-form.blade.php",
+		"/I/websites/sitesobg.dev/app/Http/Controllers/YatrasController.php",
+		"/I/websites/sitesobg.dev/resources/views/yatras/yatra-registration.blade.php",
+		"/I/websites/sitesobg.dev/resources/views/includes/mainmenu.blade.php",
+		"/I/websites/sitesobg.dev/resources/views/yatras/side-yatras.blade.php",
+		"/I/websites/sitesobg.dev/resources/views/layout.blade.php",
+		"/I/websites/sitesobg.dev/resources/views/Admin/layout.blade.php",
+		"/I/websites/sitesobg.dev/app/Http/Controllers/Admin/AdministratorController.php",
+		"/I/websites/sitesobg.dev/app/Http/Controllers/Admin/ShippingController.php",
+		"/I/websites/sitesobg.dev/resources/views/Admin/shipping/show.blade.php",
+		"/I/websites/sitesobg.dev/resources/views/Admin/shipping/orders-list.blade.php",
+		"/I/websites/sitesobg.dev/app/Shipping.php",
+		"/C/Users/creatix/Downloads/magazines.sql",
+		"/I/websites/sitesobg.dev/app/Http/Controllers/Member/RegistrationController.php",
+		"/I/websites/sitesobg.dev/app/Http/Controllers/Member/ProfileController.php",
+		"/I/websites/sitesobg.dev/resources/views/Member/magazine-list.blade.php",
+		"/I/websites/sitesobg.dev/resources/views/Member/show.blade.php",
+		"/I/websites/sitesobg.dev/app/Http/Controllers/Admin/UserController.php",
+		"/I/websites/sitesobg.dev/resources/views/Admin/users/show.blade.php",
+		"/I/websites/sitesobg.dev/public/scripts/main.js",
+		"/C/Users/creatix/AppData/Local/Temp/Rar$DRa0.052/viewerjs-0.5.7/ViewerJS/index.html",
+		"/I/websites/sitesobg.dev/config/sentinel.php",
+		"/I/websites/sitesobg.dev/resources/views/Member/resend.blade.php",
+		"/I/websites/sitesobg.dev/resources/views/Admin/resend.blade.php",
+		"/I/websites/sitesobg.dev/app/User.php",
+		"/I/websites/sitesobg.dev/app/Profile.php",
+		"/I/websites/sitesobg.dev/app/MagazineSubscriber.php",
+		"/I/websites/sitesobg.dev/app/Http/Controllers/Member/SessionController.php",
+		"/I/websites/sitesobg.dev/app/Http/Controllers/HomeController.php",
+		"/C/Users/creatix/AppData/Local/Temp/fz3temp-2/mail.php",
+		"/C/Users/creatix/AppData/Local/Temp/fz3temp-2/services.php",
+		"/I/websites/sitesobg.dev/resources/views/emails/base-layout.blade.php",
+		"/C/Users/creatix/AppData/Local/Temp/fz3temp-2/sentinel.php",
+		"/I/websites/sitesobg.dev/vendor/rydurham/sentinel/src/Sentinel/DataTransferObjects/BaseResponse.php",
+		"/I/websites/sitesobg.dev/resources/views/emails/welcome.blade.php",
+		"/I/websites/sitesobg.dev/app/Http/Controllers/Admin/EventController.php",
+		"/I/websites/sitesobg.dev/resources/views/shoppingcart-payment.blade.php",
+		"/I/websites/sitesobg.dev/vendor/rydurham/sentinel/src/Sentinel/Repositories/User/SentryUserRepository.php",
+		"/I/websites/sitesobg.dev/app/Http/Controllers/Admin/MagazineController.php",
+		"/I/websites/sitesobg.dev/app/MagazineSubscribers.php",
+		"/I/websites/sitesobg.dev/app/Subscription.php",
+		"/I/websites/sitesobg.dev/database/migrations/2015_05_13_072801_CreateShippingsTable.php",
+		"/I/websites/sitesobg.dev/database/migrations/2015_05_13_072521_CreateOrdersTable.php",
+		"/I/websites/sitesobg.dev/database/migrations/2015_05_13_072710_DropShippingsTable.php",
+		"/I/websites/sitesobg.dev/database/migrations/2015_05_13_070915_DropOrdersTable.php",
+		"/I/websites/sitesobg.dev/database/migrations/2015_05_13_063700_CreateOrdersTable.php",
+		"/I/websites/sitesobg.dev/database/migrations/2015_05_13_063638_DropOrdersTable.php",
+		"/I/websites/sitesobg.dev/database/migrations/2015_05_13_070550_DropOrdersTable.php",
+		"/I/websites/sitesobg.dev/database/migrations/2015_05_13_070602_CreateOrdersTable.php",
+		"/I/websites/sitesobg.dev/database/migrations/2015_04_03_093937_create_orders_table.php",
+		"/I/websites/sitesobg.dev/resources/views/eshop-item-magazine.blade.php",
+		"/I/websites/sitesobg.dev/resources/views/eshop-item-book.blade.php",
+		"/I/websites/sitesobg.dev/resources/views/shoppingcart.blade.php",
+		"/I/websites/sitesobg.dev/config/hashids.php",
+		"/I/websites/sitesobg.dev/resources/views/event-side-nav.blade.php",
+		"/I/websites/sitesobg.dev/resources/views/eshop-item.blade.php",
+		"/I/websites/sitesobg.dev/resources/views/eshop-item-video-disk.blade.php",
+		"/I/websites/sitesobg.dev/resources/views/eshop-item-audio-disk.blade.php",
+		"/I/websites/sitesobg.dev/app/Http/Controllers/GalleryController.php",
 		"/I/websites/sitesobg.dev/app/Http/Controllers/DonateController.php",
 		"/I/websites/sitesobg.dev/app/Http/Controllers/CoursesAndRetreatsController.php",
 		"/I/websites/sitesobg.dev/app/Http/Controllers/ContactUsController.php",
 		"/I/websites/sitesobg.dev/app/Http/Controllers/AboutSobgController.php",
 		"/I/websites/sitesobg.dev/resources/views/shoppingcart-shipping-edit.blade.php",
-		"/I/websites/sitesobg.dev/public/styles/main_additonal.css",
-		"/I/websites/sitesobg.dev/app/Http/Controllers/ShoppingCartController.php",
-		"/I/websites/sitesobg.dev/resources/views/eshop-audio-disks-list.blade.php",
-		"/I/websites/sitesobg.dev/resources/views/eshop-video-disks-list.blade.php",
-		"/I/websites/sitesobg.dev/resources/views/eshop-item-audio-disk.blade.php",
-		"/I/websites/sitesobg.dev/resources/views/eshop-books-list.blade.php",
 		"/I/websites/sitesobg.dev/resources/views/Member/register.blade.php",
 		"/I/websites/sitesobg.dev/resources/views/Member/login.blade.php",
-		"/I/websites/sitesobg.dev/app/Http/Controllers/Member/SessionController.php",
-		"/I/websites/sitesobg.dev/app/Http/Controllers/Member/RegistrationController.php",
-		"/I/websites/sitesobg.dev/app/Http/Controllers/Admin/AdministratorController.php",
 		"/I/websites/sitesobg.dev/resources/views/shoppingcart-login-register.blade.php",
-		"/I/websites/sitesobg.dev/resources/views/shoppingcart-payment.blade.php",
 		"/I/websites/sitesobg.dev/app/Http/Controllers/Admin/AlbumController.php",
 		"/I/websites/sitesobg.dev/resources/views/shoppingcart-shipping.blade.php",
-		"/I/websites/sitesobg.dev/public/scripts/main.js",
-		"/I/websites/sitesobg.dev/config/sentinel.php",
 		"/I/websites/sitesobg.dev/resources/views/notifications.blade.php",
-		"/I/websites/sitesobg.dev/app/Http/Controllers/Member/ProfileController.php",
 		"/I/websites/sitesobg.dev/vendor/rydurham/sentinel/src/Sentinel/FormRequests/ChangePasswordRequest.php",
-		"/I/websites/sitesobg.dev/vendor/rydurham/sentinel/src/Sentinel/Repositories/User/SentryUserRepository.php",
 		"/I/websites/sitesobg.dev/resources/views/Admin/users/reset.blade.php",
-		"/I/websites/sitesobg.dev/resources/views/Member/show.blade.php",
 		"/I/websites/sitesobg.dev/resources/views/Admin/videodisks/show.blade.php",
-		"/I/websites/sitesobg.dev/resources/views/shoppingcart.blade.php",
-		"/I/websites/sitesobg.dev/app/Profile.php",
 		"/I/websites/sitesobg.dev/resources/views/Admin/events/create.blade.php",
 		"/I/websites/sitesobg.dev/resources/views/Admin/users/create.blade.php",
 		"/I/websites/sitesobg.dev/app/Http/Controllers/Admin/SessionController.php",
 		"/I/websites/sitesobg.dev/vendor/rydurham/sentinel/src/Sentinel/FormRequests/RegisterRequest.php",
 		"/I/websites/sitesobg.dev/public/views/shoppingcart-account.blade.php",
 		"/I/websites/sitesobg.dev/public/views/shoppingcart.blade.php",
-		"/I/websites/sitesobg.dev/resources/views/eshop.blade.php",
 		"/I/websites/sitesobg.dev/resources/views/auth/password.blade.php",
 		"/I/websites/sitesobg.dev/app/Http/Requests/Member/ProfilePersonalUpdateRequest.php",
 		"/I/websites/sitesobg.dev/resources/views/contact.blade.php",
-		"/I/websites/sitesobg.dev/resources/views/layout.blade.php",
 		"/I/websites/sitesobg.dev/vendor/rydurham/sentinel/src/Sentinel/Traits/SentinelRedirectionTrait.php",
 		"/I/websites/sitesobg.dev/resources/views/Admin/books/edit.blade.php",
-		"/I/websites/sitesobg.dev/resources/views/Admin/layout.blade.php",
 		"/I/websites/sitesobg.dev/resources/views/shoppingcart-register.blade.php",
 		"/I/websites/sitesobg.dev/.gitignore",
 		"/I/websites/sitesobg.dev/app/Http/Requests/Member/ProfileAddressUpdateRequest.php",
@@ -504,7 +613,6 @@
 		"/I/websites/sitesobg.dev/vendor/barryvdh/laravel-elfinder/src/ElfinderController.php",
 		"/I/websites/sitesobg.dev/app/Http/Controllers/GuruController.php",
 		"/I/websites/sitesobg.dev/app/Http/Controllers/PublicationsController.php",
-		"/I/websites/sitesobg.dev/app/Http/Controllers/HomeController.php",
 		"/I/websites/sitesobg.dev/resources/views/Admin/events/show.blade.php",
 		"/I/websites/sitesobg.dev/resources/views/Admin/events/edit.blade.php",
 		"/I/websites/sitesobg.dev/vendor/barryvdh/laravel-elfinder/src/ElfinderServiceProvider.php",
@@ -513,12 +621,9 @@
 		"/I/websites/sitesobg.dev/public/packages/admin/js/scripts.js",
 		"/I/websites/sitesobg.dev/resources/views/Admin/archives/edit.blade.php",
 		"/I/websites/sitesobg.dev/resources/views/Admin/archives/create.blade.php",
-		"/I/websites/sitesobg.dev/resources/views/side-cart.blade.php",
 		"/I/websites/sitesobg.dev/config/app.php",
 		"/I/websites/sitesobg.dev/vendor/gloudemans/shoppingcart/src/Gloudemans/Shoppingcart/ShoppingcartServiceProvider.php",
-		"/I/websites/sitesobg.dev/resources/views/eshop-magazines-list.blade.php",
 		"/I/websites/sitesobg.dev/resources/views/vendor/elfinder/elfinder.php",
-		"/I/websites/sitesobg.dev/resources/views/eshop-item-magazine.blade.php",
 		"/I/websites/sitesobg.dev/config/cache.php",
 		"/I/websites/sitesobg.dev/database/migrations/2015_04_03_104703_create_shippings_table.php",
 		"/I/websites/sitesobg.dev/vendor/composer/autoload_classmap.php",
@@ -528,53 +633,7 @@
 		"/I/websites/sitesobg.dev/resources/views/Admin/books/index.blade.php",
 		"/I/websites/sitesobg.dev/resources/views/Admin/magazines/index.blade.php",
 		"/I/websites/sitesobg.dev/resources/views/Admin/audiodisks/index.blade.php",
-		"/I/websites/sitesobg.dev/resources/views/Admin/videodisks/index.blade.php",
-		"/I/websites/sitesobg.dev/composer.json",
-		"/I/websites/sitesobg.dev/app/Http/Controllers/Admin/AudioDiskController.php",
-		"/I/websites/sitesobg.dev/app/Http/Controllers/Admin/BookController.php",
-		"/I/websites/sitesobg.dev/app/Http/Controllers/Admin/EventController.php",
-		"/I/websites/sitesobg.dev/app/Http/Controllers/Admin/MagazineController.php",
-		"/I/websites/sitesobg.dev/app/Http/Controllers/Admin/VideoDiskController.php",
-		"/I/websites/sitesobg.dev/database/migrations/2015_04_13_094730_create_archives_table.php",
-		"/I/websites/sitesobg.dev/app/Archive.php",
-		"/I/websites/sitesobg.dev/resources/views/Admin/archives/show.blade.php",
-		"/I/websites/sitesobg.dev/app/Http/Controllers/Admin/ArchiveController.php",
-		"/I/websites/sitesobg.dev/app/Http/Requests/Admin/ArchivesFormRequest.php",
-		"/I/websites/sitesobg.dev/config/hashids.php",
-		"/I/websites/sitesobg.dev/resources/views/Admin/archives/index.blade.php",
-		"/I/websites/sitesobg.dev/app/Http/Kernel.php",
-		"/I/websites/ovallog/hotspotlogin/test.html",
-		"/I/websites/sitesobg.dev/app/Archives.php",
-		"/I/websites/sitesobg.dev/vendor/barryvdh/laravel-elfinder/config/elfinder.php",
-		"/I/websites/ovallog/hotspotlogin/hotspotlogin.php",
-		"/I/websites/ovallog/hotspotlogin/session_end.html",
-		"/I/websites/ovallog/hotspotlogin/hotspotlogin.html",
-		"/I/websites/ovallog/hotspotlogin/js/hotspotlogin.js",
-		"/I/websites/ovallog/hotspotlogin/template/loginform-footer.php",
-		"/I/websites/ovallog/hotspotlogin/template/loginform-login.php",
-		"/I/websites/ovallog/hotspotlogin/template/loginform-header.php",
-		"/I/websites/sitesobg.dev/app/SubscriptionRates.php",
-		"/I/websites/sitesobg.dev/resources/views/Admin/magazines/subscriptions.blade.php",
-		"/I/websites/sitesobg.dev/database/migrations/2015_04_11_080455_subscription.php",
-		"/I/websites/sitesobg.dev/database/migrations/2015_04_11_094254_subscription.php",
-		"/I/websites/sitesobg.dev/database/migrations/2015_04_10_140650_drop_magazine_subscribers_table.php",
-		"/I/websites/sitesobg.dev/database/migrations/2015_04_10_133219_create_magazine_subscribers_table.php",
-		"/I/websites/sitesobg.dev/database/migrations/2015_04_10_140841_create_magazine_subscribers_table.php",
-		"/I/websites/sitesobg.dev/app/MagazineSubscribers.php",
-		"/I/websites/sitesobg.dev/resources/views/shoppingcart_update_subs.blade.php",
-		"/I/websites/sitesobg.dev/resources/views/eshop-item-video-disk.blade.php",
-		"/I/websites/sitesobg.dev/resources/views/eshop-item-book.blade.php",
-		"/I/websites/sitesobg.dev/database/migrations/2015_04_09_103113_create_subscriptions_table.php",
-		"/I/websites/sitesobg.dev/app/Subscription.php",
-		"/I/websites/sitesobg.dev/database/migrations/2015_04_09_104204_create_subscription_rates_table.php",
-		"/I/websites/sitesobg.dev/database/migrations/2015_04_09_125310_subscriptionstable.php",
-		"/C/Users/creatix/Downloads/subscriptions.sql",
-		"/I/websites/sitesobg.dev/app/Http/Requests/Admin/MagazineFormRequest.php",
-		"/I/websites/sitesobg.dev/app/Http/Requests/Admin/MagazineFormUpdateRequest.php",
-		"/I/websites/sitesobg.dev/resources/views/Admin/magazines/edit.blade.php",
-		"/I/websites/sitesobg.dev/resources/views/Admin/magazines/show.blade.php",
-		"/I/websites/sitesobg.dev/resources/views/Admin/magazines/create.blade.php",
-		"/I/websites/sitesobg.dev/app/Exceptions/Handler.php"
+		"/I/websites/sitesobg.dev/resources/views/Admin/videodisks/index.blade.php"
 	],
 	"find":
 	{
@@ -585,6 +644,7 @@
 		"height": 90.0,
 		"where_history":
 		[
+			"I:\\websites\\sitesobg.dev\\app\\Http\\Controllers\\Admin",
 			"I:\\websites\\sitesobg.dev\\public\\packages",
 			"I:\\websites\\sitesobg.dev\\public\\packages\\admin\\js"
 		]
@@ -594,6 +654,15 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"Admin.",
+			"admin.",
+			"admin",
+			"MagazineSubscribers",
+			"hidden",
+			"has",
+			"MagazineSubscribers",
+			"makeOrders",
+			"cart.shipping.update",
 			"permanent",
 			"ckedi",
 			"$event",
@@ -717,6 +786,7 @@
 		"regex": false,
 		"replace_history":
 		[
+			"MagazineSubscriber",
 			"contact",
 			"$archive",
 			"archive-",
@@ -798,7 +868,7 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 2,
 			"sheets":
 			[
 				{
@@ -807,15 +877,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 20771,
+						"buffer_size": 23491,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								6897,
-								6910
+								20885,
+								20885
 							]
 						],
 						"settings":
@@ -824,46 +894,31 @@
 							"auto_complete": false,
 							"bh_regions":
 							[
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
 								"bh_single_quote",
 								"bh_single_quote_center",
 								"bh_single_quote_open",
 								"bh_single_quote_close",
 								"bh_single_quote_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
 								"bh_curly",
 								"bh_curly_center",
 								"bh_curly_open",
@@ -874,38 +929,53 @@
 								"bh_c_define_open",
 								"bh_c_define_close",
 								"bh_c_define_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content"
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content"
 							],
 							"syntax": "Packages/PHP/PHP.tmLanguage",
 							"tab_size": 2,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 594.0,
+						"translation.y": 6246.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "app/Http/Controllers/GalleryController.php",
+					"file": "resources/views/yatras/yatra-registration.blade.php",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 332,
+						"buffer_size": 16797,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								329,
-								329
+								3399,
+								3399
 							]
 						],
 						"settings":
@@ -914,46 +984,31 @@
 							"auto_complete": false,
 							"bh_regions":
 							[
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
 								"bh_single_quote",
 								"bh_single_quote_center",
 								"bh_single_quote_open",
 								"bh_single_quote_close",
 								"bh_single_quote_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
 								"bh_curly",
 								"bh_curly_center",
 								"bh_curly_open",
@@ -964,16 +1019,121 @@
 								"bh_c_define_open",
 								"bh_c_define_close",
 								"bh_c_define_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content"
+							],
+							"syntax": "Packages/Laravel Blade Highlighter/laravel-blade.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 964.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "resources/views/side-cart.blade.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3320,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1579,
+								1579
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"auto_complete": false,
+							"bh_regions":
+							[
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
 								"bh_square",
 								"bh_square_center",
 								"bh_square_open",
 								"bh_square_close",
 								"bh_square_content"
 							],
-							"syntax": "Packages/PHP/PHP.tmLanguage"
+							"syntax": "Packages/Laravel Blade Highlighter/laravel-blade.tmLanguage",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 270.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -1030,6 +1190,50 @@
 		"last_filter": "",
 		"selected_items":
 		[
+			[
+				"add",
+				"public\\styles\\main_additonal.css"
+			],
+			[
+				"addit",
+				"public\\styles\\main_additonal.css"
+			],
+			[
+				"main",
+				"public\\scripts\\main.js"
+			],
+			[
+				"baseresponse",
+				"vendor\\rydurham\\sentinel\\src\\Sentinel\\DataTransferObjects\\BaseResponse.php"
+			],
+			[
+				"userrepos",
+				"vendor\\rydurham\\sentinel\\src\\Sentinel\\Repositories\\User\\SentryUserRepository.php"
+			],
+			[
+				"home",
+				"app\\Http\\Controllers\\HomeController.php"
+			],
+			[
+				"side-cart",
+				"resources\\views\\side-cart.blade.php"
+			],
+			[
+				"paymen",
+				"resources\\views\\shoppingcart-payment.blade.php"
+			],
+			[
+				"hash",
+				"config\\hashids.php"
+			],
+			[
+				"addi",
+				"public\\styles\\main_additonal.css"
+			],
+			[
+				"main.js",
+				"public\\scripts\\main.js"
+			],
 			[
 				"aboutco",
 				"app\\Http\\Controllers\\AboutSobgController.php"
@@ -1163,10 +1367,6 @@
 				"app\\Http\\Kernel.php"
 			],
 			[
-				"hash",
-				"config\\hashids.php"
-			],
-			[
 				"magazi",
 				"app\\Http\\Controllers\\Admin\\MagazineController.php"
 			],
@@ -1201,10 +1401,6 @@
 			[
 				"sentin",
 				"config\\sentinel.php"
-			],
-			[
-				"side-cart",
-				"resources\\views\\side-cart.blade.php"
 			],
 			[
 				"helpers",
@@ -1245,10 +1441,6 @@
 			[
 				"user.php",
 				"vendor\\cartalyst\\sentry\\src\\Cartalyst\\Sentry\\Users\\Eloquent\\User.php"
-			],
-			[
-				"userrepos",
-				"vendor\\rydurham\\sentinel\\src\\Sentinel\\Repositories\\User\\SentryUserRepository.php"
 			],
 			[
 				"slugga",
@@ -1313,10 +1505,6 @@
 			[
 				"route",
 				"app\\Http\\routes.php"
-			],
-			[
-				"home",
-				"app\\Http\\Controllers\\HomeController.php"
 			],
 			[
 				"git",

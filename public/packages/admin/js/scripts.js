@@ -55,7 +55,7 @@
 
         }
 
-       
+
         /*==Collapsible==*/
         $('.widget-head').click(function(e) {
             var widgetElem = $(this).children('.widget-collapse').children('i');
@@ -197,60 +197,93 @@
 
     var publish_date = $('#publish-date').datepicker();
 
-    $('.confirm-edit').click(function(e){
+    $('.confirm-edit').click(function(e) {
         var link = $(this).attr('href');
         e.preventDefault();
-        
+
         bootbox.confirm("Are you sure?", function(result) {
-            if(result){
+            if (result) {
 
                 window.location.href = link;
             }
-        }); 
+        });
     })
 
-    $('.confirm-delete').click(function(e){
+    $('.confirm-delete').click(function(e) {
         e.preventDefault();
-        
+
         bootbox.confirm("Are you sure?", function(result) {
-            if(result){
+            if (result) {
 
                 $(".delete-request-form").submit()
             }
-        }); 
+        });
     })
 
-    
 
+    CKEDITOR.stylesSet.add('default', [{
+            name: 'two image wrap',
+            element: 'div',
+            styles: {
+                'overflow': 'hidden'
+            }
+        },
+
+        {
+            name: 'two image col',
+            element: 'div',
+            styles: {
+                'float': 'left',
+                'width': '50%'
+            }
+        }
+    ]);
 
     var config = {
         height: 300,
         filebrowserBrowseUrl: '/elfinder/ckeditor',
-        toolbarGroups: [
-            { name: 'clipboard',   groups: [ 'clipboard', 'undo' ] },
-            { name: 'editing',     groups: [ 'find', 'selection', 'spellchecker' ] },
-            { name: 'links' },
-            { name: 'insert' },
-            { name: 'forms' },
-            { name: 'tools' },
-            { name: 'document',    groups: [ 'mode', 'document', 'doctools' ] },
-            { name: 'others' },
+        // stylesSet: 'my_styles',
+        toolbarGroups: [{
+                name: 'clipboard',
+                groups: ['clipboard', 'undo']
+            }, {
+                name: 'editing',
+                groups: ['find', 'selection', 'spellchecker']
+            }, {
+                name: 'links'
+            }, {
+                name: 'insert'
+            }, {
+                name: 'forms'
+            }, {
+                name: 'tools'
+            }, {
+                name: 'document',
+                groups: ['mode', 'document', 'doctools']
+            }, {
+                name: 'others'
+            },
             //'/',
-            { name: 'basicstyles', groups: [ 'basicstyles', 'cleanup' ] },
-            { name: 'paragraph',   groups: [ 'list', 'indent', 'blocks', 'align', 'bidi' ] },
-            { name: 'styles' },
-            { name: 'colors' }
+            {
+                name: 'basicstyles',
+                groups: ['basicstyles', 'cleanup']
+            }, {
+                name: 'paragraph',
+                groups: ['list', 'indent', 'blocks', 'align', 'bidi']
+            }, {
+                name: 'styles'
+            }, {
+                name: 'colors'
+            }
         ]
     };
 
-    if($('#ckeditor1').length > 0){
-        CKEDITOR.replace( 'ckeditor1', config);
+    if ($('#ckeditor1').length > 0) {
+        CKEDITOR.replace('ckeditor1', config);
     }
 
-    if($('#ckeditor2').length > 0){
-        CKEDITOR.replace( 'ckeditor2', config);
+    if ($('#ckeditor2').length > 0) {
+        CKEDITOR.replace('ckeditor2', config);
     }
 
 })(jQuery);
-
-

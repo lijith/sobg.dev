@@ -18,31 +18,38 @@
       <div class="panel-body">
         @if($part == 'highlight')
 
-          <div class="clearfix">
-            {!! $yatra->highlights !!}
-          </div>
-          
-          <hr />  
+          <div class="admin-yatra-show">
+
+            <div class="clearfix">
+              {!! $yatra->highlights !!}
+            </div>
+
+          </div><!-- /.admin-yatra-show -->
+          <hr />
 
           <p>
-            <a href="{{ route('yatra.show',array('itenarary',$yatra->id)) }}">Iternarary &amp; Cost</a> | 
+            <a href="{{ route('yatra.show',array('itenarary',$yatra->id)) }}">Iternarary &amp; Cost</a> |
             <a href="{{ route('yatra.edit',array('highlight',$yatra->id)) }}">Edit</a>
           </p>
 
         @elseif($part == 'itenarary')
 
-          <div class="clearfix">
-            {!! $yatra->itenary_cost !!}
-          </div>  
+          <div class="admin-yatra-show">
 
-          <hr />  
+            <div class="clearfix">
+              {!! $yatra->itenary_cost !!}
+            </div>
+
+          </div><!-- /.admin-yatra-show -->
+
+          <hr />
 
           <p>
-            <a href="{{ route('yatra.show',array('highlight',$yatra->id)) }}">Highlight</a> | 
+            <a href="{{ route('yatra.show',array('highlight',$yatra->id)) }}">Highlight</a> |
             <a href="{{ route('yatra.edit',array('itenarary',$yatra->id)) }}">Highlight</a>
           </p>
 
-        @endif  
+        @endif
       </div>
     </section>
 	</div>
