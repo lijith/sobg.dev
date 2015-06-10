@@ -21,7 +21,8 @@
 	},
 	"autoload": {
 		"classmap": [
-			"database"
+			"database",
+			"CCAvenue"
 		],
 		"psr-4": {
 			"App\\": "app/"

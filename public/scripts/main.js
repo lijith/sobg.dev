@@ -179,7 +179,7 @@ $(window).resize(function() {
 
 $('.address-same').change(function() {
     if (this.checked) {
-
+        $("input[name ='shipping-email']").val($("input[name ='billing-email']").val());
         $("input[name ='shipping-name']").val($("input[name ='billing-name']").val());
         $("input[name ='shipping-address_1']").val($("input[name ='billing-address_1']").val());
         $("input[name ='shipping-address_2']").val($("input[name ='billing-address_2']").val());

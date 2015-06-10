@@ -69,7 +69,7 @@
 		              		</tr>
 		              		@foreach($orders as $order)
 		              		<tr>
-		              			<td>{{ $order['title'] }}</td>
+		              			<td>{{ ucwords($order['title']) }}</td>
 		              			<td>{{ $order['quantity'] }}</td>
 		              		</tr>
 		              		@endforeach
@@ -100,7 +100,14 @@
 	      	 @if($shipping->amount == 0)
 		      	<a class="btn btn-primary pull-right" href="login.html">Check E-Shop for items</a>
 			      @else
-		      	<a class="btn btn-primary pull-right" href="login.html">Proceed To Checkout</a>
+			      <form method="post" name="redirect" action="http://www.ccavenue.com/shopzone/cc_details.jsp">
+
+								<input type="hidden" name="encRequest" value="{{ $encrypted }}">
+								<input type="hidden" name="Merchant_Id" value="{{ $merchant_id }}">
+
+								<button type="submit" class="btn btn-primary pull-right">Make Payment</button>
+						</form>
+		      	
 		      	@endif
 		      </div><!-- /.clearfix -->
 		    </div>
