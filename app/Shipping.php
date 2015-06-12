@@ -41,6 +41,7 @@ class Shipping extends Model {
 		'billing_contact_number_1',
 		'billing_contact_number_2',
 		'quantity',
+		'comments',
 		'amount',
 
 	];

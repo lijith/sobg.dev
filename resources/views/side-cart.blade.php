@@ -6,10 +6,10 @@
 
 			@if($side_cart->count() > 0)
 
-			<?php $count = 1; ?>
+			<?php $count = 1;?>
 
 			@foreach($side_cart as $item)
-			
+
 				<div class="items-wrap clearfix">
 
 					<div class="sl-no">
@@ -18,17 +18,18 @@
 
 					</div><!-- /.sl-no -->
 					<div class="item-name">
-
 						@if($item->options->item_sub_type == 'dvd')
 							<a href="{{route('dvd.show',array($item->options->item_slug))}}">
-						@elseif($item->options->item_sub_type == 'vcd')	
+						@elseif($item->options->item_sub_type == 'vcd')
 							<a href="{{route('vcd.show',array($item->options->item_slug))}}">
-						@elseif($item->options->item_sub_type == 'acd')	
+						@elseif($item->options->item_sub_type == 'acd')
 							<a href="{{route('acd.show',array($item->options->item_slug))}}">
-						@elseif($item->options->item_sub_type == 'mp3')	
+						@elseif($item->options->item_sub_type == 'mp3')
 							<a href="{{route('acd.show',array($item->options->item_slug))}}">
-						@elseif($item->options->item_sub_type == 'book')	
+						@elseif($item->options->item_sub_type == 'book')
 							<a href="{{route('book.show',array($item->options->item_slug))}}">
+						@elseif($item->options->item_sub_type == 'piravi')
+							<a href="{{route('magazine.show',array($item->options->item_slug))}}">
 						@endif
 						{{$item['name']}}</a>({{$item->qty}})
 					</div><!-- /.item-name -->
@@ -41,13 +42,13 @@
 							<input name="_token" value="{{ csrf_token() }}" type="hidden">
               <input name="_method" value="DELETE" type="hidden">
 							<button type="submit" class="del"><i class="fa fa-times-circle"></i></button>
-							
+
 						</form>
 					</div><!-- /.cart-action -->
-					
+
 				</div><!-- /.items-wrap -->
 
-			<?php $count++; ?>
+			<?php $count++;?>
 			@endforeach
 
 
@@ -74,9 +75,9 @@
 						</div><!-- /.amount -->
 					</div><!-- /.total -->
 				</div><!-- /.wrap -->
-				
+
 			</div><!-- /.cart-total -->
-			<div class="split_20"></div><!-- /.split_40 -->	
+			<div class="split_20"></div><!-- /.split_40 -->
 			<div class="clearfix">
 				<a href="{{route('cart')}}" class="btn btn-primary pull-right">Show Cart</a>
 			</div><!-- /.clearfix -->

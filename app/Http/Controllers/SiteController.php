@@ -1,6 +1,7 @@
 <?php namespace App\Http\Controllers;
 
-use Cart, Session;
+use Cart;
+use Session;
 
 class SiteController extends Controller {
 
@@ -11,7 +12,7 @@ class SiteController extends Controller {
 	|
 	| Show home page
 	|
-	*/
+	 */
 
 	/**
 	 * page meta data
@@ -23,39 +24,38 @@ class SiteController extends Controller {
 		'keywords' => 'Bhagavad Gita, School of Bhagavad Gita, Swami Sandeepananda Giri, Salagram, Chinmayananda, Indian heritage, spiritual,culture, vedas, upanishad, tradition, philosophy, ashram, non-sectarian, camps, retreats, discourses, lectures, satsang, yagnam, gita yagnam, jnana, yatra, sadhana, Kailas - Manasarovar Yatra, Himalaya Darsan',
 		'top_level_page' => '',
 		'sub_page_active' => '',
-		
+
 	);
 
-	public function __construct(){
+	public function __construct() {
 
-		if(!Session::has('shipping_charge')){
-	  	Session::put('shipping_charge', 80);
-	  }
+		if (!Session::has('shipping_charge')) {
+			Session::put('shipping_charge', 80);
+		}
 
-	  $cart_content = Cart::content();
+		$cart_content = Cart::content();
 
-  	$this->page_data['side_cart'] = $cart_content;
-  	$this->page_data['side_cart_total'] = Cart::total();
-  	$this->page_data['grand_cart_total'] = Cart::total() + Session::get('shipping_charge');
-  	$this->page_data['cart_count'] = $this->cartCount();
+		//dd($cart_content);
 
-  	if($this->cartCount() == 1){
+		$this->page_data['side_cart'] = $cart_content;
+		$this->page_data['side_cart_total'] = Cart::total();
+		$this->page_data['grand_cart_total'] = Cart::total() + Session::get('shipping_charge');
+		$this->page_data['cart_count'] = $this->cartCount();
 
+		if ($this->cartCount() == 1) {
 
-
-	  	if($cart_content->first()->options->item_sub_type == 'digital'){
-	  		$this->page_data['grand_cart_total'] = Cart::total();
-	  	}
-	  }
-  }
-
+			if ($cart_content->first()->options->item_sub_type == 'digital') {
+				$this->page_data['grand_cart_total'] = Cart::total();
+			}
+		}
+	}
 
 	/**
 	 * Show the application home page.
 	 *
 	 * @return Response
 	 */
-	public function cartCount(){
+	public function cartCount() {
 		return Cart::count();
 	}
 

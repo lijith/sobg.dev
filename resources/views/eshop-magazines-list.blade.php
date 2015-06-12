@@ -10,20 +10,22 @@
 		<div class="split_30"></div><!-- /.split_30 -->
 		<div class="search-titles clearfix">
 			@include('eshop-search-form')
-			
+
 		</div><!-- /.search-titles -->
 		<div class="split_30"></div><!-- /.split_30 -->
 		<div class="items-category">
-		
-				<?php $item_count = 0; $total_item = 0; ?>
+
+				<?php $item_count = 0;
+$total_item = 0;?>
 
 				@foreach($magazines as $magazine)
 
 				@if($item_count == 0)
 					<div class="pub-items-row">
-				@endif	
+				@endif
 
-				<?php $item_count++; $total_item++;?>
+				<?php $item_count++;
+$total_item++;?>
 
 				@if($magazines->count() < 1)
 					<div class="alert alert-warning ">
@@ -47,14 +49,28 @@
 									<a href="{{ route('magazine.show',array($magazine->slug)) }}" data-toggle="tooltip" data-placement="bottom" title="{{ ucwords($magazine->title) }}" class="red-tooltip">
 										{{ ucwords(\Illuminate\Support\Str::limit($magazine->title,15)) }}</a>
 									<p>Issue : {{$magazine->published_at}}</p>
-									
+
 							</div><!-- /.pub-title -->
+
+							<div class="item-add-to-cart">
+								<form method="POST" action="{{route('cart.add')}}">
+									<input type="hidden" name="item-sub-type" value="piravi" />
+									<input type="hidden" name="item-type" value="magazine" />
+									<input type="hidden" name="item-id" value="{{$magazine->id}}" />
+									<input name="_token" value="{{ csrf_token() }}" type="hidden">
+
+									<button class="btn btn-primary" type="submit">
+										<i class="fa fa-shopping-cart"></i> Add to Cart
+									</button>
+								</form>
+							</div><!-- /.item-add-to-cart -->
+
 						</div><!-- /.wrap -->
 					</div><!-- /.pub-item -->
 
 					@if($item_count == 4 || $total_item == $magazines->count())
 					</div><!-- /.pub-items-row -->
-					<?php $item_count = 0; ?>
+					<?php $item_count = 0;?>
 					@endif
 
 				@endforeach
@@ -81,7 +97,7 @@
 			            </div>
 		            @endforeach
 								<input type="hidden" name="item-sub-type" value="digital" />
-								<input type="hidden" name="item-type" value="magazine" />
+								<input type="hidden" name="item-type" value="magazine-subscription" />
 								<input name="_token" value="{{ csrf_token() }}" type="hidden">
 		            <button type="submit" class="btn">Subscribe Digital Version</button>
 							</form>
@@ -89,7 +105,7 @@
 
 					</div><!-- /.subs -->
 				</div><!-- /.shadow -->
-				
+
 			</div><!-- /.col-md-6 -->
 			<div class="col-md-6">
 				<div class="shadow">
@@ -108,7 +124,7 @@
 			            </div>
 		            @endforeach
 								<input type="hidden" name="item-sub-type" value="print" />
-								<input type="hidden" name="item-type" value="magazine" />
+								<input type="hidden" name="item-type" value="magazine-subscription" />
 								<input name="_token" value="{{ csrf_token() }}" type="hidden">
 		            <button type="submit" class="btn">Subscribe Print Version</button>
 							</form>
@@ -116,18 +132,18 @@
 
 					</div><!-- /.subs -->
 				</div><!-- /.shadows -->
-				
+
 			</div><!-- /.col-md-6 -->
 		</div><!-- /.row -->
 
 
 
-		
+
 	</div><!-- /.col-md-8 -->
 
 	@include('eshop_side_bar')
 </div><!-- /.row -->
 
 <div class="split_60"></div><!-- /.split_60 -->
-							
+
 @stop

@@ -73,7 +73,7 @@ class ShoppingCartController extends SiteController {
 					$item = Book::find($id);
 				}
 				break;
-			case 'magazine-print':{
+			case 'magazine':{
 					$id = Hashids::connection('magazine')->decode(Input::get('item-id'))[0];
 					$item = Magazine::find($id);
 				}
@@ -285,6 +285,7 @@ class ShoppingCartController extends SiteController {
 				'shipping_state' => Input::get('shipping-state'),
 				'shipping_contact_number_1' => Input::get('shipping-contact_number_1'),
 				'shipping_contact_number_2' => Input::get('shipping-contact_number_2'),
+				'comments' => Input::get('shipping-comments'),
 				'quantity' => Cart::count(),
 				'amount' => $this->totalAmount(),
 			));
@@ -380,6 +381,7 @@ class ShoppingCartController extends SiteController {
 			$shipping->shipping_state = Input::get('shipping-state');
 			$shipping->shipping_contact_number_1 = Input::get('shipping-contact_number_1');
 			$shipping->shipping_contact_number_2 = Input::get('shipping-contact_number_2');
+			$shipping->comments = Input::get('shipping-comments');
 			$shipping->quantity = Cart::count();
 			$shipping->amount = $this->totalAmount();
 
@@ -420,10 +422,9 @@ class ShoppingCartController extends SiteController {
 		$orders = array();
 
 		$items = Order::where('shipping_id', '=', $shipping_id)->get();
-
 		foreach ($items as $item) {
 
-			if ($item->item_type == 'magazine') {
+			if ($item->item_type == 'magazine-subscription') {
 
 				$product = SubscriptionRates::find($item->item_id);
 
@@ -436,20 +437,20 @@ class ShoppingCartController extends SiteController {
 
 				switch ($item->item_type) {
 					case 'video':{
-							$product = VideoDisk::find($item->item_id)->first();
+							$product = VideoDisk::find($item->item_id);
 						}
 						break;
 					case 'audio':{
-							$product = AudioDisk::find($item->item_id)->first();
+							$product = AudioDisk::find($item->item_id);
 
 						}
 						break;
 					case 'book':{
-							$product = Book::find($item->item_id)->first();
+							$product = Book::find($item->item_id);
 						}
 						break;
 					case 'magazine':{
-							$product = Subscription::find($item->item_id)->first();
+							$product = Magazine::find($item->item_id);
 						}
 
 				}
@@ -497,14 +498,14 @@ class ShoppingCartController extends SiteController {
 		$merchant_data .= '&delivery_cust_state=' . $shipping->shipping_state;
 		$merchant_data .= '&delivery_cust_city=' . $shipping->shipping_city;
 		$merchant_data .= '&delivery_zip_code=' . '';
-		$merchant_data .= '&delivery_cust_tel=' . $shipping->shipping_contact_number_1.', '.$shipping->shipping_contact_number_2;
+		$merchant_data .= '&delivery_cust_tel=' . $shipping->shipping_contact_number_1 . ', ' . $shipping->shipping_contact_number_2;
 		$merchant_data .= '&billing_cust_notes=' . '';
 		$merchant_data .= '&Checksum=' . $checksum;
 
 		$this->page_data['shipping'] = $shipping;
 		$this->page_data['orders'] = $orders;
-    $this->page_data['merchant_id'] = $merchant_id;
-    $this->page_data['encrypted'] = $aes->encrypt($merchant_data, $working_key);
+		$this->page_data['merchant_id'] = $merchant_id;
+		$this->page_data['encrypted'] = $aes->encrypt($merchant_data, $working_key);
 
 		return View::make('shoppingcart-payment')->with($this->page_data);
 
@@ -517,6 +518,87 @@ class ShoppingCartController extends SiteController {
 	 * @author
 	 **/
 	public function ConfirmPayment() {
+
+		/*
+		 *
+		 * Process encrypted response from CCAVENUE
+		 *
+		 */
+
+		$ccavenue = new \Ccavenue\CCAvenue;
+		$aes = new \Ccavenue\AESCrypt;
+
+		$encResponse = Input::get('encResponse');
+		$workingKey = env('CCAVENUE_WORKING_KEY');
+
+		$decrypted_response = $aes->decrypt($encResponse, $workingKey);
+
+		$ResponseBreakUp = explode('&', $decrypted_response);
+
+		$dataSize = sizeof($ResponseBreakUp);
+
+		for ($i = 0; $i < $dataSize; $i++) {
+			$information = explode('=', $ResponseBreakUp[$i]);
+			if ($i == 0) {
+				$MerchantId = $information[1];
+			}
+
+			if ($i == 1) {
+				$OrderId = $information[1];
+			}
+
+			if ($i == 2) {
+				$Amount = $information[1];
+			}
+
+			if ($i == 3) {
+				$AuthDesc = $information[1];
+			}
+
+			if ($i == 4) {
+				$Checksum = $information[1];
+			}
+
+		}
+
+		$ResponseString = $MerchantId . '|' . $OrderId . '|' . $Amount . '|' . $AuthDesc . '|' . $workingKey;
+		$ResponseChecksum = $ccavenue->genchecksum($ResponseString);
+
+		$ChecksumStatus = $ccavenue->verifyChecksum($ResponseChecksum, $Checksum);
+
+		//do according to the status of the transaction
+		//
+		if ($ChecksumStatus == TRUE && $AuthDesc === "Y") {
+			//Successful Transaction
+			//Set Payment status of the Shipping to 1
+			//If has subscription make it active
+			//empty the cart and shipping_id
+			//sent mail to user email, billing email, shipping email, admin email
+
+			$user_id = Session::get('userId');
+			$shipping_id = Session::get('shipping_id');
+
+			$subscription = MagazineSubscriber::where('user_id', '=', $user_id)->get();
+			$subscription->active = 1;
+			$subscription->save();
+
+			$shipping = Shipping::find($shipping_id);
+			$shipping->payment_status = 1;
+			$shipping->save();
+
+		} elseif ($ChecksumStatus == TRUE && $AuthDesc === "B") {
+			//Pending Transaction
+			//Set Payment Status of Shipping to 2
+
+			return 'Pending';
+
+		} elseif ($ChecksumStatus == TRUE && $AuthDesc === "N") {
+			//Failed Transaction
+			//Redirect to check-out page
+
+			return 'Failed';
+
+		}
 
 	}
 
@@ -621,6 +703,10 @@ class ShoppingCartController extends SiteController {
 					break;
 				case 'book':{
 						$item['id'] = Hashids::connection('book')->decode($item['id'])[0];
+					}
+					break;
+				case 'magazine':{
+						$item['id'] = Hashids::connection('magazine')->decode($item['id'])[0];
 					}
 			}
 

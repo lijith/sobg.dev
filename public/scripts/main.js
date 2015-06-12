@@ -132,8 +132,14 @@ if ($('body').attr('data-smooth-scrolling') == 1 && !$('html').hasClass('touch')
 if ($('.video-instructions').length > 0) {
     $('.video-instructions a').magnificPopup()
 }
+/**
+ * Tooltips
+ * @usedPlugins bootstrap
+ * @usedAt cart, eshop
+ */
 
-$('[data-toggle="tooltip"]').tooltip()
+$('[data-toggle="tooltip"]').tooltip();
+$("[rel=tooltip]").tooltip();
 
 
 equalheight = function(container) {

@@ -178,13 +178,22 @@
           </div>
           <div class="form-group {{ ($errors->has('shipping-contact_number_1')) ? 'has-error' : '' }}">
             <label class="col-sm-3 control-label">Contact Number(s)</label>
-            <div class="col-sm-9" value="{{ Input::old('shipping-contact_number_1') }}">
-              <input type="text" placeholder="Mobile" class="form-control" name="shipping-contact_number_1">
+            <div class="col-sm-9">
+              <input type="text" placeholder="Mobile" class="form-control" name="shipping-contact_number_1" value="{{ Input::old('shipping-contact_number_1') }}">
               <div class="split_10"></div>
               <input type="text" placeholder="landline or secondary mobile" class="form-control" name="shipping-contact_number_2" value="{{ Input::old('shipping-contact_number_2') }}">
               {{ ($errors->has('shipping-contact_number_1') ? $errors->first('shipping-contact_number_1') : '') }}
             </div>
           </div>
+          <hr />
+          <div class="form-group {{ ($errors->has('shipping-contact_number_1')) ? 'has-error' : '' }}">
+            <label class="col-sm-3 control-label">Comments</label>
+            <div class="col-sm-9">
+              <textarea name="shipping-comments" class="form-control">{{ Input::old('shipping-comments') }}</textarea>
+
+            </div>
+          </div>
+
           <div class="form-group">
           <div class="col-sm-offset-3 col-sm-9">
             <button type="submit" class="btn">Save and continue</button>
