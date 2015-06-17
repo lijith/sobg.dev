@@ -12,7 +12,7 @@ body{width:100%;margin:0px;padding:0px;background:#3b3b3b;text-align:left;}
 html{width: 100%; }
 img {border:0px;text-decoration:none;display:block; outline:none;}
 a,a:hover{color:#FFF;text-decoration:none;}.ReadMsgBody{width: 100%; background-color: #ffffff;}.ExternalClass{width: 100%; background-color: #ffffff;}
-table { border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt; }  
+table { border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt; }
 
 img[class=imageScale]			{}
 
@@ -62,15 +62,15 @@ table[class=social]{ text-align:right;}
 <table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" class="main-bg" style="background:#3b3b3b;">
   <tr>
     <td align="center" valign="top" style="padding:50px 0px 50px 0px;">
-    
+
   <!--  Main Table Start-->
-    
+
     <table width="600" border="0" align="center" cellpadding="0" cellspacing="0" class="main">
       <tr>
         <td align="left" valign="top">
-        
+
         <!--  Header Part Start-->
-        
+
         <table width="600" border="0" align="center" cellpadding="0" cellspacing="0" class="main">
           <tr>
 
@@ -82,13 +82,13 @@ table[class=social]{ text-align:right;}
                 <td width="50%" align="left" valign="top" style="font:normal 12px Arial, Helvetica, sans-serif; color:#FFF;">
                   <h1 style="color:#FFF;font-size: 20px; margin-top:5px;">School of Bhagavad Gita</h1>
                   <div style="font:Bold 14px Arial, Helvetica, sans-serif; color:#FFF;">
-                     <span style="color:#3b3b3b;">Call Us :</span>  +91 471 2367299 
+                     <span style="color:#3b3b3b;">Call Us :</span>  +91 471 2367299
                   </div>
-                 
+
                 </td>
                 <td width="25%" align="right" valign="middle" style="font:Bold 14px Arial, Helvetica, sans-serif; color:#FFF;">
-                <?php $date = \Carbon\Carbon::now()?>
-                {{ $date->format('M d, Y') }} <br />
+
+                {{ \Carbon\Carbon::now()->format('M d, Y') }} <br />
 
                  </td>
               </tr>
@@ -96,7 +96,7 @@ table[class=social]{ text-align:right;}
             </td>
           </tr>
           </table>
-          
+
           <table width="600" border="0" cellspacing="0" cellpadding="0" class="main">
   <tr>
     <td align="left" valign="top" bgcolor="#FFFFFF" style="background:#FFF;">
@@ -107,10 +107,10 @@ table[class=social]{ text-align:right;}
 
 <!--  Banner Part Start-->
 <table width="600" border="0" cellspacing="0" cellpadding="0" class="main">
-  
+
   <tr>
     <td align="left" valign="top">
-    
+
     <!--  Banner Text Start-->
     <table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" class="main">
       <tr>
@@ -126,9 +126,9 @@ table[class=social]{ text-align:right;}
             <table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
               <tr>
                 <td style="background:#FFF; color:#000; padding:10px">
-                  <!-- content starts here -->    
+                  <!-- content starts here -->
                     @yield('content')
-                  <!-- content ends here -->    
+                  <!-- content ends here -->
                 </td>
               </tr>
             </table>
@@ -140,12 +140,12 @@ table[class=social]{ text-align:right;}
       </tr>
       <tr>
         <td align="left" valign="top" bgcolor="#DEA32B">
-          
+
         </td>
       </tr>
     </table>
     <!--  Banner Text End-->
-    
+
     </td>
   </tr>
 </table>
@@ -155,23 +155,23 @@ table[class=social]{ text-align:right;}
 <!--  Header Part End-->
 
 
-          
+
           </td>
       </tr>
-      
+
       <tr>
         <td align="left" valign="top">
-        
+
         <!--  Footer Part Start-->
         <table width="600" border="0" cellspacing="0" cellpadding="0" class="main">
-          
+
           <tr>
             <td align="left" valign="top" bgcolor="#ffffff" style="background:#ffffff; text-align:center; font:normal 12px Arial, Helvetica, sans-serif; color:#3b3b3b; line-height:18px; padding:34px 60px 34px 60px;">You have received this email because you have subscribed to us admin@sobg.com. <br />
 <span style="color:#DEA32B;">Copyright © 2012 School of Bhagavad Gita</span></td>
           </tr>
           <tr>
             <td align="left" valign="top" bgcolor="#DEA32B" style="background:#DEA32B; padding:16px 0px 14px 0px;border-bottom:#d86a12 solid 3px;" class="borte-footer-inner-borter">
-            
+
             <!--  Social Media Part Start-->
             <table width="204" border="0" align="center" cellpadding="0" cellspacing="0">
               <tr>
@@ -208,18 +208,18 @@ table[class=social]{ text-align:right;}
               </tr>
             </table>
             <!--  Social Media Part End-->
-            
+
             </td>
           </tr>
         </table>
         <!--  Footer Part End-->
-        
+
         </td>
       </tr>
     </table>
-    
+
     <!--  Main Table End-->
-    
+
     </td>
   </tr>
 </table>

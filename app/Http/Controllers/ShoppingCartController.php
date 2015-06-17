@@ -15,6 +15,7 @@ use App\VideoDisk;
 use Carbon\Carbon;
 use Cart;
 use Input;
+use Mailgun\Mailgun;
 use Redirect;
 use Sentinel\Traits\SentinelRedirectionTrait;
 use Sentinel\Traits\SentinelViewfinderTrait;
@@ -578,13 +579,45 @@ class ShoppingCartController extends SiteController {
 			$user_id = Session::get('userId');
 			$shipping_id = Session::get('shipping_id');
 
-			$subscription = MagazineSubscriber::where('user_id', '=', $user_id)->get();
-			$subscription->active = 1;
-			$subscription->save();
+			//activate any subscriptions
+			if (Session::get('subscribed') == 'yes') {
+				$subscription = MagazineSubscriber::where('user_id', '=', $user_id)->get();
+				$subscription->active = 1;
+				$subscription->save();
+			}
 
+			//confirm payment in database
 			$shipping = Shipping::find($shipping_id);
 			$shipping->payment_status = 1;
 			$shipping->save();
+
+			//now send mails
+			$mGun = new Mailgun(env('MAILGUN_KEY'));
+			$domain = env('MAILGUN_DOMAIN');
+
+			//send the message to shipping and billing emails
+
+			if ($shipping->shipping_email == $shipping->billing_email) {
+				$mail_address = array($shipping->shipping_email);
+			} else {
+				$mail_address = array($shipping->shipping_email, $shipping->billing_email);
+			}
+
+			foreach ($mail_address as $email) {
+				$mGun->sendMessage($domain, array(
+					'from' => 'info@sobg.com',
+					'to' => $email,
+					'subject' => 'Congradulations for successful orders',
+					'text' => 'School of Bhagavat Gita thanks you for order(s)',
+					'html' => View::make('customer-orders', $shipping)->render(),
+				));
+			}
+
+			//send message to admin and shipping handler
+
+			//add the email to sobg maillist
+
+			//add email digital subscribers if digital subscription
 
 		} elseif ($ChecksumStatus == TRUE && $AuthDesc === "B") {
 			//Pending Transaction
@@ -643,7 +676,7 @@ class ShoppingCartController extends SiteController {
 				if ($item['options']['item_sub_type'] == 'digital') {
 					$digital = 1;
 					$print = 0;
-				} elseif ($item['options']['item_sub_type'] == 'digital') {
+				} elseif ($item['options']['item_sub_type'] == 'print') {
 					$digital = 0;
 					$print = 1;
 				}
@@ -667,6 +700,11 @@ class ShoppingCartController extends SiteController {
 
 				$subscribers->save();
 
+				Session::put('subscribed', 'yes');
+
+			} else {
+				//no subscription done
+				Session::put('subscribed', 'no');
 			}
 		}
 
