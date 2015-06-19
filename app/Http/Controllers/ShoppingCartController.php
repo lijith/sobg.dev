@@ -420,51 +420,7 @@ class ShoppingCartController extends SiteController {
 
 		$shipping_id = Session::get('shipping_id');
 
-		$orders = array();
-
-		$items = Order::where('shipping_id', '=', $shipping_id)->get();
-		foreach ($items as $item) {
-
-			if ($item->item_type == 'magazine-subscription') {
-
-				$product = SubscriptionRates::find($item->item_id);
-
-				$order = array(
-					'title' => ucwords($product->key . ' ' . $product->type . ' Subscription'),
-					'quantity' => 1,
-				);
-
-			} else {
-
-				switch ($item->item_type) {
-					case 'video':{
-							$product = VideoDisk::find($item->item_id);
-						}
-						break;
-					case 'audio':{
-							$product = AudioDisk::find($item->item_id);
-
-						}
-						break;
-					case 'book':{
-							$product = Book::find($item->item_id);
-						}
-						break;
-					case 'magazine':{
-							$product = Magazine::find($item->item_id);
-						}
-
-				}
-
-				$order = array(
-					'title' => $product->title,
-					'quantity' => $item->quantity,
-				);
-			}
-
-			array_push($orders, $order);
-
-		}
+		$orders = $this->ShippingOrders($shipping_id);
 
 		$shipping = Shipping::find($shipping_id);
 
@@ -591,6 +547,8 @@ class ShoppingCartController extends SiteController {
 			$shipping->payment_status = 1;
 			$shipping->save();
 
+			$orders = $this->ShippingOrders($shipping_id);
+
 			//now send mails
 			$mGun = new Mailgun(env('MAILGUN_KEY'));
 			$domain = env('MAILGUN_DOMAIN');
@@ -599,8 +557,14 @@ class ShoppingCartController extends SiteController {
 
 			if ($shipping->shipping_email == $shipping->billing_email) {
 				$mail_address = array($shipping->shipping_email);
+				$subs = array(array('address' => $shipping->shipping_email, 'name' => ucwords($shipping->shipping_name), 'subscribed' => true));
 			} else {
 				$mail_address = array($shipping->shipping_email, $shipping->billing_email);
+				$subs = array(
+					array('address' => $shipping->shipping_email, 'name' => ucwords($shipping->shipping_name), 'subscribed' => true),
+					array('address' => $shipping->billing_email, 'name' => ucwords($shipping->billing_name), 'subscribed' => true),
+				);
+
 			}
 
 			foreach ($mail_address as $email) {
@@ -609,15 +573,38 @@ class ShoppingCartController extends SiteController {
 					'to' => $email,
 					'subject' => 'Congradulations for successful orders',
 					'text' => 'School of Bhagavat Gita thanks you for order(s)',
-					'html' => View::make('customer-orders', $shipping)->render(),
+					'html' => View::make('emails.customer-orders', array('shipping' => $shipping, 'orders' => $orders))
+						->render(),
 				));
 			}
 
 			//send message to admin and shipping handler
+			$shipping_handlers_address = array('admin@admin.com', 'handers@admin.com');
+			foreach ($shipping_handlers_address as $email) {
+				$mGun->sendMessage($domain, array(
+					'from' => 'info@sobg.com',
+					'to' => $email,
+					'subject' => 'Congradulations for successful orders',
+					'text' => 'School of Bhagavat Gita thanks you for order(s)',
+					'html' => View::make('emails.admins-orders', array('shipping' => $shipping, 'orders' => $orders))
+						->render(),
+				));
+			}
 
-			//add the email to sobg maillist
+			//add the email to sobg mail list
+			$address_JSON = json_encode($subs);
+			$mGunResponse = $mGun->post('lists/maillist@creativequb.com/members.json', array(
+				'members' => $address_JSON,
+				'upsert' => 'yes',
+			));
 
 			//add email digital subscribers if digital subscription
+			if (Session::get('subscribed') == 'yes') {
+				$mGunResponse = $mGun->put('lists/magazinesubscribers@creativequb.com/members', array(
+					'address' => $shipping->shipping_email,
+					'name' => $shipping->shipping_name,
+				));
+			}
 
 		} elseif ($ChecksumStatus == TRUE && $AuthDesc === "B") {
 			//Pending Transaction
@@ -850,6 +837,66 @@ class ShoppingCartController extends SiteController {
 
 		return $amount;
 
+	}
+
+	/**
+	 * get orders for the shipping.
+	 *
+	 * @param  shipping id
+	 *
+	 * @return array
+	 */
+
+	public function ShippingOrders($shipping_id) {
+
+		$orders = array();
+
+		$items = Order::where('shipping_id', '=', $shipping_id)->get();
+
+		foreach ($items as $item) {
+
+			if ($item->item_type == 'magazine-subscription') {
+
+				$product = SubscriptionRates::find($item->item_id);
+
+				$order = array(
+					'title' => ucwords($product->key . ' ' . $product->type . ' Subscription'),
+					'quantity' => 1,
+				);
+
+			} else {
+
+				switch ($item->item_type) {
+					case 'video':{
+							$product = VideoDisk::find($item->item_id);
+						}
+						break;
+					case 'audio':{
+							$product = AudioDisk::find($item->item_id);
+
+						}
+						break;
+					case 'book':{
+							$product = Book::find($item->item_id);
+						}
+						break;
+					case 'magazine':{
+							$product = Magazine::find($item->item_id);
+						}
+
+				}
+
+				$order = array(
+					'title' => $product->title,
+					'quantity' => $item->quantity,
+				);
+			}
+
+			array_push($orders, $order);
+
+		}
+
+		return $orders;
 	}
 
 }
