@@ -170,7 +170,7 @@
                     <ul class="sub">
                         <li><a href="{{ route('magazines.list') }}">Magazine</a></li>
                         <li><a href="{{ action('\App\Http\Controllers\Admin\MagazineController@create') }}"><i class="fa fa-plus"></i> Add New Magazine</a></li>
-                        <li><a href="{{ route('magazines.subscription.rates') }}">Subscription Rate</a></li>
+                        <li><a href="{{ route('magazines.subscription.show') }}">Subscription Rate</a></li>
 
                     </ul>
                 </li>

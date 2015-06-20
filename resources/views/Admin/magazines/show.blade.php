@@ -22,12 +22,12 @@
 
                 <section class="in-panel">
                     <span class="label label-primary">Cover</span> <br /><br />
-                    <img src="{{asset('images/magazines/'.$magazine->cover_photo)}}" class="img-responsive" alt=""> 
+                    <img src="{{asset('images/magazines/'.$magazine->cover_photo)}}" class="img-responsive" alt="">
                   </section>
-                
+
             </div><!-- /.col-md-8 -->
             <div class="col-md-6">
-                
+
                 <div class="in-panel">
                   <span class="label label-primary">Price</span> <br /><br />
                   <strong>{{$magazine->price}} /-</strong>
@@ -41,7 +41,7 @@
 
                 @if($magazine->magazine_file == 'NO-ATTACHMENT')
                   <div class="alert alert-warning">
-                      <strong>No file attached. Please upload pdf version</strong> 
+                      <strong>No file attached. Please upload pdf version</strong>
                   </div>
                   <form method="POST" action="{{ route('magazines.show', array($magazine->id)) }}" enctype="multipart/form-data">
                     <input name="_token" value="{{ csrf_token() }}" type="hidden">
@@ -53,7 +53,7 @@
                   </form>
                 @else
                 <div>
-                  Current File : 
+                  Current File :
                 </div>
                   <a href="{{asset('magazines-pdf/'.$magazine->magazine_file)}}" target="_blank" class="label label-warning"><i class="fa fa-file"></i> {{$magazine->magazine_file}}</a>
 
@@ -68,16 +68,54 @@
                         <button class="btn btn-primary" type="submit">Attach</button>
                     </div>
                   </form>
-                @endif  
+                @endif
                 </div>
-                 
+
+                <div class="in-panel">
+                   <span class="label label-primary">
+                   <strong>Send Info to all by mail
+                   </span>
+                   <br />
+                   <br />
+                   <p>
+                   <form method="POST" action="{{ route('magazines.send-mail', array($magazine->id)) }}" enctype="multipart/form-data">
+                      <input name="_token" value="{{ csrf_token() }}" type="hidden">
+                      <button type="submit" class="btn btn-primary">Send Info Mail</button>
+                    </form>
+
+                   </p>
+                </div>
+
+
+                  <div class="in-panel">
+                   <span class="label label-primary">
+                   <strong>Send Info to Subscribers
+                   </span>
+                   <br />
+                   <br />
+                   <p>
+                    @if($magazine->mail_list == 'NO-LIST')
+                      <form method="POST" action="{{ route('magazines.prepare-mail-list', array($magazine->id)) }}" enctype="multipart/form-data">
+                        <input name="_token" value="{{ csrf_token() }}" type="hidden">
+                        <button type="submit" class="btn btn-primary">Prepare Digital Subscribers Mail List</button>
+                      </form>
+                    @else
+                      <form method="POST" action="{{ route('magazines.mail-subscribers', array($magazine->id)) }}" enctype="multipart/form-data">
+                        <input name="_token" value="{{ csrf_token() }}" type="hidden">
+                        <button type="submit" class="btn btn-primary">Send Mail to Subscribers</button>
+                      </form>
+
+                    @endif
+                   </p>
+                  </div>
+
 
             </div><!-- /.col-md-4 -->
         </div><!-- /.row -->
 
-          
 
-          
+
+
 
 
             <section class="in-panel">
@@ -91,7 +129,7 @@
             </section>
 
             <div class="panel-body">
-                
+
                 <form action="{{ action('\App\Http\Controllers\Admin\MagazineController@destroy', array($magazine->id)) }}" method="POST" class="delete-request-form">
                 <input name="_token" value="{{ csrf_token() }}" type="hidden">
                 <input name="_method" value="DELETE" type="hidden">

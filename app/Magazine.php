@@ -1,17 +1,14 @@
 <?php namespace App;
 use Cviebrock\EloquentSluggable\SluggableInterface;
 use Cviebrock\EloquentSluggable\SluggableTrait;
-
+use Illuminate\Database\Eloquent\Model;
 use Nicolaslopezj\Searchable\SearchableTrait;
 
-use Illuminate\Database\Eloquent\Model;
-
-class Magazine extends Model implements SluggableInterface{
+class Magazine extends Model implements SluggableInterface {
 
 	//
 	use SluggableTrait;
-		use SearchableTrait;
-
+	use SearchableTrait;
 
 	/**
 	 * The database table used by the model.
@@ -31,33 +28,31 @@ class Magazine extends Model implements SluggableInterface{
 		'excerpt',
 		'keywords',
 		'details',
-    'cover_photo',
-    'cover_photo_thumbnail',
-    'magazine_file',
-    'published_at',
-    'price',
-    'author'
+		'cover_photo',
+		'cover_photo_thumbnail',
+		'magazine_file',
+		'mail_list',
+		'published_at',
+		'price',
+		'author',
 	];
 
 	/**
-   * Searchable rules.
-   *
-   * @var array
-   */
-  protected $searchable = [
-	  'columns' => [
-	      'title' => 10,
-	      'details' => 10,
-	      'keywords' => 10
-	  ]
-  ];
-
-
+	 * Searchable rules.
+	 *
+	 * @var array
+	 */
+	protected $searchable = [
+		'columns' => [
+			'title' => 10,
+			'details' => 10,
+			'keywords' => 10,
+		],
+	];
 
 	protected $sluggable = array(
-		  'build_from' => 'title',
-		  'save_to'    => 'slug'
-   );
-
+		'build_from' => 'title',
+		'save_to' => 'slug',
+	);
 
 }

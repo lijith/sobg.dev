@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "6ede0c30a6004a1cf821cf0574628904",
+    "hash": "c58de3efc43480903eba23987270ad87",
     "packages": [
         {
             "name": "barryvdh/elfinder-builds",
@@ -335,7 +335,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cviebrock/eloquent-sluggable/zipball/3483a412feb0c4b687cd88ecc59f5644334df3d4",
+                "url": "https://api.github.com/repos/cviebrock/eloquent-sluggable/zipball/18d372180db700222e0deb36a91311ff52fa327b",
                 "reference": "3483a412feb0c4b687cd88ecc59f5644334df3d4",
                 "shasum": ""
             },
@@ -541,7 +541,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Crinsane/LaravelShoppingcart/zipball/d2ba5aff19fc94a321611b1e9dd531c8e1800359",
+                "url": "https://api.github.com/repos/Crinsane/LaravelShoppingcart/zipball/fac172ea80577fa202a8b8ff6be349a0ef61f909",
                 "reference": "d2ba5aff19fc94a321611b1e9dd531c8e1800359",
                 "shasum": ""
             },
@@ -1301,6 +1301,47 @@
             "time": "2015-03-29 14:01:43"
         },
         {
+            "name": "mailgun/mailgun-php",
+            "version": "v1.8",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mailgun/mailgun-php.git",
+                "reference": "225e8005950027df22fc5f5b1ada58f4ad116d60"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mailgun/mailgun-php/zipball/225e8005950027df22fc5f5b1ada58f4ad116d60",
+                "reference": "225e8005950027df22fc5f5b1ada58f4ad116d60",
+                "shasum": ""
+            },
+            "require": {
+                "guzzlehttp/guzzle": "~5.0"
+            },
+            "require-dev": {
+                "php": ">=5.4.0",
+                "phpunit/phpunit": "~4.6"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Mailgun\\Tests": "tests/",
+                    "Mailgun": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Travis Swientek",
+                    "email": "travis@mailgunhq.com"
+                }
+            ],
+            "description": "The Mailgun SDK provides methods for all API functions.",
+            "time": "2015-05-06 17:52:51"
+        },
+        {
             "name": "monolog/monolog",
             "version": "1.13.1",
             "source": {
@@ -1474,7 +1515,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nicolaslopezj/searchable/zipball/cd6b430e2ac99bcb562eb0ea7ae5dbbdddc2f6cb",
+                "url": "https://api.github.com/repos/nicolaslopezj/searchable/zipball/d5529d51ddc18009f05eb3ab07ad315e308412c2",
                 "reference": "cd6b430e2ac99bcb562eb0ea7ae5dbbdddc2f6cb",
                 "shasum": ""
             },
@@ -1767,7 +1808,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/rydurham/Sentinel/zipball/0de87e7bfd1588d4e5f2a61a317c866c31c72e92",
+                "url": "https://api.github.com/repos/rydurham/Sentinel/zipball/4235c3ec82ecc762d307d46fc3c389a470f92944",
                 "reference": "9e33d41f801c9916975b76c57c85977f45c25863",
                 "shasum": ""
             },

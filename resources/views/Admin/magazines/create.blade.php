@@ -32,7 +32,7 @@
 
             <div class="form-group {{ ($errors->has('magazine-title')) ? 'has-error' : '' }}">
                 <label>Magazine Title</label>
-                <input class="form-control" placeholder="Event Title" name="magazine-title" type="text"  value="{{ Input::old('magazine-title') }}">
+                <input class="form-control" placeholder="Magazine Title" name="magazine-title" type="text"  value="{{ Input::old('magazine-title') }}">
                 <span class="help-block">Avoid special characters in title(eg piravi aug 2015)</span>
                 {{ ($errors->has('magazine-title') ? $errors->first('magazine-title') : '') }}
 
@@ -54,7 +54,7 @@
 
                     </div>
                 </div><!-- /.col-md-6 -->
-                
+
             </div><!-- /.row -->
 
 
@@ -79,7 +79,7 @@
                 {{ ($errors->has('keywords') ? $errors->first('keywords') : '') }}
             </div>
 
-           
+
             <input name="_token" value="{{ csrf_token() }}" type="hidden">
             <input class="btn btn-primary" value="Create" type="submit">
 

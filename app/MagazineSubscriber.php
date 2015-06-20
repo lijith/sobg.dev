@@ -6,6 +6,12 @@ class MagazineSubscriber extends Model {
 
 	//
 	/**
+	 * The database table used by the model.
+	 *
+	 * @var string
+	 */
+	protected $table = 'magazine_subscribers';
+	/**
 	 * The attributes that are mass assignable.
 	 *
 	 * @var array
@@ -16,13 +22,11 @@ class MagazineSubscriber extends Model {
 		'digital',
 		'print',
 		'active',
-		'ending_at'
+		'ending_at',
 	];
 
-	public function subscriber(){
-    return $this->belongsTo('App\User');
-  }
-
-
+	public function subscriber() {
+		return $this->belongsTo('App\User', 'user_id');
+	}
 
 }
