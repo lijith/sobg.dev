@@ -384,48 +384,48 @@ class MagazineController extends Controller {
 		$mGun = new \Mailgun\Mailgun(env('MAILGUN_KEY'));
 		$domain = env('MAILGUN_DOMAIN');
 
-		$mail_list_id = $magazine->slug . '1212@' . $domain;
+		$mail_list_id = $magazine->slug . '@' . $domain;
 
 		$mGunResponse = $mGun->get('lists');
+		$current_mail_list = array();
+		$current_list = $mGunResponse->http_response_body->items;
 
-		dd($mGunResponse);
+		foreach ($current_list as $ls) {
+			array_push($current_mail_list, $ls->address);
+		}
+		if (!in_array($mail_list_id, $current_mail_list)) {
+			$mail_list = array(
+				'address' => $mail_list_id,
+				'name' => $magazine->title,
+				'access_level' => 'readonly');
 
-		// $mail_list = array(
-		// 	'address' => $mail_list_id,
-		// 	'name' => $magazine->title,
-		// 	'access_level' => 'readonly');
+			$response = $mGun->post('lists', $mail_list);
 
-		// $response = $mGun->post('lists', $mail_list);
-
-		// $created = $response->http_response_body->list->address;
+			$created = $response->http_response_body->list->address;
+		}
 
 		// $magazine->mail_list = $created;
 		// $magazine->save();
 		//
 
-		//find active subscribers and fill the mail list
-		if ($created == $mail_list_id) {
+		$active_susbscribers = MagazineSubscriber::with('subscriber')
+			->where('active', '=', '1')
+			->where('digital', '=', '1')
+			->get();
 
-			$active_susbscribers = MagazineSubscriber::with('subscriber')
-				->where('active', '=', '1')
-				->where('digital', '=', '1')
-				->get();
+		$list = array();
 
-			$list = array();
-
-			//$sub = MagazineSubscriber::find(2)->subscriber;
-			foreach ($active_susbscribers as $sub) {
-				array_push($list, array(
-					'address' => $sub->subscriber->email,
-				));
-			}
-
-			$mGunResponse = $mGun->post('lists/piravi-july-2015@creativequb.com/members.json', array(
-				'members' => json_encode($list),
-				'upsert' => 'yes',
+		//$sub = MagazineSubscriber::find(2)->subscriber;
+		foreach ($active_susbscribers as $sub) {
+			array_push($list, array(
+				'address' => $sub->subscriber->email,
 			));
-
 		}
+
+		$mGunResponse = $mGun->post('lists/piravi-july-2015@creativequb.com/members.json', array(
+			'members' => json_encode($list),
+			'upsert' => 'yes',
+		));
 		die;
 
 		return redirect()->route('magazines.show', array($hash))->with('success', 'Subscribers list prepared successfully');
