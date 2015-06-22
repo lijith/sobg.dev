@@ -3,6 +3,7 @@
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\MagazineFormRequest;
 use App\Http\Requests\Admin\MagazineFormUpdateRequest;
+use App\User;
 use App\Magazine;
 use App\MagazineSubscriber;
 use App\SubscriptionRates;
@@ -339,7 +340,7 @@ class MagazineController extends Controller {
 
 	}
 	/**
-	 * send mails
+	 * send mails to all emails
 	 *
 	 * @param  void
 	 *
@@ -370,13 +371,24 @@ class MagazineController extends Controller {
 	}
 
 	/**
-	 * send mails
+	 * Prepare active subscribers list to send mail of digital copy
 	 *
 	 * @param  void
 	 *
 	 * @return array
 	 **/
 	public function PrepareSubscribersMailList($hash) {
+
+		// $act = User::with(['subscription' => function($query) {
+		//     $query->where('active', '=' ,1)
+		//         ->where('digital', '=', 1);
+		// }])->get();
+
+		$active_susbscribers = User::with(['profile', 'subscription'])
+		->whereHas('subscription', function($query) {
+    $query->where('active', '=' ,1)
+        ->where('digital', '=', 1);
+		})->get();
 
 		$id = $this->hashids->connection('magazine')->decode($hash)[0];
 		$magazine = Magazine::find($id);
@@ -386,6 +398,7 @@ class MagazineController extends Controller {
 
 		$mail_list_id = $magazine->slug . '@' . $domain;
 
+		//get current lists from mailgun
 		$mGunResponse = $mGun->get('lists');
 		$current_mail_list = array();
 		$current_list = $mGunResponse->http_response_body->items;
@@ -393,6 +406,8 @@ class MagazineController extends Controller {
 		foreach ($current_list as $ls) {
 			array_push($current_mail_list, $ls->address);
 		}
+
+		//if not in current list, add mail list in mailgun
 		if (!in_array($mail_list_id, $current_mail_list)) {
 			$mail_list = array(
 				'address' => $mail_list_id,
@@ -404,35 +419,31 @@ class MagazineController extends Controller {
 			$created = $response->http_response_body->list->address;
 		}
 
-		// $magazine->mail_list = $created;
-		// $magazine->save();
-		//
-
-		$active_susbscribers = MagazineSubscriber::with('subscriber')
-			->where('active', '=', '1')
-			->where('digital', '=', '1')
-			->get();
-
+		//save mail list to db
+		$magazine->mail_list = $mail_list_id;
+		$magazine->save();
+		
+		//list of subscribers
 		$list = array();
-
-		//$sub = MagazineSubscriber::find(2)->subscriber;
 		foreach ($active_susbscribers as $sub) {
+			$name = ($sub->profile->name) != '' ? $sub->profile->name : 'Member';
 			array_push($list, array(
-				'address' => $sub->subscriber->email,
+				'address' => $sub->email,
+				'name'=> ucwords($name),
 			));
 		}
 
-		$mGunResponse = $mGun->post('lists/piravi-july-2015@creativequb.com/members.json', array(
+		//add subscribers to mail list
+		$mGunResponse = $mGun->post('lists/'.$mail_list_id.'/members.json', array(
 			'members' => json_encode($list),
 			'upsert' => 'yes',
 		));
-		die;
 
 		return redirect()->route('magazines.show', array($hash))->with('success', 'Subscribers list prepared successfully');
 
 	}
 	/**
-	 * send mails
+	 * send mail to susbscribers
 	 *
 	 * @param  void
 	 *
@@ -443,6 +454,8 @@ class MagazineController extends Controller {
 		$id = $this->hashids->connection('magazine')->decode($hash)[0];
 
 		$magazine = Magazine::find($id);
+
+		$mail_list_id = $magazine->mail_list;
 		//send mail to mail list
 
 		$mGun = new \Mailgun\Mailgun(env('MAILGUN_KEY'));
@@ -453,13 +466,16 @@ class MagazineController extends Controller {
 			'magazine' => $magazine,
 		);
 
+
 		$mGun->sendMessage('creativequb.com', array(
 			'from' => 'bob@example.com',
-			'to' => env('MAILGUN_ALL_MAIL_LIST'),
-			'subject' => 'Edition of Piravi',
+			'to' => $mail_list_id,
+			'subject' => 'Digital Edition of Piravi',
 			'text' => $magazine->excerpt,
-			'html' => View::make('emails.new-magazine', $email_data)->render(),
+			'html' => View::make('emails.new-magazine-digital', $email_data)->render(),
 		));
+
+		return redirect()->route('magazines.show', array($hash))->with('success', 'Mail Send Successfully');
 	}
 
 	/**
