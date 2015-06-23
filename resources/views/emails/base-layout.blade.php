@@ -76,17 +76,17 @@ table[class=social]{ text-align:right;}
 
             <td align="left" valign="top" bgcolor="#DEA32B" style="background:#DEA32B; padding:30px 20px 30px 20px;border-top:#d86a12 solid 4px;" class="border-bg"><table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
               <tr>
-                <td width="25%">
-                  <img src="{{ asset('images/sobg-logo.png') }}" width="118" height="100" alt="LOGO" />
+                <td width="25%" valign="top">
+                  <img src="{{ asset('images/sobg-logo.png') }}" width="100%" alt="LOGO" />
                 </td>
                 <td width="50%" align="left" valign="top" style="font:normal 12px Arial, Helvetica, sans-serif; color:#FFF;">
-                  <h1 style="color:#FFF;font-size: 20px; margin-top:5px;">School of Bhagavad Gita</h1>
-                  <div style="font:Bold 14px Arial, Helvetica, sans-serif; color:#FFF;">
+                  <h1 style="color:#FFF;font-size: 18px; margin-left: 10px; margin-top:0px;">School of Bhagavad Gita</h1>
+                  <div style="font:Bold 14px Arial, Helvetica, sans-serif; color:#FFF; margin-left: 10px;">
                      <span style="color:#3b3b3b;">Call Us :</span>  +91 471 2367299
                   </div>
 
                 </td>
-                <td width="25%" align="right" valign="middle" style="font:Bold 14px Arial, Helvetica, sans-serif; color:#FFF;">
+                <td width="25%" align="right" valign="top" style="font:Bold 14px Arial, Helvetica, sans-serif; color:#FFF;">
 
                 {{ \Carbon\Carbon::now()->format('M d, Y') }} <br />
 
@@ -114,10 +114,10 @@ table[class=social]{ text-align:right;}
     <!--  Banner Text Start-->
     <table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" class="main">
       <tr>
-        <td align="left" valign="top" bgcolor="#DEA32B" style="background:#DEA32B; border-bottom:#d86a12 solid 1px; padding:12px;" class="borter-inner-bottom"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <td align="left" valign="top" bgcolor="#DEA32B" style="background:#DEA32B; border-bottom:#d86a12 solid 1px; padding:12px;" class="borter-inner-bottom">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
           <tr>
             <td align="left" valign="top" style="font:Normal 24px Arial, Helvetica, sans-serif; color:#FFF; padding:20px 0px 0px 0px;">
-              {{ $heading }}
             </td>
           </tr>
           <tr>

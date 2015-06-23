@@ -34,10 +34,7 @@
 
                 @if(!$order->shipping_status)
 
-                <hr />
-                <a href="" class="btn btn-default">Confirm Shipment</a>
-
-                @endif
+               @endif
 
                </div>
             </section><!-- /.panel -->
@@ -68,6 +65,31 @@
                     </tbody>
                   </table>
                </div>
+               <hr />
+               @if ($order->shipping_status == 0)
+               <p>Fill this form on confirmed shippment of this order</p>
+               <form>
+                 <div class="form-group">
+                    <label class="col-lg-2 col-sm-2 control-label" for="">Order ID</label>
+                    <div class="col-lg-10">
+                        <input type="text" placeholder="Order ID" id="" class="form-control" name="order-id">
+                        <p class="help-block"></p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-2 col-sm-2 control-label" for="">Shipping Information</label>
+                    <div class="col-lg-10">
+                        <textarea class="form-control" name="shipment-information"></textarea>
+                        <p class="help-block">Shipping handler, Tracking code etc for reciever</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                  <div class="col-lg-offset-2 col-lg-10">
+                    <button type="submit" class="btn btn-danger">Confirm Shipment</button>
+                  </div>
+                </div>
+               </form>
+                @endif
             </section><!-- /.panel -->
           </div><!-- /.col-md-6 -->
 

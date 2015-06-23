@@ -2,6 +2,6 @@
 
 @section('content')
 
-	{{$magazine->title}}
+	
 
 @stop

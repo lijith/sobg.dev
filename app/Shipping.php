@@ -1,8 +1,12 @@
 <?php namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Nicolaslopezj\Searchable\SearchableTrait;
 
 class Shipping extends Model {
+
+	use SearchableTrait;
+
 
 	/**
 	 * The database table used by the model.
@@ -45,6 +49,17 @@ class Shipping extends Model {
 		'amount',
 
 	];
+
+	/**
+   * Searchable rules.
+   *
+   * @var array
+   */
+  protected $searchable = [
+	  'columns' => [
+	    'reference_id' => 10,
+	  ]
+  ];
 
 	public function user() {
 		return $this->belongsTo('App\User');

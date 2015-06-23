@@ -15,6 +15,8 @@ use App\Shipping;
 use App\AudioDisk;
 use App\VideoDisk;
 use App\Book;
+use App\Magazine;
+use App\SubscriptionRates;
 
 use View, Input, File;
 
@@ -84,7 +86,7 @@ class ShippingController extends Controller {
     ->orderBy('updated_at','desc')
     ->get();
 
-    return View::make('Admin.shipping.orders-list',array('orders' => $orders, 'title' => 'Confirmed Orders'));
+    return View::make('Admin.shipping.orders-list',array('orders' => $orders, 'title' => 'Confirmed Orders','search'=>''));
   }
 
   /**
@@ -98,7 +100,46 @@ class ShippingController extends Controller {
     $orders = Shipping::orderBy('updated_at','desc')
     ->simplePaginate(50);
 
-    return View::make('Admin.shipping.orders-list',array('orders' => $orders, 'title' => 'All Orders'));
+    return View::make('Admin.shipping.orders-list',array('orders' => $orders, 'title' => 'All Orders','search'=>''));
+  }
+
+
+  /**
+   * Show Order.
+   *
+   * @param  void
+   *
+   * @return View
+   */
+  public function SearchOrder(){
+    $order_id = Input::get('order-id');
+
+    $result = Shipping::search($order_id)->get();
+
+    return View::make('Admin.shipping.orders-list',array('orders' => $result, 'title' => 'Search for '.$order_id,'search'=>$order_id));
+  }
+
+  /**
+   * Show Order.
+   *
+   * @param  void
+   *
+   * @return View
+   */
+  public function ConfirmShipment($reference_id){
+
+    $order_id = Input::get('order_id');
+
+    if($reference_id == $order_id){
+      $info = Input::get('info');
+      $shipment_information = Input::get('shipment-information');
+      //send mails to ship email, admin
+
+    }else{
+      return redirect()->route('reference.order',array($reference_id))->with('failure', 'Order ID not found');
+    }
+
+
   }
 
 
@@ -134,6 +175,8 @@ class ShippingController extends Controller {
           }elseif($product->disk_type == 2){
             $type = 'VCD';
           }
+          $product_title = $product->title;
+          $item_quantity = $item->quantity;
         }
         break;
         case 'audio':{
@@ -143,20 +186,38 @@ class ShippingController extends Controller {
           }elseif($product->disk_type == 2){
             $type = 'MP3';
           }
-
+          $product_title = $product->title;
+          $item_quantity = $item->quantity;
         }
         break;
         case 'book':{
           $product = Book::find($item->item_id)->first();
           $type = 'Book';
+          $product_title = $product->title;
+          $item_quantity = $item->quantity;
+        }
+        break;
+        case 'magazine':{
+          $product = Magazine::find($item->item_id)->first();
+          $type = 'Piravi';
+          $product_title = $product->title;
+          $item_quantity = $item->quantity;
+        }
+        break;
+        case 'magazine-subscription':{
+          $product = SubscriptionRates::find($item->item_id)->first();
+          $type = 'Subscription';
+
+          $product_title = $product->type.' '.$product->key;
+          $item_quantity = 1;
         }
         break;
         
       }
 
       $order_row = array(
-      'title' => $product->title,
-      'quantity' => $item->quantity,
+      'title' => $product_title,
+      'quantity' => $item_quantity,
       'type' => $type
       );
 

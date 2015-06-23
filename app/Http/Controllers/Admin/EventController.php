@@ -129,6 +129,9 @@ class EventController extends Controller {
     $event->start_date = $sdate->toFormattedDateString();
     $event->end_date = $edate->toFormattedDateString();
 
+    // return View::make('emails.new-event', ['event' => $event]);
+
+
     return View::make('Admin.events.show',['event' => $event]);
 
   }
@@ -232,9 +235,44 @@ class EventController extends Controller {
       }
 
       $event->delete();
-      return redirect()->route('events.list',array($hash))->with('success', 'Event removed');
+      return redirect()->route('events.show',array($hash))->with('success', 'Event removed');
 
       
+  }
+
+  /**
+   * Send mails 
+   *
+   * @param  void
+   * 
+   * @return redirect
+   **/
+  public function SendMail($hash){  
+    $id = $this->hashids->decode($hash)[0];
+    $event = SobgEvent::find($id);
+
+    $mGun = new \Mailgun\Mailgun(env('MAILGUN_KEY'));
+    $domain = env('MAILGUN_DOMAIN');
+
+    $email_data = array(
+      'heading' => ucwords($event->title),
+      'event' => $event,
+    );
+
+    $mGun->sendMessage('creativequb.com', array(
+      'from' => 'bob@example.com',
+      'to' => env('MAILGUN_ALL_MAIL_LIST'),
+      'subject' => ucwords($event->title),
+      'text' => $event->excerpt,
+      'html' => View::make('emails.new-event', $email_data)->render(),
+    ));
+
+    //update counter
+    $event->send_mail_count +=1;
+    $event->save();
+
+    return redirect()->route('events.show',array($hash))->with('success', 'Mail(s) sent');
+
   }
 
   /**

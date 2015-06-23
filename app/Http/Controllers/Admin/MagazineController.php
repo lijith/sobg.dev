@@ -125,6 +125,8 @@ class MagazineController extends Controller {
 
 		return View::make('Admin.magazines.show', ['magazine' => $magazine]);
 
+		// return View::make('emails.new-magazine-digital', ['heading' => 'Piravi','magazine' => $magazine]);
+
 	}
 
 	/**

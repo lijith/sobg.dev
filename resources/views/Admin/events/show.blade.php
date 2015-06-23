@@ -28,6 +28,18 @@
             </div><!-- /.col-md-8 -->
             <div class="col-md-6">
                 <section class="in-panel">
+                    <a href="{{ url(''). '/events/'.$event->slug }}" class="btn btn-primary" target="_blank">Preview Event</a>
+                 </section>
+
+                 <section class="in-panel">
+                    <form method="post" action="{{ route('events.send-mail',array($event->id)) }}">
+                      <input type="hidden" value="{{ csrf_token() }}" name="_token" />
+                      <button type="submit" class="btn btn-primary">Sent Notification Mails({{$event->send_mail_count}} times)</button>
+                    </form>
+                    
+                 </section>
+
+                <section class="in-panel">
                     <span class="label label-primary">Date</span> <br /><br />
                     From <strong>{{$event->start_date}}</strong> to <strong>{{$event->end_date}}</strong>
                  </section>

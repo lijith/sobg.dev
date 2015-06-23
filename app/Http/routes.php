@@ -70,6 +70,7 @@ Route::group(['prefix' => 'courses-and-retreats'], function () {
 Route::group(['prefix' => 'events'], function () {
 	Route::get('/', ['as' => 'events', 'uses' => 'EventController@index']);
 	Route::get('/{title}', ['as' => 'event.show', 'uses' => 'EventController@show']);
+
 });
 
 /*
@@ -302,6 +303,7 @@ Route::group(['prefix' => 'administrator', 'namespace' => 'Admin'], function () 
 	Route::get('events/{hash}', ['as' => 'events.show', 'uses' => 'EventController@show']);
 	Route::get('events/{hash}/edit', ['as' => 'events.edit', 'uses' => 'EventController@edit']);
 	Route::put('events/{hash}', ['as' => 'events.update', 'uses' => 'EventController@update']);
+	Route::post('events/{hash}/send-mail', ['as' => 'events.send-mail', 'uses' => 'EventController@SendMail']);
 	Route::delete('events/{hash}', ['as' => 'events.destroy', 'uses' => 'EventController@destroy']);
 
 	//ARchives
@@ -365,6 +367,8 @@ Route::group(['prefix' => 'administrator', 'namespace' => 'Admin'], function () 
 	Route::get('unconfirmed-orders', ['as' => 'unconfirmed.orders', 'uses' => 'ShippingController@unconfirmedOrders']);
 	Route::get('confirmed-orders', ['as' => 'confirmed.orders', 'uses' => 'ShippingController@confirmedOrders']);
 	Route::get('order/{reference_id}', ['as' => 'reference.order', 'uses' => 'ShippingController@showOrder']);
+	Route::post('orders/search', ['as' => 'search.order', 'uses' => 'ShippingController@SearchOrder']);
+	Route::post('orders/{reference_id}/confirm-shipment', ['as' => 'confirm.shipment', 'uses' => 'ShippingController@ConfirmShipment']);
 
 	//photo albums
 	Route::get('album/create', ['as' => 'album.create', 'uses' => 'AlbumController@create']);

@@ -15,6 +15,24 @@
       <header class="panel-heading">
         {{ $title }}
       </header>
+
+      <div class="panel-body">
+        <div class="col-md-offset-6">
+          <div class="input-group m-bot15">
+            <form method="post" action="{{ route('search.order') }}">
+              <input type="hidden" name="_token" value="{{ csrf_token() }}" />
+              <input type="text" class="form-control" placeholder="Order ID" name="order-id" value="{{ $search }}">
+              <span class="input-group-btn">
+                <button type="submit" class="btn btn-success">Search Order</button>
+              </span>              
+            </form>
+
+          </div>
+        </div>
+      </div><!--panel-body-->
+
+      <hr />
+
       <div class="panel-body">
 
       @if($orders == null)
