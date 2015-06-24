@@ -579,17 +579,14 @@ class ShoppingCartController extends SiteController {
 			}
 
 			//send message to admin and shipping handler
-			$shipping_handlers_address = array('admin@admin.com', 'handers@admin.com');
-			foreach ($shipping_handlers_address as $email) {
-				$mGun->sendMessage($domain, array(
-					'from' => 'info@sobg.com',
-					'to' => $email,
-					'subject' => 'Congradulations for successful orders',
-					'text' => 'School of Bhagavat Gita thanks you for order(s)',
-					'html' => View::make('emails.admins-orders', array('shipping' => $shipping, 'orders' => $orders))
-						->render(),
-				));
-			}
+			$mGun->sendMessage($domain, array(
+				'from' => 'info@sobg.com',
+				'to' => env('MAILGUN_ADMIN_LIST'),
+				'subject' => 'Congradulations for successful orders',
+				'text' => 'School of Bhagavat Gita thanks you for order(s)',
+				'html' => View::make('emails.admins-orders', array('shipping' => $shipping, 'orders' => $orders))
+					->render(),
+			));
 
 			//add the email to sobg mail list
 			$address_JSON = json_encode($subs);

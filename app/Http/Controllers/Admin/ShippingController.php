@@ -16,9 +16,10 @@ use App\AudioDisk;
 use App\VideoDisk;
 use App\Book;
 use App\Magazine;
+use App\Order;
 use App\SubscriptionRates;
 
-use View, Input, File;
+use View, Input, File, Validator;
 
 class ShippingController extends Controller {
 
@@ -128,12 +129,55 @@ class ShippingController extends Controller {
    */
   public function ConfirmShipment($reference_id){
 
-    $order_id = Input::get('order_id');
+    $order_id = Input::get('order-id');
+
+    $shipping = Shipping::where('reference_id', '=', $reference_id)->first();
+
+    $orders = $this->ShippingOrders($shipping->id);
+
+    $validation = Validator::make(
+        array(
+        'shipment-information' => Input::get( 'shipment-information' ),
+        ),
+        array(
+            'shipment-information' => array( 'required', 'min:15' ),
+        )
+    );
 
     if($reference_id == $order_id){
-      $info = Input::get('info');
-      $shipment_information = Input::get('shipment-information');
-      //send mails to ship email, admin
+
+
+
+      if ( $validation->fails() ) {
+          $errors = $validation->messages();
+          return redirect()->route('reference.order',array($reference_id))->withErrors($errors);
+      }else{
+
+         $shipment_information = Input::get('shipment-information');
+         //send mails to ship email
+         $mGun->sendMessage($domain, array(
+          'from' => 'info@sobg.com',
+          'to' => $shipping->shipping_email,
+          'subject' => 'Items Shipped for Order ID '.$order_id,
+          'text' => 'Items Shipped for Order ID '.$order_id,
+          'html' => View::make('emails.customer-shipment', array('shipping' => $shipping, 'orders' => $orders))
+            ->render(),
+          ));
+
+
+         //send mail to admin
+         $mGun->sendMessage($domain, array(
+          'from' => 'info@sobg.com',
+          'to' => env('MAILGUN_ADMIN_LIST'),
+          'subject' => $order_id.' Shipment Completed',
+          'text' => 'Shipment success',
+          'html' => View::make('emails.admins-shipment', array('shipping' => $shipping, 'orders' => $orders))
+            ->render(),
+          ));
+ 
+      }
+
+      
 
     }else{
       return redirect()->route('reference.order',array($reference_id))->with('failure', 'Order ID not found');
@@ -227,6 +271,72 @@ class ShippingController extends Controller {
    // dd($order_list);
 
     return View::make('Admin.shipping.show',array('order' => $order,'orders' => $order_list));
+  }
+
+  /**
+   * get orders for the shipping.
+   *
+   * @param  shipping id
+   *
+   * @return array
+   */
+
+  public function ShippingOrders($shipping_id) {
+
+    $orders = array();
+
+    $items = Order::where('shipping_id', '=', $shipping_id)->get();
+
+    foreach ($items as $item) {
+
+      $order = array();
+
+      echo $item->item_type;
+
+        switch ($item->item_type) {
+          case 'video':{
+              $product = VideoDisk::find($item->item_id);
+              $order = array(
+                'title' => $product->title,
+                'quantity' => $item->quantity,
+              );
+            }
+            break;
+          case 'audio':{
+              $product = AudioDisk::find($item->item_id);
+              $order = array(
+                'title' => $product->title,
+                'quantity' => $item->quantity,
+              );
+            }
+            break;
+          case 'book':{
+              $product = Book::find($item->item_id);
+              $order = array(
+                'title' => $product->title,
+                'quantity' => $item->quantity,
+              );
+            }
+            break;
+          case 'magazine':{
+              $product = Magazine::find($item->item_id);
+              $order = array(
+                'title' => $product->title,
+                'quantity' => $item->quantity,
+              );
+            }
+
+        }
+
+      if(!empty($order)){
+       array_push($orders, $order);
+      }
+
+      unset($order);
+
+    }
+
+    return $orders;
   }
 
 }

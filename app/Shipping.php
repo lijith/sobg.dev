@@ -26,6 +26,7 @@ class Shipping extends Model {
 		'admin_viewed',
 		'shipping_status',
 		'payment_status',
+		'shipment_date',
 		'shipping_name',
 		'shipping_email',
 		'shipping_address_1',

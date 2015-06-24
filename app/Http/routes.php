@@ -368,7 +368,7 @@ Route::group(['prefix' => 'administrator', 'namespace' => 'Admin'], function () 
 	Route::get('confirmed-orders', ['as' => 'confirmed.orders', 'uses' => 'ShippingController@confirmedOrders']);
 	Route::get('order/{reference_id}', ['as' => 'reference.order', 'uses' => 'ShippingController@showOrder']);
 	Route::post('orders/search', ['as' => 'search.order', 'uses' => 'ShippingController@SearchOrder']);
-	Route::post('orders/{reference_id}/confirm-shipment', ['as' => 'confirm.shipment', 'uses' => 'ShippingController@ConfirmShipment']);
+	Route::post('order/{reference_id}/confirm-shipment', ['as' => 'confirm.shipment', 'uses' => 'ShippingController@ConfirmShipment']);
 
 	//photo albums
 	Route::get('album/create', ['as' => 'album.create', 'uses' => 'AlbumController@create']);

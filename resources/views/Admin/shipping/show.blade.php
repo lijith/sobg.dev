@@ -68,19 +68,26 @@
                <hr />
                @if ($order->shipping_status == 0)
                <p>Fill this form on confirmed shippment of this order</p>
-               <form>
+               <form method="post" action="{{ route('confirm.shipment', array($order->reference_id)) }}">
+                <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                  <div class="form-group">
                     <label class="col-lg-2 col-sm-2 control-label" for="">Order ID</label>
                     <div class="col-lg-10">
-                        <input type="text" placeholder="Order ID" id="" class="form-control" name="order-id">
+                        <input type="text" placeholder="Order ID" id="" class="form-control"  value="{{ $order->reference_id }}" disabled="">
+                        <input type="hidden" name="order-id" value="{{ $order->reference_id }}" >
                         <p class="help-block"></p>
                     </div>
                 </div>
-                <div class="form-group">
+                <div class="form-group {{ ($errors->has('shipment-information')) ? 'has-error' : '' }}">
                     <label class="col-lg-2 col-sm-2 control-label" for="">Shipping Information</label>
                     <div class="col-lg-10">
-                        <textarea class="form-control" name="shipment-information"></textarea>
+                        <textarea class="form-control" name="shipment-information">{{ Input::old('shipment-information') }}</textarea>
                         <p class="help-block">Shipping handler, Tracking code etc for reciever</p>
+                        @if ($errors->has('shipment-information'))
+                          <p class="help-block">{{ $errors->first('shipment-information') }}</p>
+                        @endif
+                        
+                        
                     </div>
                 </div>
                 <div class="form-group">
