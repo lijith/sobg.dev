@@ -169,6 +169,20 @@
 
     });
 
+    $('.address-same').change(function() {
+        console.log('change');
+        if (this.checked) {
+            $("input[name ='contact-address-line-1']").val($("input[name ='permanent-address-line-1']").val());
+            $("input[name ='contact-address-line-2']").val($("input[name ='permanent-address-line-2']").val());
+            $("input[name ='contact-city']").val($("input[name ='permanent-city']").val());
+            $("input[name ='contact-state']").val($("input[name ='permanent-state']").val());
+            $("input[name ='contact-country']").val($("input[name ='permanent-country']").val());
+        }else{
+            $("input[name *='contact']").val('');
+        }
+
+    });
+
 
     // disabling dates
     var nowTemp = new Date();

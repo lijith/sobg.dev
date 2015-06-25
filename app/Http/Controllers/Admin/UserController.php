@@ -1,6 +1,7 @@
 <?php namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller as BaseController;
+use App\Profile;
 use App\User;
 use Input;
 use Redirect;
@@ -49,7 +50,7 @@ class UserController extends BaseController {
 		// Paginate the existing users
 		$users = $this->userRepository->all();
 		$page = Input::get('page', 1);
-		$perPage = 5;
+		$perPage = 15;
 		$offSet = ($page * $perPage) - $perPage;
 		$itemsForCurrentPage = array_slice($users, $offSet, $perPage, true);
 
@@ -83,8 +84,22 @@ class UserController extends BaseController {
 		// Determine response message based on whether or not the user was activated
 		$message = ($result->getPayload()['activated'] ? trans('Sentinel::users.addedactive') : trans('Sentinel::users.added'));
 
-		// Finished!
-		return $this->redirectTo('users_store', ['success' => $message]);
+		if ($result->isSuccessful()) {
+
+			$new_user_id = $result->getPayload()['user']->id;
+
+			$profile = new Profile(array(
+				'user_id' => $new_user_id,
+				'dob' => \Carbon\Carbon::now(),
+			));
+
+			$profile->save();
+
+			return redirect()->route('sentinel.users.edit.profile', array($this->hashids->encode($new_user_id)))->with('success', 'Member Created');
+
+		} else {
+			echo 'username already exsist';
+		}
 	}
 
 	/**
@@ -101,7 +116,70 @@ class UserController extends BaseController {
 		// Get the user
 		$user = $this->userRepository->retrieveById($id);
 
-		return $this->viewFinder('Admin.users.show', ['user' => $user]);
+		$subscription = User::find($user->id)->subscription;
+
+		return $this->viewFinder('Admin.users.show', ['user' => $user, 'subscription' => $subscription]);
+	}
+
+	/**
+	 * Show the profile of a specific user account
+	 *
+	 * @param $id
+	 *
+	 * @return View
+	 */
+	public function editProfile($hash) {
+		// Decode the hashid
+		$id = $this->hashids->decode($hash)[0];
+
+		// Get the user
+		$user = $this->userRepository->retrieveById($id);
+		$profile = User::find($user->id)->profile;
+
+		$profile->dob = \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $profile->dob)->format('m/d/Y');
+
+		return $this->viewFinder('Admin.users.edit-profile', ['hash' => $hash, 'profile' => $profile]);
+	}
+
+	/**
+	 * Show the profile of a specific user account
+	 *
+	 * @param $id
+	 *
+	 * @return View
+	 */
+	public function StoreProfile($hash) {
+		// Decode the hashid
+		$id = $this->hashids->decode($hash)[0];
+
+		// Get the user
+		$user = $this->userRepository->retrieveById($id);
+		$profile = User::find($user->id)->profile;
+		$update = array(
+			'name' => Input::get('name'),
+			'gender' => Input::get('gender'),
+			'dob' => \Carbon\Carbon::createFromFormat('m/d/Y', Input::get('dob')),
+			'nationality' => Input::get('nationality'),
+			'profession' => Input::get('profession'),
+			'marital_status' => Input::get('marital-status'),
+			'contact_number_1' => Input::get('contact-number-1'),
+			'contact_number_2' => Input::get('contact-number-2'),
+			'permanent_address_1' => Input::get('permanent-address-line-1'),
+			'permanent_address_2' => Input::get('permanent-address-line-2'),
+			'permanent_country' => Input::get('permanent-country'),
+			'permanent_city' => Input::get('permanent-city'),
+			'permanent_state' => Input::get('permanent-state'),
+			'contact_address_1' => Input::get('contact-address-line-1'),
+			'contact_address_2' => Input::get('contact-address-line-2'),
+			'contact_country' => Input::get('contact-country'),
+			'contact_city' => Input::get('contact-city'),
+			'contact_state' => Input::get('contact-state'),
+
+		);
+
+		$profile->update($update);
+
+		return redirect()->route('sentinel.users.edit.profile', array($hash))->with('success', 'Updated');
 	}
 
 	/**
