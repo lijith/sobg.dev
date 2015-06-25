@@ -24,7 +24,7 @@
               <input type="text" class="form-control" placeholder="Order ID" name="order-id" value="{{ $search }}">
               <span class="input-group-btn">
                 <button type="submit" class="btn btn-success">Search Order</button>
-              </span>              
+              </span>
             </form>
 
           </div>
@@ -53,6 +53,7 @@
                 @if($title == 'All Orders')
                 <th>Shipped</th>
                 @endif
+
             </tr>
           </thead>
           <tbody>
@@ -60,23 +61,24 @@
               <tr>
                 <td><a href="{{ route('reference.order', array($order->reference_id)) }}">{{ $order->reference_id }}</a></td>
                 <td>{{ strtoupper($order->shipping_name) }}</td>
-                <td>{{ \Carbon\Carbon::createFromFormat('Y-m-d H:i:s',$order->updated_at)->format('M d, Y') }}</td>
+                <td>{{ \Carbon\Carbon::createFromFormat('Y-m-d H:i:s',$order->created_at)->format('M d, Y') }}</td>
                 <td>{{ $order->quantity }}</td>
                 <td>{{ $order->amount }}</td>
                 @if($title == 'All Orders')
                   <td>
                   @if($order->shipping_status)
                     <label>Shipped</label>
+                    {{\Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $order->shipment_date)->format('Y M, d')}}
                   @else
                     <label>Not Shipped</label>
                   @endif
                   </td>
                 @endif
               </tr>
-              
+
             @endforeach
           </tbody>
-          
+
         </table>
 
 
@@ -95,7 +97,7 @@
     </section>
   </div>
 
-</div> 
+</div>
 
 
 @stop

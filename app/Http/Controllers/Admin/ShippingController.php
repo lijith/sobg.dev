@@ -1,342 +1,337 @@
 <?php namespace App\Http\Controllers\Admin;
 
-use App\Http\Requests;
-use App\Http\Controllers\Controller;
-
-use Illuminate\Http\Request;
-use Illuminate\Support\Str;
-
-use Vinkla\Hashids\HashidsManager;
-use App\Http\Requests\Admin\YatrasFormRequest;
-use App\Http\Requests\Admin\YatrasFormUpdateRequest;
-use Carbon\Carbon;
-
-use App\Shipping;
 use App\AudioDisk;
-use App\VideoDisk;
 use App\Book;
+use App\Http\Controllers\Controller;
 use App\Magazine;
 use App\Order;
+use App\Shipping;
 use App\SubscriptionRates;
-
-use View, Input, File, Validator;
+use App\VideoDisk;
+use Illuminate\Support\Str;
+use Input;
+use Validator;
+use View;
+use Vinkla\Hashids\HashidsManager;
 
 class ShippingController extends Controller {
 
-  /**
-   * constructor.
-   *
-   * @param  void
-   *
-   * @return void
-   */
-  public function __construct(HashidsManager $hashids) {
+	/**
+	 * constructor.
+	 *
+	 * @param  void
+	 *
+	 * @return void
+	 */
+	public function __construct(HashidsManager $hashids) {
 
-    $this->hashids = $hashids;
-  	// You must have admin access to proceed
-    $this->middleware('sentry.admin');
-  }
+		$this->hashids = $hashids;
+		// You must have admin access to proceed
+		$this->middleware('sentry.admin');
+	}
 
-  /**
-   * List all new shipping orders.
-   *
-   * @param  void
-   *
-   * @return View
-   */
-  public function newOrders(){
+	/**
+	 * List all new shipping orders.
+	 *
+	 * @param  void
+	 *
+	 * @return View
+	 */
+	public function newOrders() {
 
-    $new_orders = Shipping::where('admin_viewed', '=', 0)
-    ->where('shipping_status', '=', 0)
-    ->where('payment_status', '=', 1)
-    ->orderBy('updated_at','desc')
-    ->get();
+		$new_orders = Shipping::where('admin_viewed', '=', 0)
+			->where('shipping_status', '=', 0)
+			->where('payment_status', '=', 1)
+			->orderBy('updated_at', 'desc')
+			->get();
 
-    return View::make('Admin.shipping.orders-list',array('orders' => $new_orders, 'title' => 'New Orders'));
+		return View::make('Admin.shipping.orders-list', array('orders' => $new_orders, 'title' => 'New Orders'));
 
-  }
+	}
 
-  /**
-   * List all confirmed shipping orders.
-   *
-   * @param  void
-   *
-   * @return View
-   */
-  public function confirmedOrders(){
-    $orders = Shipping::where('shipping_status', '=', 1)
-    ->where('payment_status', '=', 1)
-    ->orderBy('updated_at','desc')
-    ->get();
+	/**
+	 * List all confirmed shipping orders.
+	 *
+	 * @param  void
+	 *
+	 * @return View
+	 */
+	public function confirmedOrders() {
+		$orders = Shipping::where('shipping_status', '=', 1)
+			->where('payment_status', '=', 1)
+			->orderBy('updated_at', 'desc')
+			->get();
 
-    return View::make('Admin.shipping.orders-list',array('orders' => $orders, 'title' => 'Unconfirmed Orders'));
-  }
+		return View::make('Admin.shipping.orders-list', array('orders' => $orders, 'title' => 'Unconfirmed Orders'));
+	}
 
+	/**
+	 * List all unconfirmed shipping orders.
+	 *
+	 * @param  void
+	 *
+	 * @return View
+	 */
+	public function unconfirmedOrders() {
+		$orders = Shipping::where('shipping_status', '=', 0)
+			->where('payment_status', '=', 1)
+			->orderBy('updated_at', 'desc')
+			->get();
 
+		return View::make('Admin.shipping.orders-list', array('orders' => $orders, 'title' => 'Confirmed Orders', 'search' => ''));
+	}
 
-  /**
-   * List all unconfirmed shipping orders.
-   *
-   * @param  void
-   *
-   * @return View
-   */
-  public function unconfirmedOrders(){
-    $orders = Shipping::where('shipping_status', '=', 0)
-    ->where('payment_status', '=', 1)
-    ->orderBy('updated_at','desc')
-    ->get();
+	/**
+	 * List all shipping orders.
+	 *
+	 * @param  void
+	 *
+	 * @return View
+	 */
+	public function allOrders() {
 
-    return View::make('Admin.shipping.orders-list',array('orders' => $orders, 'title' => 'Confirmed Orders','search'=>''));
-  }
+		$orders = Shipping::orderBy('created_at', 'desc')
+			->simplePaginate(50);
 
-  /**
-   * List all shipping orders.
-   *
-   * @param  void
-   *
-   * @return View
-   */
-  public function allOrders(){
-    $orders = Shipping::orderBy('updated_at','desc')
-    ->simplePaginate(50);
+		return View::make('Admin.shipping.orders-list', array('orders' => $orders, 'title' => 'All Orders', 'search' => ''));
+	}
 
-    return View::make('Admin.shipping.orders-list',array('orders' => $orders, 'title' => 'All Orders','search'=>''));
-  }
+	/**
+	 * Show Order.
+	 *
+	 * @param  void
+	 *
+	 * @return View
+	 */
+	public function SearchOrder() {
+		$order_id = Input::get('order-id');
 
+		$result = Shipping::search($order_id)->get();
 
-  /**
-   * Show Order.
-   *
-   * @param  void
-   *
-   * @return View
-   */
-  public function SearchOrder(){
-    $order_id = Input::get('order-id');
+		return View::make('Admin.shipping.orders-list', array('orders' => $result, 'title' => 'Search for ' . $order_id, 'search' => $order_id));
+	}
 
-    $result = Shipping::search($order_id)->get();
+	/**
+	 * Show Order.
+	 *
+	 * @param  void
+	 *
+	 * @return View
+	 */
+	public function ConfirmShipment($reference_id) {
 
-    return View::make('Admin.shipping.orders-list',array('orders' => $result, 'title' => 'Search for '.$order_id,'search'=>$order_id));
-  }
+		$order_id = Input::get('order-id');
 
-  /**
-   * Show Order.
-   *
-   * @param  void
-   *
-   * @return View
-   */
-  public function ConfirmShipment($reference_id){
+		$shipping = Shipping::where('reference_id', '=', $reference_id)->first();
 
-    $order_id = Input::get('order-id');
+		$orders = $this->ShippingOrders($shipping->id);
 
-    $shipping = Shipping::where('reference_id', '=', $reference_id)->first();
+		$validation = Validator::make(
+			array(
+				'shipment-information' => Input::get('shipment-information'),
+			),
+			array(
+				'shipment-information' => array('required', 'min:15'),
+			)
+		);
 
-    $orders = $this->ShippingOrders($shipping->id);
+		if ($reference_id == $order_id) {
 
-    $validation = Validator::make(
-        array(
-        'shipment-information' => Input::get( 'shipment-information' ),
-        ),
-        array(
-            'shipment-information' => array( 'required', 'min:15' ),
-        )
-    );
+			if ($validation->fails()) {
+				$errors = $validation->messages();
+				return redirect()->route('reference.order', array($reference_id))->withErrors($errors);
+			} else {
 
-    if($reference_id == $order_id){
+				$mGun = new \Mailgun\Mailgun(env('MAILGUN_KEY'));
+				$domain = env('MAILGUN_DOMAIN');
 
+				$shipment_information = Input::get('shipment-information');
+				//send mails to ship email
+				$mGun->sendMessage($domain, array(
+					'from' => 'info@sobg.com',
+					'to' => $shipping->shipping_email,
+					'subject' => 'Items Shipped for Order ID ' . $order_id,
+					'text' => 'Items Shipped for Order ID ' . $order_id,
+					'html' => View::make('emails.customer-shipment', array(
+						'shipping' => $shipping,
+						'orders' => $orders,
+						'shipment_info' => $shipment_information,
+					))->render(),
+				));
 
+				//send mail to admin
+				$mGun->sendMessage($domain, array(
+					'from' => 'info@sobg.com',
+					'to' => env('MAILGUN_ADMIN_LIST'),
+					'subject' => $order_id . ' Shipment Completed',
+					'text' => 'Shipment success',
+					'html' => View::make('emails.admins-shipment', array(
+						'shipping' => $shipping,
+						'orders' => $orders))
+						->render(),
+				));
 
-      if ( $validation->fails() ) {
-          $errors = $validation->messages();
-          return redirect()->route('reference.order',array($reference_id))->withErrors($errors);
-      }else{
+				$shipping->shipment_date = \Carbon\Carbon::now();
+				$shipping->shipping_status = 1;
 
-         $shipment_information = Input::get('shipment-information');
-         //send mails to ship email
-         $mGun->sendMessage($domain, array(
-          'from' => 'info@sobg.com',
-          'to' => $shipping->shipping_email,
-          'subject' => 'Items Shipped for Order ID '.$order_id,
-          'text' => 'Items Shipped for Order ID '.$order_id,
-          'html' => View::make('emails.customer-shipment', array('shipping' => $shipping, 'orders' => $orders))
-            ->render(),
-          ));
+				$shipping->save();
+				return redirect()->route('reference.order', array($reference_id))->with('success', 'Shipping Completed');
 
+			}
 
-         //send mail to admin
-         $mGun->sendMessage($domain, array(
-          'from' => 'info@sobg.com',
-          'to' => env('MAILGUN_ADMIN_LIST'),
-          'subject' => $order_id.' Shipment Completed',
-          'text' => 'Shipment success',
-          'html' => View::make('emails.admins-shipment', array('shipping' => $shipping, 'orders' => $orders))
-            ->render(),
-          ));
- 
-      }
+		} else {
+			return redirect()->route('reference.order', array($reference_id))->with('failure', 'Order ID not found');
+		}
 
-      
+	}
 
-    }else{
-      return redirect()->route('reference.order',array($reference_id))->with('failure', 'Order ID not found');
-    }
+	/**
+	 * Show Order.
+	 *
+	 * @param  void
+	 *
+	 * @return View
+	 */
+	public function showOrder($reference_id) {
 
+		$order = Shipping::where('reference_id', '=', $reference_id)->first();
 
-  }
+		$shipping = Shipping::find($order->id);
 
+		$shipping->admin_viewed = 1;
 
+		$shipping->save();
 
-  /**
-   * Show Order.
-   *
-   * @param  void
-   *
-   * @return View
-   */
-  public function showOrder($reference_id){
+		$orders = Shipping::find($order->id)->orders;
 
-    $order = Shipping::where('reference_id', '=', $reference_id)->first();
+		$order_list = array();
 
-    $shipping = Shipping::find($order->id);
+		foreach ($orders as $item) {
 
-    $shipping->admin_viewed = 1;
+			switch ($item->item_type) {
+				case 'video':{
+						$product = VideoDisk::find($item->item_id)->first();
+						if ($product->disk_type == 1) {
+							$type = 'DVD';
+						} elseif ($product->disk_type == 2) {
+							$type = 'VCD';
+						}
+						$product_title = $product->title;
+						$item_quantity = $item->quantity;
+					}
+					break;
+				case 'audio':{
+						$product = AudioDisk::find($item->item_id)->first();
+						if ($product->disk_type == 1) {
+							$type = 'Audio CD';
+						} elseif ($product->disk_type == 2) {
+							$type = 'MP3';
+						}
+						$product_title = $product->title;
+						$item_quantity = $item->quantity;
+					}
+					break;
+				case 'book':{
+						$product = Book::find($item->item_id)->first();
+						$type = 'Book';
+						$product_title = $product->title;
+						$item_quantity = $item->quantity;
+					}
+					break;
+				case 'magazine':{
+						$product = Magazine::find($item->item_id)->first();
+						$type = 'Piravi';
+						$product_title = $product->title;
+						$item_quantity = $item->quantity;
+					}
+					break;
+				case 'magazine-subscription':{
+						$product = SubscriptionRates::find($item->item_id)->first();
+						$type = 'Subscription';
 
-    $shipping->save();
+						$product_title = $product->type . ' ' . $product->key;
+						$item_quantity = 1;
+					}
+					break;
 
-    $orders = Shipping::find($order->id)->orders;
+			}
 
-    $order_list = array();
+			$order_row = array(
+				'title' => $product_title,
+				'quantity' => $item_quantity,
+				'type' => $type,
+			);
 
-    foreach ($orders as $item) {
+			array_push($order_list, $order_row);
+		}
 
-      switch($item->item_type){
-        case 'video':{
-          $product = VideoDisk::find($item->item_id)->first();
-          if($product->disk_type == 1){
-            $type = 'DVD';
-          }elseif($product->disk_type == 2){
-            $type = 'VCD';
-          }
-          $product_title = $product->title;
-          $item_quantity = $item->quantity;
-        }
-        break;
-        case 'audio':{
-          $product = AudioDisk::find($item->item_id)->first();
-          if($product->disk_type == 1){
-            $type = 'Audio CD';
-          }elseif($product->disk_type == 2){
-            $type = 'MP3';
-          }
-          $product_title = $product->title;
-          $item_quantity = $item->quantity;
-        }
-        break;
-        case 'book':{
-          $product = Book::find($item->item_id)->first();
-          $type = 'Book';
-          $product_title = $product->title;
-          $item_quantity = $item->quantity;
-        }
-        break;
-        case 'magazine':{
-          $product = Magazine::find($item->item_id)->first();
-          $type = 'Piravi';
-          $product_title = $product->title;
-          $item_quantity = $item->quantity;
-        }
-        break;
-        case 'magazine-subscription':{
-          $product = SubscriptionRates::find($item->item_id)->first();
-          $type = 'Subscription';
+		// dd($order_list);
 
-          $product_title = $product->type.' '.$product->key;
-          $item_quantity = 1;
-        }
-        break;
-        
-      }
+		return View::make('Admin.shipping.show', array('order' => $order, 'orders' => $order_list));
+	}
 
-      $order_row = array(
-      'title' => $product_title,
-      'quantity' => $item_quantity,
-      'type' => $type
-      );
+	/**
+	 * get orders for the shipping.
+	 *
+	 * @param  shipping id
+	 *
+	 * @return array
+	 */
 
-      array_push($order_list, $order_row);
-    }
+	public function ShippingOrders($shipping_id) {
 
-   // dd($order_list);
+		$orders = array();
 
-    return View::make('Admin.shipping.show',array('order' => $order,'orders' => $order_list));
-  }
+		$items = Order::where('shipping_id', '=', $shipping_id)->get();
 
-  /**
-   * get orders for the shipping.
-   *
-   * @param  shipping id
-   *
-   * @return array
-   */
+		foreach ($items as $item) {
 
-  public function ShippingOrders($shipping_id) {
+			$order = array();
 
-    $orders = array();
+			switch ($item->item_type) {
+				case 'video':{
+						$product = VideoDisk::find($item->item_id);
+						$order = array(
+							'title' => $product->title,
+							'quantity' => $item->quantity,
+						);
+					}
+					break;
+				case 'audio':{
+						$product = AudioDisk::find($item->item_id);
+						$order = array(
+							'title' => $product->title,
+							'quantity' => $item->quantity,
+						);
+					}
+					break;
+				case 'book':{
+						$product = Book::find($item->item_id);
+						$order = array(
+							'title' => $product->title,
+							'quantity' => $item->quantity,
+						);
+					}
+					break;
+				case 'magazine':{
+						$product = Magazine::find($item->item_id);
+						$order = array(
+							'title' => $product->title,
+							'quantity' => $item->quantity,
+						);
+					}
 
-    $items = Order::where('shipping_id', '=', $shipping_id)->get();
+			}
 
-    foreach ($items as $item) {
+			if (!empty($order)) {
+				array_push($orders, $order);
+			}
 
-      $order = array();
+			unset($order);
 
-      echo $item->item_type;
+		}
 
-        switch ($item->item_type) {
-          case 'video':{
-              $product = VideoDisk::find($item->item_id);
-              $order = array(
-                'title' => $product->title,
-                'quantity' => $item->quantity,
-              );
-            }
-            break;
-          case 'audio':{
-              $product = AudioDisk::find($item->item_id);
-              $order = array(
-                'title' => $product->title,
-                'quantity' => $item->quantity,
-              );
-            }
-            break;
-          case 'book':{
-              $product = Book::find($item->item_id);
-              $order = array(
-                'title' => $product->title,
-                'quantity' => $item->quantity,
-              );
-            }
-            break;
-          case 'magazine':{
-              $product = Magazine::find($item->item_id);
-              $order = array(
-                'title' => $product->title,
-                'quantity' => $item->quantity,
-              );
-            }
-
-        }
-
-      if(!empty($order)){
-       array_push($orders, $order);
-      }
-
-      unset($order);
-
-    }
-
-    return $orders;
-  }
+		return $orders;
+	}
 
 }
