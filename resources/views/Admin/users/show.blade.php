@@ -39,6 +39,8 @@ $userGroups = $user->getGroups();
             </div>
 
         </section>
+        @if ($subscription != 'Admin')
+
         <section class="panel">
             <header class="panel-heading">
                 Subscription
@@ -47,17 +49,100 @@ $userGroups = $user->getGroups();
             	@if ($subscription != null)
             		@if ($subscription->active == 1)
             			@if ($subscription->print == 1)
-            					<p>Print subscription on</p>
+            					<p>
+            					Print subscription <span class="badge bg-important">on</span> End in {{ \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $subscription->print_ending_at)->format('d M, Y') }}
+            					</p>
+            			@else
+            					<p>Print subscription <span class="badge bg-important">Off</span></p>
             			@endif
             			@if ($subscription->digital == 1)
-            					<p>Digital subscription on</p>
+            					<p>
+            					Digital subscription <span class="badge bg-important">on</span> End in {{ \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $subscription->digital_ending_at)->format('d M, Y') }}
+            					</p>
+
+            			@else
+		            			<p>Digital subscription <span class="badge bg-important">Off</span></p>
             			@endif
             		@endif
+            		<hr />
+            		<h4>Update Subscription</h4>
+            		<form method="post" action="{{ route('sentinel.users.update.subscription', array($user->hash)) }}">
+	            		<div class="row">
+
+	            			<div class="col-md-6">
+	            				<div class="checkbox">
+			                    <label>
+			                        <input type="checkbox" name="digital" {{ ($subscription->digital)? 'checked':'' }}> Digital
+			                    </label>
+			                </div>
+	                		<select class="form-control m-bot15" name="digital-duration">
+			            			<option value="select" selected>....</option>
+				            		@foreach ($subrates['digitals'] as $sub)
+			            				<option value ="{{ $sub->period }}">{{ $sub->key }}</option>
+			            			@endforeach
+			            		</select>
+	            			</div><!-- /.col-md-6 -->
+
+	            			<div class="col-md-6">
+	            				<div class="checkbox">
+			                    <label>
+			                        <input type="checkbox" name="print" {{ ($subscription->print)? 'checked':'' }}> Print
+			                    </label>
+			                </div>
+	                		<select class="form-control m-bot15" name="print-duration">
+			            			<option value="select" selected>....</option>
+				            		@foreach ($subrates['prints'] as $sub)
+			            				<option value ="{{ $sub->period }}">{{ $sub->key }}</option>
+			            			@endforeach
+			            		</select>
+	            			</div><!-- /.col-md-6 -->
+
+	            		</div><!-- /.row -->
+	            		<input type="hidden" name="_token" value="{{ csrf_token() }}" />
+	            		<button class="btn btn-primary">Update Subscription</button>
+            		</form>
+            	@else
+            		<p>Not subscribed</p>
+            		<form method="post" action="{{ route('sentinel.users.create.subscription', array($user->hash)) }}">
+	            		<div class="row">
+
+	            			<div class="col-md-6">
+	            				<div class="checkbox">
+			                    <label>
+			                        <input type="checkbox" name="digital"> Digital
+			                    </label>
+			                </div>
+	                		<select class="form-control m-bot15" name="digital-duration">
+				            		@foreach ($subrates['digitals'] as $sub)
+			            				<option value ="{{ $sub->period }}">{{ $sub->key }}</option>
+			            			@endforeach
+			            		</select>
+	            			</div><!-- /.col-md-6 -->
+
+	            			<div class="col-md-6">
+	            				<div class="checkbox">
+			                    <label>
+			                        <input type="checkbox" name="print"> Print
+			                    </label>
+			                </div>
+	                		<select class="form-control m-bot15" name="print-duration">
+				            		@foreach ($subrates['prints'] as $sub)
+			            				<option value ="{{ $sub->period }}">{{ $sub->key }}</option>
+			            			@endforeach
+			            		</select>
+	            			</div><!-- /.col-md-6 -->
+
+	            		</div><!-- /.row -->
+	            		<input type="hidden" name="_token" value="{{ csrf_token() }}" />
+	            		<button class="btn btn-primary">Make Subscription for this user</button>
+            		</form>
             	@endif
             </div>
 
         </section>
-        <!--earning graph end-->
+
+        @endif
+
     </div><!--col-md-6-->
 
     <div class="col-md-6">
@@ -66,9 +151,11 @@ $userGroups = $user->getGroups();
 	            Account Details
 	        </header>
 	        <div class="panel-body">
+
 	    	    <p><em>Account created: {{ $user->created_at }}</em></p>
 						<p><em>Last Updated: {{ $user->updated_at }}</em></p>
-						<button class="btn btn-primary" onClick="location.href='{{ $editAction }}'">Edit Profile</button>
+						<button class="btn btn-primary" onClick="location.href='{{ $editAction }}'">Edit Account</button>
+						<a href="{{ route('sentinel.users.edit.profile', array($user->hash)) }}" class="btn btn-primary">Edit Profile</a>
 	        </div>
 
 	    </section>

@@ -4,8 +4,88 @@
 		"selected_items":
 		[
 			[
+				"hr",
+				"horizontal"
+			],
+			[
+				"P",
+				"Profile〔class〕"
+			],
+			[
+				"new",
+				"$new_user_id〔variable〕"
+			],
+			[
+				"crea",
+				"createFromFormat"
+			],
+			[
+				"order",
+				"$order_id〔variable〕"
+			],
+			[
+				"re",
+				"reference_id"
+			],
+			[
+				"_",
+				"_token"
+			],
+			[
+				"sub",
+				"submit"
+			],
+			[
+				"font",
+				"font-weight: 〔property〕"
+			],
+			[
+				"margin",
+				"margin-left: 〔property〕"
+			],
+			[
+				"susb",
+				"subscription"
+			],
+			[
+				"in",
+				"in_array"
+			],
+			[
+				"array_p",
+				"array_push〔function〕"
+			],
+			[
+				"mg",
+				"$mGunResponse〔variable〕"
+			],
+			[
+				"jso",
+				"json_encode〔function〕"
+			],
+			[
+				"for",
+				"foreach	foreach …"
+			],
+			[
+				"magazin",
+				"magazine_file"
+			],
+			[
+				"end",
+				"endif"
+			],
+			[
+				"shipping_e",
+				"shipping_email"
+			],
+			[
+				"sh",
+				"ShippingOrders〔function〕"
+			],
+			[
 				"or",
-				"order_id"
+				"orders"
 			],
 			[
 				"cart_co",
@@ -18,10 +98,6 @@
 			[
 				"pa",
 				"payment"
-			],
-			[
-				"sub",
-				"$subscription〔variable〕"
 			],
 			[
 				"Ma",
@@ -52,16 +128,8 @@
 				"strtoupper"
 			],
 			[
-				"order",
-				"orderBy"
-			],
-			[
 				"t",
 				"thead	Tag"
-			],
-			[
-				"new",
-				"$new_orders〔variable〕"
 			],
 			[
 				"maga",
@@ -124,10 +192,6 @@
 				"titleLimit"
 			],
 			[
-				"for",
-				"foreach	foreach …"
-			],
-			[
 				"hei",
 				"height"
 			],
@@ -172,14 +236,6 @@
 				"var_dump〔function〕"
 			],
 			[
-				"_",
-				"_cover_file_path〔variable〕"
-			],
-			[
-				"re",
-				"redirect"
-			],
-			[
 				"border",
 				"border"
 			],
@@ -208,16 +264,8 @@
 				"shipping_id"
 			],
 			[
-				"array_p",
-				"array_push"
-			],
-			[
 				"pr",
 				"$profile〔variable〕"
-			],
-			[
-				"in",
-				"input"
 			],
 			[
 				"I",
@@ -250,10 +298,6 @@
 			[
 				"padd",
 				"padding"
-			],
-			[
-				"margin",
-				"margin-bottom"
 			],
 			[
 				"nlr",
@@ -318,10 +362,6 @@
 			[
 				"list-s",
 				"list-style"
-			],
-			[
-				"font",
-				"font-size"
 			],
 			[
 				"spli",
@@ -451,24 +491,48 @@
 			"file": "app/Http/routes.php",
 			"settings":
 			{
-				"buffer_size": 23543,
+				"buffer_size": 24541,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "app/Http/Controllers/ShoppingCartController.php",
+			"file": "app/Http/Controllers/Admin/UserController.php",
 			"settings":
 			{
-				"buffer_size": 20872,
-				"line_ending": "Unix"
+				"buffer_size": 9025,
+				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "app/Shipping.php",
+			"file": "resources/views/Admin/users/show.blade.php",
 			"settings":
 			{
-				"buffer_size": 986,
-				"line_ending": "Unix"
+				"buffer_size": 2559,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "app/Http/Controllers/Member/ProfileController.php",
+			"settings":
+			{
+				"buffer_size": 10240,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "public/packages/admin/js/scripts.js",
+			"settings":
+			{
+				"buffer_size": 9188,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "resources/views/Admin/users/edit-profile.blade.php",
+			"settings":
+			{
+				"buffer_size": 8939,
+				"line_ending": "Windows"
 			}
 		}
 	],
@@ -480,9 +544,13 @@
 	"command_palette":
 	{
 		"height": 392.0,
-		"last_filter": "i",
+		"last_filter": "phpfmt:togg",
 		"selected_items":
 		[
+			[
+				"phpfmt:togg",
+				"phpfmt: toggle PHP 5.5 compatibility mode"
+			],
 			[
 				"i",
 				"Package Control: Install Package"
@@ -511,6 +579,9 @@
 		"height": 126.0,
 		"history":
 		[
+			"phpfmt: toggle PHP 5.5 compatibility mode",
+			"`phpfmt: toggle PHP 5.5 compatibility mode`",
+			"phpfmt",
 			"import urllib.request,os; pr='Preferences.sublime-settings'; ip='ignored_packages'; n='Package Control'; s=sublime.load_settings(pr); ig=s.get(ip); ig.append(n); s.set(ip,ig); sublime.save_settings('Preferences.sublime-settings'); pf=n+'.sublime-package'; urllib.request.install_opener(urllib.request.build_opener(urllib.request.ProxyHandler())); by=urllib.request.urlopen('https://packagecontrol.io/'+pf.replace(' ','%20')).read(); open(os.path.join(sublime.installed_packages_path(),pf),'wb').write(by); ig.remove(n); s.set(ip,ig); sublime.save_settings(pr); print('Package Control: 3.0.0 upgrade successful!')",
 			"import urllib.request,os,hashlib; h = '7183a2d3e96f11eeadd761d777e62404' + 'e330c659d4bb41d3bdf022e94cab3cd0'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by) "
 		]
@@ -529,22 +600,53 @@
 		"/I/websites/sitesobg.dev",
 		"/I/websites/sitesobg.dev/app",
 		"/I/websites/sitesobg.dev/app/Http",
-		"/I/websites/sitesobg.dev/app/Http/Controllers",
-		"/I/websites/sitesobg.dev/app/Http/Middleware",
-		"/I/websites/sitesobg.dev/public",
-		"/I/websites/sitesobg.dev/public/scripts",
 		"/I/websites/sitesobg.dev/resources",
 		"/I/websites/sitesobg.dev/resources/views",
-		"/I/websites/sitesobg.dev/resources/views/emails"
+		"/I/websites/sitesobg.dev/resources/views/Admin",
+		"/I/websites/sitesobg.dev/resources/views/Admin/users"
 	],
 	"file_history":
 	[
+		"/I/websites/sitesobg.dev/vendor/rydurham/sentinel/src/Sentinel/Repositories/User/SentryUserRepository.php",
+		"/I/websites/sitesobg.dev/vendor/rydurham/sentinel/src/Sentinel/FormRequests/UserCreateRequest.php",
+		"/I/websites/sitesobg.dev/vendor/rydurham/sentinel/src/Sentinel/Repositories/User/SentinelUserRepositoryInterface.php",
+		"/I/websites/sitesobg.dev/resources/views/Admin/shipping/orders-list.blade.php",
 		"/I/websites/sitesobg.dev/.env",
+		"/I/websites/sitesobg.dev/app/Http/Controllers/Admin/MagazineController.php",
+		"/I/websites/sitesobg.dev/app/Shipping.php",
+		"/I/websites/sitesobg.dev/app/Http/Controllers/ShoppingCartController.php",
+		"/I/websites/sitesobg.dev/resources/views/emails/customer-shipment.blade.php",
+		"/I/websites/sitesobg.dev/resources/views/emails/cutomers-orders.blade.php",
+		"/I/websites/sitesobg.dev/resources/views/emails/admins-shipment.blade.php",
+		"/I/websites/sitesobg.dev/app/Http/Controllers/Admin/ShippingController.php",
+		"/I/websites/sitesobg.dev/resources/views/Admin/users/all-users.blade.php",
+		"/I/websites/sitesobg.dev/app/Http/Controllers/Admin/UserController.php",
+		"/C/Users/creatix/AppData/Roaming/Sublime Text 3/Packages/User/phpfmt.sublime-settings",
+		"/C/Users/creatix/AppData/Roaming/Sublime Text 3/Packages/phpfmt/phpfmt.sublime-settings",
+		"/I/websites/sitesobg.dev/resources/views/Admin/shipping/show.blade.php",
+		"/I/websites/sitesobg.dev/app/Http/Controllers/EshopController.php",
+		"/I/websites/sitesobg.dev/app/SubscriptionRates.php",
+		"/I/websites/sitesobg.dev/app/AudioDisk.php",
+		"/I/websites/sitesobg.dev/resources/views/emails/new-event.blade.php",
+		"/I/websites/sitesobg.dev/app/Http/Controllers/Admin/EventController.php",
+		"/I/websites/sitesobg.dev/resources/views/Admin/events/show.blade.php",
+		"/I/websites/sitesobg.dev/resources/views/emails/base-layout.blade.php",
+		"/I/websites/sitesobg.dev/app/Http/Controllers/Admin/AlbumController.php",
+		"/I/websites/sitesobg.dev/resources/views/emails/admins-orders.blade.php",
+		"/I/websites/sitesobg.dev/resources/views/Admin/magazines/create.blade.php",
+		"/I/websites/sitesobg.dev/resources/views/emails/new-magazine-digital.blade.php",
+		"/I/websites/sitesobg.dev/resources/views/emails/new-magazine.blade.php",
+		"/I/websites/sitesobg.dev/app/MagazineSubscriber.php",
+		"/I/websites/sitesobg.dev/resources/views/Admin/layout.blade.php",
+		"/I/websites/sitesobg.dev/resources/views/Admin/magazines/show.blade.php",
+		"/I/websites/sitesobg.dev/app/Magazine.php",
+		"/I/websites/sitesobg.dev/database/migrations/2015_06_20_080527_DropMagazinesTable1.php",
+		"/I/websites/sitesobg.dev/database/migrations/2015_06_20_080621_CreateMagazinesTable1.php",
+		"/I/websites/sitesobg.dev/app/Photo.php",
 		"/C/Users/creatix/AppData/Local/Temp/fz3temp-1/index 2.php",
 		"/C/Users/creatix/AppData/Local/Temp/fz3temp-1/settings.php",
 		"/C/Users/creatix/AppData/Local/Temp/fz3temp-1/base-layout.blade.php",
 		"/C/Users/creatix/AppData/Local/Temp/fz3temp-1/test.php",
-		"/I/websites/sitesobg.dev/resources/views/emails/base-layout.blade.php",
 		"/C/Users/creatix/AppData/Local/Temp/fz3temp-1/welcome.blade.php",
 		"/C/Users/creatix/AppData/Local/Temp/fz3temp-1/index_1.php",
 		"/C/Users/creatix/AppData/Local/Temp/fz3temp-1/error_log 2",
@@ -553,16 +655,13 @@
 		"/I/websites/sitesobg.dev/app/Http/Middleware/VerifyCsrfToken.php",
 		"/I/websites/sitesobg.dev/resources/views/shoppingcart.blade.php",
 		"/I/websites/sitesobg.dev/app/Http/Controllers/SiteController.php",
-		"/I/websites/sitesobg.dev/app/Http/Controllers/ShoppingCartController.php",
 		"/I/websites/sitesobg.dev/public/scripts/main.js",
 		"/I/websites/sitesobg.dev/resources/views/eshop-magazines-list.blade.php",
 		"/I/websites/sitesobg.dev/resources/views/eshop-item-magazine.blade.php",
 		"/I/websites/sitesobg.dev/resources/views/eshop-books-list.blade.php",
-		"/I/websites/sitesobg.dev/app/Http/Controllers/EshopController.php",
 		"/I/websites/sitesobg.dev/resources/views/eshop-item-book.blade.php",
 		"/I/websites/sitesobg.dev/resources/views/eshop_side_bar.blade.php",
 		"/I/websites/sitesobg.dev/resources/views/side-cart.blade.php",
-		"/I/websites/sitesobg.dev/app/Shipping.php",
 		"/I/websites/sitesobg.dev/resources/views/shoppingcart-shipping.blade.php",
 		"/I/websites/sitesobg.dev/resources/views/event-side-nav.blade.php",
 		"/I/websites/sitesobg.dev/database/migrations/2015_06_12_095558_CreateShippingsTable4.php",
@@ -578,7 +677,6 @@
 		"/I/websites/sitesobg.dev/database/migrations/2015_05_13_072801_CreateShippingsTable.php",
 		"/I/websites/sitesobg.dev/resources/views/yatras/yatra-registration.blade.php",
 		"/I/websites/sitesobg.dev/resources/views/Admin/yatras/show.blade.php",
-		"/I/websites/sitesobg.dev/resources/views/Admin/layout.blade.php",
 		"/I/websites/sitesobg.dev/public/packages/admin/css/additional.css",
 		"/I/websites/sitesobg.dev/public/packages/admin/js/ckeditor/styles.js",
 		"/I/websites/sitesobg.dev/resources/views/eshop.blade.php",
@@ -593,15 +691,11 @@
 		"/I/websites/sitesobg.dev/resources/views/yatras/side-yatras.blade.php",
 		"/I/websites/sitesobg.dev/resources/views/layout.blade.php",
 		"/I/websites/sitesobg.dev/app/Http/Controllers/Admin/AdministratorController.php",
-		"/I/websites/sitesobg.dev/app/Http/Controllers/Admin/ShippingController.php",
-		"/I/websites/sitesobg.dev/resources/views/Admin/shipping/show.blade.php",
-		"/I/websites/sitesobg.dev/resources/views/Admin/shipping/orders-list.blade.php",
 		"/C/Users/creatix/Downloads/magazines.sql",
 		"/I/websites/sitesobg.dev/app/Http/Controllers/Member/RegistrationController.php",
 		"/I/websites/sitesobg.dev/app/Http/Controllers/Member/ProfileController.php",
 		"/I/websites/sitesobg.dev/resources/views/Member/magazine-list.blade.php",
 		"/I/websites/sitesobg.dev/resources/views/Member/show.blade.php",
-		"/I/websites/sitesobg.dev/app/Http/Controllers/Admin/UserController.php",
 		"/I/websites/sitesobg.dev/resources/views/Admin/users/show.blade.php",
 		"/C/Users/creatix/AppData/Local/Temp/Rar$DRa0.052/viewerjs-0.5.7/ViewerJS/index.html",
 		"/I/websites/sitesobg.dev/config/sentinel.php",
@@ -609,7 +703,6 @@
 		"/I/websites/sitesobg.dev/resources/views/Admin/resend.blade.php",
 		"/I/websites/sitesobg.dev/app/User.php",
 		"/I/websites/sitesobg.dev/app/Profile.php",
-		"/I/websites/sitesobg.dev/app/MagazineSubscriber.php",
 		"/I/websites/sitesobg.dev/app/Http/Controllers/Member/SessionController.php",
 		"/I/websites/sitesobg.dev/app/Http/Controllers/HomeController.php",
 		"/C/Users/creatix/AppData/Local/Temp/fz3temp-2/mail.php",
@@ -617,9 +710,6 @@
 		"/C/Users/creatix/AppData/Local/Temp/fz3temp-2/sentinel.php",
 		"/I/websites/sitesobg.dev/vendor/rydurham/sentinel/src/Sentinel/DataTransferObjects/BaseResponse.php",
 		"/I/websites/sitesobg.dev/resources/views/emails/welcome.blade.php",
-		"/I/websites/sitesobg.dev/app/Http/Controllers/Admin/EventController.php",
-		"/I/websites/sitesobg.dev/vendor/rydurham/sentinel/src/Sentinel/Repositories/User/SentryUserRepository.php",
-		"/I/websites/sitesobg.dev/app/Http/Controllers/Admin/MagazineController.php",
 		"/I/websites/sitesobg.dev/app/MagazineSubscribers.php",
 		"/I/websites/sitesobg.dev/app/Subscription.php",
 		"/I/websites/sitesobg.dev/database/migrations/2015_05_13_072521_CreateOrdersTable.php",
@@ -643,30 +733,8 @@
 		"/I/websites/sitesobg.dev/resources/views/Member/register.blade.php",
 		"/I/websites/sitesobg.dev/resources/views/Member/login.blade.php",
 		"/I/websites/sitesobg.dev/resources/views/shoppingcart-login-register.blade.php",
-		"/I/websites/sitesobg.dev/app/Http/Controllers/Admin/AlbumController.php",
 		"/I/websites/sitesobg.dev/resources/views/notifications.blade.php",
-		"/I/websites/sitesobg.dev/vendor/rydurham/sentinel/src/Sentinel/FormRequests/ChangePasswordRequest.php",
-		"/I/websites/sitesobg.dev/resources/views/Admin/users/reset.blade.php",
-		"/I/websites/sitesobg.dev/resources/views/Admin/videodisks/show.blade.php",
-		"/I/websites/sitesobg.dev/resources/views/Admin/events/create.blade.php",
-		"/I/websites/sitesobg.dev/resources/views/Admin/users/create.blade.php",
-		"/I/websites/sitesobg.dev/app/Http/Controllers/Admin/SessionController.php",
-		"/I/websites/sitesobg.dev/vendor/rydurham/sentinel/src/Sentinel/FormRequests/RegisterRequest.php",
-		"/I/websites/sitesobg.dev/public/views/shoppingcart-account.blade.php",
-		"/I/websites/sitesobg.dev/public/views/shoppingcart.blade.php",
-		"/I/websites/sitesobg.dev/resources/views/auth/password.blade.php",
-		"/I/websites/sitesobg.dev/app/Http/Requests/Member/ProfilePersonalUpdateRequest.php",
-		"/I/websites/sitesobg.dev/resources/views/contact.blade.php",
-		"/I/websites/sitesobg.dev/vendor/rydurham/sentinel/src/Sentinel/Traits/SentinelRedirectionTrait.php",
-		"/I/websites/sitesobg.dev/resources/views/Admin/books/edit.blade.php",
-		"/I/websites/sitesobg.dev/resources/views/shoppingcart-register.blade.php",
-		"/I/websites/sitesobg.dev/.gitignore",
-		"/I/websites/sitesobg.dev/app/Http/Requests/Member/ProfileAddressUpdateRequest.php",
-		"/I/websites/sitesobg.dev/app/Http/Middleware/Sentinel/SentryAuth.php",
-		"/I/websites/sitesobg.dev/vendor/barryvdh/elfinder-builds/php/elFinder.class.php",
-		"/I/websites/sitesobg.dev/config/elfinder.php",
-		"/I/websites/sitesobg.dev/vendor/barryvdh/elfinder-builds/php/connector.php",
-		"/I/websites/sitesobg.dev/vendor/barryvdh/laravel-elfinder/src/ElfinderController.php"
+		"/I/websites/sitesobg.dev/vendor/rydurham/sentinel/src/Sentinel/FormRequests/ChangePasswordRequest.php"
 	],
 	"find":
 	{
@@ -687,6 +755,9 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"NO-ATTACHMENT",
+			"Event",
+			"event",
 			"src",
 			"Session::",
 			"Session",
@@ -811,10 +882,7 @@
 			"SamarkanNormal",
 			"vce",
 			"SamarkanNormal",
-			"header-bottom",
-			"half",
-			"fill",
-			"-30px"
+			"header-bottom"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -822,6 +890,8 @@
 		"regex": false,
 		"replace_history":
 		[
+			"Magazine",
+			"magazine",
 			"MagazineSubscriber",
 			"contact",
 			"$archive",
@@ -904,7 +974,7 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 2,
 			"sheets":
 			[
 				{
@@ -913,15 +983,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 23543,
+						"buffer_size": 24541,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								6256,
-								6269
+								11946,
+								11946
 							]
 						],
 						"settings":
@@ -930,88 +1000,88 @@
 							"auto_complete": false,
 							"bh_regions":
 							[
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
 								"bh_single_quote",
 								"bh_single_quote_center",
 								"bh_single_quote_open",
 								"bh_single_quote_close",
 								"bh_single_quote_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
 								"bh_round",
 								"bh_round_center",
 								"bh_round_open",
 								"bh_round_close",
 								"bh_round_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
 								"bh_default",
 								"bh_default_center",
 								"bh_default_open",
 								"bh_default_close",
-								"bh_default_content"
+								"bh_default_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content"
 							],
 							"syntax": "Packages/PHP/PHP.tmLanguage",
 							"tab_size": 2,
 							"translate_tabs_to_spaces": false
 						},
-						"translation.x": 0.0,
-						"translation.y": 81.0,
+						"translation.x": 305.0,
+						"translation.y": 4446.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 5,
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "app/Http/Controllers/ShoppingCartController.php",
+					"file": "app/Http/Controllers/Admin/UserController.php",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 20872,
+						"buffer_size": 9025,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								15497,
-								15593
+								3224,
+								3236
 							]
 						],
 						"settings":
@@ -1020,67 +1090,67 @@
 							"auto_complete": false,
 							"bh_regions":
 							[
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
 								"bh_single_quote",
 								"bh_single_quote_center",
 								"bh_single_quote_open",
 								"bh_single_quote_close",
 								"bh_single_quote_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
 								"bh_round",
 								"bh_round_center",
 								"bh_round_open",
 								"bh_round_close",
 								"bh_round_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
 								"bh_default",
 								"bh_default_center",
 								"bh_default_open",
 								"bh_default_close",
-								"bh_default_content"
+								"bh_default_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content"
 							],
 							"syntax": "Packages/PHP/PHP.tmLanguage",
 							"translate_tabs_to_spaces": false
 						},
-						"translation.x": 0.0,
-						"translation.y": 10223.0,
+						"translation.x": 95.0,
+						"translation.y": 1719.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 1,
@@ -1088,56 +1158,32 @@
 				},
 				{
 					"buffer": 2,
-					"file": "app/Shipping.php",
+					"file": "resources/views/Admin/users/show.blade.php",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 986,
+						"buffer_size": 2559,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								412,
-								426
+								1469,
+								1469
 							]
 						],
 						"settings":
 						{
 							"BracketHighlighterBusy": false,
+							"auto_complete": false,
 							"bh_regions":
 							[
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
 								"bh_round",
 								"bh_round_center",
 								"bh_round_open",
 								"bh_round_close",
 								"bh_round_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
 								"bh_single_quote",
 								"bh_single_quote_center",
 								"bh_single_quote_open",
@@ -1148,11 +1194,16 @@
 								"bh_unmatched_open",
 								"bh_unmatched_close",
 								"bh_unmatched_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
 								"bh_angle",
 								"bh_angle_center",
 								"bh_angle_open",
@@ -1162,16 +1213,305 @@
 								"bh_c_define_center",
 								"bh_c_define_open",
 								"bh_c_define_close",
-								"bh_c_define_content"
+								"bh_c_define_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content"
 							],
-							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"syntax": "Packages/Laravel Blade Highlighter/laravel-blade.tmLanguage",
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 306.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "app/Http/Controllers/Member/ProfileController.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 10240,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								7649,
+								7719
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"bh_regions":
+							[
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content"
+							],
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 2484.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "public/packages/admin/js/scripts.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 9188,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								5991,
+								5991
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"auto_complete": false,
+							"bh_regions":
+							[
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content"
+							],
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 302.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "resources/views/Admin/users/edit-profile.blade.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 8939,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1941,
+								1941
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"auto_complete": false,
+							"bh_regions":
+							[
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content"
+							],
+							"syntax": "Packages/Laravel Blade Highlighter/laravel-blade.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 324.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
 					"type": "text"
 				}
 			]
@@ -1226,7 +1566,27 @@
 		"selected_items":
 		[
 			[
+				"usercreaterequest",
+				"vendor\\rydurham\\sentinel\\src\\Sentinel\\FormRequests\\UserCreateRequest.php"
+			],
+			[
+				"userrepo",
+				"vendor\\rydurham\\sentinel\\src\\Sentinel\\Repositories\\User\\SentryUserRepository.php"
+			],
+			[
+				"sentineluser",
+				"vendor\\rydurham\\sentinel\\src\\Sentinel\\Repositories\\User\\SentinelUserRepositoryInterface.php"
+			],
+			[
+				".",
+				".env"
+			],
+			[
 				".env",
+				".env"
+			],
+			[
+				".evn",
 				".env"
 			],
 			[
@@ -1284,10 +1644,6 @@
 			[
 				"changepasswordrequest",
 				"vendor\\rydurham\\sentinel\\src\\Sentinel\\FormRequests\\ChangePasswordRequest.php"
-			],
-			[
-				"userrepo",
-				"vendor\\rydurham\\sentinel\\src\\Sentinel\\Repositories\\User\\SentryUserRepository.php"
 			],
 			[
 				"notifica",
@@ -1528,10 +1884,6 @@
 			[
 				"userprovider",
 				"vendor\\laravel\\framework\\src\\Illuminate\\Contracts\\Auth\\UserProvider.php"
-			],
-			[
-				"sentineluser",
-				"vendor\\rydurham\\sentinel\\src\\Sentinel\\Repositories\\User\\SentinelUserRepositoryInterface.php"
 			],
 			[
 				"sentryadminaccess",

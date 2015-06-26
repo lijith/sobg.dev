@@ -22,7 +22,8 @@ class MagazineSubscriber extends Model {
 		'digital',
 		'print',
 		'active',
-		'ending_at',
+		'digital_ending_at',
+		'print_ending_at',
 	];
 
 	public function subscriber() {

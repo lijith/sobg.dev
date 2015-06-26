@@ -654,21 +654,27 @@ class ShoppingCartController extends SiteController {
 
 		foreach ($cart_items as $item) {
 			# code...
+			$date = Carbon::now();
 			//handle subscription from cart
 			if ($item['options']['item_sub_type'] == 'digital' || $item['options']['item_sub_type'] == 'print') {
 
 				if ($item['options']['item_sub_type'] == 'digital') {
 					$digital = 1;
 					$print = 0;
+
+					$print_end_time = $date;
+					$digital_end_time = $date->addYears($subscription->period);
+
 				} elseif ($item['options']['item_sub_type'] == 'print') {
 					$digital = 0;
 					$print = 1;
+
+					$digital_end_time = $date;
+					$print_end_time = $date->addYears($subscription->period);
+
 				}
 
 				$subscription = SubscriptionRates::find($item['id']);
-
-				$date = Carbon::now();
-				$date->addYears($subscription->period);
 
 				$subscribers = new MagazineSubscriber(array(
 					'user_id' => $user_id,
@@ -676,7 +682,8 @@ class ShoppingCartController extends SiteController {
 					'digital' => $digital,
 					'print' => $print,
 					'active' => 0,
-					'ending_at' => $date,
+					'digital_ending_at' => $digital_end_time,
+					'print_ending_at' => $print_end_time,
 					'created_at' => Carbon::now(),
 					'updated_at' => Carbon::now(),
 

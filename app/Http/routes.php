@@ -280,6 +280,8 @@ Route::group(['prefix' => 'administrator', 'namespace' => 'Admin'], function () 
 	Route::get('users/{hash}/edit', ['as' => 'sentinel.users.edit', 'uses' => 'UserController@edit']);
 	Route::get('users/{hash}/edit-profile', ['as' => 'sentinel.users.edit.profile', 'uses' => 'UserController@editProfile']);
 	Route::post('users/{hash}/edit-profile', ['as' => 'sentinel.users.store.profile', 'uses' => 'UserController@StoreProfile']);
+	Route::post('users/{hash}/create-subscription', ['as' => 'sentinel.users.create.subscription', 'uses' => 'UserController@CreateSubscription']);
+	Route::post('users/{hash}/update-subscription', ['as' => 'sentinel.users.update.subscription', 'uses' => 'UserController@UpdateSubscription']);
 	Route::post('users/{hash}/password', ['as' => 'sentinel.password.change', 'uses' => 'UserController@changePassword']);
 	Route::post('users/{hash}/memberships', ['as' => 'sentinel.users.memberships', 'uses' => 'UserController@updateGroupMemberships']);
 	Route::put('users/{hash}', ['as' => 'sentinel.users.update', 'uses' => 'UserController@update']);

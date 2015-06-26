@@ -1,7 +1,9 @@
 <?php namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller as BaseController;
+use App\MagazineSubscriber;
 use App\Profile;
+use App\SubscriptionRates;
 use App\User;
 use Input;
 use Redirect;
@@ -118,7 +120,14 @@ class UserController extends BaseController {
 
 		$subscription = User::find($user->id)->subscription;
 
-		return $this->viewFinder('Admin.users.show', ['user' => $user, 'subscription' => $subscription]);
+		$subrates['digitals'] = SubscriptionRates::where('type', '=', 'digital')
+			->orderBy('period', 'ASC')
+			->get();
+		$subrates['prints'] = SubscriptionRates::where('type', '=', 'print')
+			->orderBy('period', 'ASC')
+			->get();
+
+		return $this->viewFinder('Admin.users.show', ['user' => $user, 'subscription' => $subscription, 'subrates' => $subrates]);
 	}
 
 	/**
@@ -139,6 +148,109 @@ class UserController extends BaseController {
 		$profile->dob = \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $profile->dob)->format('m/d/Y');
 
 		return $this->viewFinder('Admin.users.edit-profile', ['hash' => $hash, 'profile' => $profile]);
+	}
+
+	/**
+	 * create a users subscription
+	 *
+	 * @param $id
+	 *
+	 * @return redirect
+	 */
+	public function CreateSubscription($hash) {
+		$id = $this->hashids->decode($hash)[0];
+
+		$print = 0;
+		$digital = 0;
+
+		if (Input::has('print')) {
+			$print = 1;
+			$print_end_at = \Carbon\Carbon::now()->addYears(Input::get('print-duration'));
+		}
+
+		if (Input::has('digital')) {
+			$digital = 1;
+			$digital_end_at = \Carbon\Carbon::now()->addYears(Input::get('digital-duration'));
+		}
+
+		$insert_data = array(
+			'user_id' => $id,
+			'digital' => $digital,
+			'print' => $print,
+			'active' => 1,
+			'digital_ending_at' => $digital_end_at,
+			'print_ending_at' => $print_end_at,
+		);
+
+		$sub = $subscribers = new MagazineSubscriber($insert_data);
+		$subscribers->save();
+
+		return redirect()->route('sentinel.users.show', array($hash))->with('success', 'Subscription Added');
+	}
+	/**
+	 * update a users subscription
+	 *
+	 * @param $id
+	 *
+	 * @return redirect
+	 */
+	public function UpdateSubscription($hash) {
+		$id = $this->hashids->decode($hash)[0];
+
+		$print = 0;
+		$digital = 0;
+		$active = 0;
+		$subscribers = MagazineSubscriber::where('user_id', '=', $id)->first();
+
+		$now = \Carbon\Carbon::now();
+		$current_digital_end = \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $subscribers->digital_ending_at);
+		$current_print_end = \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $subscribers->print_ending_at);
+
+		if (Input::has('print')) {
+			$print = 1;
+			if (Input::get('print-duration') != 'select') {
+				if ($now->gte($current_print_end)) {
+					$print_end_at = \Carbon\Carbon::now()->addYears(Input::get('print-duration'));
+				} else {
+					$print_end_at = $current_print_end->addYears(Input::get('print-duration'));
+				}
+			} else {
+				$print_end_at = $current_print_end;
+			}
+
+			$active = 1;
+
+		}
+
+		if (Input::has('digital')) {
+			$digital = 1;
+			if (Input::get('digital-duration') != 'select') {
+				if ($now->gte($current_digital_end)) {
+					$digital_end_at = \Carbon\Carbon::now()->addYears(Input::get('digital-duration'));
+				} else {
+					$digital_end_at = $current_digital_end->addYears(Input::get('digital-duration'));
+				}
+			} else {
+				$digital_end_at = $current_digital_end;
+			}
+
+			$active = 1;
+
+		}
+
+		$update_data = array(
+			'user_id' => $id,
+			'digital' => $digital,
+			'print' => $print,
+			'active' => $active,
+			'digital_ending_at' => $digital_end_at,
+			'print_ending_at' => $print_end_at,
+		);
+
+		MagazineSubscriber::where('user_id', '=', $id)
+			->update($update_data);
+
+		return redirect()->route('sentinel.users.show', array($hash))->with('success', 'Subscription Updated');
 	}
 
 	/**
