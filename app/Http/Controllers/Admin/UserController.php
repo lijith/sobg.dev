@@ -144,6 +144,16 @@ class UserController extends BaseController {
 		// Get the user
 		$user = $this->userRepository->retrieveById($id);
 		$profile = User::find($user->id)->profile;
+		if ($profile == null) {
+			$profile = new Profile(array(
+				'user_id' => $id,
+				'dob' => \Carbon\Carbon::now(),
+			));
+
+			$profile->save();
+
+			return redirect()->route('sentinel.users.edit.profile', array($hash));
+		}
 
 		$profile->dob = \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $profile->dob)->format('m/d/Y');
 

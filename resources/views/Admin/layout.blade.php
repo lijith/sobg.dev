@@ -182,8 +182,8 @@
                     </a>
                     <ul class="sub">
                         <li><a href="{{ route('new.orders') }}">New Orders</a></li>
-                        <li><a href="{{ route('unconfirmed.orders') }}">Unconfirmed Orders</a></li>
-                        <li><a href="{{ route('confirmed.orders') }}">Confirmed Orders</a></li>
+                        <li><a href="{{ route('unconfirmed.orders') }}">Awaiting Shipment</a></li>
+                        <li><a href="{{ route('confirmed.orders') }}">Shipped Orders</a></li>
                         <li><a href="{{ route('all.orders') }}">All Orders</a></li>
 
                     </ul>

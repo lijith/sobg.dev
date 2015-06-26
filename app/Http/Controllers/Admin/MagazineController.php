@@ -3,10 +3,10 @@
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\MagazineFormRequest;
 use App\Http\Requests\Admin\MagazineFormUpdateRequest;
-use App\User;
 use App\Magazine;
 use App\MagazineSubscriber;
 use App\SubscriptionRates;
+use App\User;
 use Carbon\Carbon;
 use File;
 use Illuminate\Support\Str;
@@ -38,6 +38,7 @@ class MagazineController extends Controller {
 
 		$this->_cover_file_path = public_path() . '/images/magazines/';
 		$this->_magazine_file_path = public_path() . '/magazines-pdf/';
+
 	}
 
 	/**
@@ -48,9 +49,22 @@ class MagazineController extends Controller {
 	 * @return View
 	 */
 	public function index() {
+		//fix subscribers table
+		$active = MagazineSubscriber::where('active', '=', 1)->get();
+		$now = Carbon::now();
+
+		foreach ($active as $sub) {
+			$current_digital_ending = Carbon::createFromFormat('Y-m-d H:i:s', $sub->digital_ending_at);
+			$current_print_ending = Carbon::createFromFormat('Y-m-d H:i:s', $sub->print_ending_at);
+
+			if ($now->gt($current_digital_ending) && $now->gt($current_print_ending)) {
+				MagazineSubscriber::where('id', '=', $sub->id)
+					->update(['active' => 0]);
+			}
+		}
 
 		$magazines = Magazine::orderBy('created_at', 'DESC')
-			->paginate(3);
+			->paginate(12);
 
 		foreach ($magazines as $magazine) {
 			$magazine->id = $this->hashids->connection('magazine')->encode($magazine->id);
@@ -387,10 +401,10 @@ class MagazineController extends Controller {
 		// }])->get();
 
 		$active_susbscribers = User::with(['profile', 'subscription'])
-		->whereHas('subscription', function($query) {
-    $query->where('active', '=' ,1)
-        ->where('digital', '=', 1);
-		})->get();
+			->whereHas('subscription', function ($query) {
+				$query->where('active', '=', 1)
+				->where('digital', '=', 1);
+			})->get();
 
 		$id = $this->hashids->connection('magazine')->decode($hash)[0];
 		$magazine = Magazine::find($id);
@@ -424,19 +438,19 @@ class MagazineController extends Controller {
 		//save mail list to db
 		$magazine->mail_list = $mail_list_id;
 		$magazine->save();
-		
+
 		//list of subscribers
 		$list = array();
 		foreach ($active_susbscribers as $sub) {
 			$name = ($sub->profile->name) != '' ? $sub->profile->name : 'Member';
 			array_push($list, array(
 				'address' => $sub->email,
-				'name'=> ucwords($name),
+				'name' => ucwords($name),
 			));
 		}
 
 		//add subscribers to mail list
-		$mGunResponse = $mGun->post('lists/'.$mail_list_id.'/members.json', array(
+		$mGunResponse = $mGun->post('lists/' . $mail_list_id . '/members.json', array(
 			'members' => json_encode($list),
 			'upsert' => 'yes',
 		));
@@ -467,7 +481,6 @@ class MagazineController extends Controller {
 			'heading' => ucwords($magazine->title),
 			'magazine' => $magazine,
 		);
-
 
 		$mGun->sendMessage('creativequb.com', array(
 			'from' => 'bob@example.com',

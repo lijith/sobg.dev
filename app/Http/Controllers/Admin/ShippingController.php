@@ -43,7 +43,7 @@ class ShippingController extends Controller {
 			->where('shipping_status', '=', 0)
 			->where('payment_status', '=', 1)
 			->orderBy('updated_at', 'desc')
-			->get();
+			->paginate(20);
 
 		return View::make('Admin.shipping.orders-list', array('orders' => $new_orders, 'title' => 'New Orders'));
 
@@ -60,9 +60,9 @@ class ShippingController extends Controller {
 		$orders = Shipping::where('shipping_status', '=', 1)
 			->where('payment_status', '=', 1)
 			->orderBy('updated_at', 'desc')
-			->get();
+			->paginate(20);
 
-		return View::make('Admin.shipping.orders-list', array('orders' => $orders, 'title' => 'Unconfirmed Orders'));
+		return View::make('Admin.shipping.orders-list', array('orders' => $orders, 'title' => 'Shipped Orders', 'search' => ''));
 	}
 
 	/**
@@ -76,9 +76,9 @@ class ShippingController extends Controller {
 		$orders = Shipping::where('shipping_status', '=', 0)
 			->where('payment_status', '=', 1)
 			->orderBy('updated_at', 'desc')
-			->get();
+			->paginate(20);
 
-		return View::make('Admin.shipping.orders-list', array('orders' => $orders, 'title' => 'Confirmed Orders', 'search' => ''));
+		return View::make('Admin.shipping.orders-list', array('orders' => $orders, 'title' => 'Pending Shipment Orders', 'search' => ''));
 	}
 
 	/**
@@ -106,7 +106,9 @@ class ShippingController extends Controller {
 	public function SearchOrder() {
 		$order_id = Input::get('order-id');
 
-		$result = Shipping::search($order_id)->get();
+		$result = Shipping::search($order_id)
+			->where('payment_status', '=', 1)
+			->get();
 
 		return View::make('Admin.shipping.orders-list', array('orders' => $result, 'title' => 'Search for ' . $order_id, 'search' => $order_id));
 	}
