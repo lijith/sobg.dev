@@ -12,9 +12,45 @@
 			<div class="split_30"></div><!-- /.split_30 -->
 				<div class="row">
 		      <div class="col-md-12">
-		        
+
+		      	<!-- Notification	-->
+		      	@if ($message = Session::get('success'))
+							<div class="alert alert-success alert-dismissable">
+							  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+							  <strong>Success:</strong> {!! $message !!}
+							</div>
+							{{ Session::forget('success') }}
+							@endif
+
+							@if ($message = Session::get('error'))
+							<div class="alert alert-danger alert-dismissable">
+							  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+							  <strong>Error:</strong> {!! $message !!}
+							</div>
+							{{ Session::forget('error') }}
+							@endif
+
+							@if ($message = Session::get('warning'))
+							<div class="alert alert-warning alert-dismissable">
+							  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+							  <strong>Warning:</strong> {!! $message !!}
+							</div>
+							{{ Session::forget('warning') }}
+							@endif
+
+							@if ($message = Session::get('info'))
+							<div class="alert alert-info alert-dismissable">
+							  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+							  <strong>FYI:</strong> {!! $message !!}
+							</div>
+							{{ Session::forget('info') }}
+						@endif
+						<!-- Notification	-->
+
 		        <form class="form-horizontal" method="POST" action="{{ route('Registration.store') }}">
 		        	<input name="_token" value="{{ csrf_token() }}" type="hidden">
+		        	<input type="hidden" name="title" value="{{ $title }}" />
+		        	<input type="hidden" name="slug" value="{{ $slug }}" />
 		          <div class="form-group {{ ($errors->has('first-name')) ? 'has-error' : '' }}">
 		            <label class="col-sm-4 control-label">First Name</label>
 		            <div class="col-sm-8">
@@ -39,7 +75,7 @@
 		            </div>
 		          </div>
 
-		          
+
 		          <div class="form-group {{ ($errors->has('nationality')) ? 'has-error' : '' }}">
 		            <label class="col-sm-4 control-label">Nationality</label>
 		            <div class="col-sm-8">
@@ -77,7 +113,7 @@
 		              </div>
 		            </div>
 		          </div>
-		          
+
 		          <div class="form-group {{ ($errors->has('blood-group')) ? 'has-error' : '' }}">
 		            <label class="col-sm-4 control-label">Blood Group</label>
 		            <div class="col-sm-8">
@@ -105,7 +141,7 @@
 
 		          <h3>Address</h3>
 		          <hr>
-	          
+
 		          <div class="form-group {{ ($errors->has('address-line-1')) ? 'has-error' : '' }}">
 		            <label class="col-sm-4 control-label">Address</label>
 		            <div class="col-sm-8">
@@ -158,7 +194,7 @@
 		              <input type="email" placeholder="Email" class="form-control" name="email" value="{{ Input::old('email') ? Input::old('email') : '' }}">
 		            </div>
 		          </div>
-		          
+
 		          <hr />
 		          <div class="form-group">
 		            <label class="col-sm-4 control-label">Special Requirements</label>
@@ -173,7 +209,7 @@
 		            <label class="col-sm-4 control-label">Yatra Package</label>
 		            <div class="col-sm-8">
 			            @foreach($packages as $package)
-										
+
 										<div class="radio">
 					            <label>
 										    <input type="radio" name="yatra-package" value="{{$package->package_name}}" >
@@ -181,7 +217,7 @@
 										  </label>
 			            	</div><!-- /.radio -->
 			            @endforeach
-		            	
+
 		            </div>
 		          </div>
 		          <div class="form-group {{ ($errors->has('payment-mode')) ? 'has-error' : '' }}">
@@ -249,7 +285,7 @@
 	            </div><!-- /.payment-dd -->
 
 	            <div class="payment bank-transfer collapse">
-	            	
+
 			          <div class="form-group">
 			            <label class="col-sm-4 control-label">Date</label>
 			            <div class="col-sm-8">
@@ -294,14 +330,14 @@
 	              		<input type="text" placeholder="Amount" class="form-control" name="bank-transfer-amount" value="{{ Input::old('bank-transfer-amount') ? Input::old('bank-transfer-amount') : '' }}">
 			            </div>
 			          </div>
-	            
+
             </div><!-- /.payment-bank-transfer -->
 				     <div class="clearfix">
 		        	<button class="btn btn-primary pull-right">Register</button>
 		     	   </div><!-- /.clearfix -->
 		        </form>
 
-		   
+
 		      </div>
 		    </div>
 		    @else
@@ -312,7 +348,7 @@
 
 				<div class="split_40"></div><!-- /.split_40 -->
 
-			
+
 
 
 		</div><!-- /.col-md-8 -->
@@ -320,5 +356,5 @@
 		@include('yatras.side-yatras')
 	</div><!-- /.row -->
 
-							
+
 @stop
