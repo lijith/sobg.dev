@@ -173,15 +173,26 @@ class UserController extends BaseController {
 
 		$print = 0;
 		$digital = 0;
+		$digital_end_at = \Carbon\Carbon::now();
+		$print_end_at = \Carbon\Carbon::now();
+		$active = 0;
 
 		if (Input::has('print')) {
 			$print = 1;
-			$print_end_at = \Carbon\Carbon::now()->addYears(Input::get('print-duration'));
+			if (Input::get('print-end-date') != '') {
+				$print_end_at = \Carbon\Carbon::createFromFormat('m/d/Y', Input::get('print-end-date'));
+			}
 		}
 
 		if (Input::has('digital')) {
 			$digital = 1;
-			$digital_end_at = \Carbon\Carbon::now()->addYears(Input::get('digital-duration'));
+			if (Input::get('digital-end-date') != '') {
+				$digital_end_at = \Carbon\Carbon::createFromFormat('m/d/Y', Input::get('digital-end-date'));
+			}
+		}
+
+		if ($print || $digital) {
+			$active = 1;
 		}
 
 		$insert_data = array(
@@ -219,34 +230,33 @@ class UserController extends BaseController {
 
 		if (Input::has('print')) {
 			$print = 1;
-			if (Input::get('print-duration') != 'select') {
-				if ($now->gte($current_print_end)) {
-					$print_end_at = \Carbon\Carbon::now()->addYears(Input::get('print-duration'));
-				} else {
-					$print_end_at = $current_print_end->addYears(Input::get('print-duration'));
-				}
+			$form_print_date = \Carbon\Carbon::createFromFormat('m/d/Y', Input::get('print-end-date'));
+			if (!$current_print_end->eq($form_print_date)) {
+				$print_end_at = $form_print_date;
 			} else {
 				$print_end_at = $current_print_end;
 			}
-
 			$active = 1;
 
+		} else {
+			$print = 0;
+			$print_end_at = $current_print_end;
 		}
 
 		if (Input::has('digital')) {
 			$digital = 1;
-			if (Input::get('digital-duration') != 'select') {
-				if ($now->gte($current_digital_end)) {
-					$digital_end_at = \Carbon\Carbon::now()->addYears(Input::get('digital-duration'));
-				} else {
-					$digital_end_at = $current_digital_end->addYears(Input::get('digital-duration'));
-				}
+			$form_digital_date = \Carbon\Carbon::createFromFormat('m/d/Y', Input::get('digital-end-date'));
+			if (!$current_digital_end->eq($form_digital_date)) {
+				$digital_end_at = $form_digital_date;
 			} else {
-				$digital_end_at = $current_digital_end;
+				$digital_end_at = $current_print_end;
 			}
 
 			$active = 1;
 
+		} else {
+			$digital = 0;
+			$digital_end_at = $current_print_end;
 		}
 
 		$update_data = array(

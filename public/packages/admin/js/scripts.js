@@ -209,7 +209,11 @@
         checkout.hide();
     }).data('datepicker');
 
+    //date pickers
+
     var publish_date = $('#publish-date').datepicker();
+    var digital_end_date = $('#digital-end-date').datepicker();
+    var print_end_date = $('#print-end-date').datepicker();
 
     $('.confirm-edit').click(function(e) {
         var link = $(this).attr('href');

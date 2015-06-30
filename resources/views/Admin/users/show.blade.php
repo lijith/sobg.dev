@@ -46,6 +46,7 @@ $userGroups = $user->getGroups();
                 Subscription
             </header>
             <div class="panel-body">
+
             	@if ($subscription != null)
             		@if ($subscription->active == 1)
             			@if ($subscription->print == 1)
@@ -75,12 +76,12 @@ $userGroups = $user->getGroups();
 			                        <input type="checkbox" name="digital" {{ ($subscription->digital)? 'checked':'' }}> Digital
 			                    </label>
 			                </div>
-	                		<select class="form-control m-bot15" name="digital-duration">
-			            			<option value="select" selected>....</option>
-				            		@foreach ($subrates['digitals'] as $sub)
-			            				<option value ="{{ $sub->period }}">{{ $sub->key }}</option>
-			            			@endforeach
-			            		</select>
+
+	                		<div class="form-group {{ ($errors->has('digital-end-date')) ? 'has-error' : '' }}">
+                         <label>Ending Date</label>
+                        <input class="form-control" placeholder="" name="digital-end-date" type="text"  value="{{ Input::old('digital-end-date') ?  Input::old('digital-end-date') : \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $subscription->digital_ending_at)->format('m/d/Y') }}" id="digital-end-date">
+                        {{ ($errors->has('digital-end-date') ? $errors->first('digital-end-date') : '') }}
+                    	</div>
 	            			</div><!-- /.col-md-6 -->
 
 	            			<div class="col-md-6">
@@ -89,12 +90,12 @@ $userGroups = $user->getGroups();
 			                        <input type="checkbox" name="print" {{ ($subscription->print)? 'checked':'' }}> Print
 			                    </label>
 			                </div>
-	                		<select class="form-control m-bot15" name="print-duration">
-			            			<option value="select" selected>....</option>
-				            		@foreach ($subrates['prints'] as $sub)
-			            				<option value ="{{ $sub->period }}">{{ $sub->key }}</option>
-			            			@endforeach
-			            		</select>
+
+                    	<div class="form-group {{ ($errors->has('print-end-date')) ? 'has-error' : '' }}">
+                         <label>Ending Date</label>
+                        <input class="form-control" placeholder="" name="print-end-date" type="text"  value="{{ Input::old('print-end-date') ?  Input::old('print-end-date') : \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $subscription->print_ending_at)->format('m/d/Y') }}" id="print-end-date">
+                        {{ ($errors->has('print-end-date') ? $errors->first('print-end-date') : '') }}
+                    	</div>
 	            			</div><!-- /.col-md-6 -->
 
 	            		</div><!-- /.row -->
@@ -112,11 +113,12 @@ $userGroups = $user->getGroups();
 			                        <input type="checkbox" name="digital"> Digital
 			                    </label>
 			                </div>
-	                		<select class="form-control m-bot15" name="digital-duration">
-				            		@foreach ($subrates['digitals'] as $sub)
-			            				<option value ="{{ $sub->period }}">{{ $sub->key }}</option>
-			            			@endforeach
-			            		</select>
+			                <div class="form-group {{ ($errors->has('digital-end-date')) ? 'has-error' : '' }}">
+                         <label>Ending Date</label>
+                        <input class="form-control" placeholder="" name="digital-end-date" type="text"  value="{{ Input::old('digital-end-date') }}" id="digital-end-date">
+                        {{ ($errors->has('digital-end-date') ? $errors->first('digital-end-date') : '') }}
+                    	</div>
+
 	            			</div><!-- /.col-md-6 -->
 
 	            			<div class="col-md-6">
@@ -125,11 +127,11 @@ $userGroups = $user->getGroups();
 			                        <input type="checkbox" name="print"> Print
 			                    </label>
 			                </div>
-	                		<select class="form-control m-bot15" name="print-duration">
-				            		@foreach ($subrates['prints'] as $sub)
-			            				<option value ="{{ $sub->period }}">{{ $sub->key }}</option>
-			            			@endforeach
-			            		</select>
+	                		<div class="form-group {{ ($errors->has('print-end-date')) ? 'has-error' : '' }}">
+                         <label>Ending Date</label>
+                        <input class="form-control" placeholder="" name="print-end-date" type="text"  value="{{ Input::old('print-end-date') }}" id="print-end-date">
+                        {{ ($errors->has('print-end-date') ? $errors->first('print-end-date') : '') }}
+                    	</div>
 	            			</div><!-- /.col-md-6 -->
 
 	            		</div><!-- /.row -->
