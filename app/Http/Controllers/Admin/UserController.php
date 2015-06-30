@@ -16,6 +16,7 @@ use Sentinel\Repositories\User\SentinelUserRepositoryInterface;
 use Sentinel\Traits\SentinelRedirectionTrait;
 use Sentinel\Traits\SentinelViewfinderTrait;
 use Session;
+use Validator;
 use View;
 use Vinkla\Hashids\HashidsManager;
 
@@ -480,6 +481,80 @@ class UserController extends BaseController {
 		$result = $this->userRepository->unban($id);
 
 		return $this->redirectViaResponse('users_unban', $result);
+	}
+
+	/**
+	 * search a user
+	 *
+	 * @param string $hash
+	 *
+	 * @return Redirect
+	 */
+	public function find() {
+		$result = null;
+		return $this->viewFinder('Admin.users.search-user', ['result' => null]);
+
+	}
+
+	/**
+	 * search a user
+	 *
+	 * @param string $hash
+	 *
+	 * @return Redirect
+	 */
+	public function search() {
+
+		$result = array();
+
+		$search_type = Input::get('search-type');
+
+		//validator
+
+		$messages = [
+			'email.email' => 'Need Valid email',
+		];
+
+		$rules = [
+			'email' => 'sometimes|email',
+			'search-profile' => 'sometimes|min:5',
+		];
+		$validator = Validator::make(Input::all(), $rules, $messages);
+
+		if ($validator->fails()) {
+			return redirect()->route('sentinel.users.find')->withErrors($validator);
+		} else {
+			if ($search_type == 'email') {
+				$search = User::where('email', '=', Input::get('email'))
+					->with('profile')
+					->first();
+				array_push($result, $search);
+
+			} elseif ($search_type == 'profile') {
+				$search = Profile::search(Input::get('search-profile'))->get();
+
+				if ($search != null) {
+					foreach ($search as $user) {
+						$rs = User::where('id', '=', $user->user_id)
+							->with('profile')
+							->first();
+						array_push($result, $rs);
+					}
+				}
+			}
+
+			if (!empty($result)) {
+				foreach ($result as $key => $user) {
+
+					$result[$key]->id = $this->hashids->encode($user->id);
+
+				}
+			}
+			//	dd($result);
+
+			return View::make('Admin.users.search-user', ['result' => $result]);
+		}
+
 	}
 
 }

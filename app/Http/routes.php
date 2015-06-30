@@ -12,6 +12,7 @@
  */
 
 Route::get('/', ['as' => 'home', 'uses' => 'HomeController@index']);
+Route::get('site-search', ['as' => 'site.search', 'uses' => 'SearchController@index']);
 
 Route::get('mail', ['as' => 'mail', 'uses' => 'HomeController@mail']);
 
@@ -290,6 +291,8 @@ Route::group(['prefix' => 'administrator', 'namespace' => 'Admin'], function () 
 	Route::get('users/{hash}/unsuspend', ['as' => 'sentinel.users.unsuspend', 'uses' => 'UserController@unsuspend']);
 	Route::get('users/{hash}/ban', ['as' => 'sentinel.users.ban', 'uses' => 'UserController@ban']);
 	Route::get('users/{hash}/unban', ['as' => 'sentinel.users.unban', 'uses' => 'UserController@unban']);
+	Route::get('users/find/member', ['as' => 'sentinel.users.find', 'uses' => 'UserController@find']);
+	Route::post('users/find/member', ['as' => 'sentinel.users.search', 'uses' => 'UserController@search']);
 
 	// Sentinel Groups
 	Route::get('groups', ['as' => 'sentinel.groups.index', 'uses' => 'GroupController@index']);

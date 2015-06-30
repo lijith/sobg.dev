@@ -12,7 +12,6 @@
 		"gloudemans/shoppingcart": "dev-master",
 		"barryvdh/laravel-elfinder": "0.3.3",
 		"nicolaslopezj/searchable": "dev-master",
-		"guzzlehttp/guzzle": "^5.2",
 		"mailgun/mailgun-php": "^1.8"
 	},
 	"require-dev": {
@@ -23,7 +22,8 @@
 	"autoload": {
 		"classmap": [
 			"database",
-			"CCAvenue"
+			"CCAvenue",
+			"GCSE"
 		],
 		"psr-4": {
 			"App\\": "app/"

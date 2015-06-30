@@ -2,23 +2,23 @@
 <html class="no-js" lang="">
 	<head>
 		<meta charset="utf-8">
-		
+
 		<meta name="description" content="{{ $description }}">
 		<meta name="keywords" content="{{ $keywords }}">
 
 		<meta name="viewport" content="user-scalable=no,width=device-width, initial-scale=1, minimal-ui, maximum-scale=1, minimum-scale=1">
-		
-		
+
+
 		<title>{{$title}}</title>
 		<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
 			<link href='http://fonts.googleapis.com/css?family=Bree+Serif|Open+Sans:400,600' rel='stylesheet' type='text/css'>
-			
+
 			<link href='//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/css/bootstrap.min.css' rel='stylesheet' type='text/css'>
 			<link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" type='text/css'>
 			<link href="//cdnjs.cloudflare.com/ajax/libs/superfish/1.7.4/superfish.min.css" rel="stylesheet" type='text/css'>
 			<link href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.0.0/magnific-popup.min.css" rel="stylesheet" type='text/css'>
-			
+
 		<link rel="stylesheet" href="{{URL::asset('styles/focuspoint.css')}}">
 		<link rel="stylesheet" href="{{URL::asset('styles/component.css')}}">
 		<link rel="stylesheet" href="{{URL::asset('styles/layerslider.css')}}">
@@ -77,14 +77,29 @@
 										</li><!-- /. -->
 									</ul><!-- /.clean_list  -->
 								</div><!-- /.header-top-links -->
+
 								<div class="header_search transition">
-									<div class="search-form-wrap">
-										<form method="get" action="?">
+									<div class="search-form-wrap1">
+										<script>
+										  (function() {
+										    var cx = '014974762087517849092:vfu54y9sqta';
+										    var gcse = document.createElement('script');
+										    gcse.type = 'text/javascript';
+										    gcse.async = true;
+										    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+										        '//cse.google.com/cse.js?cx=' + cx;
+										    var s = document.getElementsByTagName('script')[0];
+										    s.parentNode.insertBefore(gcse, s);
+										  })();
+										</script>
+										<gcse:search></gcse:search>
+
+										<!--<form method="get" action="?">
 											<input type="text" class="header_search_term" name="SearchTerm" placeholder="Search...." />
 											<button type="submit" class="submit">
 												<i class="fa fa-search"></i>
 											</button>
-										</form>
+										</form>-->
 									</div><!-- /.search-form-wrap -->
 								</div><!-- /.header_search -->
 							</div><!-- /.header-right -->
@@ -141,14 +156,14 @@
 
 							<div class="content">
 
-								
+
 
 
 								<!-- /.Main content Starts -->
 								@yield('content')
 								<!-- /.Main content Ends -->
 
-								
+
 
 
 								<div class="split_60"></div><!-- /.split_60 -->
@@ -197,7 +212,7 @@
 						<div class="link-col">
 							<h4 class="footer-link-title">Quick Links</h4><!-- /.footer-link-title -->
 							<ul class="clean_list">
-								
+
 								<li><i class="fa fa-circle"></i> <a href="{{ route('swami') }}">Swami Sandeepananda Giri</a></li>
 								<li><i class="fa fa-circle"></i> <a href="{{ route('eshop') }}">Our Publications</a></li>
 								<li><i class="fa fa-circle"></i> <a href="{{ route('yatras') }}">Yatras - Spiritual Journeys</a></li>
@@ -243,7 +258,7 @@
 		<script src="//cdnjs.cloudflare.com/ajax/libs/jquery.hoverintent/2013.03.11/hoverintent.min.js"></script>
 		<script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
 
-		
+
 		<script src="//cdnjs.cloudflare.com/ajax/libs/nicescroll/3.5.4/jquery.nicescroll.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.0.0/jquery.magnific-popup.min.js"></script>
 		<script src="//cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/3.1.8/imagesloaded.pkgd.min.js"></script>
