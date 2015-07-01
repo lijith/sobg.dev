@@ -20,19 +20,30 @@
         <div class="row">
             <div class="col-md-12">
 
+            <div class="row">
+              <div class="col-md-8">
+                <section class="in-panel">
+                    <span class="label label-primary">Excerpt</span> <br /><br />
+                     <i>{{$archive->excerpt}}</i>
+                </section>
+              </div><!-- /.col-md-8 -->
+              <div class="col-md-4">
+                <section class="in-panel">
+                    <span class="label label-primary">Date</span> <br /><br />
+                    {{ \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $archive->date)->format('d M, Y') }}
+                </section>
+
+              </div><!-- /.col-md-4 -->
+            </div><!-- /.row -->
 
             <section class="in-panel">
-                <span class="label label-primary">Date</span> <br /><br />
-                {!!$archive->details!!}
+                <span class="label label-primary">Details</span> <br /><br />
+                {!! $archive->details !!}
             </section>
 
-            <section class="in-panel">
-                <span class="label label-primary">Excerpt</span> <br /><br />
-                 <i>{{$archive->excerpt}}</i>
-            </section>
 
             <div class="panel-body">
-                
+
                 <form action="{{ route('archives.destroy',array($archive->id)) }}" method="POST" class="delete-request-form">
                 <input name="_token" value="{{ csrf_token() }}" type="hidden">
                 <input name="_method" value="DELETE" type="hidden">

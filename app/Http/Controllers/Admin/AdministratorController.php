@@ -33,6 +33,7 @@ class AdministratorController extends BaseController {
 
 		// You must be admin
 		$this->middleware('sentry.admin');
+
 	}
 
 	/**

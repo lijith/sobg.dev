@@ -9,8 +9,7 @@ class ArchivesFormRequest extends Request {
 	 *
 	 * @return bool
 	 */
-	public function authorize()
-	{
+	public function authorize() {
 		return true;
 	}
 
@@ -19,13 +18,13 @@ class ArchivesFormRequest extends Request {
 	 *
 	 * @return array
 	 */
-	public function rules()
-	{
+	public function rules() {
 		return [
-			'archive-title'				=> 'required|min:10',
-	    'excerpt' 					=> 'required|min:15',
-	    'keywords' 					=> 'required',
-	    'details' 					=> 'required|min:15'
+			'archive-title' => 'required|min:10',
+			'excerpt' => 'required|min:15',
+			'keywords' => 'required',
+			'details' => 'required|min:15',
+			'publish-date' => 'required|date_format:m/d/Y',
 		];
 	}
 
