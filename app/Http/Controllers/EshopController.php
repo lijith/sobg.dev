@@ -27,8 +27,9 @@ class EshopController extends SiteController {
 	 */
 	public function index() {
 
-		$this->page_data['title'] = 'Publications from School of Bhagavat Gita';
-		$this->page_data['description'] = '';
+		$this->page_data['title'] = 'Publications from School of Bhagavad Gita';
+		$this->page_data['description'] = 'Books, Audio ,Video CDs and DVDs of Discourses by Swami Sandeepananda Giri on the Bhagavad Gita, Upanishads and other text are made available for purchase. ';
+		$this->page_data['keywords'] = 'Books, Audio ,Video CDs, DVDs, Discourses, Upanishads, vedas, magazine, e-shop, online shopping, cart, sale';
 		$this->page_data['top_level_page'] = 'publications';
 		$this->page_data['sub_page_active'] = 'publications';
 
@@ -58,8 +59,9 @@ class EshopController extends SiteController {
 	 * @return View
 	 */
 	public function videoList() {
-		$this->page_data['title'] = 'VCDs and DVDs from School of Bhagavat Gita';
-		$this->page_data['description'] = 'VCD and DVD';
+		$this->page_data['title'] = 'VCDs and DVDs from School of Bhagavad Gita';
+		$this->page_data['description'] = 'VCDs and DVDs from School of Bhagavad Gita';
+		$this->page_data['keywords'] = 'VCD, DVD, Video CD, digital, gita, upanishad, veda';
 		$this->page_data['sub_page_active'] = '';
 		$this->page_data['top_level_page'] = 'publications';
 		$this->page_data['video_disks'] = VideoDisk::orderBy('title', 'asc')->paginate(12);
@@ -78,8 +80,9 @@ class EshopController extends SiteController {
 	 * @return View
 	 */
 	public function audioList() {
-		$this->page_data['title'] = 'Audio Cds and Mp3s from School of Bhagavat Gita';
-		$this->page_data['description'] = 'Audio CD and MP3';
+		$this->page_data['title'] = 'Audio Cds and Mp3s from School of Bhagavad Gita';
+		$this->page_data['description'] = 'Audio CD and MP3 from School of Bhagavad Gita';
+		$this->page_data['keywords'] = 'audio disk, mp3, gita, upanishad, veda';
 		$this->page_data['sub_page_active'] = '';
 		$this->page_data['top_level_page'] = 'publications';
 		$this->page_data['audio_disks'] = AudioDisk::orderBy('title', 'asc')->paginate(12);
@@ -98,8 +101,9 @@ class EshopController extends SiteController {
 	 * @return View
 	 */
 	public function dvdList() {
-		$this->page_data['title'] = 'DVDs from School of Bhagavat Gita';
-		$this->page_data['description'] = 'DVD';
+		$this->page_data['title'] = 'DVDs from School of Bhagavad Gita';
+		$this->page_data['description'] = 'DVDs from School of Bhagavad Gita';
+		$this->page_data['keywords'] = 'video, dvd, gita, upanishad, veda';
 		$this->page_data['sub_page_active'] = 'dvd';
 		$this->page_data['top_level_page'] = 'publications';
 		$this->page_data['video_disks'] = VideoDisk::where('disk_type', '=', 1)
@@ -120,8 +124,9 @@ class EshopController extends SiteController {
 	 * @return View
 	 */
 	public function vcdList() {
-		$this->page_data['title'] = 'VCDs from School of Bhagavat Gita';
-		$this->page_data['description'] = 'Video CDs';
+		$this->page_data['title'] = 'VCDs from School of Bhagavad Gita';
+		$this->page_data['description'] = 'Video CDs from School of Bhagavad Gita';
+		$this->page_data['keywords'] = 'video, disks, gita, upanishad, veda';
 		$this->page_data['sub_page_active'] = 'vcd';
 		$this->page_data['top_level_page'] = 'publications';
 		$this->page_data['video_disks'] = VideoDisk::where('disk_type', '=', 2)
@@ -141,8 +146,9 @@ class EshopController extends SiteController {
 	 * @return view
 	 */
 	public function mp3List() {
-		$this->page_data['title'] = 'MP3 CDs from School of Bhagavat Gita';
-		$this->page_data['description'] = '';
+		$this->page_data['title'] = 'MP3 CDs from School of Bhagavad Gita';
+		$this->page_data['description'] = 'MP3 from School of Bhagavad Gita';
+		$this->page_data['keywords'] = 'mp3, disk, audio, gita, upanishad, veda';
 		$this->page_data['sub_page_active'] = 'mp3';
 		$this->page_data['top_level_page'] = 'publications';
 		$this->page_data['audio_disks'] = AudioDisk::where('disk_type', '=', 2)
@@ -162,8 +168,9 @@ class EshopController extends SiteController {
 	 * @return view
 	 */
 	public function acdList() {
-		$this->page_data['title'] = 'Audio CD from School of Bhagavat Gita';
-		$this->page_data['description'] = '';
+		$this->page_data['title'] = 'Audio CD from School of Bhagavad Gita';
+		$this->page_data['description'] = 'Audio CD from School of Bhagavad Gita';
+		$this->page_data['keywords'] = 'ACD, audio, audio cd, disk, audio, gita, upanishad, veda';
 		$this->page_data['sub_page_active'] = 'acd';
 		$this->page_data['top_level_page'] = 'publications';
 		$this->page_data['audio_disks'] = AudioDisk::where('disk_type', '=', 1)
@@ -184,8 +191,9 @@ class EshopController extends SiteController {
 	 * @return view
 	 */
 	public function bookList() {
-		$this->page_data['title'] = 'Books from School of Bhagavat Gita';
-		$this->page_data['description'] = '';
+		$this->page_data['title'] = 'Books from School of Bhagavad Gita';
+		$this->page_data['description'] = 'Books from School of Bhagavad Gita';
+		$this->page_data['keywords'] = 'books, gita, upanishad, veda';
 		$this->page_data['sub_page_active'] = 'book';
 		$this->page_data['top_level_page'] = 'publications';
 		$this->page_data['books'] = Book::orderBy('title', 'asc')
@@ -206,7 +214,8 @@ class EshopController extends SiteController {
 	 */
 	public function piravi() {
 		$this->page_data['title'] = 'Piravi Magazine';
-		$this->page_data['description'] = '';
+		$this->page_data['description'] = 'Piravi Monthly Magazine';
+		$this->page_data['keywords'] = 'piravi, magazine, monthly';
 		$this->page_data['sub_page_active'] = 'piravi';
 		$this->page_data['top_level_page'] = 'publications';
 
