@@ -6,8 +6,8 @@
 <div class="row">
 
 	<div class="col-md-8 col-md-push-4">
-		
-		
+
+
 		<h1 class="col-heading">Milestones in the spiritual journey</h1>
 		<div class="split_30"></div><!-- /.split_30 -->
 
@@ -39,8 +39,8 @@
 				<img src="{{ asset('images/sobg-delhi.jpg') }}" alt="" />
 			</div><!-- /.content-pic pull-left -->
 			<p>In 2006 Swami Sandeep Chaitanya founded the School of Bhagavad Gita with a vision to expound the universal character of the Bhagavad Gita and its practicality in everyday life. The aspiration is also to nurture the true essence of India’s cultural and spiritual heritage with all its open-mindedness and tolerance. The ultimate mission of the organization is to reach out and benefit a wider section of the population across the globe.</p>
-		</div><!-- /.clearfix -->	
-		
+		</div><!-- /.clearfix -->
+
 		<div class="split_30"><div class="groove"></div><!-- /.groove --></div>
 		<h2 class="sub-heading">The Art Of Man Making – Bhagavad Gita Series In The UAE For The First Time</h2>
 		<div class="clearfix">
@@ -64,7 +64,7 @@
 			</div><!-- /.content-pic pull-left -->
 			<p>In April 2007, Swamiji launched Tamaso Ma Jyothir Gamaya- the project of presenting the Bhagavad Gita in Braille for the visually impaired- to kindle the light within. For the first time, the Gita was published in Malayalam Braille. The copies, along with their MP3 audio CDs, were released by eminent poetess and social activist Padmasri Sugatha Kumari, who distributed them to deserving visually impaired students.</p>
 		</div><!-- /.clearfix -->
-		
+
 
 		<div class="split_30"><div class="groove"></div><!-- /.groove --></div>
 		<h2 class="sub-heading">Launch Of Piravi- The Spiritual Magazine With A Difference</h2>
@@ -73,8 +73,8 @@
 				<img src="{{ asset('images/launch-piravi.jpg') }}" alt="" />
 			</div><!-- /.content-pic pull-left -->
 			<p>Realising the absence of a positive outlook magazine in Malayalam that can be enjoyed by all, Swamiji launched PIRAVI in August 2008, under the editorship of Sri. C. Radhakrishnan. It is meant to be a forum where members of the general public, from the common man to the scholar, can together enjoy spiritual reading or give literal expression to their thoughts and a vehicle that will deliver the goods to suit the spiritual needs of our time.</p>
-		</div><!-- /.clearfix -->	
-		
+		</div><!-- /.clearfix -->
+
 
 		<div class="split_30"><div class="groove"></div><!-- /.groove --></div>
 		<h2 class="sub-heading">Making A World Of Difference  - Pre - Parliament Summit Of The Parliament Of The World's Religions</h2>
@@ -211,7 +211,7 @@
 			</div><!-- /.content-pic pull-left -->
 			<p>The Parliament of the World's Religions - the largest inter-religious congregations in the world - opened with a series of blessings that acknowledged and honoured the diverse spiritual and religious traditions of the world. Swamiji representing the Hindu faith, offered blessings of peace to the world with the chanting of  'OM', the universal mantra, followed by the Shanti mantra - 'Poornamada' of the Upanishads.</p>
 		</div><!-- /.clearfix -->
-		
+
 
 		<div class="split_30"><div class="groove"></div><!-- /.groove --></div>
 		<h2 class="sub-heading">Swami Sandeep Chaitanya Ordained Sannyasam</h2>
@@ -250,32 +250,32 @@
 			</div><!-- /.content-pic pull-left -->
 			<p>A  72 days long mega event of discourse series in 18 venues covering all 14 districts of Kerala from October to December 2010. The series was based on Purusharthas, or the four aims of human life - Dharma, Artha, Kama and Moksha- was inaugurated by Dr. A.P.J. Abdul Kalam.</p>
 		</div><!-- /.clearfix -->
-		
 
- 
+
+
 		<div class="split_30"><div class="groove"></div><!-- /.groove --></div>
-		<h2 class="sub-heading">Srimad Bhagavatha Thattva Jnan Yajnam</h2>
+		<h2 class="sub-heading">Srimad Bhagavadha Thattva Jnan Yajnam</h2>
 		<div class="one-image">
 			<div class="pic-wrap">
 				<img src="{{ asset('images/thattva-yajnam.jpg') }}" alt="" />
 			</div><!-- /.pic-wrap -->
 		</div><!-- /.one-image -->
 		<div class="split_10"></div><!-- /.split_10 -->
-		<p>A ground-breaking change was brought about by Swamiji in the narration and explanation of Srimad Bhagavatham with his 54-days long Discourse held at Trivandrum in 2013. Going beyond mere story-telling and rituals, the public was treated to a deeper understanding of the scripture when Swamiji unraveled the symbolism and principles embedded in this glorious work.</p>
-		
+		<p>A ground-breaking change was brought about by Swamiji in the narration and explanation of Srimad Bhagavadham with his 54-days long Discourse held at Trivandrum in 2013. Going beyond mere story-telling and rituals, the public was treated to a deeper understanding of the scripture when Swamiji unraveled the symbolism and principles embedded in this glorious work.</p>
+
 
 		<div class="split_30"><div class="groove"></div><!-- /.groove --></div>
 		<h2 class="sub-heading">Bharatheeyam</h2>
 
 		<p>A state-wide Heritage Discourse series illuminating the salient and unique features India’s spiritual philosophy and culture.</p>
 
-	
+
 
 	</div><!-- /.col-md-8 -->
 
 @include('guru.side-nav-guru')
-	
+
 </div><!-- /.row -->
 
-							
+
 @stop

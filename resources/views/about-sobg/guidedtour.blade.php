@@ -1,6 +1,6 @@
 	@extends('layout')
 	@section('content')
-	
+
 <div class="split_50"></div><!-- /.split_30 -->
 
 <div class="row">
@@ -30,7 +30,7 @@
 		</div><!-- /.shadow -->
 
 		<div class="clearfix">
-			
+
 			<p>
 			A synonym for <strong>Salagramam Ashram</strong> is <strong>‘Temple of Knowledge’</strong> – the concept that it seeks to purport. At the heart of this beautiful building is the Gita Kshetram, standing as it were, a visible expression of this noble concept. For, it has the entire Bhagavad Gita aesthetically engraved on its walls. Exhibiting the ethnic architecture of Kerala, the Gita Kshetram is modeled on the lines of a <strong>‘koothambalam’</strong>. All 701 slokas in the 18 chapters of the Gita are engraved on brass plates on the wooden reapers that constitute the walls, in typical Kerala style, using eco –friendly materials.</p>
 			<div class="two-images">
@@ -83,7 +83,7 @@
 				<div class="content-pic pull-right">
 					<img src="{{ asset('images/naimisharanyam.jpg') }}" alt=""/>
 				</div><!-- /.content-pic -->
-				<p>Naimisharanya is the hall for satsangs, talks, discussions and meetings. It is named after the ancient place “ Naimisharanya, the blessed spot where sages did penance, wise men gave discourses, many puranas were written and where <strong>Sri Suka</strong> narrated the <strong>Bhagavatham</strong> to <strong>Maharaja Parikshit</strong>.</p>
+				<p>Naimisharanya is the hall for satsangs, talks, discussions and meetings. It is named after the ancient place “ Naimisharanya, the blessed spot where sages did penance, wise men gave discourses, many puranas were written and where <strong>Sri Suka</strong> narrated the <strong>Bhagavadham</strong> to <strong>Maharaja Parikshit</strong>.</p>
 			</div><!-- /.cleafix -->
 
 		<div class="split_30"><div class="groove"></div><!-- /.groove --></div><!-- /.split_30 -->
@@ -140,5 +140,5 @@
 
 	@include('about-sobg.side-nav-about')
 
-</div>							
+</div>
 @stop

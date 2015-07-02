@@ -9,12 +9,12 @@
 		<h1 class="col-heading">His Vision</h1>
 		<div class="split_30"></div><!-- /.split_30 -->
 
-		
+
 		<div class="clearfix">
-			
+
 			<img  class="pull-right" src="{{ asset('images/hisvision-image.jpg') }}" alt=""/>
 
-			
+
 
 			<p>HIS VISION is the visual production department of the School of Bhagavad Gita.</p>
 
@@ -39,7 +39,7 @@
 
 		<h2 class="sub-heading">Art Of Man Making On Doordarshan</h2>
 
-		<p>Art of Man Making was yet another mega- series on Doordarshan showcasing discourse series on the Bhagavad Gita, Bhagavatha Thattwa Vichara Yajnam.  With his in-depth commentary on Srimad Bhagavatham, Swami Sandeepananda revolutionized the narration of this Purana and brought it closer to the common man through the telecast. </p>
+		<p>Art of Man Making was yet another mega- series on Doordarshan showcasing discourse series on the Bhagavad Gita, Bhagavadha Thattwa Vichara Yajnam.  With his in-depth commentary on Srimad Bhagavadham, Swami Sandeepananda revolutionized the narration of this Purana and brought it closer to the common man through the telecast. </p>
 		<div class="split_30"><div class="groove"></div><!-- /.groove --></div><!-- /.split_30 -->
 
 
@@ -52,7 +52,7 @@
 		<h2 class="sub-heading">Kailasam</h2>
 
 		<p>“KAILASAM” is the movie produced by His Vision. Based on the Kailas- Manasarovar Yatras organized by SOBG under the guidance of Swami Sandeep Chaitanya, KAILASAM was premiered on SURYA T.V on 5th March 2008 in connection with Mahasivarathri and was viewed world- wide.  It has since then, been telecast many times and has been an inspiration to many to undertake the pilgrimage to Kailas- Mansarovar. </p>
-		
+
 
 	</div><!-- /.col-md-8 -->
 
@@ -60,5 +60,5 @@
 
 </div><!-- /.row -->
 
-							
+
 @stop

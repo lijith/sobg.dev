@@ -79,7 +79,7 @@
 								</div><!-- /.header-top-links -->
 
 								<div class="header_search transition">
-									<div class="search-form-wrap1">
+									<div class="search-form-wrap">
 										<script>
 										  (function() {
 										    var cx = '014974762087517849092:vfu54y9sqta';
@@ -93,6 +93,22 @@
 										  })();
 										</script>
 										<gcse:search></gcse:search>
+
+										<style>
+											.cse .gsc-control-cse,
+											.gsc-control-cse{
+												padding: 0px;
+											}
+											.gsc-i-id1{
+												border-color: #898989;
+											}
+											.header-top .header_search input.gsc-search-button.gsc-search-button-v2{
+												background: #dea32b;
+										    display: block;
+										    height: 28px;
+										    width: 70px;
+											}
+										</style>
 
 										<!--<form method="get" action="?">
 											<input type="text" class="header_search_term" name="SearchTerm" placeholder="Search...." />

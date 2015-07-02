@@ -23,7 +23,7 @@
 
 
 		</div><!-- /.clearfix -->
-		
+
 		<div class="clearfix">
 			<div class="content-pic pull-right">
 				<img src="{{ asset('images/chinmayananda.jpg') }}" alt=""/>
@@ -37,27 +37,27 @@
 			</div><!-- /.content-pic -->
 
 			<p>Swami Sandeepananda Giri was ordained sannyasam by none other than H.H.Dwadashadarsanacharya Ananthasrivibhooshita Acharya Mahamandaleshwar Kashikananda Giriji Maharaj at Haridwar during the Kumbh Mela of 2010.</p>
-			<p>For over two decades, Swamiji has been conducting countless discourse series on the Bhagavad Gita, the Upanishads, Srimad Bhagavatham and other texts, all over the country and abroad in the USA, UAE, UK, Canada and Australia, including the address at the historic World Parliament in 2009. Working tirelessly for his life’s mission, the milestone events in his spiritual journey include the 108 days’ continuous discourse series on the Bhagavad Gita in Trivandrum and Cochin, the first-time event of the 45 days’ series in the UAE, the state-wide 3 months’ long programs - Chatur Gakaaram in 2008, Chaturvidha Purushaartham in 2010, Bharateeyam in 2014,the 54 days’ Srimad Bhagavatha Thattva Vichara Yajnam in Trivandrum, Sampoorna Gita Jnana Yajnam and the Art of Man-Making T.V series running to over 400 episodes on Doordarshan and the Upanishad series on other T.V.channels. Under Swamiji’s direction, the publication of PIRAVI, the spiritual magazine with a difference, translations and commentaries of many renowned works, etc are done with the purpose of bringing it within the reach of the masses.</p>
-			
+			<p>For over two decades, Swamiji has been conducting countless discourse series on the Bhagavad Gita, the Upanishads, Srimad Bhagavadham and other texts, all over the country and abroad in the USA, UAE, UK, Canada and Australia, including the address at the historic World Parliament in 2009. Working tirelessly for his life’s mission, the milestone events in his spiritual journey include the 108 days’ continuous discourse series on the Bhagavad Gita in Trivandrum and Cochin, the first-time event of the 45 days’ series in the UAE, the state-wide 3 months’ long programs - Chatur Gakaaram in 2008, Chaturvidha Purushaartham in 2010, Bharateeyam in 2014,the 54 days’ Srimad Bhagavadha Thattva Vichara Yajnam in Trivandrum, Sampoorna Gita Jnana Yajnam and the Art of Man-Making T.V series running to over 400 episodes on Doordarshan and the Upanishad series on other T.V.channels. Under Swamiji’s direction, the publication of PIRAVI, the spiritual magazine with a difference, translations and commentaries of many renowned works, etc are done with the purpose of bringing it within the reach of the masses.</p>
+
 			<p>The several pilgrimages (yatras) to Kailas- Manasarovar, Himalayas, Amarnath and Ganga Darshan, organized and guided by Swamiji, give a new dimension to spiritual journeys by introducing India’s cultural heritage to the common man and spreading the message of “Ishavaasyam idam sarvam”- Everything in this Universe is pervaded by the Supreme.</p>
 
 			<p>Swami Sandeepananda Giri’s ashram, SALAGRAMAM – the Temple of Knowledge – houses the headquarters of the School of Bhagavad Gita in Thiruvananthapuram. Located in peaceful surroundings along the Karamana River, Swami Sandeepananda Giri envisions SALAGRAMAM as an international forum and an open house for all seekers of knowledge.</p>
-			
 
-			
+
+
 		</div><!-- /.clearfix -->
-	
+
 
 		<div class="split_30"></div><!-- /.split_30 -->
 
-		
+
 	</div><!-- /.col-md-8 -->
 
 @include('guru.side-nav-guru')
 
 </div><!-- /.row -->
 
-							
 
-							
+
+
 @stop
