@@ -29,12 +29,9 @@
 						</div><!-- /.row -->
 					</div><!-- /.col-sm-4 -->
 					<div class="col-sm-8">
-						<p class="description">
-
-						</p><!-- /.description -->
-						<p class="description">
-							{{$magazine->details}}
-						</p><!-- /.description -->
+						<div class="description">
+							{!! $magazine->details !!}
+						</div><!-- /.description -->
 
 						<div class="split_30"></div><!-- /.split_30 -->
 						<div class="add-to-cart">

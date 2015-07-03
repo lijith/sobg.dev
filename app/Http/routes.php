@@ -322,6 +322,15 @@ Route::group(['prefix' => 'administrator', 'namespace' => 'Admin'], function () 
 	Route::put('archives/{hash}', ['as' => 'archives.update', 'uses' => 'ArchiveController@update']);
 	Route::delete('archives/{hash}', ['as' => 'archives.destroy', 'uses' => 'ArchiveController@destroy']);
 
+	//ARchives
+	Route::get('articles/create', ['as' => 'articles.create', 'uses' => 'ArticleController@create']);
+	Route::post('articles', ['as' => 'articles.store', 'uses' => 'ArticleController@store']);
+	Route::get('articles', ['as' => 'articles.list', 'uses' => 'ArticleController@index']);
+	Route::get('articles/{hash}', ['as' => 'articles.show', 'uses' => 'ArticleController@show']);
+	Route::get('articles/{hash}/edit', ['as' => 'articles.edit', 'uses' => 'ArticleController@edit']);
+	Route::put('articles/{hash}', ['as' => 'articles.update', 'uses' => 'ArticleController@update']);
+	Route::delete('articles/{hash}', ['as' => 'articles.destroy', 'uses' => 'ArticleController@destroy']);
+
 	//Dvds and Vcds Routes
 	Route::get('videodisks/create', ['as' => 'videodisks.create', 'uses' => 'VideoDiskController@create']);
 	Route::post('videodisks', ['as' => 'videodisks.store', 'uses' => 'VideoDiskController@store']);

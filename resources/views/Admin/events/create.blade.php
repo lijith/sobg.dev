@@ -25,6 +25,13 @@
 
             <h2>Create New Event</h2>
 
+            <div class="form-group {{ ($errors->has('event-cover-photo')) ? 'has-error' : '' }}">
+                <label>Cover Photo</label>
+                <input type="file" id="event-cover-photo" name="event-cover-photo">
+                <p class="help-block">Cover photo of event(jpg, png files only)</p>
+                {{ ($errors->has('event-cover-photo') ? $errors->first('event-cover-photo') : '') }}
+            </div>
+
             <div class="form-group {{ ($errors->has('event-title')) ? 'has-error' : '' }}">
                 <label>Event Title</label>
                 <input class="form-control" placeholder="Event Title" name="event-title" type="text"  value="{{ Input::old('event-title') }}">
@@ -71,15 +78,10 @@
                 {{ ($errors->has('keywords') ? $errors->first('keywords') : '') }}
             </div>
 
-            <div class="form-group {{ ($errors->has('event-cover-photo')) ? 'has-error' : '' }}">
-                <label>Cover Photo</label>
-                <input type="file" id="event-cover-photo" name="event-cover-photo">
-                <p class="help-block">Cover photo of event(jpg, png files only)</p>
-                {{ ($errors->has('event-cover-photo') ? $errors->first('event-cover-photo') : '') }}
-            </div>
 
 
-           
+
+
             <input name="_token" value="{{ csrf_token() }}" type="hidden">
             <input class="btn btn-primary" value="Create" type="submit">
 

@@ -60,7 +60,7 @@
 
             <div class="form-group {{ ($errors->has('details')) ? 'has-error' : '' }}">
                 <label>Edition Detail</label>
-                <textarea rows="6" class="form-control" name="details">{{ Input::old('details') }}</textarea>
+                <textarea rows="6" class="form-control" name="details" id="ckeditor1">{{ Input::old('details') }}</textarea>
                 <span class="help-block">Full detail of the disk</span>
                 {{ ($errors->has('details') ? $errors->first('details') : '') }}
             </div>

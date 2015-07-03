@@ -74,7 +74,7 @@
                 </div><!-- /.col-md-6 -->
             </div><!-- /.row -->
 
-           
+
 
             <div class="row">
                 <div class="col-md-6">
@@ -95,7 +95,7 @@
 
             <div class="form-group {{ ($errors->has('details')) ? 'has-error' : '' }}">
                 <label>Book Detail</label>
-                <textarea rows="6" class="form-control" name="details">{{ Input::old('details') }}</textarea>
+                <textarea rows="6" class="form-control" name="details" id="ckeditor1" >{{ Input::old('details') }}</textarea>
                 <span class="help-block">Full detail of the disk</span>
                 {{ ($errors->has('details') ? $errors->first('details') : '') }}
             </div>
@@ -114,7 +114,7 @@
                 {{ ($errors->has('keywords') ? $errors->first('keywords') : '') }}
             </div>
 
-           
+
             <input name="_token" value="{{ csrf_token() }}" type="hidden">
             <input class="btn btn-primary" value="Create" type="submit">
 

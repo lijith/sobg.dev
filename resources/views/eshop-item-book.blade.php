@@ -4,14 +4,14 @@
 
 <div class="split_50"></div><!-- /.split_30 -->
 	<div class="row">
-		
+
 		@include('side-cart')
 
 
 		<div class="col-sm-8 publication-item-display">
 			<h1 class="col-heading">{{ucwords($book->title)}}</h1>
 			<div class="split_30"></div><!-- /.split_30 -->
-				
+
 				<div class="row">
 					<div class="col-sm-4">
 						<div class="row">
@@ -30,12 +30,12 @@
 					</div><!-- /.col-sm-4 -->
 					<div class="col-sm-8">
 						<p class="description">
-							<strong>{{ucwords($book->author)}}</strong>	
+							<strong>{{ucwords($book->author)}}</strong>
 						</p><!-- /.description -->
-						<p class="description">
-							{{$book->details}}
-						</p><!-- /.description -->
-						
+						<div class="description">
+							{!! $book->details !!}
+						</div><!-- /.description -->
+
 						<div class="split_30"></div><!-- /.split_30 -->
 						<div class="add-to-cart">
 							<form method="POST" action="{{route('cart.add')}}">
@@ -43,7 +43,7 @@
 								<input type="hidden" name="item-type" value="book" />
 								<input type="hidden" name="item-id" value="{{$book->id}}" />
 								<input name="_token" value="{{ csrf_token() }}" type="hidden">
-								
+
 								<button class="btn btn-primary" type="submit">
 								<i class="fa fa-shopping-cart"></i> Add to Cart
 								</button>
@@ -59,6 +59,6 @@
 		</div><!-- /.col-md-9 col-sm-8 publication-item-display-->
 	</div><!-- /.row -->
 
-							
-							
+
+
 @stop

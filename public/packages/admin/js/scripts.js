@@ -177,7 +177,7 @@
             $("input[name ='contact-city']").val($("input[name ='permanent-city']").val());
             $("input[name ='contact-state']").val($("input[name ='permanent-state']").val());
             $("input[name ='contact-country']").val($("input[name ='permanent-country']").val());
-        }else{
+        } else {
             $("input[name *='contact']").val('');
         }
 
@@ -253,6 +253,60 @@
             styles: {
                 'float': 'left',
                 'width': '50%'
+            }
+        },
+
+        /* Object Styles */
+        {
+            name: 'Page title',
+            element: 'h1',
+            attributes: {
+                'class': 'page-heading'
+            }
+        },
+
+        {
+            name: 'Image Left',
+            element: 'img',
+            attributes: {
+                'class': 'img-float-left'
+            }
+        },
+        {
+            name: 'Image Right',
+            element: 'img',
+            attributes: {
+                'class': 'img-float-right'
+            }
+        },
+        {
+            name: 'Sub Heading1',
+            element: 'h2',
+            attributes: {
+                'class': 'sub-heading'
+            }
+        },
+        {
+            name: 'Sub Heading2',
+            element: 'h3',
+            attributes: {
+                'class': 'sub-heading'
+            }
+        },
+
+
+        {
+            name: 'Red text',
+            element: 'span',
+            attributes: {
+                'class': 'red-text'
+            }
+        },
+        {
+            name: 'Orange text',
+            element: 'span',
+            attributes: {
+                'class': 'orange-text'
             }
         }
     ]);

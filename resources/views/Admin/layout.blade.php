@@ -204,6 +204,17 @@
                 </li>
                 <li class="sub-menu">
                     <a href="#">
+                        <i class="fa fa-book"></i>
+                        <span>Interviews &amp; Articles</span>
+                    </a>
+                    <ul class="sub">
+                        <li><a href="{{ route('articles.list') }}">All Articles</a></li>
+                        <li><a href="{{ route('articles.create') }}"><i class="fa fa-plus"></i> New Article/Interview</a></li>
+
+                    </ul>
+                </li>
+                <li class="sub-menu">
+                    <a href="#">
                         <i class="fa fa-picture-o"></i>
                         <span>Photo Albums</span>
                     </a>

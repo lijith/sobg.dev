@@ -22,9 +22,9 @@
 
                 <section class="in-panel">
                     <span class="label label-primary">Cover</span> <br /><br />
-                    <img src="{{asset('images/video-disks/'.$disk->cover_photo)}}" class="img-responsive" alt=""> 
+                    <img src="{{asset('images/video-disks/'.$disk->cover_photo)}}" class="img-responsive" alt="">
                   </section>
-                
+
             </div><!-- /.col-md-8 -->
             <div class="col-md-6">
                 <div class="in-panel">
@@ -44,19 +44,21 @@
                   <span class="label label-primary">Publish Date</span> <br /><br />
                   From <strong>{{$disk->published_at}}</strong>
                 </div>
-                 
+
 
             </div><!-- /.col-md-4 -->
         </div><!-- /.row -->
 
-          
 
-          
+
+
 
 
             <section class="in-panel">
                 <span class="label label-primary">Disk Detail</span> <br /><br />
-                {!!$disk->details!!}
+                <div class="back-content">
+                  {!!$disk->details!!}
+                </div>
             </section>
 
             <section class="in-panel">
@@ -74,7 +76,7 @@
             @endif
 
             <div class="panel-body">
-                
+
                 <form action="{{ action('\App\Http\Controllers\Admin\VideoDiskController@destroy', array($disk->id)) }}" method="POST" class="delete-request-form">
                 <input name="_token" value="{{ csrf_token() }}" type="hidden">
                 <input name="_method" value="DELETE" type="hidden">

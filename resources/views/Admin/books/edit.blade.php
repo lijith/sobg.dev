@@ -22,7 +22,7 @@
               @endforeach
             </ul>
             <div class="cover-pic">
-                <img src="{{asset('images/books/'.$book->cover_photo)}}" class="img-responsive" alt=""> 
+                <img src="{{asset('images/books/'.$book->cover_photo)}}" class="img-responsive" alt="">
             </div><!-- /.cover-pic -->
 	        <form method="POST" action="{{ route('books.update',array($book->id)) }}" accept-charset="UTF-8" enctype="multipart/form-data">
 
@@ -64,12 +64,12 @@
                         <div>
                             <label class="radio-inline">
                               <input type="radio" name="published-by" id="dvd" value="1"
-                              @if($book->published_by == 1 || Input::old('published-by')== 1) checked 
+                              @if($book->published_by == 1 || Input::old('published-by')== 1) checked
                               @endif> By School
                             </label>
                             <label class="radio-inline">
                               <input type="radio" name="published-by" id="vcd" value="2"
-                              @if($book->published_by == 2 || Input::old('published-by')== 2) checked 
+                              @if($book->published_by == 2 || Input::old('published-by')== 2) checked
                               @endif> Others
                             </label>
                             {{ ($errors->has('published-by') ? $errors->first('published-by') : '') }}
@@ -98,7 +98,7 @@
 
             <div class="form-group {{ ($errors->has('details')) ? 'has-error' : '' }}">
                 <label>Book Detail</label>
-                <textarea rows="6" class="form-control" name="details">{{ Input::old('details') ? Input::old('details') : $book->details }}</textarea>
+                <textarea rows="6" class="form-control" name="details" id="ckeditor1" >{{ Input::old('details') ? Input::old('details') : $book->details }}</textarea>
                 <span class="help-block">Full detail of the disk</span>
                 {{ ($errors->has('details') ? $errors->first('details') : '') }}
             </div>
@@ -117,9 +117,9 @@
                 {{ ($errors->has('keywords') ? $errors->first('keywords') : '') }}
             </div>
 
-            
 
-            
+
+
 
             <input name="_method" value="PUT" type="hidden">
             <input name="_token" value="{{ csrf_token() }}" type="hidden">

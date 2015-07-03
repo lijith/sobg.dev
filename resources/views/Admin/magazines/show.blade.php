@@ -86,6 +86,8 @@
                    </p>
                 </div>
 
+                  @if ($magazine->magazine_file != 'NO-ATTACHMENT')
+
 
                   <div class="in-panel">
                    <span class="label label-primary">
@@ -108,6 +110,11 @@
                     @endif
                    </p>
                   </div>
+                  @else
+                  <div class="in-panel">
+                    <p>attach digital version to notify digital subscribers</p>
+                  </div>
+                  @endif
 
 
             </div><!-- /.col-md-4 -->
@@ -120,12 +127,12 @@
 
             <section class="in-panel">
                 <span class="label label-primary">Detail</span> <br /><br />
-                {!!$magazine->details!!}
+                <div class="back-content">{!!$magazine->details!!}</div>
             </section>
 
             <section class="in-panel">
                 <span class="label label-primary">Excerpt</span> <br /><br />
-                 <i>{{$magazine->excerpt}}</i>
+                 {{$magazine->excerpt}}
             </section>
 
             <div class="panel-body">

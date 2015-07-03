@@ -22,9 +22,9 @@
 
                 <section class="in-panel">
                     <span class="label label-primary">Cover</span> <br /><br />
-                    <img src="{{asset('images/events/'.$event->cover_photo)}}" class="img-responsive" alt=""> 
+                    <img src="{{asset('images/events/'.$event->cover_photo)}}" class="img-responsive" alt="">
                   </section>
-                
+
             </div><!-- /.col-md-8 -->
             <div class="col-md-6">
                 <section class="in-panel">
@@ -36,7 +36,7 @@
                       <input type="hidden" value="{{ csrf_token() }}" name="_token" />
                       <button type="submit" class="btn btn-primary">Sent Notification Mails({{$event->send_mail_count}} times)</button>
                     </form>
-                    
+
                  </section>
 
                 <section class="in-panel">
@@ -51,14 +51,14 @@
             </div><!-- /.col-md-4 -->
         </div><!-- /.row -->
 
-          
 
-          
+
+
 
 
             <section class="in-panel">
                 <span class="label label-primary">Details</span> <br /><br />
-                {!!$event->details!!}
+                <div class="back-content">{!!$event->details!!}</div>
             </section>
 
             <section class="in-panel">
@@ -67,7 +67,7 @@
             </section>
 
             <div class="panel-body">
-                
+
                 <form action="{{ action('\App\Http\Controllers\Admin\EventController@destroy', array($event->id)) }}" method="POST" class="delete-request-form">
                 <input name="_token" value="{{ csrf_token() }}" type="hidden">
                 <input name="_method" value="DELETE" type="hidden">

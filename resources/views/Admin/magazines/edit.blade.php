@@ -22,7 +22,7 @@
               @endforeach
             </ul>
             <div class="cover-pic">
-                <img src="{{asset('images/magazines/'.$magazine->cover_photo_thumbnail)}}" class="img-responsive" alt=""> 
+                <img src="{{asset('images/magazines/'.$magazine->cover_photo_thumbnail)}}" class="img-responsive" alt="">
             </div><!-- /.cover-pic -->
 	        <form method="POST" action="{{ route('magazines.update',array($magazine->id)) }}" accept-charset="UTF-8" enctype="multipart/form-data">
 
@@ -33,7 +33,7 @@
                 {{ ($errors->has('magazine-cover-photo') ? $errors->first('magazine-cover-photo') : '') }}
             </div>
             <hr />
-            
+
             <div class="form-group {{ ($errors->has('magazine-title')) ? 'has-error' : '' }}">
                 <label>Magazine Title</label>
                 <input class="form-control" placeholder="Event Title" name="magazine-title" type="text"  value="{{ Input::old('magazine-title') ? Input::old('magazine-title') : $magazine->title }}">
@@ -58,13 +58,13 @@
 
                     </div>
                 </div><!-- /.col-md-6 -->
-                
+
             </div><!-- /.row -->
 
 
             <div class="form-group {{ ($errors->has('details')) ? 'has-error' : '' }}">
                 <label>Edition Detail</label>
-                <textarea rows="6" class="form-control" name="details">{{ Input::old('details') ? Input::old('details') : $magazine->details }}</textarea>
+                <textarea rows="6" class="form-control" name="details" id="ckeditor1">{{ Input::old('details') ? Input::old('details') : $magazine->details }}</textarea>
                 <span class="help-block">Full detail of the magazine</span>
                 {{ ($errors->has('details') ? $errors->first('details') : '') }}
             </div>
@@ -83,7 +83,7 @@
                 {{ ($errors->has('keywords') ? $errors->first('keywords') : '') }}
             </div>
 
-           
+
             <input name="_token" value="{{ csrf_token() }}" type="hidden">
             <input name="_method" value="PUT" type="hidden">
             <input class="btn btn-primary" value="Update" type="submit">

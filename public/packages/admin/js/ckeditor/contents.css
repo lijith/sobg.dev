@@ -2,6 +2,7 @@
 Copyright (c) 2003-2013, CKSource - Frederico Knabben. All rights reserved.
 For licensing, see LICENSE.html or http://ckeditor.com/license
 */
+@import url("http://fonts.googleapis.com/css?family=Bree+Serif|Open+Sans:400,600");
 
 body
 {
@@ -90,9 +91,60 @@ img:hover {
 	filter: alpha(opacity = 90);
 }
 
+span.red-text{
+	color:#c9532d;
+}
+span.orange-text{
+	color:#dea32b;
+}
 pre
 {
 	white-space: pre-wrap; /* CSS 2.1 */
 	word-wrap: break-word; /* IE7 */
 }
 
+
+
+/* theme of site */
+
+h1, h2, h3{
+  font-family: "Bree Serif",serif;
+}
+.page-heading{
+	border-bottom: 2px solid #c9532d;
+  color: #c9532d;
+  font-size: 125%;
+  font-weight: 500;
+  padding-bottom: 5px;
+}
+p{
+	margin: 0 0 10px;
+	color: #666666;
+  font-family: "Open Sans";
+  font-size: 14px;
+  font-weight: 400;
+}    
+.img-float-left{
+	float:left;
+	padding: 0 10px 10px 0;
+}
+.img-float-right{
+	float:right;
+	padding: 0 0 10px 10px;
+}
+
+h2.sub-heading{
+	border: medium none;
+  color: #dea32b;
+  font-size: 115%;
+}
+
+h3.sub-heading{
+	border: medium none;
+  color: #dea32b;
+  font-size: 105%;
+}
+
+p a {
+    color: #c9532d;
+}

@@ -66,3 +66,61 @@
 .pull-left{
 	float: left;
 }
+
+.form-control {
+    border: 1px solid #e2e2e4;
+    box-shadow: none;
+    color: #666666;
+}
+
+@import url("http://fonts.googleapis.com/css?family=Bree+Serif|Open+Sans:400,600");
+
+
+.back-content{
+  border: 1px solid #eff2f7;
+  margin: 5px;
+  padding: 10px;
+}
+
+.back-content h1, 
+.back-content h2, 
+.back-content h3{
+  font-family: "Bree Serif",serif;
+}
+.back-content p{
+  margin: 0 0 10px;
+  color: #666666;
+  font-family: "Open Sans";
+  font-size: 14px;
+  font-weight: 400;
+} 
+.back-content h2.sub-heading{
+  border: medium none;
+  color: #dea32b;
+  font-size: 115%;
+}
+
+.back-content h3.sub-heading{
+  border: medium none;
+  color: #dea32b;
+  font-size: 105%;
+}
+
+.back-content .img-float-left{
+  float:left;
+  padding: 0 10px 10px 0;
+}
+.back-content .img-float-right{
+  float:right;
+  padding: 0 0 10px 10px;
+}
+.back-content a {
+    color: #c9532d;
+}
+
+.back-content .red-text{
+  color:#c9532d;
+}
+.back-content .orange-text{
+  color:#dea32b;
+}

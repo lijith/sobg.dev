@@ -23,7 +23,7 @@
             <div class="table-responsive">
               <table class="table table-striped table-hover">
                 @foreach($digitals as $digital)
-                  <form method="POST" action="{{ route('magazines.subscription.rates') }}">
+                  <form method="POST" action="{{ route('magazines.subscription.update') }}">
                     <input name="_method" value="PUT" type="hidden">
                     <input name="_token" value="{{ csrf_token() }}" type="hidden">
                     <input name="id" value="{{ $digital->id }}" type="hidden">
@@ -33,17 +33,17 @@
                         <label>Title</label>
 
                         <input name="title" type="text" class="form-control" value="{{ $digital->key }}" />
-                      </td>  
+                      </td>
                        <td>
                         <label>Rate</label>
                         <input name="rate" type="text" class="form-control" value="{{ $digital->value }}" />
-                      </td>  
+                      </td>
                       <td>
                         <label>Period</label>
                         <input name="period" type="text" class="form-control" value="{{ $digital->period }}" />
-                        
+
                       </td>
-                       
+
                       <td><br /><button type="submit" class="btn btn-primary">Update</button></td>
                     </tr>
 
@@ -51,14 +51,14 @@
                 @endforeach
 
               </table>
-            </div>  
+            </div>
           </div><!-- /.col-md-6 -->
           <div class="col-md-12">
             <h3>Print Version</h3>
             <div class="table-responsive">
               <table class="table table-striped table-hover">
                 @foreach($prints as $print)
-                  <form method="POST" action="{{ route('magazines.subscription.rates') }}">
+                  <form method="POST" action="{{ route('magazines.subscription.update') }}">
                     <input name="_method" value="PUT" type="hidden">
                     <input name="_token" value="{{ csrf_token() }}" type="hidden">
                     <input name="id" value="{{ $print->id }}" type="hidden">
@@ -67,22 +67,19 @@
                       <td>
                         <label>Title</label>
 
-                        <input name="title" type="text" class="form-control" value="{{ $print->title }}" />
-                      </td>  
+                        <input name="title" type="text" class="form-control" value="{{ $print->key }}" />
+                      </td>
                        <td>
                         <label>Rate</label>
-                        <input name="rate" type="text" class="form-control" value="{{ $print->key }}" />
-                      </td>  
+                        <input name="rate" type="text" class="form-control" value="{{ $print->value }}" />
+                      </td>
                       <td>
                         <label>Period</label>
-                        <input name="rate" type="text" class="form-control" value="{{ $print->value }}" />
-                        
+                        <input name="rate" type="text" class="form-control" value="{{ $print->period }}" />
+
                       </td>
-                       <td>
-                        <input name="period" type="text" class="form-control" value="{{ $print->period }}" />
-                        
-                      </td>
-                      <td><button type="submit" class="btn btn-primary">Update</button></td>
+
+                      <td><br /><button type="submit" class="btn btn-primary">Update</button></td>
                     </tr>
 
                   </form>
@@ -98,8 +95,8 @@
         <hr />
 
         <div class="row">
-          
-          <form method="POST" action="{{ route('magazines.subscription.rates') }}">
+
+          <form method="POST" action="{{ route('magazines.subscription.store') }}">
             <input name="_token" value="{{ csrf_token() }}" type="hidden">
 
             <div class="col-md-3">
@@ -124,7 +121,7 @@
                 <label class="radio-inline">
                     <input type="radio" value="print" name="type"> Print
                 </label>
-             </div>   
+             </div>
             </div><!-- /.col-md-3 -->
             <div class="col-md-2">
             <br />
@@ -134,12 +131,12 @@
 
         </div><!-- /.row -->
 
-        
+
       </div>
     </section>
   </div>
 
-</div> 
+</div>
 
 
 @stop

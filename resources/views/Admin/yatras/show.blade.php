@@ -29,7 +29,7 @@
 
           <p>
             <a href="{{ route('yatra.show',array('itenarary',$yatra->id)) }}">Iternarary &amp; Cost</a> |
-            <a href="{{ route('yatra.edit',array('highlight',$yatra->id)) }}">Edit</a>
+            <a href="{{ route('yatra.edit',array('highlight',$yatra->id)) }}">Edit Highlight</a>
           </p>
 
         @elseif($part == 'itenarary')
@@ -46,7 +46,7 @@
 
           <p>
             <a href="{{ route('yatra.show',array('highlight',$yatra->id)) }}">Highlight</a> |
-            <a href="{{ route('yatra.edit',array('itenarary',$yatra->id)) }}">Highlight</a>
+            <a href="{{ route('yatra.edit',array('itenarary',$yatra->id)) }}">Edit Iternarary</a>
           </p>
 
         @endif

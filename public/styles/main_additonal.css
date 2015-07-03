@@ -328,3 +328,19 @@ img.right{
   border-color: #b53300;
   color: #fff;
 }
+
+span.red-text{
+	color:#c9532d;
+}
+span.orange-text{
+	color:#dea32b;
+}
+
+.img-float-left{
+  float:left;
+  padding: 0 10px 10px 0;
+}
+.img-float-right{
+  float:right;
+  padding: 0 0 10px 10px;
+}
