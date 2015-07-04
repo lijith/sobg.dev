@@ -46,10 +46,10 @@ Route::group(['prefix' => 'guru'], function () {
 	Route::get('swami-sandeepananda-giri', ['as' => 'swami', 'uses' => 'GuruController@swami']);
 	Route::get('milestones-in-spiritual-journey', ['as' => 'milestones', 'uses' => 'GuruController@milestones']);
 	Route::get('swami-kashikananda-giri-maharaj', ['as' => 'kashikananda', 'uses' => 'GuruController@kashikananda']);
-	Route::get('articles-and-interviews', ['as' => 'articles', 'uses' => 'GuruController@articlesAndInterviews']);
+	Route::get('articles-and-interviews/{slug?}', ['as' => 'articles', 'uses' => 'GuruController@articlesAndInterviews']);
 	Route::get('itinerary', ['as' => 'itinerary', 'uses' => 'GuruController@itinerary']);
 	Route::get('message-from-swami', ['as' => 'messageFromSwami', 'uses' => 'GuruController@messageFromSwami']);
-	Route::get('write-to-swami', ['as' => 'writeToSwami', 'uses' => 'GuruController@writeToSwami']);
+	Route::get('write-to-swamiji', ['as' => 'writeToSwami', 'uses' => 'GuruController@writeToSwami']);
 });
 
 /*

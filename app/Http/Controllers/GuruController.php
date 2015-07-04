@@ -1,5 +1,7 @@
 <?php namespace App\Http\Controllers;
 
+use App\Article;
+
 class GuruController extends SiteController {
 
 	/*
@@ -56,13 +58,33 @@ class GuruController extends SiteController {
 	 *
 	 * @return view as response
 	 */
-	public function articlesAndInterviews() {
-		$this->page_data['title'] = '';
-		$this->page_data['description'] = '';
+	public function articlesAndInterviews($slug = null) {
+
+		if ($slug == null) {
+			$article = Article::whereRaw('id = (select max(`id`) from articles)')->first();
+
+		} else {
+			$article = Article::where('slug', '=', $slug)->first();
+		}
+
+		$articles = Article::where('id', '<>', $article->id)
+			->orderBy('date', 'DESC')
+			->get()
+			->groupBy(function ($date) {
+				return \Carbon\Carbon::parse($date->date)->format('Y'); // grouping by years
+				//return Carbon::parse($date->created_at)->format('m'); // grouping by months
+			});
+
+		$this->page_data['title'] = ucwords($article->title);
+		$this->page_data['description'] = $article->excerpt;
+		$this->page_data['keywords'] = $article->keywords;
+
 		$this->page_data['top_level_page'] = 'guru';
 		$this->page_data['sub_page_active'] = 'articles';
-		//return view('home')->with($this->page_data);
-		return 'articles';
+		$this->page_data['article'] = $article;
+		$this->page_data['articles'] = $articles;
+		return view('guru.article-interviews')->with($this->page_data);
+
 	}
 	/**
 	 * Show the about overview page.
@@ -97,10 +119,10 @@ class GuruController extends SiteController {
 	 */
 	public function writeToSwami() {
 		$this->page_data['title'] = 'Write to Swami Sandeepananda Giri';
-		$this->page_data['description'] = '';
+		$this->page_data['description'] = 'Write to Swami Sandeepananda Giri';
 		$this->page_data['top_level_page'] = 'guru';
 		$this->page_data['sub_page_active'] = 'write-to-swami';
-		//return view('home')->with($this->page_data);
+		return view('guru.write-to-swami')->with($this->page_data);
 		return 'write to swami';
 	}
 
