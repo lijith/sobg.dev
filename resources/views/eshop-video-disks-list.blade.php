@@ -16,12 +16,13 @@
 		<div class="split_30"></div><!-- /.split_30 -->
 		<div class="search-titles clearfix">
 			@include('eshop-search-form')
-	
+
 		</div><!-- /.search-titles -->
 		<div class="split_30"></div><!-- /.split_30 -->
 
 		<div class="items-category">
-			<?php $item_count = 0; $total_item = 0; ?>
+			<?php $item_count = 0;
+$total_item = 0;?>
 
 
 			@if($video_disks->count() < 1)
@@ -39,8 +40,9 @@
 					@if($item_count == 0)
 						<div class="pub-items-row">
 					@endif
-					
-					<?php $item_count++; $total_item++;?>
+
+					<?php $item_count++;
+$total_item++;?>
 
 					<div class="pub-item">
 						<div class="wrap">
@@ -48,11 +50,11 @@
 								@if($vdisk->disk_type == 1)
 									<a href="{{route('dvd.show',array($vdisk->slug))}}" title="{{ ucwords($vdisk->title) }}">
 										<img src="{{asset('images/video-disks/'.$vdisk->cover_photo_thumbnail)}}" alt="{{ucwords($vdisk->title)}}" />
-									</a>	
+									</a>
 								@elseif($vdisk->disk_type == 2)
 									<a href="{{route('vcd.show',array($vdisk->slug))}}" title="{{ ucwords($vdisk->title) }}">
 										<img src="{{asset('images/video-disks/'.$vdisk->cover_photo_thumbnail)}}" alt="{{ucwords($vdisk->title)}}" />
-									</a>	
+									</a>
 								@endif
 
 							</div><!-- /.pub-image -->
@@ -78,7 +80,7 @@
 									<input type="hidden" name="item-type" value="video" />
 									<input type="hidden" name="item-id" value="{{$vdisk->id}}" />
 									<input name="_token" value="{{ csrf_token() }}" type="hidden">
-									
+
 									<button class="btn btn-primary" type="submit">
 										<i class="fa fa-shopping-cart"></i> Add to Cart
 									</button>
@@ -89,22 +91,26 @@
 
 					@if($item_count == 4 || $total_item == $video_disks->count())
 					</div><!-- /.pub-items-row -->
-					<?php $item_count = 0; ?>
+					<?php $item_count = 0;?>
 					@endif
 
 				@endforeach
 
 		</div><!-- /.items-category -->
+		<hr />
+		<div class="pub-paginate">
+		{!! $video_disks->render() !!}
+		</div><!-- /.pub-paginate -->
 
 
 
 		<div class="split_30"></div><!-- /.split_30 -->
-		
+
 	</div><!-- /.col-md-8 -->
 
 	@include('eshop_side_bar')
 </div><!-- /.row -->
 
 <div class="split_60"></div><!-- /.split_60 -->
-							
+
 @stop

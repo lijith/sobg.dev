@@ -76,6 +76,11 @@ $total_item++;?>
 				@endforeach
 
 		</div><!-- /.items-category -->
+		<hr />
+		<div class="pub-paginate">
+		{!! $video_disks->render() !!}
+		</div><!-- /.pub-paginate -->
+
 
 		<div class="split_30"></div><!-- /.split_30 -->
 		<h2 class="col-heading">Subscribe for Magazine</h2>

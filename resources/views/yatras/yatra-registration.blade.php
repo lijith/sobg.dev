@@ -54,13 +54,13 @@
 		          <div class="form-group {{ ($errors->has('first-name')) ? 'has-error' : '' }}">
 		            <label class="col-sm-4 control-label">First Name</label>
 		            <div class="col-sm-8">
-		              <input type="text" placeholder="First Name" class="form-control" name="first-name" value="{{ Input::old('first-name') ? Input::old('first-name') : '' }}">
+		              <input type="text" placeholder="First Name" class="form-control" name="first-name" required="" value="{{ Input::old('first-name') ? Input::old('first-name') : '' }}">
 		            </div>
 		          </div>
 		          <div class="form-group {{ ($errors->has('last-name')) ? 'has-error' : '' }}">
 		            <label class="col-sm-4 control-label">Last Name</label>
 		            <div class="col-sm-8">
-		              <input type="text" placeholder="Last Name" class="form-control" name="last-name" value="{{ Input::old('last-name') ? Input::old('last-name') : '' }}">
+		              <input type="text" placeholder="Last Name" class="form-control" name="last-name" required="" value="{{ Input::old('last-name') ? Input::old('last-name') : '' }}">
 		            </div>
 		          </div>
 		          <div class="form-group {{ ($errors->has('gender')) ? 'has-error' : '' }}">
@@ -79,7 +79,7 @@
 		          <div class="form-group {{ ($errors->has('nationality')) ? 'has-error' : '' }}">
 		            <label class="col-sm-4 control-label">Nationality</label>
 		            <div class="col-sm-8">
-		              <input type="text" placeholder="Nationality" class="form-control" name="nationality" value="{{ Input::old('nationality') ? Input::old('nationality') : '' }}">
+		              <input type="text" required="" placeholder="Nationality" class="form-control" name="nationality" value="{{ Input::old('nationality') ? Input::old('nationality') : '' }}">
 		            </div>
 		          </div>
 		          <div class="form-group">
@@ -123,13 +123,13 @@
 		          <div class="form-group {{ ($errors->has('passport-name')) ? 'has-error' : '' }}">
 		            <label class="col-sm-4 control-label">Name as in Passport</label>
 		            <div class="col-sm-8">
-		              <input type="text" placeholder="Name as in Passport" class="form-control" name="passport-name" value="{{ Input::old('passport-name') ? Input::old('passport-name') : '' }}">
+		              <input type="text" placeholder="Name as in Passport" class="form-control" name="passport-name" required="" value="{{ Input::old('passport-name') ? Input::old('passport-name') : '' }}">
 		            </div>
 		          </div>
 		          <div class="form-group {{ ($errors->has('passport-number')) ? 'has-error' : '' }}">
 		            <label class="col-sm-4 control-label">Passport Number</label>
 		            <div class="col-sm-8">
-		              <input type="text" placeholder="Passport Number" class="form-control" name="passport-number" value="{{ Input::old('passport-number') ? Input::old('passport-number') : '' }}">
+		              <input type="text" placeholder="Passport Number" class="form-control" name="passport-number" required="" value="{{ Input::old('passport-number') ? Input::old('passport-number') : '' }}">
 		            </div>
 		          </div>
 		          <div class="form-group">
@@ -145,33 +145,33 @@
 		          <div class="form-group {{ ($errors->has('address-line-1')) ? 'has-error' : '' }}">
 		            <label class="col-sm-4 control-label">Address</label>
 		            <div class="col-sm-8">
-		              <input type="text" placeholder="Address" class="form-control" name="address-line-1" value="{{ Input::old('address-line-1') ? Input::old('address-line-1') : '' }}">
+		              <input type="text" required="" placeholder="Address" class="form-control" name="address-line-1" value="{{ Input::old('address-line-1') ? Input::old('address-line-1') : '' }}">
 		              <span class="help-block">Street address</span>
 		            </div>
 		          </div>
 		          <div class="form-group {{ ($errors->has('address-line-2')) ? 'has-error' : '' }}">
 		            <label class="col-sm-4 control-label">Address (Line 2)</label>
 		            <div class="col-sm-8">
-		              <input type="text" placeholder="Address (Line 2)" class="form-control" name="address-line-2" value="{{ Input::old('address-line-2') ? Input::old('address-line-2') : '' }}">
+		              <input type="text" required="" placeholder="Address (Line 2)" class="form-control" name="address-line-2" value="{{ Input::old('address-line-2') ? Input::old('address-line-2') : '' }}">
 		              <span class="help-block">Apartment, suite, unit, building, floor, etc.</span>
 		            </div>
 		          </div>
 		          <div class="form-group {{ ($errors->has('city')) ? 'has-error' : '' }}">
 		            <label class="col-sm-4 control-label">City</label>
 		            <div class="col-sm-8">
-		              <input type="text" placeholder="City" class="form-control" name="city" value="{{ Input::old('city') ? Input::old('city') : '' }}">
+		              <input type="text" required="" placeholder="City" class="form-control" name="city" value="{{ Input::old('city') ? Input::old('city') : '' }}">
 		            </div>
 		          </div>
 		          <div class="form-group {{ ($errors->has('country')) ? 'has-error' : '' }}">
 		            <label class="col-sm-4 control-label">Country</label>
 		            <div class="col-sm-8">
-		              <input type="text" placeholder="Country" class="form-control" name="country" value="{{ Input::old('country') ? Input::old('country') : '' }}">
+		              <input type="text" required="" placeholder="Country" class="form-control" name="country" value="{{ Input::old('country') ? Input::old('country') : '' }}">
 		            </div>
 		          </div>
 		          <div class="form-group {{ ($errors->has('state')) ? 'has-error' : '' }}">
 		            <label class="col-sm-4 control-label">State</label>
 		            <div class="col-sm-8">
-		              <input type="text" placeholder="State" class="form-control" name="state" value="{{ Input::old('state') ? Input::old('state') : '' }}">
+		              <input type="text" required="" placeholder="State" class="form-control" name="state" value="{{ Input::old('state') ? Input::old('state') : '' }}">
 		            </div>
 		          </div>
 		          <h3>Contacts</h3>
@@ -179,7 +179,7 @@
 		          <div class="form-group {{ ($errors->has('contact-mobile')) ? 'has-error' : '' }}">
 		            <label class="col-sm-4 control-label">Mobile Number</label>
 		            <div class="col-sm-8">
-		              <input type="text" placeholder="Mobile Number" class="form-control" name="contact-mobile" value="{{ Input::old('contact-mobile') ? Input::old('contact-mobile') : '' }}">
+		              <input type="text" placeholder="Mobile Number" class="form-control" name="contact-mobile" required="" value="{{ Input::old('contact-mobile') ? Input::old('contact-mobile') : '' }}">
 		            </div>
 		          </div>
 		          <div class="form-group {{ ($errors->has('contact-landline')) ? 'has-error' : '' }}">

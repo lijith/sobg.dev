@@ -10,18 +10,20 @@
 		<div class="split_30"></div><!-- /.split_30 -->
 		<div class="search-titles clearfix">
 			@include('eshop-search-form')
-			
+
 		</div><!-- /.search-titles -->
 		<div class="split_30"></div><!-- /.split_30 -->
 		<div class="items-category">
-			<?php $item_count = 0; $total_item = 0; ?>
+			<?php $item_count = 0;
+$total_item = 0;?>
 
 			@foreach($books as $book)
 
 				@if($item_count == 0)
 					<div class="pub-items-row">
 				@endif
-				<?php $item_count++; $total_item++;?>
+				<?php $item_count++;
+$total_item++;?>
 
 				@if($books->count() < 1)
 					<div class="alert alert-warning ">
@@ -41,16 +43,16 @@
 							<div class="pub-image">
 								<a href="{{ route('book.show',array($book->slug)) }}" title="{{ucwords($book->title)}}">
 									<img src="{{asset('images/books/'.$book->cover_photo_thumbnail)}}" alt="{{ucwords($book->title)}}" />
-								</a>	
+								</a>
 							</div><!-- /.pub-image -->
 							<div class="pub-title">
 									<a href="{{ route('book.show',array($book->slug)) }}" data-toggle="tooltip" data-placement="bottom" title="{{ ucwords($book->title) }}" class="red-tooltip">
 									{{ucwords($book->title)}}
 									</a>
 									<p>by : {{ ucwords(\Illuminate\Support\Str::limit($book->author,15)) }}</p>
-									<p>Rs {{$book->price}} <br />{{ucwords($book->language)}}		
+									<p>Rs {{$book->price}} <br />{{ucwords($book->language)}}
 									</p>
-								
+
 
 							</div><!-- /.pub-title -->
 							<div class="item-add-to-cart">
@@ -59,7 +61,7 @@
 									<input type="hidden" name="item-type" value="book" />
 									<input type="hidden" name="item-id" value="{{$book->id}}" />
 									<input name="_token" value="{{ csrf_token() }}" type="hidden">
-									
+
 									<button class="btn btn-primary" type="submit">
 										<i class="fa fa-shopping-cart"></i> Add to Cart
 									</button>
@@ -69,7 +71,7 @@
 					</div><!-- /.pub-item -->
 					@if($item_count == 4 || $total_item == $books->count())
 					</div><!-- /.pub-items-row -->
-					<?php $item_count = 0; ?>
+					<?php $item_count = 0;?>
 					@endif
 
 
@@ -77,7 +79,10 @@
 				@endforeach
 
 		</div><!-- /.items-category -->
-
+		<hr />
+		<div class="pub-paginate">
+		{!! $video_disks->render() !!}
+		</div><!-- /.pub-paginate -->
 
 
 		<div class="split_30"></div><!-- /.split_30 -->
@@ -87,5 +92,5 @@
 </div><!-- /.row -->
 
 <div class="split_60"></div><!-- /.split_60 -->
-							
+
 @stop

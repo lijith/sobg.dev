@@ -476,52 +476,73 @@ class ShoppingCartController extends SiteController {
 	 **/
 	public function ConfirmPayment() {
 
-		/*
-		 *
-		 * Process encrypted response from CCAVENUE
-		 *
-		 */
-
 		$ccavenue = new \Ccavenue\CCAvenue;
 		$aes = new \Ccavenue\AESCrypt;
 
 		$encResponse = Input::get('encResponse');
 		$workingKey = env('CCAVENUE_WORKING_KEY');
 
-		$decrypted_response = $aes->decrypt($encResponse, $workingKey);
+		dd(Input::all());
 
-		$ResponseBreakUp = explode('&', $decrypted_response);
+		/*
+		 *
+		 * non encrypted response
+		 *
+		 */
+		// $MerchantId = $_POST['Merchant_Id'];
+		// $OrderId = $_POST['Order_Id'];
+		// $Amount = $_POST['Amount'];
+		// $AuthDesc = $_POST['AuthDesc'];
+		// $workingKey = getenv('CCCAVENUE_WORKING_KEY');
+		// $Checksum = $_POST['Checksum'];
 
-		$dataSize = sizeof($ResponseBreakUp);
+		//process return
+		//from the gateway and find status
+		// $ResponseString = $MerchantId . '|' . $OrderId . '|' . $Amount . '|' . $AuthDesc . '|' . $workingKey;
+		// $ResponseChecksum = $ccavenue->genchecksum($ResponseString);
+		// $ChecksumStatus = $ccavenue->verifyChecksum($ResponseChecksum, $Checksum);
+		//
 
-		for ($i = 0; $i < $dataSize; $i++) {
-			$information = explode('=', $ResponseBreakUp[$i]);
-			if ($i == 0) {
-				$MerchantId = $information[1];
-			}
+		/*
+		 *
+		 * Process encrypted response from CCAVENUE
+		 *
+		 */
 
-			if ($i == 1) {
-				$OrderId = $information[1];
-			}
+		// $decrypted_response = $aes->decrypt($encResponse, $workingKey);
 
-			if ($i == 2) {
-				$Amount = $information[1];
-			}
+		// $ResponseBreakUp = explode('&', $decrypted_response);
 
-			if ($i == 3) {
-				$AuthDesc = $information[1];
-			}
+		// $dataSize = sizeof($ResponseBreakUp);
 
-			if ($i == 4) {
-				$Checksum = $information[1];
-			}
+		// for ($i = 0; $i < $dataSize; $i++) {
+		// 	$information = explode('=', $ResponseBreakUp[$i]);
+		// 	if ($i == 0) {
+		// 		$MerchantId = $information[1];
+		// 	}
 
-		}
+		// 	if ($i == 1) {
+		// 		$OrderId = $information[1];
+		// 	}
 
-		$ResponseString = $MerchantId . '|' . $OrderId . '|' . $Amount . '|' . $AuthDesc . '|' . $workingKey;
-		$ResponseChecksum = $ccavenue->genchecksum($ResponseString);
+		// 	if ($i == 2) {
+		// 		$Amount = $information[1];
+		// 	}
 
-		$ChecksumStatus = $ccavenue->verifyChecksum($ResponseChecksum, $Checksum);
+		// 	if ($i == 3) {
+		// 		$AuthDesc = $information[1];
+		// 	}
+
+		// 	if ($i == 4) {
+		// 		$Checksum = $information[1];
+		// 	}
+
+		// }
+
+		// $ResponseString = $MerchantId . '|' . $OrderId . '|' . $Amount . '|' . $AuthDesc . '|' . $workingKey;
+		// $ResponseChecksum = $ccavenue->genchecksum($ResponseString);
+
+		// $ChecksumStatus = $ccavenue->verifyChecksum($ResponseChecksum, $Checksum);
 
 		//do according to the status of the transaction
 		//
@@ -582,8 +603,8 @@ class ShoppingCartController extends SiteController {
 			$mGun->sendMessage($domain, array(
 				'from' => 'info@sobg.com',
 				'to' => env('MAILGUN_ADMIN_LIST'),
-				'subject' => 'Congradulations for successful orders',
-				'text' => 'School of Bhagavat Gita thanks you for order(s)',
+				'subject' => 'New Order',
+				'text' => 'New order(s)',
 				'html' => View::make('emails.admins-orders', array('shipping' => $shipping, 'orders' => $orders))
 					->render(),
 			));
