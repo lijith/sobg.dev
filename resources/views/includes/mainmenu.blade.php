@@ -68,34 +68,21 @@
 		</li>
 		<span class="separator">|</span>
 		<li class="vcenter @if($top_level_page == 'yatras') select @endif">
-			<a class="vcenter" href="{{route('yatras')}}"><span>Spiritual Journeys</span></a>
+			<a class="vcenter" href="{{route('school.yatras')}}"><span>Spiritual Journeys</span></a>
 			<ul>
+				@foreach ($school_yatras as $yatra)
 				<li>
-					<a href="{{route('kailasHighlights')}}">Kailas Yatra</a>
+					<a href="{{route('school.yatras',array($yatra->slug))}}">{{ ucwords($yatra->name) }}</a>
 					<ul>
-						<li><a href="{{route('kailasHighlights')}}">Highlights</a></li>
-						<li><a href="{{route('kailasDetails')}}">Itinerary &amp; Costs</a></li>
-					<li><a href="{{route('Registration',array('kailas-yatra'))}}">Registration</a></li>
-						<li><a href="{{route('kailastips')}}">Tips for yatris</a></li>
-					</ul><!-- /.dl-submenu -->
+						<li><a href="{{route('school.yatras.highlights',array($yatra->slug))}}">Highlights</a></li>
+						<li><a href="{{route('school.yatras.itinerary',array($yatra->slug))}}">Itinerary &amp; Costs</a></li>
+						<li><a href="{{route('school.yatras.registration',array($yatra->slug))}}">Registration</a></li>
+							<li><a href="{{route('school.yatras.tips',array($yatra->slug))}}">Tips for yatris</a></li>
+						</ul><!-- /.dl-submenu -->
 				</li>
-				<li>
-					<a href="{{route('himalayaHighlights')}}">Himalaya (Chardham) Yatra</a>
-					<ul>
-						<li><a href="{{route('himalayaHighlights')}}">Highlights</a></li>
-						<li><a href="{{route('himalayaDetails')}}">Itinerary &amp; Costs</a></li>
-					<li><a href="{{route('Registration',array('himalaya-yatra'))}}">Registration</a></li>
-					</ul><!-- /.dl-submenu -->
-				</li>
-				<li>
-					<a href="{{route('amarnathHighlights')}}">Amarnath Yatra</a>
-					<ul>
-						<li><a href="{{route('amarnathHighlights')}}">Highlights</a></li>
-						<li><a href="{{route('amarnathDetails')}}">Itinerary &amp; Costs</a></li>
-					<li><a href="{{route('Registration',array('amarnath-yatra'))}}">Registration</a></li>
-					</ul><!-- /.dl-submenu -->
-				</li>
-				<li><a href="{{route('otherYatras')}}">Other yatras</a></li>
+
+				@endforeach
+
 				<li><a href="{{route('testimonials')}}">Yatris’ Speak</a></li>
 			</ul>
 

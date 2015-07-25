@@ -46,6 +46,21 @@
                 <textarea rows="6" class="form-control ckeditor1" name="itenary"  id="ckeditor2">{{ Input::old('itenary') }}</textarea>
                 {{ ($errors->has('itenary') ? $errors->first('itenary') : '') }}
             </div>
+            <div class="form-group {{ ($errors->has('tips')) ? 'has-error' : '' }}">
+                <label>Tips</label>
+                <textarea rows="6" class="form-control ckeditor1" name="tips"  id="ckeditor3">{{ Input::old('tips') }}</textarea>
+                {{ ($errors->has('tips') ? $errors->first('tips') : '') }}
+            </div>
+            <div class="form-group {{ ($errors->has('excerpt')) ? 'has-error' : '' }}">
+                <label>Small Description</label>
+                <textarea rows="6" class="form-control" name="excerpt">{{ Input::old('excerpt') }}</textarea>
+                {{ ($errors->has('excerpt') ? $errors->first('excerpt') : '') }}
+            </div>
+            <div class="form-group {{ ($errors->has('keywords')) ? 'has-error' : '' }}">
+                <label>Keywords</label>
+                <textarea rows="6" class="form-control" name="keywords">{{ Input::old('keywords') }}</textarea>
+                {{ ($errors->has('keywords') ? $errors->first('keywords') : '') }}
+            </div>
 
 
             <input name="_token" value="{{ csrf_token() }}" type="hidden">

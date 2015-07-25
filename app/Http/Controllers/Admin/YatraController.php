@@ -1,168 +1,157 @@
 <?php namespace App\Http\Controllers\Admin;
 
-use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
-use Illuminate\Http\Request;
-use Illuminate\Support\Str;
-
-use Vinkla\Hashids\HashidsManager;
 use App\Http\Requests\Admin\YatrasFormRequest;
-use App\Http\Requests\Admin\YatrasFormUpdateRequest;
-use Carbon\Carbon;
-
 use App\Yatra;
-
-use View, Input, File;
+use Illuminate\Support\Str;
+use Input;
+use View;
+use Vinkla\Hashids\HashidsManager;
 
 class YatraController extends Controller {
 
-  /**
-   * constructor.
-   *
-   * @param  void
-   *
-   * @return void
-   */
-  public function __construct(HashidsManager $hashids) {
+	/**
+	 * constructor.
+	 *
+	 * @param  void
+	 *
+	 * @return void
+	 */
+	public function __construct(HashidsManager $hashids) {
 
-    $this->hashids = $hashids;
-  	// You must have admin access to proceed
-    $this->middleware('sentry.admin');
-  }
+		$this->hashids = $hashids;
+		// You must have admin access to proceed
+		$this->middleware('sentry.admin');
+	}
 
-  /**
-   * List all the yatras in desc order of creation.
-   *
-   * @param  void
-   *
-   * @return View
-   */
-  public function index() {
+	/**
+	 * List all the yatras in desc order of creation.
+	 *
+	 * @param  void
+	 *
+	 * @return View
+	 */
+	public function index() {
 
-    $yatras = Yatra::get();
+		$yatras = Yatra::get();
 
-    foreach ($yatras as $yatra) {
-      $yatra->id = $this->hashids->encode($yatra->id);
-    }
+		foreach ($yatras as $yatra) {
+			$yatra->id = $this->hashids->encode($yatra->id);
+		}
 
-    return View::make('Admin.yatras.index',['yatras' => $yatras]);
-  }
+		return View::make('Admin.yatras.index', ['yatras' => $yatras]);
+	}
 
+	/**
+	 * Create an yatra.
+	 *
+	 * @param  void
+	 *
+	 * @return View
+	 */
+	public function create() {
+		return View::make('Admin.yatras.create');
+	}
 
-  /**
-   * Create an yatra.
-   *
-   * @param  void
-   *
-   * @return View
-   */
-  public function create() {
-  	return View::make('Admin.yatras.create');
-  }
+	/**
+	 * save yatra to database.
+	 *
+	 * @param  none
+	 *
+	 * @return Redirect
+	 */
+	public function store(YatrasFormRequest $request) {
 
+		$yatra = new Yatra(array(
+			'name' => Input::get('name'),
+			'highlights' => Input::get('highlights'),
+			'itenary_cost' => Input::get('itenary'),
+			'keywords' => Input::get('keywords'),
+			'excerpt' => Input::get('excerpt'),
+			'tips' => Input::get('tips'),
+		));
 
-  /**
-   * save yatra to database.
-   *
-   * @param  none
-   *
-   * @return Redirect
-   */
-  public function store(YatrasFormRequest $request){
+		$yatra->save();
 
-  	$yatra = new Yatra(array(
-  		'name' => Input::get('name'),
-  		'highlights' => Input::get('highlights'),
-  		'itenary_cost' => Input::get('itenary')
-  	));
+		return redirect()->route('yatra.list');
+	}
 
-  	$yatra->save();
+	/**
+	 * Show the yatra.
+	 *
+	 * @param  string $hash
+	 *
+	 * @return View
+	 */
+	public function show($part, $hash) {
+		$id = $this->hashids->decode($hash)[0];
 
-    return redirect()->route('yatra.list');
-  }
+		$yatra = Yatra::find($id);
 
-  /**
-   * Show the yatra.
-   *
-   * @param  string $hash
-   *
-   * @return View
-   */
-  public function show($part, $hash) {
-    $id = $this->hashids->decode($hash)[0];
+		$yatra->id = $this->hashids->encode($yatra->id);
 
-    $yatra = Yatra::find($id);
+		return View::make('Admin.yatras.show', ['part' => $part, 'yatra' => $yatra]);
 
-    $yatra->id = $this->hashids->encode($yatra->id);
+	}
 
-      return View::make('Admin.yatras.show',['part' => $part,'yatra' => $yatra]);
+	/**
+	 * Edit a yatra.
+	 *
+	 * @param  string $hash
+	 *
+	 * @return View
+	 */
+	public function edit($part, $hash) {
+		$id = $this->hashids->decode($hash)[0];
 
-  }
+		$yatra = Yatra::find($id);
 
-  /**
-   * Edit a yatra.
-   *
-   * @param  string $hash
-   *
-   * @return View
-   */
-  public function edit($part, $hash) { 
-    $id = $this->hashids->decode($hash)[0];
+		$yatra->id = $this->hashids->encode($yatra->id);
 
-    $yatra = Yatra::find($id);
+		return View::make('Admin.yatras.edit', ['part' => $part, 'yatra' => $yatra]);
+	}
 
-    $yatra->id = $this->hashids->encode($yatra->id);    
+	/**
+	 * Update the yatra.
+	 *
+	 * @param  string $hash
+	 *
+	 * @return Redirect
+	 */
+	public function update($part, $hash) {
 
-    return View::make('Admin.yatras.edit',['part' => $part,'yatra' => $yatra]);
-  }
+		$id = $this->hashids->decode($hash)[0];
+		$yatra = Yatra::find($id);
 
+		if ($part == 'highlights') {
+			$yatra->highlights = Input::get('highlights');
+		} elseif ($part == 'itenarary') {
+			$yatra->itenary_cost = Input::get('itenary');
+		}
 
+		$yatra->save();
 
-  /**
-   * Update the yatra.
-   *
-   * @param  string $hash
-   *
-   * @return Redirect
-   */
-  public function update($part, $hash) { 
+		$yatra->id = $this->hashids->encode($yatra->id);
 
-    $id = $this->hashids->decode($hash)[0];
-    $yatra = Yatra::find($id);
+		return View::make('Admin.yatras.edit', ['part' => $part, 'yatra' => $yatra]);
 
-    if($part == 'highlights'){
-      $yatra->highlights = Input::get('highlights');
-    }elseif ($part == 'itenarary') {
-      $yatra->itenary_cost = Input::get('itenary');
-    }
+	}
 
-    $yatra->save();
+	/**
+	 * Remove the yatra.
+	 *
+	 * @param  string $hash
+	 *
+	 * @return Redirect
+	 */
+	public function destroy($hash) {
+		// Decode the hashid
+		$id = $this->hashids->decode($hash)[0];
+		$yatra = Yatra::find($id);
 
+		$yatra->delete();
+		return redirect()->route('yatra.list')->with('success', 'yatra removed');
 
-    $yatra->id = $this->hashids->encode($yatra->id);
-
-    return View::make('Admin.yatras.edit',['part' => $part,'yatra' => $yatra]);
-
-  }
-
-  /**
-   * Remove the yatra.
-   *
-   * @param  string $hash
-   *
-   * @return Redirect
-   */
-  public function destroy($hash){
-      // Decode the hashid
-      $id = $this->hashids->decode($hash)[0];
-      $yatra = Yatra::find($id);
-
-      $yatra->delete();
-      return redirect()->route('yatra.list')->with('success', 'yatra removed');
-
-      
-  }
-
+	}
 
 }

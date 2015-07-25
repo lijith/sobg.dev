@@ -81,7 +81,7 @@ $total_item++;?>
 		</div><!-- /.items-category -->
 		<hr />
 		<div class="pub-paginate">
-		{!! $video_disks->render() !!}
+		{!! $books->render() !!}
 		</div><!-- /.pub-paginate -->
 
 

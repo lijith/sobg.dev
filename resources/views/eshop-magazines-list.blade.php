@@ -78,7 +78,7 @@ $total_item++;?>
 		</div><!-- /.items-category -->
 		<hr />
 		<div class="pub-paginate">
-		{!! $video_disks->render() !!}
+		{!! $magazines->render() !!}
 		</div><!-- /.pub-paginate -->
 
 

@@ -11,7 +11,9 @@
 body{width:100%;margin:0px;padding:0px;background:#3b3b3b;text-align:left;}
 html{width: 100%; }
 img {border:0px;text-decoration:none;display:block; outline:none;}
-a,a:hover{color:#FFF;text-decoration:none;}.ReadMsgBody{width: 100%; background-color: #ffffff;}.ExternalClass{width: 100%; background-color: #ffffff;}
+a,a:hover{color:#DEA32B;text-decoration:none;}
+.ReadMsgBody{width: 100%; background-color: #ffffff;}
+.ExternalClass{width: 100%; background-color: #ffffff;}
 table { border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt; }
 
 img[class=imageScale]			{}
@@ -65,13 +67,13 @@ table[class=social]{ text-align:right;}
 
   <!--  Main Table Start-->
 
-    <table width="600" border="0" align="center" cellpadding="0" cellspacing="0" class="main">
+    <table border="0" align="center" cellpadding="0" cellspacing="0" class="main">
       <tr>
         <td align="left" valign="top">
 
         <!--  Header Part Start-->
 
-        <table width="600" border="0" align="center" cellpadding="0" cellspacing="0" class="main">
+        <table border="0" align="center" cellpadding="0" cellspacing="0" class="main">
           <tr>
 
             <td align="left" valign="top" bgcolor="#DEA32B" style="background:#DEA32B; padding:30px 20px 30px 20px;border-top:#d86a12 solid 4px;" class="border-bg"><table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
@@ -97,7 +99,7 @@ table[class=social]{ text-align:right;}
           </tr>
           </table>
 
-          <table width="600" border="0" cellspacing="0" cellpadding="0" class="main">
+          <table border="0" cellspacing="0" cellpadding="0" class="main">
   <tr>
     <td align="left" valign="top" bgcolor="#FFFFFF" style="background:#FFF;">
       &nbsp;
@@ -106,7 +108,7 @@ table[class=social]{ text-align:right;}
 </table>
 
 <!--  Banner Part Start-->
-<table width="600" border="0" cellspacing="0" cellpadding="0" class="main">
+<table border="0" cellspacing="0" cellpadding="0" class="main">
 
   <tr>
     <td align="left" valign="top">
@@ -163,7 +165,7 @@ table[class=social]{ text-align:right;}
         <td align="left" valign="top">
 
         <!--  Footer Part Start-->
-        <table width="600" border="0" cellspacing="0" cellpadding="0" class="main">
+        <table border="0" cellspacing="0" cellpadding="0" class="main">
 
           <tr>
             <td align="left" valign="top" bgcolor="#ffffff" style="background:#ffffff; text-align:center; font:normal 12px Arial, Helvetica, sans-serif; color:#3b3b3b; line-height:18px; padding:34px 60px 34px 60px;">You have received this email because you have subscribed to us admin@sobg.com. <br />

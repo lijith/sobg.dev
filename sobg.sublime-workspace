@@ -4,6 +4,14 @@
 		"selected_items":
 		[
 			[
+				"e",
+				"email"
+			],
+			[
+				"a",
+				"all"
+			],
+			[
 				"padding",
 				"padding-right: 〔property〕"
 			],
@@ -440,10 +448,6 @@
 				"split_30"
 			],
 			[
-				"a",
-				"a	Tag"
-			],
-			[
 				"cle",
 				"clearfix"
 			],
@@ -510,10 +514,6 @@
 			[
 				"cl",
 				"clear"
-			],
-			[
-				"po",
-				"position"
 			]
 		]
 	},
@@ -523,7 +523,7 @@
 			"file": "app/Http/routes.php",
 			"settings":
 			{
-				"buffer_size": 25824,
+				"buffer_size": 26180,
 				"line_ending": "Unix"
 			}
 		}
@@ -593,17 +593,56 @@
 		"/I/websites/sitesobg.dev/app",
 		"/I/websites/sitesobg.dev/app/Http",
 		"/I/websites/sitesobg.dev/app/Http/Controllers",
+		"/I/websites/sitesobg.dev/app/Http/Controllers/Member",
+		"/I/websites/sitesobg.dev/config",
 		"/I/websites/sitesobg.dev/resources",
 		"/I/websites/sitesobg.dev/resources/views",
-		"/I/websites/sitesobg.dev/resources/views/yatras"
+		"/I/websites/sitesobg.dev/resources/views/Admin",
+		"/I/websites/sitesobg.dev/resources/views/Admin/users",
+		"/I/websites/sitesobg.dev/resources/views/Member"
 	],
 	"file_history":
 	[
+		"/I/websites/sitesobg.dev/config/queue.php",
+		"/I/websites/sitesobg.dev/resources/views/Member/info.blade.php",
+		"/I/websites/sitesobg.dev/app/Http/Controllers/Member/RegistrationController.php",
+		"/I/websites/sitesobg.dev/app/Http/Controllers/Member/SessionController.php",
+		"/I/websites/sitesobg.dev/config/sentinel.php",
+		"/I/websites/sitesobg.dev/resources/views/emails/base-layout.blade.php",
+		"/C/Users/creatix/AppData/Local/Temp/fz3temp-2/reset.blade.php",
+		"/I/websites/sitesobg.dev/resources/views/sentinel/emails/reset.blade.php",
+		"/I/websites/sitesobg.dev/resources/views/Member/reset.blade.php",
+		"/I/websites/sitesobg.dev/vendor/rydurham/sentinel/src/Sentinel/Repositories/User/SentryUserRepository.php",
+		"/C/Users/creatix/AppData/Local/Temp/fz3temp-2/RegistrationController.php",
+		"/I/websites/sitesobg.dev/resources/views/sentinel/emails/welcome.blade.php",
+		"/I/websites/sitesobg.dev/config/mail.php",
+		"/I/websites/sitesobg.dev/resources/views/Member/login.blade.php",
+		"/C/Users/creatix/AppData/Local/Temp/fz3temp-2/HomeController.php",
+		"/C/Users/creatix/AppData/Local/Temp/fz3temp-2/SentryUserRepository.php",
+		"/I/websites/sitesobg.dev/vendor/rydurham/sentinel/src/Sentinel/Handlers/UserEventHandler.php",
+		"/C/Users/creatix/AppData/Local/Temp/fz3temp-2/.env",
+		"/C/Users/creatix/AppData/Local/Temp/fz3temp-2/UserEventHandler.php",
+		"/C/Users/creatix/AppData/Local/Temp/fz3temp-2/mail.php",
+		"/I/websites/sitesobg.dev/vendor/rydurham/sentinel/tests/unit/SentryUserRepositoryTests.php",
+		"/C/Users/creatix/AppData/Local/Temp/fz3temp-1/mail.php",
+		"/I/websites/sitesobg.dev/vendor/rydurham/sentinel/src/Sentinel/Traits/SentinelRedirectionTrait.php",
+		"/I/websites/sitesobg.dev/app/Http/Controllers/Admin/RegistrationController.php",
+		"/C/Users/creatix/AppData/Local/Temp/fz3temp-1/SessionController.php",
+		"/I/websites/sitesobg.dev/vendor/rydurham/sentinel/src/Sentinel/SentinelServiceProvider.php",
+		"/I/websites/sitesobg.dev/vendor/cartalyst/sentry/src/Cartalyst/Sentry/SentryServiceProvider.php",
+		"/I/websites/sitesobg.dev/vendor/cartalyst/sentry/src/Cartalyst/Sentry/Facades/Laravel/Sentry.php",
+		"/I/websites/sitesobg.dev/app/Http/Controllers/Member/ProfileController.php",
+		"/I/websites/sitesobg.dev/resources/views/eshop-video-disks-list.blade.php",
+		"/I/websites/sitesobg.dev/app/Http/Controllers/ShoppingCartController.php",
+		"/I/websites/sitesobg.dev/resources/views/eshop-audio-disks-list.blade.php",
+		"/I/websites/sitesobg.dev/resources/views/eshop-books-list.blade.php",
+		"/I/websites/sitesobg.dev/resources/views/eshop-magazines-list.blade.php",
+		"/I/websites/sitesobg.dev/vendor/laravel/framework/src/Illuminate/Console/ConfirmableTrait.php",
+		"/I/websites/sitesobg.dev/app/Http/Controllers/EshopController.php",
 		"/I/websites/sitesobg.dev/resources/views/yatras/yatra-registration.blade.php",
 		"/I/websites/sitesobg.dev/app/Http/Controllers/ContactUsController.php",
 		"/I/websites/sitesobg.dev/resources/views/emails/contact-us.blade.php",
 		"/I/websites/sitesobg.dev/.env",
-		"/I/websites/sitesobg.dev/app/Http/Controllers/ShoppingCartController.php",
 		"/I/websites/sitesobg.dev/app/Http/Controllers/GuruController.php",
 		"/I/websites/sitesobg.dev/resources/views/guru/article-interviews.blade.php",
 		"/I/websites/sitesobg.dev/resources/views/guru/side-nav-guru.blade.php",
@@ -662,7 +701,6 @@
 		"/I/websites/sitesobg.dev/resources/views/includes/dlmenu.blade.php",
 		"/I/websites/sitesobg.dev/resources/views/includes/mainmenu.blade.php",
 		"/I/websites/sitesobg.dev/app/Http/Controllers/GalleryController.php",
-		"/I/websites/sitesobg.dev/app/Http/Controllers/EshopController.php",
 		"/I/websites/sitesobg.dev/app/Http/Controllers/CoursesAndRetreatsController.php",
 		"/I/websites/sitesobg.dev/app/Http/Controllers/AboutSobgController.php",
 		"/I/websites/sitesobg.dev/resources/views/layout.blade.php",
@@ -692,41 +730,7 @@
 		"/I/websites/sitesobg.dev/composer.json",
 		"/I/websites/sitesobg.dev/GCSE/Gcse.php",
 		"/I/websites/sitesobg.dev/app/Http/Controllers/SearchController.php",
-		"/I/websites/sobg/sobg.dev/config/database.php",
-		"/I/websites/sobg/sobg.dev/config/app.php",
-		"/C/Users/creatix/AppData/Local/Temp/fz3temp-1/template.php",
-		"/C/Users/creatix/AppData/Local/Temp/fz3temp-1/header.php",
-		"/I/websites/sitesobg.dev/GSCE/Gcse.php",
-		"/I/websites/sitesobg.dev/resources/views/emails/yatra-register.blade.php",
-		"/I/websites/sitesobg.dev/app/Http/Controllers/Admin/ShippingController.php",
-		"/I/websites/sitesobg.dev/resources/views/Admin/shipping/show.blade.php",
-		"/I/websites/sitesobg.dev/resources/views/Admin/shipping/orders-list.blade.php",
-		"/I/websites/sitesobg.dev/app/MagazineSubscriber.php",
-		"/I/websites/sitesobg.dev/app/Http/Controllers/Member/ProfileController.php",
-		"/I/websites/sitesobg.dev/resources/views/Admin/users/edit-profile.blade.php",
-		"/I/websites/sitesobg.dev/vendor/rydurham/sentinel/src/Sentinel/Repositories/User/SentryUserRepository.php",
-		"/I/websites/sitesobg.dev/vendor/rydurham/sentinel/src/Sentinel/FormRequests/UserCreateRequest.php",
-		"/I/websites/sitesobg.dev/vendor/rydurham/sentinel/src/Sentinel/Repositories/User/SentinelUserRepositoryInterface.php",
-		"/I/websites/sitesobg.dev/app/Shipping.php",
-		"/I/websites/sitesobg.dev/resources/views/emails/customer-shipment.blade.php",
-		"/I/websites/sitesobg.dev/resources/views/emails/cutomers-orders.blade.php",
-		"/I/websites/sitesobg.dev/resources/views/emails/admins-shipment.blade.php",
-		"/I/websites/sitesobg.dev/resources/views/Admin/users/all-users.blade.php",
-		"/C/Users/creatix/AppData/Roaming/Sublime Text 3/Packages/User/phpfmt.sublime-settings",
-		"/C/Users/creatix/AppData/Roaming/Sublime Text 3/Packages/phpfmt/phpfmt.sublime-settings",
-		"/I/websites/sitesobg.dev/app/SubscriptionRates.php",
-		"/I/websites/sitesobg.dev/app/AudioDisk.php",
-		"/I/websites/sitesobg.dev/resources/views/emails/new-event.blade.php",
-		"/I/websites/sitesobg.dev/app/Http/Controllers/Admin/EventController.php",
-		"/I/websites/sitesobg.dev/resources/views/emails/base-layout.blade.php",
-		"/I/websites/sitesobg.dev/app/Http/Controllers/Admin/AlbumController.php",
-		"/I/websites/sitesobg.dev/resources/views/emails/admins-orders.blade.php",
-		"/I/websites/sitesobg.dev/resources/views/emails/new-magazine-digital.blade.php",
-		"/I/websites/sitesobg.dev/resources/views/emails/new-magazine.blade.php",
-		"/I/websites/sitesobg.dev/app/Magazine.php",
-		"/I/websites/sitesobg.dev/database/migrations/2015_06_20_080527_DropMagazinesTable1.php",
-		"/I/websites/sitesobg.dev/database/migrations/2015_06_20_080621_CreateMagazinesTable1.php",
-		"/I/websites/sitesobg.dev/app/Photo.php"
+		"/I/websites/sobg/sobg.dev/config/database.php"
 	],
 	"find":
 	{
@@ -737,6 +741,8 @@
 		"height": 90.0,
 		"where_history":
 		[
+			"I:\\websites\\sitesobg.dev\\app\\Http\\Controllers\\Admin",
+			"I:\\websites\\sitesobg.dev\\app\\Http\\Controllers\\Member",
 			"I:\\websites\\sitesobg.dev\\resources\\views\\Admin\\videodisks",
 			"I:\\websites\\sitesobg.dev\\public",
 			"I:\\websites\\sitesobg.dev\\public\\packages",
@@ -753,6 +759,12 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"'member_registration_activated",
+			"users_invalid",
+			"height",
+			"Admin",
+			"'member",
+			"pagination",
 			"article",
 			"Event",
 			"ArchiveController",
@@ -874,13 +886,7 @@
 			".btn",
 			"font-fami",
 			"<h3>",
-			"sm-9",
-			"sm-3",
-			"col-sm-9",
-			"col-sm-3",
-			"sheet",
-			"side-nav",
-			".ashram-pic"
+			"sm-9"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -888,6 +894,8 @@
 		"regex": false,
 		"replace_history":
 		[
+			"Member",
+			"'Member",
 			"archive",
 			"Disk",
 			"ArticleController",
@@ -994,15 +1002,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 25824,
+						"buffer_size": 26180,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								3977,
-								3977
+								8954,
+								8959
 							]
 						],
 						"settings":
@@ -1011,68 +1019,68 @@
 							"auto_complete": false,
 							"bh_regions":
 							[
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
 								"bh_angle",
 								"bh_angle_center",
 								"bh_angle_open",
 								"bh_angle_close",
 								"bh_angle_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
 								"bh_curly",
 								"bh_curly_center",
 								"bh_curly_open",
 								"bh_curly_close",
 								"bh_curly_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
 								"bh_double_quote",
 								"bh_double_quote_center",
 								"bh_double_quote_open",
 								"bh_double_quote_close",
 								"bh_double_quote_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content"
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content"
 							],
 							"syntax": "Packages/PHP/PHP.tmLanguage",
 							"tab_size": 2,
 							"translate_tabs_to_spaces": false
 						},
-						"translation.x": 0.0,
-						"translation.y": 972.0,
+						"translation.x": 206.0,
+						"translation.y": 2997.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -1129,6 +1137,46 @@
 		"last_filter": "",
 		"selected_items":
 		[
+			[
+				"userrepos",
+				"vendor\\rydurham\\sentinel\\src\\Sentinel\\Repositories\\User\\SentryUserRepository.php"
+			],
+			[
+				"userr",
+				"vendor\\rydurham\\sentinel\\src\\Sentinel\\Repositories\\User\\SentryUserRepository.php"
+			],
+			[
+				"sentinelredirectiontrait",
+				"vendor\\rydurham\\sentinel\\src\\Sentinel\\Traits\\SentinelRedirectionTrait.php"
+			],
+			[
+				"usereventhandler",
+				"vendor\\rydurham\\sentinel\\src\\Sentinel\\Handlers\\UserEventHandler.php"
+			],
+			[
+				"sentinelserviceprovider",
+				"vendor\\rydurham\\sentinel\\src\\Sentinel\\SentinelServiceProvider.php"
+			],
+			[
+				"sentry",
+				"vendor\\cartalyst\\sentry\\src\\Cartalyst\\Sentry\\SentryServiceProvider.php"
+			],
+			[
+				"userrep",
+				"vendor\\rydurham\\sentinel\\src\\Sentinel\\Repositories\\User\\SentryUserRepository.php"
+			],
+			[
+				"emailconfirm",
+				"vendor\\laravel\\framework\\src\\Illuminate\\Console\\ConfirmableTrait.php"
+			],
+			[
+				"userrepository",
+				"vendor\\rydurham\\sentinel\\src\\Sentinel\\Repositories\\User\\SentryUserRepository.php"
+			],
+			[
+				"-list",
+				"resources\\views\\eshop-video-disks-list.blade.php"
+			],
 			[
 				".env",
 				".env"
@@ -1194,10 +1242,6 @@
 				"vendor\\rydurham\\sentinel\\src\\Sentinel\\DataTransferObjects\\BaseResponse.php"
 			],
 			[
-				"userrepos",
-				"vendor\\rydurham\\sentinel\\src\\Sentinel\\Repositories\\User\\SentryUserRepository.php"
-			],
-			[
 				"home",
 				"app\\Http\\Controllers\\HomeController.php"
 			],
@@ -1236,10 +1280,6 @@
 			[
 				"layout",
 				"resources\\views\\Admin\\layout.blade.php"
-			],
-			[
-				"sentinelredirectiontrait",
-				"vendor\\rydurham\\sentinel\\src\\Sentinel\\Traits\\SentinelRedirectionTrait.php"
 			],
 			[
 				"profileup",
@@ -1412,10 +1452,6 @@
 			[
 				"shopping",
 				"resources\\views\\shoppingcart.blade.php"
-			],
-			[
-				"userrep",
-				"vendor\\rydurham\\sentinel\\src\\Sentinel\\Repositories\\User\\SentryUserRepository.php"
 			],
 			[
 				"user.php",

@@ -231,7 +231,7 @@
 
 								<li><i class="fa fa-circle"></i> <a href="{{ route('swami') }}">Swami Sandeepananda Giri</a></li>
 								<li><i class="fa fa-circle"></i> <a href="{{ route('eshop') }}">Our Publications</a></li>
-								<li><i class="fa fa-circle"></i> <a href="{{ route('yatras') }}">Yatras - Spiritual Journeys</a></li>
+								<li><i class="fa fa-circle"></i> <a href="{{ route('school.yatras') }}">Yatras - Spiritual Journeys</a></li>
 								<li><i class="fa fa-circle"></i> <a href="{{ route('courses') }}">Courses and Retreats</a></li>
 								<li><i class="fa fa-circle"></i> <a href="{{ route('donate') }}">Donate - Support Us</a></li>
 								<li><i class="fa fa-circle"></i> <a href="{{ route('photo.albums') }}">Picture Gallery</a></li>

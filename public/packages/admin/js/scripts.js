@@ -357,5 +357,8 @@
     if ($('#ckeditor2').length > 0) {
         CKEDITOR.replace('ckeditor2', config);
     }
+    if ($('#ckeditor3').length > 0) {
+        CKEDITOR.replace('ckeditor3', config);
+    }
 
 })(jQuery);

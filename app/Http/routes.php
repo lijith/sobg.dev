@@ -80,25 +80,12 @@ Route::group(['prefix' => 'events'], function () {
 |
  */
 Route::group(['prefix' => 'spiritual-journeys'], function () {
-	Route::get('/', ['as' => 'yatras', 'uses' => 'YatrasController@index']);
-	Route::group(['prefix' => 'kailas-yatra'], function () {
-		Route::get('/', ['as' => 'kailasyatra', 'uses' => 'YatrasController@kailasHighlights']);
-		Route::get('highlights', ['as' => 'kailasHighlights', 'uses' => 'YatrasController@kailasHighlights']);
-		Route::get('itinerary-and-cost', ['as' => 'kailasDetails', 'uses' => 'YatrasController@kailasDetails']);
-		Route::get('tips-for-yatris', ['as' => 'kailastips', 'uses' => 'YatrasController@kailasTips']);
-	});
-	Route::group(['prefix' => 'himalaya-yatra'], function () {
-		Route::get('/', ['as' => 'himalayayatra', 'uses' => 'YatrasController@himalayaHighlights']);
-		Route::get('highlights', ['as' => 'himalayaHighlights', 'uses' => 'YatrasController@himalayaHighlights']);
-		Route::get('itinerary-and-cost', ['as' => 'himalayaDetails', 'uses' => 'YatrasController@himalayaDetails']);
-	});
-	Route::group(['prefix' => 'amarnath-yatra'], function () {
-		Route::get('/', ['as' => 'amarnathyatra', 'uses' => 'YatrasController@amarnathHighlights']);
-		Route::get('highlights', ['as' => 'amarnathHighlights', 'uses' => 'YatrasController@amarnathHighlights']);
-		Route::get('itinerary-and-cost', ['as' => 'amarnathDetails', 'uses' => 'YatrasController@amarnathDetails']);
-	});
-	Route::get('registration/{yatra}', ['as' => 'Registration', 'uses' => 'YatrasController@Registration']);
-	Route::post('registration/', ['as' => 'Registration.store', 'uses' => 'YatrasController@RegistrationStore']);
+	Route::get('{slug}', ['as' => 'school.yatras', 'uses' => 'YatrasController@index']);
+	Route::get('{slug}/highlights', ['as' => 'school.yatras.highlights', 'uses' => 'YatrasController@highlights']);
+	Route::get('{slug}/itinerary-and-cost', ['as' => 'school.yatras.itinerary', 'uses' => 'YatrasController@itinerary']);
+	Route::get('{slug}/tips-for-yatris', ['as' => 'school.yatras.tips', 'uses' => 'YatrasController@tips']);
+	Route::get('{slug}/registration', ['as' => 'school.yatras.registration', 'uses' => 'YatrasController@registration']);
+	Route::post('{slug}/registration', ['as' => 'school.yatras.registration.store', 'uses' => 'YatrasController@RegistrationStore']);
 
 	Route::get('other-yathras', ['as' => 'otherYatras', 'uses' => 'YatrasController@otherYatras']);
 	Route::get('yathris-speak', ['as' => 'testimonials', 'uses' => 'YatrasController@testimonials']);
@@ -189,6 +176,9 @@ Route::group(['prefix' => 'member', 'namespace' => 'Member'], function () {
 	Route::get('forgot', ['as' => 'member.forgot.form', 'uses' => 'RegistrationController@forgotPasswordForm']);
 	Route::post('forgot', ['as' => 'member.reset.request', 'uses' => 'RegistrationController@sendResetPasswordEmail']);
 	Route::post('reset/{hash}/{code}', ['as' => 'member.reset.password', 'uses' => 'RegistrationController@resetPassword']);
+	Route::get('reset/{hash}/{code}', ['as' => 'member.reset.form', 'uses' => 'RegistrationController@passwordResetForm']);
+	Route::post('reset/{hash}/{code}', ['as' => 'member.reset.password', 'uses' => 'RegistrationController@resetPassword']);
+	Route::get('forgot/continue', ['as' => 'member.reset.info', 'uses' => 'RegistrationController@resetContinue']);
 
 	// Sentinel Profile
 	Route::get('profile', ['as' => 'member.profile.show', 'uses' => 'ProfileController@show']);

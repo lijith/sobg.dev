@@ -1,5 +1,6 @@
 <?php namespace App\Http\Controllers;
 
+use App\Yatra;
 use Cart;
 use Session;
 
@@ -35,12 +36,23 @@ class SiteController extends Controller {
 
 		$cart_content = Cart::content();
 
+		//get the yatras
+		$yatras = Yatra::select('slug', 'name')
+			->get();
+
 		//dd($cart_content);
 
 		$this->page_data['side_cart'] = $cart_content;
 		$this->page_data['side_cart_total'] = Cart::total();
 		$this->page_data['grand_cart_total'] = Cart::total() + Session::get('shipping_charge');
 		$this->page_data['cart_count'] = $this->cartCount();
+		$this->page_data['school_yatras'] = $yatras;
+
+		// foreach ($yatras as $k) {
+		// 	echo $k->name . '<br/>';
+		// }
+
+		//dd($yatras);
 
 		if ($this->cartCount() == 1) {
 

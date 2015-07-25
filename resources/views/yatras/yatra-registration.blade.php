@@ -47,7 +47,7 @@
 						@endif
 						<!-- Notification	-->
 
-		        <form class="form-horizontal" method="POST" action="{{ route('Registration.store') }}">
+		        <form class="form-horizontal" method="POST" action="{{ route('school.yatras.registration.store') }}">
 		        	<input name="_token" value="{{ csrf_token() }}" type="hidden">
 		        	<input type="hidden" name="title" value="{{ $title }}" />
 		        	<input type="hidden" name="slug" value="{{ $slug }}" />

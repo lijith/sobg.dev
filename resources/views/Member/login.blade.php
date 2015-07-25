@@ -4,7 +4,7 @@
 
 <div class="split_50"></div><!-- /.split_30 -->
 
-            
+
 <div class="container">
 		<div class="row">
 			<div class="col-md-6 col-md-offset-3">
@@ -14,7 +14,7 @@
 							<div class="col-xs-6">
 								<a href="#" class="active" id="login-form-link">Member Login</a>
 							</div>
-							
+
 						</div>
 						<hr>
 					</div>
@@ -56,7 +56,7 @@
 										<div class="row">
 											<div class="col-lg-12">
 												<div class="text-center">
-													<a href="" class="forgot-password">Forgot Password?</a><br />
+													<a href="{{ route('member.forgot.form') }}" class="forgot-password">Forgot Password?</a><br />
 													<a href="{{ route('member.register.user') }}" class="forgot-password">Register</a>
 												</div>
 											</div>
@@ -64,7 +64,7 @@
 									</div>
 
 								</form>
-								
+
 							</div>
 						</div>
 					</div>
@@ -73,5 +73,5 @@
 		</div>
 	</div>
 
-	  
+
 @stop
