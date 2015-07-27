@@ -25,12 +25,6 @@
             </div>
 
           </div><!-- /.admin-yatra-show -->
-          <hr />
-
-          <p>
-            <a href="{{ route('yatra.show',array('itenarary',$yatra->id)) }}">Iternarary &amp; Cost</a> |
-            <a href="{{ route('yatra.edit',array('highlight',$yatra->id)) }}">Edit Highlight</a>
-          </p>
 
         @elseif($part == 'itenarary')
 
@@ -42,14 +36,28 @@
 
           </div><!-- /.admin-yatra-show -->
 
+        @elseif($part == 'tips')
+
+          <div class="admin-yatra-show">
+
+            <div class="clearfix">
+              {!! $yatra->tips !!}
+            </div>
+
+          </div><!-- /.admin-yatra-show -->
+
+        @endif
           <hr />
 
           <p>
-            <a href="{{ route('yatra.show',array('highlight',$yatra->id)) }}">Highlight</a> |
-            <a href="{{ route('yatra.edit',array('itenarary',$yatra->id)) }}">Edit Iternarary</a>
+
+            <a href="{{ route('yatra.edit',array('itenarary',$yatra->id)) }}">Edit Highlight
+            </a> |
+            <a href="{{ route('yatra.edit',array('itenarary',$yatra->id)) }}">Edit Itinerary
+            </a> |
+            <a href="{{ route('yatra.edit',array('tips',$yatra->id)) }}">Edit Tips
           </p>
 
-        @endif
       </div>
     </section>
 	</div>

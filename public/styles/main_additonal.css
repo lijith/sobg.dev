@@ -344,3 +344,11 @@ span.orange-text{
   float:right;
   padding: 0 0 10px 10px;
 }
+.page-heading{
+  border-bottom: 2px solid #c9532d;
+  color: #c9532d;
+  font-family: "Bree Serif",serif;
+  font-size: 125%;
+  font-weight: 500;
+  padding-bottom: 5px;
+}

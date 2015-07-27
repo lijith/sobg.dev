@@ -72,7 +72,7 @@
 			<ul>
 				@foreach ($school_yatras as $yatra)
 				<li>
-					<a href="{{route('school.yatras',array($yatra->slug))}}">{{ ucwords($yatra->name) }}</a>
+					<a href="{{route('school.yatras.intro',array($yatra->slug))}}">{{ ucwords($yatra->name) }}</a>
 					<ul>
 						<li><a href="{{route('school.yatras.highlights',array($yatra->slug))}}">Highlights</a></li>
 						<li><a href="{{route('school.yatras.itinerary',array($yatra->slug))}}">Itinerary &amp; Costs</a></li>

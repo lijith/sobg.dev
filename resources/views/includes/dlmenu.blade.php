@@ -63,22 +63,18 @@
 	<li>
 		<a href="#">Spiritual Journeys (Yatras)</a>
 		<ul class="dl-submenu">
-			<li>
-				<a href="">Kailas Yatra</a>
-				<ul class="dl-submenu">
-					<li><a href="">Highlights</a></li>
-				</ul><!-- /.dl-submenu -->
-			</li>
-			<li>
-				<a href="">Himalaya (Chardham) Yatra</a>
-				<ul class="dl-submenu">
-				</ul><!-- /.dl-submenu -->
-			</li>
-			<li>
-				<a href="">Amarnath Yatra</a>
-				<ul class="dl-submenu">
-				</ul><!-- /.dl-submenu -->
-			</li>
+			@foreach ($school_yatras as $yatra)
+				<li>
+					<a href="{{route('school.yatras.intro',array($yatra->slug))}}">{{ ucwords($yatra->name) }}</a>
+					<ul class="dl-submenu">
+						<li><a href="{{route('school.yatras.highlights',array($yatra->slug))}}">Highlights</a></li>
+						<li><a href="{{route('school.yatras.itinerary',array($yatra->slug))}}">Itinerary &amp; Costs</a></li>
+						<li><a href="{{route('school.yatras.registration',array($yatra->slug))}}">Registration</a></li>
+							<li><a href="{{route('school.yatras.tips',array($yatra->slug))}}">Tips for yatris</a></li>
+						</ul><!-- /.dl-submenu -->
+				</li>
+
+				@endforeach
 			<li><a href="{{route('otherYatras')}}">Other yatras</a></li>
 			<li><a href="{{route('testimonials')}}">Yatris’ Speak</a></li>
 		</ul><!-- /.dl-submenu -->

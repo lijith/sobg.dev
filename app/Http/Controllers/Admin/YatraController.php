@@ -127,6 +127,8 @@ class YatraController extends Controller {
 			$yatra->highlights = Input::get('highlights');
 		} elseif ($part == 'itenarary') {
 			$yatra->itenary_cost = Input::get('itenary');
+		} elseif ($part == 'tips') {
+			$yatra->itenary_cost = Input::get('tips');
 		}
 
 		$yatra->save();

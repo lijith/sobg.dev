@@ -262,7 +262,7 @@ class MagazineController extends Controller {
 			$file = Input::file('magazine-file');
 			$file_ext = $file->getClientOriginalExtension();
 
-			$save_file_name = $slug . '.' . $file_ext;
+			$save_file_name = $this->hashids->connection('magazine_name')->encode($id) . '.' . $file_ext;
 
 			$validator = Validator::make(
 				array('file' => $file),

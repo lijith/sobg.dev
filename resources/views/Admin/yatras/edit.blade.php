@@ -43,6 +43,17 @@
                     {{ ($errors->has('itenary') ? $errors->first('itenary') : '') }}
                 </div>
 
+
+            @elseif($part == 'tips')
+
+                <hr />
+
+                <div class="form-group {{ ($errors->has('tips')) ? 'has-error' : '' }}">
+                    <label>Tips</label>
+                    <textarea rows="6" class="form-control ckeditor1" name="tips"  id="ckeditor2">{{ Input::old('tips') ? Input::old('tips') : $yatra->tips }}</textarea>
+                    {{ ($errors->has('tips') ? $errors->first('tips') : '') }}
+                </div>
+
             @endif
 
 

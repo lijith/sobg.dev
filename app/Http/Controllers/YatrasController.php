@@ -53,7 +53,7 @@ class YatrasController extends SiteController {
 
 		$yatra = Yatra::where('slug', '=', $slug)->first();
 
-		$this->page_data['title'] = ucwords($yatra->name);
+		$this->page_data['title'] = ucwords('Highlights of ' . $yatra->name);
 		$this->page_data['description'] = $yatra->excerpt;
 		$this->page_data['keywords'] = $yatra->keywords . ', ' . $this->common_keywords;
 		$this->page_data['page'] = $yatra->highlights;
@@ -72,28 +72,33 @@ class YatrasController extends SiteController {
 
 		$yatra = Yatra::where('slug', '=', $slug)->first();
 
-		$this->page_data['title'] = ucwords($yatra->name);
+		$this->page_data['title'] = ucwords('Itinerary &amp; Costs for ' . $yatra->name);
 		$this->page_data['description'] = $yatra->excerpt;
 		$this->page_data['keywords'] = $yatra->keywords . ', ' . $this->common_keywords;
 		$this->page_data['page'] = $yatra->itenary_cost;
 		$this->page_data['sub_page_active'] = '';
 		$this->page_data['top_level_page'] = 'yatras';
-		$this->page_data['toggle_active'] = '';
+		$this->page_data['toggle_active'] = $slug;
 		return view('yatras.yatra-page')->with($this->page_data);
 	}
 
 	/**
-	 * testimonials.
+	 * tips for yatris.
 	 *
 	 * @return view
 	 */
-	public function testimonials() {
-		$this->page_data['title'] = 'Yatri\'s Speak';
-		$this->page_data['description'] = '';
-		$this->page_data['sub_page_active'] = 'testimonial';
-		$this->page_data['top_level_page'] = 'yatras';
-		//return view('yatras.home')->with($this->page_data);
+	public function tips($slug) {
 
+		$yatra = Yatra::where('slug', '=', $slug)->first();
+
+		$this->page_data['title'] = ucwords('Instructions And Tips For ' . $yatra->name);
+		$this->page_data['description'] = $yatra->excerpt;
+		$this->page_data['keywords'] = $yatra->keywords . ', ' . $this->common_keywords;
+		$this->page_data['page'] = $yatra->tips;
+		$this->page_data['sub_page_active'] = '';
+		$this->page_data['top_level_page'] = 'yatras';
+		$this->page_data['toggle_active'] = $slug;
+		return view('yatras.yatra-page')->with($this->page_data);
 	}
 
 	/**
@@ -116,7 +121,7 @@ class YatrasController extends SiteController {
 		$this->page_data['description'] = $yatra->name . ' registration';
 		$this->page_data['sub_page_active'] = 'registration';
 		$this->page_data['top_level_page'] = 'yatras';
-		$this->page_data['toggle_active'] = '';
+		$this->page_data['toggle_active'] = $slug;
 
 		return view('yatras.yatra-registration')->with($this->page_data);
 
@@ -173,6 +178,19 @@ class YatrasController extends SiteController {
 		));
 
 		return redirect()->route('Registration', array(Input::get('slug')))->with('success', 'Your Application is send');
+
+	}
+	/**
+	 * testimonials.
+	 *
+	 * @return view
+	 */
+	public function testimonials() {
+		$this->page_data['title'] = 'Yatri\'s Speak';
+		$this->page_data['description'] = '';
+		$this->page_data['sub_page_active'] = 'testimonial';
+		$this->page_data['top_level_page'] = 'yatras';
+		//return view('yatras.home')->with($this->page_data);
 
 	}
 

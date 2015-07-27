@@ -39,7 +39,7 @@
 			<div class="col-text">
 				<p>Yatras to most popular of pilgrimages in India organized under the guidance of Swami Sandeepananda Giri</p>
 				<div class="read-more">
-					<a href="{{route('yatras')}}">read more &raquo;</a>
+					<a href="{{route('school.yatras')}}">read more &raquo;</a>
 				</div><!-- /.read-more -->
 			</div><!-- /.col-text -->
 		</div><!-- /.shadow -->
@@ -58,7 +58,7 @@
 							<div class="item-image vcenter">
 								<a href="{{route('eshop.audios')}}">
 									<img src="{{URL::asset('images/audio-cd.jpg')}}" alt="" />
-								</a>	
+								</a>
 							</div><!-- /.item-image -->
 							<div class="item-label">
 								<a href="{{route('eshop.audios')}}">Audio CDs/MP3s</a>
@@ -82,7 +82,7 @@
 							<div class="item-image vcenter">
 								<a href="{{route('books')}}">
 									<img src="{{URL::asset('images/books.jpg')}}" alt="" />
-								</a>	
+								</a>
 							</div><!-- /.item-image -->
 							<div class="item-label">
 								<a href="{{route('books')}}">Books</a>
@@ -94,7 +94,7 @@
 							<div class="item-image vcenter">
 								<a href="{{route('piravi')}}">
 									<img src="{{URL::asset('images/piravi.jpg')}}" alt="" />
-								</a>	
+								</a>
 							</div><!-- /.item-image -->
 							<div class="item-label">
 								<a href="{{route('piravi')}}">Magazines</a>
@@ -129,9 +129,9 @@
 					<!-- Wrapper for slides -->
 					<div class="carousel-inner" role="listbox">
 					@foreach($events as $event)
-						<?php $start_date = \Carbon\Carbon::createFromFormat('Y-m-d H:i:s',$event->start_date);?>
-						<?php $end_date = \Carbon\Carbon::createFromFormat('Y-m-d H:i:s',$event->end_date);?>
-						
+						<?php $start_date = \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $event->start_date);?>
+						<?php $end_date = \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $event->end_date);?>
+
 
 						<div class="item {{ ($count == 0) ? 'active' : '' }}">
 							<div class="event">
@@ -169,7 +169,7 @@
 						</div><!-- /.item -->
 						<?php $count++;?>
 					@endforeach
-						
+
 					</div><!-- /.carousel-inner -->
 
 					<!-- Controls -->

@@ -25,6 +25,7 @@
 	              <th>Title</th>
 	              <th>Highlight</th>
 	              <th>Itenarary & Cost</th>
+                <th>Tips</th>
                 <th>&nbsp;</th>
 	          </thead>
             <tbody>
@@ -34,12 +35,16 @@
                     {{$yatra->name}}
                   </td>
                   <td>
-                    <a href="{{ route('yatra.show',array('highlight',$yatra->id)) }}">Show</a> | 
+                    <a href="{{ route('yatra.show',array('highlight',$yatra->id)) }}">Show</a> |
                     <a href="{{ route('yatra.edit',array('highlight',$yatra->id)) }}">Edit</a>
                   </td>
                   <td>
-                    <a href="{{ route('yatra.show',array('itenarary',$yatra->id)) }}">Show</a> | 
+                    <a href="{{ route('yatra.show',array('itenarary',$yatra->id)) }}">Show</a> |
                     <a href="{{ route('yatra.edit',array('itenarary',$yatra->id)) }}">Edit</a>
+                  </td>
+                  <td>
+                    <a href="{{ route('yatra.show',array('tips',$yatra->id)) }}">Show</a> |
+                    <a href="{{ route('yatra.edit',array('tips',$yatra->id)) }}">Edit</a>
                   </td>
 
                   <td>
@@ -59,7 +64,7 @@
     </section>
   </div>
 
-</div> 
+</div>
 
 
 @stop

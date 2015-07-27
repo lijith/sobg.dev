@@ -80,12 +80,13 @@ Route::group(['prefix' => 'events'], function () {
 |
  */
 Route::group(['prefix' => 'spiritual-journeys'], function () {
-	Route::get('{slug}', ['as' => 'school.yatras', 'uses' => 'YatrasController@index']);
-	Route::get('{slug}/highlights', ['as' => 'school.yatras.highlights', 'uses' => 'YatrasController@highlights']);
-	Route::get('{slug}/itinerary-and-cost', ['as' => 'school.yatras.itinerary', 'uses' => 'YatrasController@itinerary']);
-	Route::get('{slug}/tips-for-yatris', ['as' => 'school.yatras.tips', 'uses' => 'YatrasController@tips']);
-	Route::get('{slug}/registration', ['as' => 'school.yatras.registration', 'uses' => 'YatrasController@registration']);
-	Route::post('{slug}/registration', ['as' => 'school.yatras.registration.store', 'uses' => 'YatrasController@RegistrationStore']);
+	Route::get('/', ['as' => 'school.yatras', 'uses' => 'YatrasController@index']);
+	Route::get('/{slug}', ['as' => 'school.yatras.intro', 'uses' => 'YatrasController@highlights']);
+	Route::get('/{slug}/highlights', ['as' => 'school.yatras.highlights', 'uses' => 'YatrasController@highlights']);
+	Route::get('/{slug}/itinerary-and-cost', ['as' => 'school.yatras.itinerary', 'uses' => 'YatrasController@itinerary']);
+	Route::get('/{slug}/tips-for-yatris', ['as' => 'school.yatras.tips', 'uses' => 'YatrasController@tips']);
+	Route::get('/{slug}/registration', ['as' => 'school.yatras.registration', 'uses' => 'YatrasController@registration']);
+	Route::post('/{slug}/registration', ['as' => 'school.yatras.registration.store', 'uses' => 'YatrasController@RegistrationStore']);
 
 	Route::get('other-yathras', ['as' => 'otherYatras', 'uses' => 'YatrasController@otherYatras']);
 	Route::get('yathris-speak', ['as' => 'testimonials', 'uses' => 'YatrasController@testimonials']);

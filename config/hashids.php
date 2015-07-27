@@ -75,6 +75,11 @@ return [
 			'length' => 8,
 			'alphabet' => 'abcdefghijklmnopqrstuvwxyz1234567890',
 		],
+		'magazine_name' => [
+			'salt' => 'q4tnPgOko7KOuwxHhSHQCtLr42ASTvaibNWG811Q3CUb8iNID1ZKVCHNPrjSgfIq',
+			'length' => 16,
+			'alphabet' => 'abcdefghijklmnopqrstuvwxyz1234567890',
+		],
 
 	],
 
