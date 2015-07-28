@@ -1,10 +1,11 @@
 <?php namespace App\Http\Controllers\Member;
 
-use App\Http\Controllers\Controller as BaseController;
+use App\Http\Controllers\SiteController;
 use App\Http\Requests\Member\ProfilePersonalUpdateRequest;
 use App\Magazine;
 use App\Profile;
 use App\User;
+use App\Yatra;
 use Carbon\Carbon;
 use Cart;
 use Input;
@@ -19,7 +20,7 @@ use Sentinel\Traits\SentinelViewfinderTrait;
 use Session;
 use Validator;
 
-class ProfileController extends BaseController {
+class ProfileController extends SiteController {
 
 	/**
 	 * Traits
@@ -55,11 +56,15 @@ class ProfileController extends BaseController {
 		}
 
 		$cart_content = Cart::content();
+		//get the yatras
+		$yatras = Yatra::select('slug', 'name')
+			->get();
 
 		$this->page_data['side_cart'] = $cart_content;
 		$this->page_data['side_cart_total'] = Cart::total();
 		$this->page_data['grand_cart_total'] = Cart::total() + Session::get('shipping_charge');
 		$this->page_data['cart_count'] = Cart::count();
+		$this->page_data['school_yatras'] = $yatras;
 
 		if ($this->page_data['cart_count'] == 1) {
 

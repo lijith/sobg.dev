@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\SiteController;
 use App\Profile;
+use App\Yatra;
 use Cart;
 use Config;
 use Input;
@@ -37,9 +38,14 @@ class RegistrationController extends SiteController {
 		$this->groupRepository = $groupRepository;
 		$this->hashids = $hashids;
 
+		//get the yatras
+		$yatras = Yatra::select('slug', 'name')
+			->get();
+
 		$this->page_data['side_cart'] = Cart::content();
 		$this->page_data['side_cart_total'] = Cart::total();
 		$this->page_data['cart_count'] = $this->cartCount();
+		$this->page_data['school_yatras'] = $yatras;
 
 		//Check CSRF token on POST
 		$this->beforeFilter('Sentinel\csrf', array('on' => array('post', 'put', 'delete')));

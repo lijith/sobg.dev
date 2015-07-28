@@ -33,7 +33,7 @@
 			                      <p>{{$shipping->billing_address_1}}
 			                      <br />{{$shipping->billing_address_2}}</p>
 			                      <p>{{ucwords($shipping->billing_city)}},
-			                      {{ucwords($shipping->billing_state)}}, 
+			                      {{ucwords($shipping->billing_state)}},
 			                      {{ucwords($shipping->billing_country)}}</p>
 			                      <abbr title="Phone">Phone :</abbr> {{$shipping->billing_contact_number_1}}, {{$shipping->billing_contact_number_2}}
 			                  </address>
@@ -49,7 +49,7 @@
 			                      <p>{{$shipping->shipping_address_1}}
 			                      <br />{{$shipping->shipping_address_2}}</p>
 			                      <p>{{ucwords($shipping->shipping_city)}},
-			                      {{ucwords($shipping->shipping_state)}}, 
+			                      {{ucwords($shipping->shipping_state)}},
 			                      {{ucwords($shipping->shipping_country)}}</p>
 			                      <abbr title="Phone">Phone :</abbr> {{$shipping->shipping_contact_number_1}}, {{$shipping->shipping_contact_number_2}}
 			                  </address>
@@ -82,7 +82,7 @@
 		              <div class="panel-heading">Amount</div>
 		              <div class="panel-body">
 		              	<table class="table table-bordered">
-		              		
+
 		              		<tr>
 		              			<td>Total Amount</td>
 		              			<td>{{ $shipping->amount }}
@@ -93,7 +93,7 @@
 		              </div>
 		          </div>
 			    	</div><!-- /.col-md-6 -->
-			    </div><!-- /.row -->					              
+			    </div><!-- /.row -->
 		      <hr />
 
 		      <div class="clearfix">
@@ -102,12 +102,31 @@
 			      @else
 			      <form method="post" name="redirect" action="http://www.ccavenue.com/shopzone/cc_details.jsp">
 
-								<input type="hidden" name="encRequest" value="{{ $encrypted }}">
-								<input type="hidden" name="Merchant_Id" value="{{ $merchant_id }}">
+						      <input type="hidden" name="Order_Id" value="{{ $shipping->reference_id }}" />
+						      <input type="hidden" name="Merchant_Id" value="M_eshopsbg_6774">
+						      <input type="hidden" name="cmd" value="_xclick">
+									<input type="hidden" name="business" value="admin@sobg.org">
+									<input type="hidden" name="currency_code" value="USD">
+									<input type="hidden" name="item_name" value="{{ $shipping->reference_id }}">
+									<input type="hidden" name="amount" value="{{ $shipping->amount }}">
+									<input type="hidden" name="shipping" value="{{ $shipping->amount }}">
+									<input type="hidden" name="Amount" value="{{ $shipping->amount }}">
+
+									<input type="hidden" name="billing_cust_name" value="{{ $shipping->billing_name }}">
+									<input type="hidden" name="billing_cust_address" value="{{ $shipping->billing_address_1 }} {{ $shipping->billing_address_2 }}">
+									<input type="hidden" name="billing_cust_country" value="{{ $shipping->billing_country }}">
+									<input type="hidden" name="billing_cust_email" value="{{ $shipping->billing_email }}">
+									<input type="hidden" name="billing_cust_tel" value="{{ $shipping->billing_contact_number_1 }}, {{ $shipping->billing_contact_number_2 }}">
+
+									<input type="hidden" name="delivery_cust_name" value="{{ $shipping->shipping_name }}">
+									<input type="hidden" name="delivery_cust_address" value="{{ $shipping->shipping_address_1 }} {{ $shipping->shipping_address_2 }}">
+									<input type="hidden" name="delivery_cust_country" value="{{ $shipping->shipping_country }}">
+									<input type="hidden" name="delivery_cust_email" value="{{ $shipping->shipping_email }}">
+									<input type="hidden" name="delivery_cust_tel" value="{{ $shipping->shipping_contact_number_1 }}, {{ $shipping->shipping_contact_number_2 }}">
 
 								<button type="submit" class="btn btn-primary pull-right">Make Payment</button>
 						</form>
-		      	
+
 		      	@endif
 		      </div><!-- /.clearfix -->
 		    </div>

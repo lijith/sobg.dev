@@ -1,162 +1,155 @@
 <?php namespace App\Http\Controllers\Member;
 
-use App\Http\Controllers\Controller as BaseController;
 use App\Http\Controllers\SiteController;
-
-use Illuminate\Support\Facades\Response;
-use Sentinel\FormRequests\LoginRequest;
 use App\Http\Requests\CartLoginRequest;
-
+use App\Yatra;
+use Cart;
+use Config;
+use Illuminate\Support\Facades\Response;
+use Input;
+use Redirect;
+use Sentinel\FormRequests\LoginRequest;
 use Sentinel\Repositories\Session\SentinelSessionRepositoryInterface;
 use Sentinel\Traits\SentinelRedirectionTrait;
 use Sentinel\Traits\SentinelViewfinderTrait;
-use Sentry, View, Input, Event, Redirect, Session, Config;
+use Sentry;
+use Session;
 
-use App\AudioDisk;
-use App\VideoDisk;
-use App\Magazine;
-use App\Book;
+class SessionController extends SiteController {
 
-use Cart;
+	/**
+	 * Traits
+	 */
+	use SentinelRedirectionTrait;
+	use SentinelViewfinderTrait;
 
+	/**
+	 * Constructor
+	 */
+	public function __construct(SentinelSessionRepositoryInterface $sessionManager) {
+		$this->session = $sessionManager;
 
-class SessionController extends SiteController
-{
+		//get the yatras
+		$yatras = Yatra::select('slug', 'name')
+			->get();
 
-    /**
-     * Traits
-     */
-    use SentinelRedirectionTrait;
-    use SentinelViewfinderTrait;
+		$this->page_data['side_cart'] = Cart::content();
+		$this->page_data['side_cart_total'] = Cart::total();
+		$this->page_data['cart_count'] = $this->cartCount();
+		$this->page_data['school_yatras'] = $yatras;
 
-    /**
-     * Constructor
-     */
-    public function __construct(SentinelSessionRepositoryInterface $sessionManager)
-    {
-        $this->session = $sessionManager;
+	}
 
-        $this->page_data['side_cart'] = Cart::content();
-        $this->page_data['side_cart_total'] = Cart::total();
-        $this->page_data['cart_count'] = $this->cartCount();
+	/**
+	 * Show the login form
+	 */
+	public function create() {
+		// Is this user already signed in?
+		if (Sentry::check()) {
+			return $this->redirectTo('member_profile');
+		}
 
-    }
+		// No - they are not signed in.  Show the login form.
+		return $this->viewFinder('Member.login')->with($this->page_data);
+	}
 
-    /**
-     * Show the login form
-     */
-    public function create()
-    {
-        // Is this user already signed in?
-        if (Sentry::check()) {
-            return $this->redirectTo('member_profile');
-        }
+	/**
+	 * Show form to register/create a account to continue checkout of cart
+	 */
+	public function cartAccount() {
+		// Is this user already signed in?
+		if (Sentry::check()) {
+			return $this->redirectTo('cart_session_store');
+		}
 
-        // No - they are not signed in.  Show the login form.
-        return $this->viewFinder('Member.login')->with($this->page_data);
-    }
+		// No - they are not signed in.  Show the login form.
+		return $this->viewFinder('shoppingcart-login-register')->with($this->page_data);
+	}
+	/**
+	 * Attempt authenticate a user login from cart.
+	 *
+	 * @return Response
+	 */
+	public function cartStore(CartLoginRequest $request) {
+		// Gather the input
+		$data = array(
+			'email' => Input::get('cart_email'),
+			'password' => Input::get('cart_password'),
+		);
 
-    /**
-     * Show form to register/create a account to continue checkout of cart
-     */
-    public function cartAccount()
-    {
-        // Is this user already signed in?
-        if (Sentry::check()) {
-            return $this->redirectTo('cart_session_store');
-        }
+		// Attempt the login
+		$result = $this->session->store($data);
 
-        // No - they are not signed in.  Show the login form.
-        return $this->viewFinder('shoppingcart-login-register')->with($this->page_data);
-    }
-    /**
-     * Attempt authenticate a user login from cart.
-     *
-     * @return Response
-     */
-    public function cartStore(CartLoginRequest $request)
-    {
-        // Gather the input
-        $data = array(
-            'email' => Input::get('cart_email'),
-            'password' => Input::get('cart_password')
-        );
+		// Did it work?
+		if ($result->isSuccessful()) {
+			// Login was successful.  Determine where we should go now.
+			if (!config('sentinel.views_enabled')) {
+				// Views are disabled - return json instead
+				return Response::json('success', 200);
+			}
+			// Views are enabled, so go to the determined route
+			$redirect_route = config('sentinel.routing.cart_session_store');
 
-        // Attempt the login
-        $result = $this->session->store($data);
+			return Redirect::intended($this->generateUrl($redirect_route));
+		} else {
+			// There was a problem - unrelated to Form validation.
+			if (!config('sentinel.views_enabled')) {
+				// Views are disabled - return json instead
+				return Response::json($result->getMessage(), 400);
+			}
+			Session::flash('error', $result->getMessage());
 
-        // Did it work?
-        if ($result->isSuccessful()) {
-            // Login was successful.  Determine where we should go now.
-            if (!config('sentinel.views_enabled')) {
-                // Views are disabled - return json instead
-                return Response::json('success', 200);
-            }
-            // Views are enabled, so go to the determined route
-            $redirect_route = config('sentinel.routing.cart_session_store');
+			return Redirect::route('cart.account')
+				->withInput();
+		}
+	}
 
-            return Redirect::intended($this->generateUrl($redirect_route));
-        } else {
-            // There was a problem - unrelated to Form validation.
-            if (!config('sentinel.views_enabled')) {
-                // Views are disabled - return json instead
-                return Response::json($result->getMessage(), 400);
-            }
-            Session::flash('error', $result->getMessage());
+	/**
+	 * Attempt authenticate a user.
+	 *
+	 * @return Response
+	 */
+	public function store(LoginRequest $request) {
+		// Gather the input
+		$data = Input::all();
 
-            return Redirect::route('cart.account')
-                ->withInput();
-        }
-    }
+		// Attempt the login
+		$result = $this->session->store($data);
 
-    /**
-     * Attempt authenticate a user.
-     *
-     * @return Response
-     */
-    public function store(LoginRequest $request)
-    {
-        // Gather the input
-        $data = Input::all();
+		// Did it work?
+		if ($result->isSuccessful()) {
+			// Login was successful.  Determine where we should go now.
+			if (!config('sentinel.views_enabled')) {
+				// Views are disabled - return json instead
+				return Response::json('success', 200);
+			}
+			// Views are enabled, so go to the determined route
+			$redirect_route = config('sentinel.routing.member_profile');
 
-        // Attempt the login
-        $result = $this->session->store($data);
+			return Redirect::intended($this->generateUrl($redirect_route));
+		} else {
+			// There was a problem - unrelated to Form validation.
+			if (!config('sentinel.views_enabled')) {
+				// Views are disabled - return json instead
+				return Response::json($result->getMessage(), 400);
+			}
+			Session::flash('error', $result->getMessage());
 
-        // Did it work?
-        if ($result->isSuccessful()) {
-            // Login was successful.  Determine where we should go now.
-            if (!config('sentinel.views_enabled')) {
-                // Views are disabled - return json instead
-                return Response::json('success', 200);
-            }
-            // Views are enabled, so go to the determined route
-            $redirect_route = config('sentinel.routing.member_profile');
+			return Redirect::route('member.session.create')
+				->withInput();
+		}
+	}
 
-            return Redirect::intended($this->generateUrl($redirect_route));
-        } else {
-            // There was a problem - unrelated to Form validation.
-            if (!config('sentinel.views_enabled')) {
-                // Views are disabled - return json instead
-                return Response::json($result->getMessage(), 400);
-            }
-            Session::flash('error', $result->getMessage());
+	/**
+	 * Remove the specified resource from storage.
+	 *
+	 * @param  int $id
+	 * @return Response
+	 */
+	public function destroy() {
+		$this->session->destroy();
 
-            return Redirect::route('member.session.create')
-                ->withInput();
-        }
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int $id
-     * @return Response
-     */
-    public function destroy()
-    {
-        $this->session->destroy();
-
-        return $this->redirectTo('member_session_destroy');
-    }
+		return $this->redirectTo('member_session_destroy');
+	}
 
 }
