@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
 
 class CreateAlbumsTable extends Migration {
 
@@ -19,12 +19,13 @@ class CreateAlbumsTable extends Migration {
 			$table->string('slug')->unique();
 			$table->string('cover_photo');
 			$table->string('cover_photo_thumbnail');
-			$table->text('description');
-			$table->text('keywords');
+			$table->text('description', 65535);
+			$table->text('keywords', 65535);
 			$table->integer('photos_number')->default(0);
 			$table->timestamps();
 		});
 	}
+
 
 	/**
 	 * Reverse the migrations.

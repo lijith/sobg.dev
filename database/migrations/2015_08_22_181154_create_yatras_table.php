@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
 
 class CreateYatrasTable extends Migration {
 
@@ -17,11 +17,12 @@ class CreateYatrasTable extends Migration {
 			$table->increments('id');
 			$table->string('name');
 			$table->string('slug')->unique();
-			$table->text('highlights');
-			$table->text('itenary_cost');
+			$table->text('highlights', 65535);
+			$table->text('itenary_cost', 65535);
 			$table->timestamps();
 		});
 	}
+
 
 	/**
 	 * Reverse the migrations.
@@ -30,7 +31,7 @@ class CreateYatrasTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('yatra');
+		Schema::drop('yatras');
 	}
 
 }

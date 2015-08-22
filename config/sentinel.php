@@ -1,7 +1,5 @@
 <?php
-
 return [
-
 	/*
 	|--------------------------------------------------------------------------
 	| Registration
@@ -11,9 +9,7 @@ return [
 	| value to false.
 	|
 	 */
-
 	'registration' => true,
-
 	/*
 	|--------------------------------------------------------------------------
 	| Activation
@@ -23,9 +19,7 @@ return [
 	| false will allow users to login immediately after signing up.
 	|
 	 */
-
 	'require_activation' => true,
-
 	/*
 	|--------------------------------------------------------------------------
 	| Allow Usernames
@@ -36,9 +30,7 @@ return [
 	| their username or their email address as a login credential.
 	|
 	 */
-
 	'allow_usernames' => false,
-
 	/*
 	|--------------------------------------------------------------------------
 	| Default User Groups
@@ -48,9 +40,7 @@ return [
 	| groups in this array.
 	|
 	 */
-
 	'default_user_groups' => ['Users'],
-
 	/*
 	|--------------------------------------------------------------------------
 	| Default Group Permissions
@@ -60,9 +50,7 @@ return [
 	| groups in this array.
 	|
 	 */
-
 	'default_permissions' => ['admin', 'users'],
-
 	/*
 	|--------------------------------------------------------------------------
 	| Custom User Fields
@@ -73,12 +61,10 @@ return [
 	| the fields to your 'create' and 'edit' views before this will work.
 	|
 	 */
-
 	'additional_user_fields' => [
 		'first_name' => 'alpha_spaces',
 		'last_name' => 'alpha_spaces',
 	],
-
 	/*
 	|--------------------------------------------------------------------------
 	| E-Mail Subject Lines
@@ -89,12 +75,10 @@ return [
 	| is often just the "User" model but you may use whatever you like.
 	|
 	 */
-
 	'subjects' => [
 		'welcome' => 'Account Registration Confirmation',
 		'reset_password' => 'Password Reset Confirmation',
 	],
-
 	/*
 	|--------------------------------------------------------------------------
 	| Default Routing
@@ -104,9 +88,7 @@ return [
 	| You can use them as is, or you can disable them entirely.
 	|
 	 */
-
 	'routes_enabled' => false,
-
 	/*
 	|--------------------------------------------------------------------------
 	| URL Redirection for Method Completion
@@ -117,7 +99,6 @@ return [
 	| If no action is specified a JSON response will be returned.
 	|
 	 */
-
 	'routing' => [
 		'cart' => ['route' => 'cart'],
 		'eshop' => ['route' => 'eshop'],
@@ -155,7 +136,6 @@ return [
 		'profile_change_password' => ['route' => 'sentinel.profile.show'],
 		'profile_update' => ['route' => 'sentinel.profile.show'],
 	],
-
 	/*
 	|--------------------------------------------------------------------------
 	| Enable HTML Views
@@ -166,9 +146,7 @@ return [
 	| turn this setting off. This cannot be done selectively.
 	|
 	 */
-
 	'views_enabled' => true,
-
 	/*
 	|--------------------------------------------------------------------------
 	| Master Layout
@@ -178,7 +156,5 @@ return [
 	| you can specify a custom master layout view to use instead.
 	|
 	 */
-
 	'layout' => 'Sentinel::layouts.default',
-
 ];
