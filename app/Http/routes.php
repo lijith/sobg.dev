@@ -15,7 +15,6 @@ Route::get('/', ['as' => 'home', 'uses' => 'HomeController@index']);
 Route::get('site-search', ['as' => 'site.search', 'uses' => 'SearchController@index']);
 
 Route::get('mail', ['as' => 'mail', 'uses' => 'HomeController@mail']);
-
 /*
 |
 |	about sobg routes
@@ -148,7 +147,7 @@ Route::group(['prefix' => 'e-shop'], function () {
 		Route::put('shipping/edit', ['as' => 'cart.shipping.update', 'uses' => 'ShoppingCartController@updateShipping']);
 		Route::get('payment', ['as' => 'cart.pay', 'uses' => 'ShoppingCartController@showPayment']);
 		Route::post('confirm-payment', ['as' => 'confirm.payment', 'uses' => 'ShoppingCartController@ConfirmPayment']);
-
+		Route::get('payment-status', ['as' => 'transaction.status', 'uses' => 'ShoppingCartController@paymentStatus']);
 	});
 
 	Route::get('search', ['as' => 'search.eshop', 'uses' => 'EshopController@search']);

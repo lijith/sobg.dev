@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
 
 class CreateSubscriptionRatesTable extends Migration {
 
@@ -18,9 +18,11 @@ class CreateSubscriptionRatesTable extends Migration {
 			$table->string('type');
 			$table->string('key');
 			$table->integer('value');
+			$table->integer('period');
 			$table->timestamps();
 		});
 	}
+
 
 	/**
 	 * Reverse the migrations.

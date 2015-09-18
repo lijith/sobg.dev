@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
 
 class CreateMagazineSubscribersTable extends Migration {
 
@@ -20,10 +20,11 @@ class CreateMagazineSubscribersTable extends Migration {
 			$table->integer('digital')->default(0);
 			$table->integer('print')->default(0);
 			$table->integer('active')->default(0);
-			$table->dateTime('ending_at');
+			$table->dateTime('ending_at')->default('0000-00-00 00:00:00');
 			$table->timestamps();
 		});
 	}
+
 
 	/**
 	 * Reverse the migrations.

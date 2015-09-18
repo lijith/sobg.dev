@@ -3,39 +3,43 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateMagazinesTable1 extends Migration {
+class CreateBooksTable extends Migration {
 
 	/**
 	 * Run the migrations.
 	 *
 	 * @return void
 	 */
-	public function up() {
-		//
-		Schema::create('magazines', function (Blueprint $table) {
+	public function up()
+	{
+		Schema::create('books', function(Blueprint $table)
+		{
 			$table->increments('id');
 			$table->string('title');
-			$table->string('magazine_file');
+			$table->string('author');
 			$table->integer('price');
 			$table->string('slug')->unique();
-			$table->text('excerpt');
-			$table->text('keywords');
-			$table->text('details');
+			$table->text('excerpt', 65535);
+			$table->text('keywords', 65535);
+			$table->text('details', 65535);
 			$table->string('cover_photo');
 			$table->string('cover_photo_thumbnail');
-			$table->timestamp('published_at');
-			$table->string('mail_list');
+			$table->string('language');
+			$table->dateTime('published_at')->default('0000-00-00 00:00:00');
+			$table->integer('published_by');
 			$table->timestamps();
 		});
 	}
+
 
 	/**
 	 * Reverse the migrations.
 	 *
 	 * @return void
 	 */
-	public function down() {
-		//
+	public function down()
+	{
+		Schema::drop('books');
 	}
 
 }

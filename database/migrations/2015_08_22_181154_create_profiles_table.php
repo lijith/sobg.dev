@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
 
 class CreateProfilesTable extends Migration {
 
@@ -22,13 +22,13 @@ class CreateProfilesTable extends Migration {
 			$table->string('nationality');
 			$table->string('profession');
 			$table->integer('marital_status');
-			$table->text('permanent_address_1');
-			$table->text('permanent_address_2');
+			$table->text('permanent_address_1', 65535);
+			$table->text('permanent_address_2', 65535);
 			$table->string('permanent_country');
 			$table->string('permanent_city');
 			$table->string('permanent_state');
-			$table->text('contact_address_1');
-			$table->text('contact_address_2');
+			$table->text('contact_address_1', 65535);
+			$table->text('contact_address_2', 65535);
 			$table->string('contact_country');
 			$table->string('contact_city');
 			$table->string('contact_state');
@@ -37,6 +37,7 @@ class CreateProfilesTable extends Migration {
 			$table->timestamps();
 		});
 	}
+
 
 	/**
 	 * Reverse the migrations.

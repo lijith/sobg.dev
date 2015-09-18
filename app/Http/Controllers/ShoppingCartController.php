@@ -434,6 +434,7 @@ class ShoppingCartController extends SiteController {
 		$order_id = $shipping->reference_id;
 		$redirect_url = route('confirm.payment');
 		$working_key = env('CCAVENUE_WORKING_KEY');
+		$form = env('CCAVENUE_FORM');
 		$checksum = $ccavenue->getchecksum($merchant_id, $amount, $order_id, $redirect_url, $working_key);
 
 		$merchant_data = '';
@@ -441,28 +442,27 @@ class ShoppingCartController extends SiteController {
 		$merchant_data .= '&Amount=' . $amount;
 		$merchant_data .= '&Order_Id=' . $order_id;
 		$merchant_data .= '&Redirect_Url=' . $redirect_url;
-		$merchant_data .= '&billing_cust_name=' . $shipping->billing_name;
-		$merchant_data .= '&billing_cust_address=' . $shipping->billing_address_1 . ', ' . $shipping->billing_address_2;
-		$merchant_data .= '&billing_cust_country=' . $shipping->billing_country;
-		$merchant_data .= '&billing_cust_state=' . $shipping->billing_state;
-		$merchant_data .= '&billing_cust_city=' . $shipping->billing_city;
-		$merchant_data .= '&billing_zip_code=' . '';
+		$merchant_data .= '&billing_cust_name=' . ucwords($shipping->billing_name);
+		$merchant_data .= '&billing_cust_address=' . ucwords($shipping->billing_address_1 . ', ' . $shipping->billing_address_2);
+		$merchant_data .= '&billing_cust_country=' . ucwords($shipping->billing_country);
+		$merchant_data .= '&billing_cust_state=' . ucwords($shipping->billing_state);
+		$merchant_data .= '&billing_cust_city=' . ucwords($shipping->billing_city);
 		$merchant_data .= '&billing_cust_tel=' . $shipping->billing_contact_number_1 . ', ' . $shipping->billing_contact_number_2;
 		$merchant_data .= '&billing_cust_email=' . $shipping->billing_email;
-		$merchant_data .= '&delivery_cust_name=' . $shipping->shipping_name;
-		$merchant_data .= '&delivery_cust_address=' . $shipping->shipping_address_1 . ', ' . $shipping->shipping_address_2;
-		$merchant_data .= '&delivery_cust_country=' . $shipping->shipping_country;
-		$merchant_data .= '&delivery_cust_state=' . $shipping->shipping_state;
-		$merchant_data .= '&delivery_cust_city=' . $shipping->shipping_city;
-		$merchant_data .= '&delivery_zip_code=' . '';
+		$merchant_data .= '&delivery_cust_name=' . ucwords($shipping->shipping_name);
+		$merchant_data .= '&delivery_cust_address=' . ucwords($shipping->shipping_address_1 . ', ' . $shipping->shipping_address_2);
+		$merchant_data .= '&delivery_cust_country=' . ucwords($shipping->shipping_country);
+		$merchant_data .= '&delivery_cust_state=' . ucwords($shipping->shipping_state);
+		$merchant_data .= '&delivery_cust_city=' . ucwords($shipping->shipping_city);
 		$merchant_data .= '&delivery_cust_tel=' . $shipping->shipping_contact_number_1 . ', ' . $shipping->shipping_contact_number_2;
-		$merchant_data .= '&billing_cust_notes=' . '';
+		$merchant_data .= '&billing_cust_notes=' . $shipping->comments;
 		$merchant_data .= '&Checksum=' . $checksum;
 
 		$this->page_data['shipping'] = $shipping;
 		$this->page_data['orders'] = $orders;
 		$this->page_data['merchant_id'] = $merchant_id;
 		$this->page_data['encrypted'] = $aes->encrypt($merchant_data, $working_key);
+		$this->page_data['form'] = $form;
 
 		return View::make('shoppingcart-payment')->with($this->page_data);
 
@@ -475,14 +475,26 @@ class ShoppingCartController extends SiteController {
 	 * @author
 	 **/
 	public function ConfirmPayment() {
+		if (!Sentry::check()) {
+			// No - they are not signed in.  redirect to account login/create form.
+			return $this->redirectTo('cart_account');
+		}
 
 		$ccavenue = new \Ccavenue\CCAvenue;
 		$aes = new \Ccavenue\AESCrypt;
 
+		$mGun = new Mailgun(env('MAILGUN_KEY'));
+		$domain = env('MAILGUN_DOMAIN');
+		$sobg_mail_list = env('MAILGUN_ALL_MAIL_LIST');
+		$sobg_admin_list = env('MAILGUN_ADMIN_LIST');
+		$sobg_mag_sub_list = env('MAILGUN_MAG_SUB_LIST');
+
 		$encResponse = Input::get('encResponse');
 		$workingKey = env('CCAVENUE_WORKING_KEY');
+		$user_id = Session::get('userId');
+		$shipping_id = Session::get('shipping_id');
 
-		dd(Input::all());
+		//dd(Input::all());
 
 		/*
 		 *
@@ -509,52 +521,49 @@ class ShoppingCartController extends SiteController {
 		 *
 		 */
 
-		// $decrypted_response = $aes->decrypt($encResponse, $workingKey);
+		$decrypted_response = $aes->decrypt($encResponse, $workingKey);
 
-		// $ResponseBreakUp = explode('&', $decrypted_response);
+		$ResponseBreakUp = explode('&', $decrypted_response);
 
-		// $dataSize = sizeof($ResponseBreakUp);
+		$dataSize = sizeof($ResponseBreakUp);
 
-		// for ($i = 0; $i < $dataSize; $i++) {
-		// 	$information = explode('=', $ResponseBreakUp[$i]);
-		// 	if ($i == 0) {
-		// 		$MerchantId = $information[1];
-		// 	}
+		for ($i = 0; $i < $dataSize; $i++) {
+			$information = explode('=', $ResponseBreakUp[$i]);
+			if ($i == 0) {
+				$MerchantId = $information[1];
+			}
 
-		// 	if ($i == 1) {
-		// 		$OrderId = $information[1];
-		// 	}
+			if ($i == 1) {
+				$OrderId = $information[1];
+			}
 
-		// 	if ($i == 2) {
-		// 		$Amount = $information[1];
-		// 	}
+			if ($i == 2) {
+				$Amount = $information[1];
+			}
 
-		// 	if ($i == 3) {
-		// 		$AuthDesc = $information[1];
-		// 	}
+			if ($i == 3) {
+				$AuthDesc = $information[1];
+			}
 
-		// 	if ($i == 4) {
-		// 		$Checksum = $information[1];
-		// 	}
+			if ($i == 4) {
+				$Checksum = $information[1];
+			}
 
-		// }
+		}
 
-		// $ResponseString = $MerchantId . '|' . $OrderId . '|' . $Amount . '|' . $AuthDesc . '|' . $workingKey;
-		// $ResponseChecksum = $ccavenue->genchecksum($ResponseString);
+		$ResponseString = $MerchantId . '|' . $OrderId . '|' . $Amount . '|' . $AuthDesc . '|' . $workingKey;
+		$ResponseChecksum = $ccavenue->genchecksum($ResponseString);
 
-		// $ChecksumStatus = $ccavenue->verifyChecksum($ResponseChecksum, $Checksum);
+		$ChecksumStatus = $ccavenue->verifyChecksum($ResponseChecksum, $Checksum);
 
 		//do according to the status of the transaction
 		//
-		if ($ChecksumStatus == TRUE && $AuthDesc === "Y") {
+		if ($ChecksumStatus == TRUE && ($AuthDesc === "Y" || $AuthDesc === "B")) {
 			//Successful Transaction
 			//Set Payment status of the Shipping to 1
 			//If has subscription make it active
 			//empty the cart and shipping_id
 			//sent mail to user email, billing email, shipping email, admin email
-
-			$user_id = Session::get('userId');
-			$shipping_id = Session::get('shipping_id');
 
 			//activate any subscriptions
 			if (Session::get('subscribed') == 'yes') {
@@ -563,16 +572,12 @@ class ShoppingCartController extends SiteController {
 				$subscription->save();
 			}
 
-			//confirm payment in database
-			$shipping = Shipping::find($shipping_id);
-			$shipping->payment_status = 1;
-			$shipping->save();
-
 			$orders = $this->ShippingOrders($shipping_id);
-
-			//now send mails
-			$mGun = new Mailgun(env('MAILGUN_KEY'));
-			$domain = env('MAILGUN_DOMAIN');
+			/*
+			 *
+			 * now send mails
+			 *
+			 */
 
 			//send the message to shipping and billing emails
 
@@ -602,7 +607,7 @@ class ShoppingCartController extends SiteController {
 			//send message to admin and shipping handler
 			$mGun->sendMessage($domain, array(
 				'from' => 'info@sobg.com',
-				'to' => env('MAILGUN_ADMIN_LIST'),
+				'to' => $sobg_admin_list,
 				'subject' => 'New Order',
 				'text' => 'New order(s)',
 				'html' => View::make('emails.admins-orders', array('shipping' => $shipping, 'orders' => $orders))
@@ -611,33 +616,65 @@ class ShoppingCartController extends SiteController {
 
 			//add the email to sobg mail list
 			$address_JSON = json_encode($subs);
-			$mGunResponse = $mGun->post('lists/maillist@creativequb.com/members.json', array(
+			$mGunResponse = $mGun->post('lists/' . $sobg_mail_list . '/members.json', array(
 				'members' => $address_JSON,
 				'upsert' => 'yes',
 			));
 
 			//add email digital subscribers if digital subscription
 			if (Session::get('subscribed') == 'yes') {
-				$mGunResponse = $mGun->put('lists/magazinesubscribers@creativequb.com/members', array(
+				$mGunResponse = $mGun->put('lists/' . $sobg_mag_sub_list . '/members', array(
 					'address' => $shipping->shipping_email,
 					'name' => $shipping->shipping_name,
 				));
+				Session::put('subscribed', 'no');
 			}
+			//clear cart and sessions
+			Cart::destroy();
+
+		}
+		if ($ChecksumStatus == TRUE && $AuthDesc === "Y") {
+			//Pending Transaction
+			//Set Payment Status of Shipping to 1
+			//confirm payment in database
+			$shipping = Shipping::find($shipping_id);
+			$shipping->payment_status = 1;
+			$shipping->save();
+
+			return redirect()->route('transaction.status')->with('success', 'Thank you. Transaction is successful. We will be shipping your order to you soon.');
 
 		} elseif ($ChecksumStatus == TRUE && $AuthDesc === "B") {
 			//Pending Transaction
 			//Set Payment Status of Shipping to 2
+			$shipping = Shipping::find($shipping_id);
+			$shipping->payment_status = 2;
+			$shipping->save();
 
-			return 'Pending';
+			return redirect()->route('transaction.status')->with('warning', 'Thank you. Transaction is pending. We will keep you posted regarding the status of your order through e-mail');
 
 		} elseif ($ChecksumStatus == TRUE && $AuthDesc === "N") {
 			//Failed Transaction
 			//Redirect to check-out page
 
-			return 'Failed';
+			return redirect()->route('transaction.status')->with('error', 'Thank you. However,the transaction has been failed.');
+
+		} else {
+			return redirect()->route('transaction.status')->with('error', 'Illegal operation,the transaction has been declined.');
 
 		}
 
+	}
+
+	/**
+	 * Show status to customer.
+	 *
+	 * @param  void
+	 *
+	 * @return View
+	 */
+	public function paymentStatus() {
+
+		return View('shoppingcart-payment-status')->with($this->page_data);
 	}
 
 	/**
