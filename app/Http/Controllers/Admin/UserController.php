@@ -56,6 +56,18 @@ class UserController extends BaseController {
 		$perPage = 15;
 		$offSet = ($page * $perPage) - $perPage;
 		$itemsForCurrentPage = array_slice($users, $offSet, $perPage, true);
+		foreach ($users as $user) {
+			$profile = User::find($user->id)->profile;
+			if ($profile == null) {
+				$user->name = 'No Name';
+			} else {
+				if ($profile->name == '') {
+					$user->name = 'No Name';
+				} else {
+					$user->name = ucwords($profile->name);
+				}
+			}
+		}
 
 		// $currentPage = Input::get('page', 1);
 		// $pagedData = array_slice($users, $currentPage * $perPage, $perPage);

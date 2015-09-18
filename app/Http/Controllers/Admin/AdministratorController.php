@@ -45,6 +45,9 @@ class AdministratorController extends BaseController {
 	public function show() {
 		// Get the user
 		$user = $this->userRepository->retrieveById(Session::get('userId'));
+		if ($user == null) {
+			return redirect()->route('sentinel.logout');
+		}
 
 		// return $this->viewFinder('Sentinel::users.show', ['user' => $user]);
 		$subscription = 'Admin';

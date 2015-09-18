@@ -26,7 +26,7 @@
 			            <tbody>
 			            @foreach ($users as $user)
 			                <tr>
-			                  <td><a href="{{ action('\App\Http\Controllers\Admin\UserController@show', array($user->hash)) }}">{{ $user->email }}</a></td>
+			                  <td><a href="{{ action('\App\Http\Controllers\Admin\UserController@show', array($user->hash)) }}">{{ $user->name }} | {{ $user->email }}</a></td>
 			                  <td>{{ $user->status }} </td>
 			                  <td>
 			                      <button class="btn btn-default" type="button" onClick="location.href='{{ action('\App\Http\Controllers\Admin\UserController@edit', array($user->hash)) }}'">Edit</button>
