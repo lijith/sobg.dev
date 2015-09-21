@@ -595,7 +595,7 @@ class ShoppingCartController extends SiteController {
 
 			foreach ($mail_address as $email) {
 				$mGun->sendMessage($domain, array(
-					'from' => 'info@sobg.com',
+					'from' => 'admin@sobg.com',
 					'to' => $email,
 					'subject' => 'Congradulations for successful orders',
 					'text' => 'School of Bhagavat Gita thanks you for order(s)',
@@ -606,7 +606,7 @@ class ShoppingCartController extends SiteController {
 
 			//send message to admin and shipping handler
 			$mGun->sendMessage($domain, array(
-				'from' => 'info@sobg.com',
+				'from' => 'shop@sobg.com',
 				'to' => $sobg_admin_list,
 				'subject' => 'New Order',
 				'text' => 'New order(s)',

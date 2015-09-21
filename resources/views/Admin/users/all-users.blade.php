@@ -40,7 +40,7 @@
 			                      @else
 			                          <button class="btn btn-default" type="button" onClick="location.href='{{ action('\App\Http\Controllers\Admin\UserController@unban', array($user->hash)) }}'">Un-Ban</button>
 			                      @endif
-			                      <button class="btn btn-default action_confirm" href="{{ action('\App\Http\Controllers\Admin\UserController@destroy', array($user->hash)) }}" data-token="{{ Session::getToken() }}" data-method="delete">Delete</button>
+			                      <!--<button class="btn btn-default action_confirm" href="{{ action('\App\Http\Controllers\Admin\UserController@destroy', array($user->hash)) }}" data-token="{{ Session::getToken() }}" data-method="delete">Delete</button>-->
 			                  </td>
 			              </tr>
 			          @endforeach
@@ -49,7 +49,7 @@
 
 
 			  </div>
-			  <div>paginate{!! $users->render() !!}</div>
+			  <div>{!! $users->render() !!}</div>
       </div>
     </section>
 	</div>

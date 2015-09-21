@@ -24,7 +24,13 @@ class HomeController extends SiteController {
 
 		$this->page_data['top_level_page'] = 'home';
 
-		$this->page_data['events'] = SobgEvent::where('end_date', '>', Carbon::now())->get();
+		$events = SobgEvent::where('end_date', '>', Carbon::now())->get();
+
+		if ($events->count() < 1) {
+			$events = SobgEvent::orderBy('end_date', 'DESC')->take(3)->get();
+		}
+
+		$this->page_data['events'] = $events;
 
 		return view('home')->with($this->page_data);
 	}

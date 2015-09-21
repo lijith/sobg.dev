@@ -377,8 +377,8 @@ class MagazineController extends Controller {
 			'magazine' => $magazine,
 		);
 
-		$mGun->sendMessage('creativequb.com', array(
-			'from' => 'bob@example.com',
+		$mGun->sendMessage('schoolofbhagavadgita.org', array(
+			'from' => 'admin@sobg.com',
 			'to' => env('MAILGUN_ALL_MAIL_LIST'),
 			'subject' => 'Edition of Piravi',
 			'text' => $magazine->excerpt,
@@ -482,8 +482,8 @@ class MagazineController extends Controller {
 			'magazine' => $magazine,
 		);
 
-		$mGun->sendMessage('creativequb.com', array(
-			'from' => 'bob@example.com',
+		$mGun->sendMessage('schoolofbhagavadgita.org', array(
+			'from' => 'admin@sobg.com',
 			'to' => $mail_list_id,
 			'subject' => 'Digital Edition of Piravi',
 			'text' => $magazine->excerpt,

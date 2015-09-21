@@ -25,11 +25,11 @@
 				<li><a href="{{route('swami')}}">Swami Sandeepananda Giri</a></li>
 				<li><a href="{{route('milestones')}}">Milestones in the spiritual journey</a></li>
 				<li><a href="{{route('kashikananda')}}">Swami Kashikananda Giri Maharaj</a></li>
-				<!--<li><a href="{{route('articles')}}">Articles and Interviews</a></li>
-				<li><a href="{{route('itinerary')}}">Swamiji’s Itinerary</a></li>
-				<li><a href="{{route('messageFromSwami')}}">Message from Swamiji</a></li>
+				<li><a href="{{route('articles')}}">Articles and Interviews</a></li>
+				<!--<li><a href="{{route('itinerary')}}">Swamiji’s Itinerary</a></li>
+				<li><a href="{{route('messageFromSwami')}}">Message from Swamiji</a></li>-->
 				<li><a href="{{route('writeToSwami')}}">Write to Swamiji</a></li>
-				-->
+
 			</ul>
 		</li>
 		<span class="separator">|</span>

@@ -123,7 +123,6 @@ class GuruController extends SiteController {
 		$this->page_data['top_level_page'] = 'guru';
 		$this->page_data['sub_page_active'] = 'write-to-swami';
 		return view('guru.write-to-swami')->with($this->page_data);
-		return 'write to swami';
 	}
 
 }

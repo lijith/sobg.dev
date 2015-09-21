@@ -109,9 +109,8 @@
                         <li><a href="{{ route('sentinel.profile.show') }}">Admin Profile</a></li>
                         <li><a href="{{ action('\App\Http\Controllers\Admin\UserController@index') }}">All Users</a></li>
                         <li><a href="{{ route('sentinel.users.find') }}">Search User</a></li>
-
-                        {{-- <li><a href="{{ route('sentinel.register.form') }}">Register User</a></li> --}}
                         <li><a href="{{ action('\App\Http\Controllers\Admin\GroupController@index') }}">User Groups</a></li>
+                        <li><a href="{{ route('sentinel.users.create') }}">Register New Member</a></li>
                     </ul>
                 </li>
                 <li class="sub-menu">

@@ -113,7 +113,7 @@ class UserController extends BaseController {
 			return redirect()->route('sentinel.users.edit.profile', array($this->hashids->encode($new_user_id)))->with('success', 'Member Created');
 
 		} else {
-			echo 'username already exsist';
+			return redirect()->route('sentinel.users.create')->with('error', $result->getMessage());
 		}
 	}
 
@@ -384,6 +384,7 @@ class UserController extends BaseController {
 
 		// Remove the user from storage
 		$result = $this->userRepository->destroy($id);
+		//dd($result->isSuccessful());
 
 		return $this->redirectViaResponse('users_destroy', $result);
 	}

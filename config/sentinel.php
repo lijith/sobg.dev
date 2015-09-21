@@ -19,7 +19,7 @@ return [
 	| false will allow users to login immediately after signing up.
 	|
 	 */
-	'require_activation' => true,
+	'require_activation' => false,
 	/*
 	|--------------------------------------------------------------------------
 	| Allow Usernames

@@ -169,7 +169,7 @@ class YatrasController extends SiteController {
 		$mGun = new \Mailgun\Mailgun(env('MAILGUN_KEY'));
 		$domain = env('MAILGUN_DOMAIN');
 
-		$response = $mGun->sendMessage('creativequb.com', array(
+		$response = $mGun->sendMessage('schoolofbhagavadgita.org', array(
 			'from' => 'register@sobg.com',
 			'to' => env('MAILGUN_ADMIN_LIST'),
 			'subject' => 'Yatra Registration',

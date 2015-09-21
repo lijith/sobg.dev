@@ -96,10 +96,9 @@ class RegistrationController extends SiteController {
 			));
 
 			$profile->save();
+			\Session::put('success', 'Check your email to activate');
 
 		}
-
-		//create a empty profile
 
 		// It worked!  Use config to determine where we should go.
 		return $this->redirectViaResponse('member_registration_complete', $result);
