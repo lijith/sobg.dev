@@ -67,24 +67,27 @@ class GuruController extends SiteController {
 			$article = Article::where('slug', '=', $slug)->first();
 		}
 
-		$articles = Article::where('id', '<>', $article->id)
-			->orderBy('date', 'DESC')
-			->get()
-			->groupBy(function ($date) {
-				return \Carbon\Carbon::parse($date->date)->format('Y'); // grouping by years
-				//return Carbon::parse($date->created_at)->format('m'); // grouping by months
-			});
+		if ($article != null) {
 
-		$this->page_data['title'] = ucwords($article->title);
-		$this->page_data['description'] = $article->excerpt;
-		$this->page_data['keywords'] = $article->keywords;
+			$articles = Article::where('id', '<>', $article->id)
+				->orderBy('date', 'DESC')
+				->get()
+				->groupBy(function ($date) {
+					return \Carbon\Carbon::parse($date->date)->format('Y'); // grouping by years
+				});
+			$this->page_data['title'] = ucwords($article->title);
+			$this->page_data['description'] = $article->excerpt;
+			$this->page_data['keywords'] = $article->keywords;
 
-		$this->page_data['top_level_page'] = 'guru';
-		$this->page_data['sub_page_active'] = 'articles';
-		$this->page_data['article'] = $article;
-		$this->page_data['articles'] = $articles;
-		return view('guru.article-interviews')->with($this->page_data);
-
+			$this->page_data['top_level_page'] = 'guru';
+			$this->page_data['sub_page_active'] = 'articles';
+			$this->page_data['article'] = $article;
+			$this->page_data['articles'] = $articles;
+			return view('guru.article-interviews')->with($this->page_data);
+		} else {
+			//return no content page
+			return view('will-update-soon')->with($this->page_data);
+		}
 	}
 	/**
 	 * Show the about overview page.
