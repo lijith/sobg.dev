@@ -338,6 +338,17 @@ class UserController extends BaseController {
 
 		$profile->update($update);
 
+		$mGun = new Mailgun(env('MAILGUN_KEY'));
+		$domain = env('MAILGUN_DOMAIN');
+		$sobg_mail_list = env('MAILGUN_ALL_MAIL_LIST');
+
+		$mGunResponse = $mGun->post('lists/' . $sobg_mail_list . '/members', array(
+			'address' => $user->email,
+			'name' => ucwords(trim(Input::get('name'))),
+			'subscribed' => true,
+			'upsert' => 'yes',
+		));
+
 		return redirect()->route('sentinel.users.edit.profile', array($hash))->with('success', 'Updated');
 	}
 

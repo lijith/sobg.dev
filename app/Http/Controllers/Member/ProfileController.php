@@ -9,6 +9,7 @@ use App\Yatra;
 use Carbon\Carbon;
 use Cart;
 use Input;
+use Mailgun\Mailgun;
 use Redirect;
 use Response;
 use Sentinel\FormRequests\ChangePasswordRequest;
@@ -156,6 +157,17 @@ class ProfileController extends SiteController {
 
 		Profile::where('user_id', '=', $user_id)
 			->update($update);
+
+		$mGun = new Mailgun(env('MAILGUN_KEY'));
+		$domain = env('MAILGUN_DOMAIN');
+		$sobg_mail_list = env('MAILGUN_ALL_MAIL_LIST');
+
+		$mGunResponse = $mGun->post('lists/' . $sobg_mail_list . '/members', array(
+			'address' => $user->email,
+			'name' => ucwords(trim(Input::get('name'))),
+			'subscribed' => true,
+			'upsert' => 'yes',
+		));
 
 		// Done!
 		return redirect()->route('Member.profile.show');
