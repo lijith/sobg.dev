@@ -48,8 +48,6 @@ class SessionController extends SiteController {
 		if (Sentry::check()) {
 			return $this->redirectTo('member_profile');
 		}
-		dd(Session::all());
-
 		// No - they are not signed in.  Show the login form.
 		return $this->viewFinder('Member.login')->with($this->page_data);
 	}

@@ -1,6 +1,7 @@
 <?php namespace App\Http\Controllers\Member;
 
 use App\Http\Controllers\SiteController;
+use App\Http\Requests\Member\RegisterRequest;
 use App\Profile;
 use App\Yatra;
 use Cart;
@@ -9,7 +10,6 @@ use Input;
 use Mailgun\Mailgun;
 use Redirect;
 use Sentinel\FormRequests\EmailRequest;
-use Sentinel\FormRequests\RegisterRequest;
 use Sentinel\FormRequests\ResetPasswordRequest;
 use Sentinel\Repositories\Group\SentinelGroupRepositoryInterface;
 use Sentinel\Repositories\User\SentinelUserRepositoryInterface;
@@ -85,6 +85,8 @@ class RegistrationController extends SiteController {
 		// Attempt Registration
 		$result = $this->userRepository->store($data);
 
+		$name = ucwords(trim(Input::get('name')));
+
 		//create profile
 
 		if ($result->isSuccessful()) {
@@ -93,6 +95,7 @@ class RegistrationController extends SiteController {
 
 			$profile = new Profile(array(
 				'user_id' => $user_id,
+				'name' => $name,
 				'dob' => \Carbon\Carbon::now(),
 			));
 
@@ -104,6 +107,7 @@ class RegistrationController extends SiteController {
 
 			$subs = array(array(
 				'address' => Input::get('email'),
+				'name' => $name,
 				'subscribed' => true));
 
 			$address_JSON = json_encode($subs);
@@ -112,7 +116,7 @@ class RegistrationController extends SiteController {
 				'upsert' => 'yes',
 			));
 
-			\Session::put('success', 'Check your email to activate');
+			return redirect()->route('member.login')->with('success', 'An email is sent to the email address you provided.<br />Please read it to complete registration');
 
 		}
 
