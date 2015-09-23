@@ -23,7 +23,7 @@
         @foreach($pckgs as $pckg)
       	<div class="row">
           <form method="POST" action="{{ route('package.update',array($pckg->id)) }}">
-            
+
             <div class="col-sm-3">
               <div class="form-group">
                 <label>Package Name</label>
@@ -32,7 +32,7 @@
             </div><!-- /.col-sm- -->
             <div class="col-sm-3">
               <div class="form-group">
-                <label>Package Name</label>
+                <label>Package Rate(INR)</label>
                 <input class="form-control" placeholder="Name" name="package-amount" type="text"  value="{{ $pckg->amount }}">
               </div>
             </div><!-- /.col-sm- -->
@@ -70,7 +70,7 @@
         </div><!-- /.row- -->
         <hr />
         @endforeach
-	        
+
        </div><!-- /.panel-body- -->
       @endforeach
     </section><!-- /.panel- -->
@@ -106,7 +106,7 @@
                   <input class="form-control" placeholder="amount in rs" name="package-amount" type="text"  value="{{ Input::old('package-amount') }}">
                   {{ ($errors->has('package-amount') ? $errors->first('package-amount') : '') }}
 
-              </div>              
+              </div>
 
             </div><!-- /.col-sm-2 -->
             <div class="col-sm-6">
@@ -121,7 +121,7 @@
                     </label>
                 </div>
               @endforeach
-            </div>              
+            </div>
 
             </div><!-- /.col-sm-6 -->
 
@@ -139,7 +139,7 @@
     </section>
   </div>
 
-</div> 
+</div>
 
 
 @stop

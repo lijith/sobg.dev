@@ -6,6 +6,7 @@ use App\Yatra;
 use Cart;
 use Config;
 use Input;
+use Mailgun\Mailgun;
 use Redirect;
 use Sentinel\FormRequests\EmailRequest;
 use Sentinel\FormRequests\RegisterRequest;
@@ -96,6 +97,21 @@ class RegistrationController extends SiteController {
 			));
 
 			$profile->save();
+
+			$mGun = new Mailgun(env('MAILGUN_KEY'));
+			$domain = env('MAILGUN_DOMAIN');
+			$sobg_mail_list = env('MAILGUN_ALL_MAIL_LIST');
+
+			$subs = array(array(
+				'address' => Input::get('email'),
+				'subscribed' => true));
+
+			$address_JSON = json_encode($subs);
+			$mGunResponse = $mGun->post('lists/' . $sobg_mail_list . '/members.json', array(
+				'members' => $address_JSON,
+				'upsert' => 'yes',
+			));
+
 			\Session::put('success', 'Check your email to activate');
 
 		}

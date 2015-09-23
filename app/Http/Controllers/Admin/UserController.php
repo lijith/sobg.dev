@@ -6,6 +6,7 @@ use App\Profile;
 use App\SubscriptionRates;
 use App\User;
 use Input;
+use Mailgun\Mailgun;
 use Redirect;
 use Request;
 use Sentinel\FormRequests\ChangePasswordRequest;
@@ -110,6 +111,19 @@ class UserController extends BaseController {
 
 			$profile->save();
 
+			$mGun = new Mailgun(env('MAILGUN_KEY'));
+			$domain = env('MAILGUN_DOMAIN');
+			$sobg_mail_list = env('MAILGUN_ALL_MAIL_LIST');
+
+			$subs = array(array(
+				'address' => Input::get('email'),
+				'subscribed' => true));
+
+			$address_JSON = json_encode($subs);
+			$mGunResponse = $mGun->post('lists/' . $sobg_mail_list . '/members.json', array(
+				'members' => $address_JSON,
+				'upsert' => 'yes',
+			));
 			return redirect()->route('sentinel.users.edit.profile', array($this->hashids->encode($new_user_id)))->with('success', 'Member Created');
 
 		} else {
